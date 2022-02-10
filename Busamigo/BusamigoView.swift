@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  BusamigoView.swift
 //  Busamigo
 //
 //  Created by Nick Askari on 09/02/2022.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct BusamigoView: View {
     
     var body: some View {
         TabView {
@@ -55,8 +55,8 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            ContentView()
-            ContentView()
+            BusamigoView()
+            BusamigoView()
                 .preferredColorScheme(.dark)
         }
     }

@@ -11,7 +11,7 @@ import SwiftUI
 struct BusamigoApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            BusamigoView()
         }
     }
 }
