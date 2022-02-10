@@ -11,25 +11,30 @@ struct FeedView: View {
     
     var body: some View {
         NavigationView {
-            ZStack {
-                VStack(alignment: .trailing) {
-                    ScrollView {
-                        ForEach(0..<7) { item in
-                            FeedItemView()
-                        }
+            ZStack(alignment: .bottom) {
+                ScrollView {
+                    ForEach(0..<7) { item in
+                        FeedItemView()
                     }
-                    .navigationTitle("Vakt Feed🌍")
+                }
+                .navigationTitle("Vakt Feed🌍")
+                Spacer()
+                HStack {
                     Spacer()
-                    HStack {
-                        Spacer()
-                        Button(action: {}) {
-                            HStack {
-                                Image(systemName: "plus.circle.fill")
-                            }
+                    Button(action: {}) {
+                        HStack {
+                            Image(systemName: "plus.circle.fill")
+                                .font(.system(size: 80))
+                                .background(alignment: .center) {
+                                    Color.white
+                                        .mask(Circle())
+                                }
+                                .shadow(radius: 2)
+                                .foregroundColor(.green)
                         }
-                        .frame(width: 60, height: 60)
-                        .border(Color.red, width: 1)
                     }
+                    .frame(width: 60, height: 60)
+                    .padding(30)
                 }
             }
         }
