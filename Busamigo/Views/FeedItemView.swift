@@ -10,35 +10,74 @@ import SwiftUI
 struct FeedItemView: View {
     var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 30)
-                .stroke(Color.green, lineWidth: 5)
-                .frame(width: 350, height: 150, alignment: .center)
-                .padding()
             HStack {
-                RoundedRectangle(cornerRadius: 20)
-                    .scaledToFit()
-                    .padding(32)
-                    .foregroundColor(.black)
-                    .opacity(0.0)
                 BusLineView()
+                //UpDownVoteView()
             }
+            //.padding(10)
         }
+        .padding()
     }
 }
 
 struct BusLineView: View {
    
     var body: some View {
-        ZStack {
+        ZStack(alignment: .leading) {
+            
             RoundedRectangle(cornerRadius: 20)
-                .scaledToFit()
-                .padding(32)
                 .foregroundColor(.black)
                 .opacity(0.7)
-            Text("Lohove \n      3")
-                .font(.largeTitle)
-                .foregroundColor(.white)
-                .padding(20)
+                .aspectRatio(2, contentMode: .fit)
+            
+            HStack {
+                Image(systemName: "bus")
+                    .font(.system(size: 30))
+                    .padding(.horizontal)
+                    .colorInvert()
+                VStack {
+                    //Gjøre dette på en bedre måte
+                    Text("Lohove 3")
+                        .multilineTextAlignment(.leading)
+                        .font(.title)
+                        .foregroundColor(.white)
+                    Text("Hallset     ")
+                        .multilineTextAlignment(.leading)
+                        .font(.title)
+                        .foregroundColor(.white)
+                        .opacity(0.8)
+                    Text("1645        ")
+                        .multilineTextAlignment(.leading)
+                        .font(.title)
+                        .foregroundColor(.white)
+                        .opacity(0.6)
+                }
+                VStack {
+                    Image(systemName: "arrow.up")
+                        .font(.system(size: 30))
+                        .foregroundColor(.mint)
+                        .padding(.bottom)
+                    Text("12")
+                        .foregroundColor(.white)
+                        .font(.title2.bold())
+                        .padding(.bottom)
+                    Image(systemName: "arrow.down")
+                        .font(.system(size: 30))
+                        .foregroundColor(.red)
+                }
+                .padding(.leading, 90)
+            }
+            
+        }
+    }
+}
+
+struct UpDownVoteView: View {
+    var body: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 20)
+                .opacity(0.2)
+                .aspectRatio(0.1, contentMode: .fit)
         }
     }
 }
