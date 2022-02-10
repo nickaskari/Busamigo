@@ -7,19 +7,8 @@
 
 import SwiftUI
 
-struct FeedItemView: View {
-    var body: some View {
-        ZStack {
-            HStack {
-                BusLineView()
-            }
-        }
-        .padding()
-    }
-}
-
-struct BusLineView: View {
-   
+struct BusCardView: View {
+    
     var body: some View {
         ZStack(alignment: .leading) {
             
@@ -50,25 +39,15 @@ struct BusLineView: View {
                         .foregroundColor(.white)
                         .opacity(0.6)
                 }
-                VStack {
-                    Image(systemName: "arrow.up")
-                        .font(.system(size: 30))
-                        .foregroundColor(.mint)
-                        .padding(.bottom)
-                    Text("12")
-                        .foregroundColor(.white)
-                        .font(.title2.bold())
-                        .padding(.bottom)
-                    Image(systemName: "arrow.down")
-                        .font(.system(size: 30))
-                        .foregroundColor(.red)
-                }
-                .padding(.leading, 90)
+                Spacer()
+                UporDownView(rating: "12")
             }
-            
         }
+        .padding()
     }
 }
+
+
 
 
 
@@ -106,6 +85,6 @@ struct BusLineView: View {
 
 struct FeedItemView_Previews: PreviewProvider {
     static var previews: some View {
-        FeedItemView()
+        BusCardView()
     }
 }

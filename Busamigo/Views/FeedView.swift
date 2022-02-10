@@ -14,7 +14,9 @@ struct FeedView: View {
             ZStack(alignment: .bottom) {
                 ScrollView {
                     ForEach(0..<7) { item in
-                        FeedItemView()
+                        BusCardView()
+                        BusStopCardView()
+                        TramCardView()
                     }
                 }
                 .navigationTitle("Vakt Feed🌍")
@@ -30,7 +32,7 @@ struct FeedView: View {
                                         .mask(Circle())
                                 }
                                 .shadow(radius: 2)
-                                .foregroundColor(.green)
+                                .foregroundColor(.pink)
                         }
                     }
                     .frame(width: 60, height: 60)

@@ -9,10 +9,6 @@ import SwiftUI
 
 struct ContentView: View {
     
-   /* init() {
-        UITabBar.appearance().barTintColor = UIColor.black
-        }*/
-    
     var body: some View {
         TabView {
             FeedView()
@@ -27,7 +23,7 @@ struct ContentView: View {
                 }
         }
         .edgesIgnoringSafeArea(.top)
-        .accentColor(.green)
+        .accentColor(.pink)
         .preferredColorScheme(.light)
     }
 }
