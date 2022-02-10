@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B7536E2327B5B32500C5AB50 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7536E2227B5B32500C5AB50 /* MapView.swift */; };
 		B76A612227B55072003D680E /* UporDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76A612127B55072003D680E /* UporDownView.swift */; };
 		B76A612427B5514E003D680E /* BusStopCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76A612327B5514E003D680E /* BusStopCardView.swift */; };
 		B76A612627B55328003D680E /* TramCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76A612527B55328003D680E /* TramCardView.swift */; };
@@ -16,11 +17,12 @@
 		B7BF2C7C27B422D4006B840E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7BF2C7B27B422D4006B840E /* Assets.xcassets */; };
 		B7BF2C7F27B422D4006B840E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7BF2C7E27B422D4006B840E /* Preview Assets.xcassets */; };
 		B7BF2C8827B433A7006B840E /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BF2C8727B433A7006B840E /* FeedView.swift */; };
-		B7BF2C8A27B44822006B840E /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BF2C8927B44822006B840E /* ProfileView.swift */; };
+		B7BF2C8A27B44822006B840E /* OptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BF2C8927B44822006B840E /* OptionsView.swift */; };
 		B7BF2C8D27B46E6E006B840E /* BusCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BF2C8C27B46E6E006B840E /* BusCardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B7536E2227B5B32500C5AB50 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		B76A612127B55072003D680E /* UporDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UporDownView.swift; sourceTree = "<group>"; };
 		B76A612327B5514E003D680E /* BusStopCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStopCardView.swift; sourceTree = "<group>"; };
 		B76A612527B55328003D680E /* TramCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TramCardView.swift; sourceTree = "<group>"; };
@@ -31,7 +33,7 @@
 		B7BF2C7B27B422D4006B840E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B7BF2C7E27B422D4006B840E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B7BF2C8727B433A7006B840E /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
-		B7BF2C8927B44822006B840E /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		B7BF2C8927B44822006B840E /* OptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsView.swift; sourceTree = "<group>"; };
 		B7BF2C8C27B46E6E006B840E /* BusCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusCardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -98,8 +100,9 @@
 			children = (
 				B76A612927B55F34003D680E /* CardViews */,
 				B7BF2C8727B433A7006B840E /* FeedView.swift */,
-				B7BF2C8927B44822006B840E /* ProfileView.swift */,
+				B7BF2C8927B44822006B840E /* OptionsView.swift */,
 				B76A612127B55072003D680E /* UporDownView.swift */,
+				B7536E2227B5B32500C5AB50 /* MapView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -177,10 +180,11 @@
 				B76A612227B55072003D680E /* UporDownView.swift in Sources */,
 				B76A612827B55720003D680E /* CardView.swift in Sources */,
 				B7BF2C8D27B46E6E006B840E /* BusCardView.swift in Sources */,
-				B7BF2C8A27B44822006B840E /* ProfileView.swift in Sources */,
+				B7BF2C8A27B44822006B840E /* OptionsView.swift in Sources */,
 				B7BF2C7A27B422D2006B840E /* BusamigoView.swift in Sources */,
 				B7BF2C8827B433A7006B840E /* FeedView.swift in Sources */,
 				B76A612427B5514E003D680E /* BusStopCardView.swift in Sources */,
+				B7536E2327B5B32500C5AB50 /* MapView.swift in Sources */,
 				B76A612627B55328003D680E /* TramCardView.swift in Sources */,
 				B7BF2C7827B422D2006B840E /* BusamigoApp.swift in Sources */,
 			);

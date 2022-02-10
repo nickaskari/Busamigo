@@ -16,10 +16,15 @@ struct BusamigoView: View {
                     Image(systemName: "house")
                     Text("Feed")
                 }
-            ProfileView()
+            OptionsView()
                 .tabItem {
-                    Image(systemName: "person")
-                    Text("Profile")
+                    Image(systemName: "line.horizontal.3")
+                    Text("Options")
+                }
+            MapView()
+                .tabItem {
+                    Image(systemName: "map.fill")
+                    Text("Map")
                 }
         }
         .edgesIgnoringSafeArea(.top)

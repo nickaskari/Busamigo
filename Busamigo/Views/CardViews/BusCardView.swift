@@ -43,7 +43,7 @@ struct BusCardView: View {
                 UporDownView(rating: "12")
             }
         }
-        .padding()
+        .padding(.horizontal)
     }
 }
 

@@ -42,7 +42,7 @@ struct TramCardView: View {
                 UporDownView(rating: "-3")
             }
         }
-        .padding()
+        .padding(.horizontal)
     }
 }
 

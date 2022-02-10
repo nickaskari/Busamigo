@@ -19,7 +19,18 @@ struct FeedView: View {
                         TramCardView()
                     }
                 }
-                .navigationTitle("Vakt Feed🌍")
+                .navigationTitle("Trondheim📢")
+                .toolbar {
+                    ToolbarItem(placement: .primaryAction) {
+                        Button {
+                            print("ds")
+                        } label: {
+                            Image(systemName: "magnifyingglass")
+                                .accentColor(.pink)
+                                .font(.system(size: 25))
+                        }
+                    }
+                }
                 Spacer()
                 HStack {
                     Spacer()

@@ -37,7 +37,7 @@ struct BusStopCardView: View {
                 UporDownView(rating: "34")
             }
         }
-        .padding()
+        .padding(.horizontal)
     }
 }
 

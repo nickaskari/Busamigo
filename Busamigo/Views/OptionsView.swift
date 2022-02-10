@@ -1,5 +1,5 @@
 //
-//  ProfileView.swift
+//  OptionsView.swift
 //  Busamigo
 //
 //  Created by Nick Askari on 09/02/2022.
@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-struct ProfileView: View {
+struct OptionsView: View {
     var body: some View {
-        Text("My Profile")
+        Text("Options and shi")
     }
 }
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView()
+        OptionsView()
     }
 }
