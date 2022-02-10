@@ -12,9 +12,7 @@ struct FeedItemView: View {
         ZStack {
             HStack {
                 BusLineView()
-                //UpDownVoteView()
             }
-            //.padding(10)
         }
         .padding()
     }
@@ -72,15 +70,7 @@ struct BusLineView: View {
     }
 }
 
-struct UpDownVoteView: View {
-    var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 20)
-                .opacity(0.2)
-                .aspectRatio(0.1, contentMode: .fit)
-        }
-    }
-}
+
 
 
 
