@@ -8,22 +8,24 @@
 import SwiftUI
 
 struct FeedView: View {
+    //TODO: Tilknytning til ViewModels
     
     var body: some View {
         NavigationView {
             ZStack(alignment: .bottom) {
                 ScrollView {
+                    //Foreløpig
                     ForEach(0..<7) { item in
-                        BusCardView()
-                        BusStopCardView()
-                        TramCardView()
+                        BusCardView(rating: 89, sighting: "Lohove 3:Hospitalkirka:2022")
+                        BusStopCardView(rating: 21, sighting: "Kongens Gate 1:1721")
+                        TramCardView(rating: -3, sighting: "Lian 1:Munkholmen:1512")
                     }
                 }
-                .navigationTitle("Trondheim📢")
+                .navigationTitle("Trondheim👀")
                 .toolbar {
                     ToolbarItem(placement: .primaryAction) {
                         Button {
-                            print("ds")
+                            print("gg")
                         } label: {
                             Image(systemName: "magnifyingglass")
                                 .accentColor(.pink)

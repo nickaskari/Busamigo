@@ -8,41 +8,11 @@
 import SwiftUI
 
 struct TramCardView: View {
+    let rating: Int
+    let sighting: String
+    
     var body: some View {
-        ZStack(alignment: .leading) {
-            
-            RoundedRectangle(cornerRadius: 20)
-                .foregroundColor(.black)
-                .opacity(0.8)
-                .aspectRatio(2, contentMode: .fit)
-            
-            HStack {
-                Image(systemName: "tram")
-                    .font(.system(size: 30))
-                    .padding(.horizontal)
-                    .colorInvert()
-                VStack {
-                    //Gjøre dette på en bedre måte
-                    Text("Lian 1           ")
-                        .multilineTextAlignment(.leading)
-                        .font(.title)
-                        .foregroundColor(.white)
-                    Text("Munkvoll     ")
-                        .multilineTextAlignment(.leading)
-                        .font(.title)
-                        .foregroundColor(.white)
-                        .opacity(0.8)
-                    Text("1015             ")
-                        .multilineTextAlignment(.leading)
-                        .font(.title)
-                        .foregroundColor(.white)
-                        .opacity(0.6)
-                }
-                Spacer()
-                UporDownView(rating: "-3")
-            }
-        }
-        .padding(.horizontal)
+        CardView(color: .black, opacity: 0.85, isBus: false, rating: rating, sighting: sighting)
     }
 }
 
@@ -61,6 +31,6 @@ struct TramCardView: View {
 
 struct TramCardView_Previews: PreviewProvider {
     static var previews: some View {
-        TramCardView()
+        TramCardView(rating: -3, sighting: "Lian 1:Munkholmen:1512")
     }
 }
