@@ -12,7 +12,7 @@ struct TramCardView: View {
     let sighting: String
     
     var body: some View {
-        CardView(color: .black, opacity: 0.85, isBus: false, rating: rating, sighting: sighting)
+        CardView(color: .black, opacity: 0.7, isBus: false, rating: rating, sighting: sighting)
     }
 }
 

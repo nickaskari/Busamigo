@@ -18,7 +18,9 @@ struct FeedView: View {
                     ForEach(0..<7) { item in
                         BusCardView(rating: 89, sighting: "Lohove 3:Hospitalkirka:2022")
                         BusStopCardView(rating: 21, sighting: "Kongens Gate 1:1721")
+                        BusCardView(rating: 89, sighting: "Tyholt via Sentrum 20:Høgskoleringen:1921")
                         TramCardView(rating: -3, sighting: "Lian 1:Munkholmen:1512")
+                        TramStopCardView(rating: 2, sighting: "Rognheim:0902")
                     }
                 }
                 .navigationTitle("Trondheim👀")
