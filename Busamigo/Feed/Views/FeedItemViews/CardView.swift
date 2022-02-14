@@ -1,5 +1,5 @@
 //
-//  CardView.swift
+//  FeedItemView.swift
 //  Busamigo
 //
 //  Created by Nick Askari on 10/02/2022.
@@ -10,7 +10,7 @@ import Foundation
 
 //Geralisering av Card
 
-struct CardView: View {
+struct FeedItemView: View {
     let color: Color
     let opacity: Double
     let isBus: Bool
@@ -25,6 +25,7 @@ struct CardView: View {
             return "tram"
         }
     }
+    
     private var sightingDict: Dictionary<String, Double> {
         var opacityValue: Double = 1.0
         var dict: Dictionary<String, Double> = [ : ]
@@ -52,7 +53,7 @@ struct CardView: View {
                 VStack(alignment: .leading) {
                     ForEach(sightingDict.sorted{return $0.value > $1.value},  id: \.key) { info, textOpacity in
                         Text(info)
-                            .font(.title)
+                            .font(.title2)
                             .foregroundColor(.white)
                             .opacity(textOpacity)
                         }
@@ -77,8 +78,8 @@ struct CardView: View {
 
 
 
-struct CardView_Previews: PreviewProvider {
+struct FeedItemView_Previews: PreviewProvider {
     static var previews: some View {
-        CardView(color: .black, opacity: 0.7, isBus: true, rating: 12, sighting: "Xest:adsd:1645")
+        FeedItemView(color: .black, opacity: 0.7, isBus: true, rating: 12, sighting: "Xest:adsd:1645")
     }
 }
