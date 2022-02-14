@@ -65,17 +65,7 @@ struct FeedItem: Identifiable, Hashable {
         }
     }
     
-    //Rating system -> Look into it
-    func computeCredibility() -> Double {
-        //First time, then voteRating, then author credibility
-        var credibilty: Double = 1
-        let currentDate = Date()
-        
-        //Timeclass intervals of 15 min. For each offset -0.4
-        //VoteRating ... -0.2
-        //author credibilty
-        return credibilty
-    }
+    //Posible inherent rating, or credibility value?
     
     
     

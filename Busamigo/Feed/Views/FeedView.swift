@@ -9,12 +9,12 @@ import SwiftUI
 
 struct FeedView: View {
     //TODO: Tilknytning til ViewModels
-    @State private var showBar: Bool = true
+    @State var hideBar: Bool = false
     
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
-                if showBar {
+                if !hideBar {
                     MenuBarView()
                 }
                 PreferanceView()
@@ -28,17 +28,17 @@ struct FeedView: View {
                                 
                                 let yAxis = reader.frame(in: .global).minY
                                 
-                                if yAxis < 0 && showBar {
+                                if yAxis < 0 && !hideBar {
                                     DispatchQueue.main.async {
                                         withAnimation(Animation.linear(duration: 0.1)) {
-                                            self.showBar = false
+                                            self.hideBar = true
                                         }
                                     }
                                 }
-                                if yAxis > 0 && !showBar {
+                                if yAxis > 0 && hideBar {
                                     DispatchQueue.main.async {
                                         withAnimation(Animation.linear(duration: 0.1)) {
-                                            self.showBar = true
+                                            self.hideBar = false
                                         }
                                     }
                                 }

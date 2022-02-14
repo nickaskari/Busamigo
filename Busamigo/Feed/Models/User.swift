@@ -6,15 +6,23 @@
 //
 
 import Foundation
+import MapKit
 
 struct User: Identifiable {
     
     let id = UUID()
-    private(set) var haveVoted: Array<FeedItem> = []
+    private(set) var haveVoted: Array<FeedItem>
     private var votes: Int = 0
+    private(set) var location: CLLocationCoordinate2D?
     //need better rating system
     var credibility: Double {
         return Double((votes/200) * 100)
+    }
+    
+    init() {
+        self.haveVoted = []
+        LocationManager().requestLocation()
+        self.location = LocationManager().location
     }
     
     mutating func canVote(item: FeedItem) -> Bool {
