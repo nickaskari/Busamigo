@@ -6,11 +6,16 @@
 //
 
 import Foundation
+import CoreLocation
 
 struct Feed {
     
-    private var untouched: Array<FeedItem>
     private(set) var visibleFeed: Array<FeedItem>
+    
+    private var untouched: Array<FeedItem>
+    private var isVehicleFiltered: Bool = false
+    private var isRatingFiltered: Bool = false
+    private var isLocationFiltered: Bool = false
     
     init(inputFeed: Array<FeedItem>) {
         self.visibleFeed = inputFeed
@@ -18,10 +23,7 @@ struct Feed {
         self.standardFilter()
     }
     
-    //filtering
     mutating func standardFilter() {
-        
-        self.visibleFeed = self.untouched
         //Maybe remove badly rated sightings -> -10 or -20
         self.visibleFeed.sort {
             ($0.conceptionDate, $0.voteRating, $0.author.credibility) <
@@ -29,22 +31,48 @@ struct Feed {
         }
     }
     
-    mutating func transportVehicleFilter(_ vehicle: String) {
+    mutating func ratingFilter(user: User) {
+        self.isRatingFiltered.toggle()
         
-        self.visibleFeed = visibleFeed.filter{ $0.transportVehicle == vehicle }
-    }
-    
-    mutating func ratingFilter() {
-        
-        self.visibleFeed.sort {
-            $0.voteRating < $1.voteRating
+        if self.isRatingFiltered {
+            self.visibleFeed.sort {
+                $0.voteRating < $1.voteRating
+            }
+        } else {
+            activeFilters(user)
         }
     }
     
-    //work to be done
     mutating func locationFilter(user: User) {
-        LocationManager().requestLocation()
-        let UserLocation = user.location
+        self.isLocationFiltered.toggle()
+        
+        if self.isLocationFiltered {
+            let manager = LocationManager()
+            manager.requestLocation()
+            let userLon = user.location!.longitude
+            let userLat = user.location!.longitude
+            
+            self.visibleFeed.sort {
+                manager.distance(lat1: $0.location.latitude, lat2: $0.location.longitude, lon1: userLon, lon2: userLat) <
+                    manager.distance(lat1: $1.location.latitude, lat2: $1.location.longitude, lon1: userLon, lon2: userLat)
+            }
+        } else {
+            activeFilters(user)
+        }
+        
+    }
+    
+    mutating func transportVehicleFilter(_ vehicle: String, user: User) {
+        self.isVehicleFiltered.toggle()
+        
+        if self.isVehicleFiltered {
+            self.visibleFeed = visibleFeed.filter{ $0.transportVehicle == vehicle }
+        } else {
+            let missingItems = self.untouched.filter{ $0.transportVehicle == vehicle }
+            self.visibleFeed.append(contentsOf: missingItems)
+            activeFilters(user)
+        }
+        
     }
     
     //refreshing: database: firebase
@@ -52,8 +80,22 @@ struct Feed {
         
     }
     
-    mutating func addToFeed(_ feedItem: FeedItem) {
-        
+    //database: firebase
+    mutating func addToFeed(_ feedItem: FeedItem, user: User) {
+        self.untouched.append(feedItem)
+        self.visibleFeed.append(feedItem)
+        activeFilters(user)
+    }
+    
+    private mutating func activeFilters(_ user: User) {
+        if self.isLocationFiltered {
+            locationFilter(user: user)
+        }
+        if self.isRatingFiltered {
+            ratingFilter(user: user)
+        } else {
+            standardFilter()
+        }
     }
     
 }

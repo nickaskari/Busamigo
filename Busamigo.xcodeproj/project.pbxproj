@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		B72987C127BB00CE006A3B17 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72987C027BB00CE006A3B17 /* LocationManager.swift */; };
+		B72987D127BC6EA6006A3B17 /* stops.txt in Resources */ = {isa = PBXBuildFile; fileRef = B72987D027BC6EA6006A3B17 /* stops.txt */; };
+		B72987D327BC6EB0006A3B17 /* routes.txt in Resources */ = {isa = PBXBuildFile; fileRef = B72987D227BC6EB0006A3B17 /* routes.txt */; };
 		B7536E2327B5B32500C5AB50 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7536E2227B5B32500C5AB50 /* MapView.swift */; };
 		B7536E2B27B9336600C5AB50 /* PreferanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7536E2A27B9336600C5AB50 /* PreferanceView.swift */; };
 		B7536E2D27B94DED00C5AB50 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7536E2C27B94DED00C5AB50 /* TestView.swift */; };
@@ -30,6 +32,9 @@
 
 /* Begin PBXFileReference section */
 		B72987C027BB00CE006A3B17 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		B72987D027BC6EA6006A3B17 /* stops.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = stops.txt; path = "../../../../../rb_atb-aggregated-gtfs/stops.txt"; sourceTree = "<group>"; };
+		B72987D227BC6EB0006A3B17 /* routes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = routes.txt; path = "../../../../../rb_atb-aggregated-gtfs/routes.txt"; sourceTree = "<group>"; };
+		B72987D427BE8E6D006A3B17 /* Testing.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Testing.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		B7536E2227B5B32500C5AB50 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		B7536E2A27B9336600C5AB50 /* PreferanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferanceView.swift; sourceTree = "<group>"; };
 		B7536E2C27B94DED00C5AB50 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
@@ -66,8 +71,33 @@
 			isa = PBXGroup;
 			children = (
 				B72987C027BB00CE006A3B17 /* LocationManager.swift */,
+				B72987D427BE8E6D006A3B17 /* Testing.playground */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		B72987C527BC68AA006A3B17 /* Favourites */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Favourites;
+			sourceTree = "<group>";
+		};
+		B72987CE27BC6DE4006A3B17 /* Datasets */ = {
+			isa = PBXGroup;
+			children = (
+				B72987CF27BC6E41006A3B17 /* TrondheimAtb */,
+			);
+			path = Datasets;
+			sourceTree = "<group>";
+		};
+		B72987CF27BC6E41006A3B17 /* TrondheimAtb */ = {
+			isa = PBXGroup;
+			children = (
+				B72987D227BC6EB0006A3B17 /* routes.txt */,
+				B72987D027BC6EA6006A3B17 /* stops.txt */,
+			);
+			path = TrondheimAtb;
 			sourceTree = "<group>";
 		};
 		B7536E2627B6B16B00C5AB50 /* Feed */ = {
@@ -155,9 +185,11 @@
 		B7BF2C7627B422D2006B840E /* Busamigo */ = {
 			isa = PBXGroup;
 			children = (
+				B72987CE27BC6DE4006A3B17 /* Datasets */,
 				B72987C227BB01A4006A3B17 /* Utilities */,
 				B7536E2927B6B1F100C5AB50 /* Map */,
 				B7536E2827B6B1E100C5AB50 /* Options */,
+				B72987C527BC68AA006A3B17 /* Favourites */,
 				B7536E2627B6B16B00C5AB50 /* Feed */,
 				B7BF2C7727B422D2006B840E /* BusamigoApp.swift */,
 				B7BF2C7927B422D2006B840E /* BusamigoView.swift */,
@@ -235,6 +267,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7BF2C7F27B422D4006B840E /* Preview Assets.xcassets in Resources */,
+				B72987D127BC6EA6006A3B17 /* stops.txt in Resources */,
+				B72987D327BC6EB0006A3B17 /* routes.txt in Resources */,
 				B7BF2C7C27B422D4006B840E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

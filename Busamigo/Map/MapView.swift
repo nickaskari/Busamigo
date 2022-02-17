@@ -15,7 +15,7 @@ struct MapView: View {
         //Make camera boundary
         Map(coordinateRegion: $region, interactionModes: [.zoom])
             .scaledToFill()
-            .edgesIgnoringSafeArea(.all)
+            .edgesIgnoringSafeArea(.top)
     }
 }
 
