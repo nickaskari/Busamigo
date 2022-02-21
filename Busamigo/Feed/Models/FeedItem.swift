@@ -11,8 +11,10 @@ import MapKit
 
 struct FeedItem: Identifiable, Hashable {
     
+    //Endre på conceptionDate, tror dette er en tid og ikke klokkeslett
+    
     let id = UUID()
-    let conceptionDate: Date
+    let conceptionDate: Time
     let transportVehicle: String
     private let guardSighting: String
     private(set) var voteRating: Int
@@ -20,8 +22,8 @@ struct FeedItem: Identifiable, Hashable {
     private(set) var sightingInformation: String = ""
     private(set) var location: CLLocationCoordinate2D
     private var timeOfSighting: String {
-        let hours   = (Calendar.current.component(.hour, from: self.conceptionDate))
-        let minutes = (Calendar.current.component(.minute, from: self.conceptionDate))
+        let hours   = (Calendar.current.component(.hour, from: Date()))
+        let minutes = (Calendar.current.component(.minute, from: Date()))
         
         return "\(hours):\(minutes)"
     }
@@ -47,7 +49,7 @@ struct FeedItem: Identifiable, Hashable {
         self.author = author
         self.voteRating = 0
         self.location = location
-        self.conceptionDate = Date()
+        self.conceptionDate = Time(Date())
         self.sightingInformation = "\(guardSighting)" + ":" + "\(timeOfSighting)"
     }
     

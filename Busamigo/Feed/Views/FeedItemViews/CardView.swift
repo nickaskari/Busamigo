@@ -49,7 +49,7 @@ struct FeedItemView: View {
                 Image(systemName: icon)
                     .font(.system(size: 30))
                     .padding(.horizontal)
-                    .colorInvert()
+                    .foregroundColor(Color.init(red: 1, green: 1, blue: 1))
                 VStack(alignment: .leading) {
                     ForEach(sightingDict.sorted{return $0.value > $1.value},  id: \.key) { info, textOpacity in
                         Text(info)
@@ -63,6 +63,27 @@ struct FeedItemView: View {
             }
         }
         .padding(.horizontal)
+    }
+    
+    struct UporDownView: View {
+        let rating: String
+        
+        var body: some View {
+            VStack {
+                Image(systemName: "arrow.up")
+                    .font(.system(size: 30))
+                    .foregroundColor(.mint)
+                    .padding(.bottom)
+                Text("\(rating)")
+                    .foregroundColor(.white)
+                    .font(.title2.bold())
+                    .padding(.bottom)
+                Image(systemName: "arrow.down")
+                    .font(.system(size: 30))
+                    .foregroundColor(.red)
+            }
+            .padding(30)
+        }
     }
 }
 

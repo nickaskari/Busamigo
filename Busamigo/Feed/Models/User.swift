@@ -42,5 +42,5 @@ struct User: Identifiable {
         self.votes -= 1
     }
     
-    //Implement refreshing
+    //Implement refreshing??
 }

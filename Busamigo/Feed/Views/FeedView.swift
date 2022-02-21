@@ -9,77 +9,106 @@ import SwiftUI
 
 struct FeedView: View {
     //TODO: Tilknytning til ViewModels
-    @State var hideBar: Bool = false
+    //Create some viewmodel for appbar to add feed thing
+    @ObservedObject var addManager: AddViewManager
+    @State private var offset: CGFloat = 0
+    @State private var lastOffset: CGFloat = 0
+    @State private var hideBar: Bool = false
+    
+    init(_ addManager: AddViewManager) {
+        self.addManager = addManager
+    }
+    
     
     var body: some View {
         NavigationView {
-            VStack(spacing: 0) {
-                if !hideBar {
-                    MenuBarView()
-                }
-                PreferanceView()
-                Divider()
-                ZStack(alignment: .bottom) {
-                    ScrollView(.vertical) {
-                        //Foreløpig
-                        VStack(spacing: 0) {
-                            
-                            GeometryReader { reader -> AnyView in
-                                
-                                let yAxis = reader.frame(in: .global).minY
-                                
-                                if yAxis < 0 && !hideBar {
-                                    DispatchQueue.main.async {
-                                        withAnimation(Animation.linear(duration: 0.1)) {
-                                            self.hideBar = true
-                                        }
-                                    }
-                                }
-                                if yAxis > 0 && hideBar {
-                                    DispatchQueue.main.async {
-                                        withAnimation(Animation.linear(duration: 0.1)) {
-                                            self.hideBar = false
-                                        }
-                                    }
-                                }
-                                return AnyView(
-                                    Text("")
-                                        .frame(width: 0, height: 0)
-                                )
-                            }
-                            .frame(width: 0, height: 0)
-                            
-                            ForEach(0..<7) { item in
-                                BusView(rating: 89, sighting: "Lohove 3:Hospitalkirka:2022")
-                                BusView(rating: 21, sighting: "Kongens Gate 1:1721")
-                                BusView(rating: 89, sighting: "Tyholt via Sentrum 20:Høgskoleringen:1921")
-                                TramView(rating: -3, sighting: "Lian 1:Munkholmen:1512")
-                                TramView(rating: 2, sighting: "Rognheim:0902")
-                            }
-                        }
+            ZStack(alignment: .bottom) {
+                VStack(spacing: 0) {
+                    AppBarView(self.addManager)
+                    if !hideBar {
+                        PreferanceView()
                     }
-                    .navigationBarTitle("")
-                    .navigationBarHidden(true)
+                    Divider()
+                    ZStack() {
+                        ScrollView(.vertical) {
+                            VStack(spacing: 0) {
+                                
+                                ForEach(0..<7) { item in
+                                    BusView(rating: 89, sighting: "Lohove 3:Hospitalkirka:2022")
+                                    BusView(rating: 21, sighting: "Kongens Gate 1:1721")
+                                    BusView(rating: 89, sighting: "Tyholt via Sentrum 20:Høgskoleringen:1921")
+                                    TramView(rating: -3, sighting: "Lian 1:Munkholmen:1512")
+                                    TramView(rating: 2, sighting: "Rognheim:0902")
+                                }
+                            }
+                            .overlay (
+                                GeometryReader { proxy -> Color in
+                                    
+                                    let minY = proxy.frame(in: .named("SCROLL")).minY
+                                    let scrollHeight = proxy.frame(in: .named("SCROLL")).height
+                                    
+                                    let durationOffset: CGFloat = 10
+                                    
+                                    DispatchQueue.main.async {
+                                        
+                                        if minY < offset {
+                                            if offset < 0 && -minY > (lastOffset + durationOffset) {
+                                                withAnimation(.easeOut.speed(2)) {
+                                                    hideBar = true
+                                                }
+                                                
+                                                lastOffset = -offset
+                                            }
+                                            
+                                        }
+                                        if minY > offset && -minY < (lastOffset - durationOffset) &&
+                                        (scrollHeight - -(minY)) >= 870 {
+                                            withAnimation(.easeIn.speed(2)) {
+                                                hideBar = false
+                                            }
+                                            
+                                            lastOffset = -offset
+                                            
+                                        }
+                                        
+                                        self.offset = minY
+                                    }
+                                    
+                                    return Color.clear
+                                }
+                            )
+                        }
+                        .coordinateSpace(name: "SCROLL")
+                        .navigationBarTitle("")
+                        .navigationBarHidden(true)
+                    }
+                }
+                .onTapGesture {
+                    withAnimation(self.addManager.getAnimation()) {
+                        self.addManager.dontshow()
+                    }
+                    UIScrollView.appearance().bounces = true
+                }
+                HStack {
                     Spacer()
-                    HStack {
-                        Spacer()
-                        Button(action: {}) {
-                            HStack {
-                                Image(systemName: "plus.circle.fill")
-                                    .font(.system(size: 75))
-                                    .background(alignment: .center) {
-                                        Color.white
-                                            .mask(Circle())
-                                    }
-                                    .shadow(radius: 2)
-                                    .foregroundColor(.pink)
-                            }
+                    Button(action: {
+                        withAnimation(self.addManager.getAnimation()) {
+                            self.addManager.show()
+                            UIScrollView.appearance().bounces = false
                         }
-                        .frame(width: 60, height: 60)
-                        .padding(30)
-                    }
+                    }, label: {
+                        Image(systemName: "plus")
+                            .shadow(radius: 1)
+                            .padding()
+                            .foregroundColor(.white)
+                            .font(.system(size: 50))
+                            .background(Circle().foregroundColor(.pink))
+                            .padding()
+                            .shadow(radius: 5)
+                    })
+                        .animation(.easeOut.speed(1.5), value: 2)
                 }
-            }
+            } //ZSTACK
         }
     }
 }
@@ -92,6 +121,6 @@ struct FeedView: View {
 
 struct FeedView_Previews: PreviewProvider {
     static var previews: some View {
-        FeedView()
+        FeedView(AddViewManager())
     }
 }

@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+
+
 struct PreferanceView: View {
     var body: some View {
             ScrollView(.horizontal, showsIndicators: false) {
@@ -19,6 +21,7 @@ struct PreferanceView: View {
                 }
             }
             .aspectRatio(6, contentMode: .fit)
+            .background(.ultraThinMaterial)
     }
 }
 
@@ -34,12 +37,15 @@ private struct PreferanceBoxView: View {
             return 0
         }
     }
+    
+    let colorTheme: Color = Color.init(red: 0.8, green: 0.2, blue: 0.5)
+    
     private var textColor: Color {
         if isPressed {
             return .white
         }
         else {
-            return .pink
+            return self.colorTheme
         }
     }
     
@@ -51,10 +57,10 @@ private struct PreferanceBoxView: View {
         }, label: {
             ZStack {
                 RoundedRectangle(cornerRadius: 50)
-                    .strokeBorder(.red, lineWidth: 2)
+                    .strokeBorder(self.colorTheme, lineWidth: 2)
                     .opacity(0.5)
                     .background(RoundedRectangle(cornerRadius: 50)
-                                    .foregroundColor(.pink)
+                                    .foregroundColor(self.colorTheme)
                                     .opacity(buttonOpacity))
                     .aspectRatio(2, contentMode: .fit)
                     .padding(10)
