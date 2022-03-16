@@ -31,7 +31,7 @@ struct BusamigoView: View {
                     }
             }
             if self.addManager.isShowingAddPage() {
-                AddFeedItemView(self.addManager).transition(.move(edge: .bottom)).zIndex(1)
+                AddFeedItemView(self.addManager).transition(.move(edge: .bottom)).zIndex(10)
             } else {
                 AddFeedItemView(self.addManager).transition(.move(edge: .bottom)).zIndex(1)
             }

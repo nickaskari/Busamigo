@@ -31,11 +31,10 @@ struct AddFeedItemView: View {
                                 .font(.title)
                         }
                         ZStack {
-                            RoundedRectangle(cornerRadius: 40)
-                                .foregroundColor(.black)
+                            RoundedRectangle(cornerRadius: 20)
+                                .foregroundColor(Color(red: 0.1, green: 0.1, blue: 0.1))
                                 .aspectRatio(1.7, contentMode: .fit)
                                 .shadow(radius: 5)
-                                .opacity(0.85)
                             HStack {
                                 VStack {
                                     Image(systemName: "figure.wave")

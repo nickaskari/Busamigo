@@ -12,7 +12,7 @@ struct TramView: View {
     let sighting: String
     
     var body: some View {
-        FeedItemView(color: .black, opacity: 0.78, isBus: false, rating: rating, sighting: sighting)
+        FeedItemView(color: Color(red: 0.15, green: 0.15, blue: 0.15), opacity: 1, isBus: false, rating: rating, sighting: sighting)
     }
 }
 

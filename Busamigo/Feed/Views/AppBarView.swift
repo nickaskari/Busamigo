@@ -56,7 +56,7 @@ struct AppBarView: View {
                 SearchView()
             }, label: {
                 Image(systemName: "magnifyingglass")
-                    .accentColor(.pink)
+                    .accentColor(.black)
                     .font(.system(size: 23))
                     .shadow(radius: 1)
                     .padding(20)
@@ -64,7 +64,6 @@ struct AppBarView: View {
         }
         .navigationTitle("")
         .navigationBarHidden(true)
-        .background(.ultraThinMaterial)
     }
 }
 

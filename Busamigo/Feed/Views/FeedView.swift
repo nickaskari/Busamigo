@@ -34,11 +34,11 @@ struct FeedView: View {
                             VStack(spacing: 0) {
                                 
                                 ForEach(0..<7) { item in
-                                    BusView(rating: 89, sighting: "Lohove 3:Hospitalkirka:2022")
-                                    BusView(rating: 21, sighting: "Kongens Gate 1:1721")
-                                    BusView(rating: 89, sighting: "Tyholt via Sentrum 20:Høgskoleringen:1921")
-                                    TramView(rating: -3, sighting: "Lian 1:Munkholmen:1512")
-                                    TramView(rating: 2, sighting: "Rognheim:0902")
+                                    BusView(rating: 89, sighting: "Lohove 3;Hospitalkirka;20:22")
+                                    BusView(rating: 21, sighting: "Kongens Gate 1;17:21")
+                                    BusView(rating: 89, sighting: "Tyholt via Sentrum 20;Høgskoleringen;19:21")
+                                    TramView(rating: -3, sighting: "Lian 1;Munkholmen;15:12")
+                                    TramView(rating: 2, sighting: "Rognheim;09:02")
                                 }
                             }
                             .overlay (
@@ -109,6 +109,7 @@ struct FeedView: View {
                         .animation(.easeOut.speed(1.5), value: 2)
                 }
             } //ZSTACK
+            .background(.ultraThinMaterial)
         }
     }
 }
