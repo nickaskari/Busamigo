@@ -21,7 +21,6 @@ struct PreferanceView: View {
                 }
             }
             .aspectRatio(6, contentMode: .fit)
-            .background(.ultraThinMaterial)
     }
 }
 
@@ -38,7 +37,7 @@ private struct PreferanceBoxView: View {
         }
     }
     
-    let colorTheme: Color = Color.init(red: 0.8, green: 0.2, blue: 0.5)
+    let colorTheme: Color = Color.init(red: 0.1, green: 0.1, blue: 0.1)
     
     private var textColor: Color {
         if isPressed {

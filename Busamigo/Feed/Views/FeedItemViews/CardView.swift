@@ -29,7 +29,7 @@ struct FeedItemView: View {
     private var sightingDict: Dictionary<String, Double> {
         var opacityValue: Double = 1.0
         var dict: Dictionary<String, Double> = [ : ]
-        for info in sighting.components(separatedBy: ":") {
+        for info in sighting.components(separatedBy: ";") {
             dict[info] = opacityValue
             opacityValue -= 0.2
         }
@@ -43,17 +43,20 @@ struct FeedItemView: View {
             RoundedRectangle(cornerRadius: 20)
                 .foregroundColor(color)
                 .opacity(opacity)
-                .aspectRatio(2, contentMode: .fit)
-            
+                .aspectRatio(2.5, contentMode: .fit)
+                
             HStack {
                 Image(systemName: icon)
-                    .font(.system(size: 30))
-                    .padding(.horizontal)
-                    .foregroundColor(Color.init(red: 1, green: 1, blue: 1))
+                    .font(.system(size: 25))
+                    .foregroundColor(.pink)
+                    .padding(15)
+                    .background(Capsule(style: .circular)
+                                    .foregroundColor(.black))
+                    .padding()
                 VStack(alignment: .leading) {
                     ForEach(sightingDict.sorted{return $0.value > $1.value},  id: \.key) { info, textOpacity in
                         Text(info)
-                            .font(.title2)
+                            .font(.title3)
                             .foregroundColor(.white)
                             .opacity(textOpacity)
                         }
@@ -63,6 +66,8 @@ struct FeedItemView: View {
             }
         }
         .padding(.horizontal)
+        .padding(.top, 10)
+        .shadow(radius: 5)
     }
     
     struct UporDownView: View {
@@ -70,15 +75,15 @@ struct FeedItemView: View {
         
         var body: some View {
             VStack {
-                Image(systemName: "arrow.up")
+                Image(systemName: "chevron.up")
                     .font(.system(size: 30))
                     .foregroundColor(.mint)
-                    .padding(.bottom)
                 Text("\(rating)")
                     .foregroundColor(.white)
-                    .font(.title2.bold())
-                    .padding(.bottom)
-                Image(systemName: "arrow.down")
+                    .font(.title2)
+                    .padding(.top, 20)
+                    .padding(.bottom, 20)
+                Image(systemName: "chevron.down")
                     .font(.system(size: 30))
                     .foregroundColor(.red)
             }
@@ -101,6 +106,6 @@ struct FeedItemView: View {
 
 struct FeedItemView_Previews: PreviewProvider {
     static var previews: some View {
-        FeedItemView(color: .black, opacity: 0.7, isBus: true, rating: 12, sighting: "Xest:adsd:1645")
+        FeedItemView(color: Color(red: 0.15, green: 0.15, blue: 0.15), opacity: 1, isBus: true, rating: 12, sighting: "Fæstfæst;jallastop;16:45")
     }
 }

@@ -6,11 +6,14 @@
 //
 
 import SwiftUI
+import MapKit
+
 
 struct BusamigoView: View {
     @ObservedObject var addManager: AddViewManager = AddViewManager()
-    
+  
     var body: some View {
+        
         ZStack {
             TabView {
                 FeedView(self.addManager)
@@ -18,7 +21,6 @@ struct BusamigoView: View {
                         Image(systemName: "house")
                         Text("Feed")
                     }
-                
                 OptionsView()
                     .tabItem {
                         Image(systemName: "line.horizontal.3")
@@ -31,14 +33,18 @@ struct BusamigoView: View {
                     }
             }
             if self.addManager.isShowingAddPage() {
-                AddFeedItemView(self.addManager).transition(.move(edge: .bottom)).zIndex(1)
+                AddFeedItemView(self.addManager)
+                    .zIndex(1)
             } else {
-                AddFeedItemView(self.addManager).transition(.move(edge: .bottom)).zIndex(1)
+                AddFeedItemView(self.addManager)
+                    .zIndex(1)
             }
+            
         }
         .accentColor(.pink)
         .preferredColorScheme(.light)
     }
+    
 }
 
 

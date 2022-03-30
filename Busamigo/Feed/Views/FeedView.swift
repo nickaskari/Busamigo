@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct FeedView: View {
     //TODO: Tilknytning til ViewModels
@@ -14,6 +15,7 @@ struct FeedView: View {
     @State private var offset: CGFloat = 0
     @State private var lastOffset: CGFloat = 0
     @State private var hideBar: Bool = false
+    @State private var showingSheet = false
     
     init(_ addManager: AddViewManager) {
         self.addManager = addManager
@@ -34,11 +36,19 @@ struct FeedView: View {
                             VStack(spacing: 0) {
                                 
                                 ForEach(0..<7) { item in
-                                    BusView(rating: 89, sighting: "Lohove 3:Hospitalkirka:2022")
-                                    BusView(rating: 21, sighting: "Kongens Gate 1:1721")
-                                    BusView(rating: 89, sighting: "Tyholt via Sentrum 20:Høgskoleringen:1921")
-                                    TramView(rating: -3, sighting: "Lian 1:Munkholmen:1512")
-                                    TramView(rating: 2, sighting: "Rognheim:0902")
+                                    Button(action: {
+                                        showingSheet.toggle()
+                                    }, label: {
+                                        BusView(rating: 89, sighting: "Lohove 3;Hospitalkirka;20:22")
+                                    })
+                                    .sheet(isPresented: $showingSheet) {
+                                        DetailView(description: "2 skumle Vakter!!", location: CLLocationCoordinate2D(latitude: 63.42324586652127, longitude: 10.402725649609208))
+                                            .zIndex(1)
+                                    }
+                                    BusView(rating: 21, sighting: "Kongens Gate 1;17:21")
+                                    BusView(rating: 89, sighting: "Tyholt via Sentrum 20;Høgskoleringen;19:21")
+                                    TramView(rating: -3, sighting: "Lian 1;Munkholmen;15:12")
+                                    TramView(rating: 2, sighting: "Rognheim;09:02")
                                 }
                             }
                             .overlay (
@@ -83,19 +93,13 @@ struct FeedView: View {
                         .navigationBarHidden(true)
                     }
                 }
-                .onTapGesture {
-                    withAnimation(self.addManager.getAnimation()) {
-                        self.addManager.dontshow()
-                    }
-                    UIScrollView.appearance().bounces = true
-                }
                 HStack {
                     Spacer()
                     Button(action: {
                         withAnimation(self.addManager.getAnimation()) {
                             self.addManager.show()
-                            UIScrollView.appearance().bounces = false
                         }
+                        UIScrollView.appearance().bounces = false
                     }, label: {
                         Image(systemName: "plus")
                             .shadow(radius: 1)
@@ -109,6 +113,7 @@ struct FeedView: View {
                         .animation(.easeOut.speed(1.5), value: 2)
                 }
             } //ZSTACK
+            .background(.ultraThinMaterial)
         }
     }
 }

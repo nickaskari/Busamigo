@@ -10,7 +10,7 @@ import SwiftUI
 
 class AddViewManager: ObservableObject {
     
-    @Published private var model = AddorNot(Animation.easeOut(duration: 0.2))
+    @Published private var model = AddorNot(Animation.linear(duration: 0.3).speed(1.75))
     
     func dontshow() {
         self.model.dontShow()

@@ -1,5 +1,5 @@
 //
-//  SearchView.swift
+//  FeedSearchView.swift
 //  Busamigo
 //
 //  Created by Nick Askari on 13/02/2022.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SearchView: View {
+struct FeedSearchView: View {
     @State private var searchText = ""
     
     var body: some View {
@@ -17,8 +17,8 @@ struct SearchView: View {
     }
 }
 
-struct SearchView_Previews: PreviewProvider {
+struct FeedSearchView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchView()
+        FeedSearchView()
     }
 }

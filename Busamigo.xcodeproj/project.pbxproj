@@ -7,9 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B70A762827EFB9A300CE63D6 /* AddBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70A762727EFB9A300CE63D6 /* AddBarView.swift */; };
 		B72987C127BB00CE006A3B17 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72987C027BB00CE006A3B17 /* LocationManager.swift */; };
-		B72987D127BC6EA6006A3B17 /* stops.txt in Resources */ = {isa = PBXBuildFile; fileRef = B72987D027BC6EA6006A3B17 /* stops.txt */; };
-		B72987D327BC6EB0006A3B17 /* routes.txt in Resources */ = {isa = PBXBuildFile; fileRef = B72987D227BC6EB0006A3B17 /* routes.txt */; };
 		B72987D627BE94AC006A3B17 /* AtbFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72987D527BE94AB006A3B17 /* AtbFeed.swift */; };
 		B72987D827BE97FF006A3B17 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72987D727BE97FF006A3B17 /* Time.swift */; };
 		B72987DA27BECAAB006A3B17 /* AddFeedItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72987D927BECAAB006A3B17 /* AddFeedItemView.swift */; };
@@ -20,13 +19,19 @@
 		B7536E2B27B9336600C5AB50 /* PreferanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7536E2A27B9336600C5AB50 /* PreferanceView.swift */; };
 		B7536E2D27B94DED00C5AB50 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7536E2C27B94DED00C5AB50 /* TestView.swift */; };
 		B7536E2F27B9752200C5AB50 /* AppBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7536E2E27B9752200C5AB50 /* AppBarView.swift */; };
-		B7536E3327B98EB300C5AB50 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7536E3227B98EB300C5AB50 /* SearchView.swift */; };
+		B7536E3327B98EB300C5AB50 /* FeedSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7536E3227B98EB300C5AB50 /* FeedSearchView.swift */; };
 		B7536E3927B9A0E500C5AB50 /* FeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7536E3827B9A0E500C5AB50 /* FeedItem.swift */; };
 		B7536E3B27B9A0FD00C5AB50 /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7536E3A27B9A0FD00C5AB50 /* Feed.swift */; };
 		B7536E3F27B9A6D700C5AB50 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7536E3E27B9A6D700C5AB50 /* User.swift */; };
 		B76A612627B55328003D680E /* TramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76A612527B55328003D680E /* TramView.swift */; };
 		B76A612827B55720003D680E /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76A612727B55720003D680E /* CardView.swift */; };
+		B7966C8627F4D8C200447352 /* stops.txt in Resources */ = {isa = PBXBuildFile; fileRef = B7966C8527F4D8C200447352 /* stops.txt */; };
+		B7966C8827F4D92900447352 /* routes.txt in Resources */ = {isa = PBXBuildFile; fileRef = B7966C8727F4D92900447352 /* routes.txt */; };
+		B7966C8A27F4DFA700447352 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7966C8927F4DFA700447352 /* FileManager.swift */; };
 		B7ACB1AF27C037F80082797C /* AddViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7ACB1AE27C037F80082797C /* AddViewManager.swift */; };
+		B7B88F5427EFE080008F2BF3 /* RouteSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B88F5327EFE080008F2BF3 /* RouteSearchView.swift */; };
+		B7B88F5627EFE0A7008F2BF3 /* StopSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B88F5527EFE0A7008F2BF3 /* StopSearchView.swift */; };
+		B7B88F5827F1C8D9008F2BF3 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B88F5727F1C8D9008F2BF3 /* DetailView.swift */; };
 		B7BF2C7827B422D2006B840E /* BusamigoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BF2C7727B422D2006B840E /* BusamigoApp.swift */; };
 		B7BF2C7A27B422D2006B840E /* BusamigoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BF2C7927B422D2006B840E /* BusamigoView.swift */; };
 		B7BF2C7C27B422D4006B840E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7BF2C7B27B422D4006B840E /* Assets.xcassets */; };
@@ -37,9 +42,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B70A762727EFB9A300CE63D6 /* AddBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBarView.swift; sourceTree = "<group>"; };
 		B72987C027BB00CE006A3B17 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		B72987D027BC6EA6006A3B17 /* stops.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = stops.txt; path = "../../../../../rb_atb-aggregated-gtfs/stops.txt"; sourceTree = "<group>"; };
-		B72987D227BC6EB0006A3B17 /* routes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = routes.txt; path = "../../../../../rb_atb-aggregated-gtfs/routes.txt"; sourceTree = "<group>"; };
 		B72987D427BE8E6D006A3B17 /* Testing.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Testing.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		B72987D527BE94AB006A3B17 /* AtbFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtbFeed.swift; sourceTree = "<group>"; };
 		B72987D727BE97FF006A3B17 /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
@@ -51,13 +55,19 @@
 		B7536E2A27B9336600C5AB50 /* PreferanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferanceView.swift; sourceTree = "<group>"; };
 		B7536E2C27B94DED00C5AB50 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		B7536E2E27B9752200C5AB50 /* AppBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBarView.swift; sourceTree = "<group>"; };
-		B7536E3227B98EB300C5AB50 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		B7536E3227B98EB300C5AB50 /* FeedSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedSearchView.swift; sourceTree = "<group>"; };
 		B7536E3827B9A0E500C5AB50 /* FeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItem.swift; sourceTree = "<group>"; };
 		B7536E3A27B9A0FD00C5AB50 /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
 		B7536E3E27B9A6D700C5AB50 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B76A612527B55328003D680E /* TramView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TramView.swift; sourceTree = "<group>"; };
 		B76A612727B55720003D680E /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		B7966C8527F4D8C200447352 /* stops.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stops.txt; sourceTree = "<group>"; };
+		B7966C8727F4D92900447352 /* routes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = routes.txt; sourceTree = "<group>"; };
+		B7966C8927F4DFA700447352 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		B7ACB1AE27C037F80082797C /* AddViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewManager.swift; sourceTree = "<group>"; };
+		B7B88F5327EFE080008F2BF3 /* RouteSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteSearchView.swift; sourceTree = "<group>"; };
+		B7B88F5527EFE0A7008F2BF3 /* StopSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopSearchView.swift; sourceTree = "<group>"; };
+		B7B88F5727F1C8D9008F2BF3 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		B7BF2C7427B422D2006B840E /* Busamigo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Busamigo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7BF2C7727B422D2006B840E /* BusamigoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusamigoApp.swift; sourceTree = "<group>"; };
 		B7BF2C7927B422D2006B840E /* BusamigoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusamigoView.swift; sourceTree = "<group>"; };
@@ -79,6 +89,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B70A762927EFDFDD00CE63D6 /* SearchViews */ = {
+			isa = PBXGroup;
+			children = (
+				B7536E3227B98EB300C5AB50 /* FeedSearchView.swift */,
+				B7B88F5327EFE080008F2BF3 /* RouteSearchView.swift */,
+				B7B88F5527EFE0A7008F2BF3 /* StopSearchView.swift */,
+			);
+			path = SearchViews;
+			sourceTree = "<group>";
+		};
 		B72987C227BB01A4006A3B17 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -109,8 +129,8 @@
 		B72987CF27BC6E41006A3B17 /* TrondheimAtb */ = {
 			isa = PBXGroup;
 			children = (
-				B72987D227BC6EB0006A3B17 /* routes.txt */,
-				B72987D027BC6EA6006A3B17 /* stops.txt */,
+				B7966C8727F4D92900447352 /* routes.txt */,
+				B7966C8527F4D8C200447352 /* stops.txt */,
 			);
 			path = TrondheimAtb;
 			sourceTree = "<group>";
@@ -138,12 +158,14 @@
 			isa = PBXGroup;
 			children = (
 				B72987DB27BFC5D1006A3B17 /* TestViews */,
+				B70A762927EFDFDD00CE63D6 /* SearchViews */,
 				B76A612927B55F34003D680E /* FeedItemViews */,
 				B7BF2C8727B433A7006B840E /* FeedView.swift */,
 				B72987D927BECAAB006A3B17 /* AddFeedItemView.swift */,
+				B70A762727EFB9A300CE63D6 /* AddBarView.swift */,
 				B7536E2E27B9752200C5AB50 /* AppBarView.swift */,
 				B7536E2A27B9336600C5AB50 /* PreferanceView.swift */,
-				B7536E3227B98EB300C5AB50 /* SearchView.swift */,
+				B7B88F5727F1C8D9008F2BF3 /* DetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -179,6 +201,7 @@
 				B7536E3827B9A0E500C5AB50 /* FeedItem.swift */,
 				B7536E3A27B9A0FD00C5AB50 /* Feed.swift */,
 				B7536E3E27B9A6D700C5AB50 /* User.swift */,
+				B7966C8927F4DFA700447352 /* FileManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -293,8 +316,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7BF2C7F27B422D4006B840E /* Preview Assets.xcassets in Resources */,
-				B72987D127BC6EA6006A3B17 /* stops.txt in Resources */,
-				B72987D327BC6EB0006A3B17 /* routes.txt in Resources */,
+				B7966C8627F4D8C200447352 /* stops.txt in Resources */,
+				B7966C8827F4D92900447352 /* routes.txt in Resources */,
 				B7BF2C7C27B422D4006B840E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -309,6 +332,7 @@
 				B72987D827BE97FF006A3B17 /* Time.swift in Sources */,
 				B72987C127BB00CE006A3B17 /* LocationManager.swift in Sources */,
 				B72987DA27BECAAB006A3B17 /* AddFeedItemView.swift in Sources */,
+				B7966C8A27F4DFA700447352 /* FileManager.swift in Sources */,
 				B7536E3B27B9A0FD00C5AB50 /* Feed.swift in Sources */,
 				B72987D627BE94AC006A3B17 /* AtbFeed.swift in Sources */,
 				B7ACB1AF27C037F80082797C /* AddViewManager.swift in Sources */,
@@ -316,16 +340,20 @@
 				B76A612827B55720003D680E /* CardView.swift in Sources */,
 				B7536E2D27B94DED00C5AB50 /* TestView.swift in Sources */,
 				B72987E027BFD716006A3B17 /* Extensions.swift in Sources */,
+				B7B88F5627EFE0A7008F2BF3 /* StopSearchView.swift in Sources */,
 				B7BF2C8D27B46E6E006B840E /* BusView.swift in Sources */,
 				B7536E2B27B9336600C5AB50 /* PreferanceView.swift in Sources */,
 				B7536E3F27B9A6D700C5AB50 /* User.swift in Sources */,
 				B7BF2C8A27B44822006B840E /* OptionsView.swift in Sources */,
 				B7BF2C7A27B422D2006B840E /* BusamigoView.swift in Sources */,
 				B72987E227BFD756006A3B17 /* UtilityViews.swift in Sources */,
+				B7B88F5427EFE080008F2BF3 /* RouteSearchView.swift in Sources */,
 				B7BF2C8827B433A7006B840E /* FeedView.swift in Sources */,
-				B7536E3327B98EB300C5AB50 /* SearchView.swift in Sources */,
+				B7B88F5827F1C8D9008F2BF3 /* DetailView.swift in Sources */,
+				B7536E3327B98EB300C5AB50 /* FeedSearchView.swift in Sources */,
 				B7536E2327B5B32500C5AB50 /* MapView.swift in Sources */,
 				B7536E2F27B9752200C5AB50 /* AppBarView.swift in Sources */,
+				B70A762827EFB9A300CE63D6 /* AddBarView.swift in Sources */,
 				B76A612627B55328003D680E /* TramView.swift in Sources */,
 				B7536E3927B9A0E500C5AB50 /* FeedItem.swift in Sources */,
 				B7BF2C7827B422D2006B840E /* BusamigoApp.swift in Sources */,

@@ -6,7 +6,16 @@
 //
 
 import Foundation
+import CoreLocation
 
-class AtbFeed {
+class AtbFeed: ObservableObject {
     
+    static let fileManager = FileManager()
+    
+    static let routes: Array<String> = fileManager.getRoutes()
+    static let stops: Dictionary<String, String> = fileManager.getStops()
+    
+    //TRIAL FEEDITEMS
+    
+  
 }
