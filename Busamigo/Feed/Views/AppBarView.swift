@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct AppBarView: View {
-    @State var addToFeed: Bool = false
     @ObservedObject var addManager: AddViewManager
     
     init(_ addManager: AddViewManager) {
@@ -53,7 +52,7 @@ struct AppBarView: View {
                 .disabled(true)
             
             NavigationLink(destination: {
-                SearchView()
+                FeedSearchView()
             }, label: {
                 Image(systemName: "magnifyingglass")
                     .accentColor(.black)

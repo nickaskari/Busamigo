@@ -66,6 +66,7 @@ struct FeedItemView: View {
             }
         }
         .padding(.horizontal)
+        .padding(.top, 10)
         .shadow(radius: 5)
     }
     

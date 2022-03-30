@@ -6,12 +6,13 @@
 //
 
 import SwiftUI
+import Combine
 
 struct AddFeedItemView: View {
-    @State private var route: String = ""
-    @State private var stop: String = ""
     @State private var description: String = ""
+    @State private var placeholder: String = "Skriv beskrivelse.."
     @ObservedObject var addManager: AddViewManager
+    let textLimit = 80 //Your limit
     
     init(_ addManager: AddViewManager) {
         self.addManager = addManager
@@ -20,84 +21,93 @@ struct AddFeedItemView: View {
     
     var body: some View {
         if self.addManager.isShowingAddPage() {
-            GeometryReader { geometry in
-                NavigationView {
-                    ZStack(alignment: .bottom) {
-                        ZStack(alignment: .top) {
-                            RoundedRectangle(cornerRadius: 0)
-                                .foregroundColor(.white)
-                            TextField("Skriv beskrivelse..", text: $description)
-                                .padding(40)
-                                .font(.title)
-                        }
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 20)
-                                .foregroundColor(Color(red: 0.1, green: 0.1, blue: 0.1))
-                                .aspectRatio(1.7, contentMode: .fit)
-                                .shadow(radius: 5)
-                            HStack {
-                                VStack {
-                                    Image(systemName: "figure.wave")
-                                        .font(.system(size: 40))
-                                        .foregroundColor(.pink)
-                                        .padding(.horizontal, 60)
-                                        .padding(.bottom)
-                                    Text("Legg til holdeplass")
-                                        .foregroundColor(.white)
-                                        .font(.caption)
+            NavigationView {
+                GeometryReader { geometry in
+                    ZStack {
+                        VStack {
+                            AddBarView(addManager)
+                                
+                            ZStack(alignment: .leading) {
+                                if self.description.isEmpty {
+                                    TextEditor(text: $placeholder)
+                                        .font(.body)
+                                        .foregroundColor(.gray)
+                                        .disabled(true)
                                 }
-                                VStack {
-                                    Image(systemName: "bus")
-                                        .font(.system(size: 40))
-                                        .foregroundColor(.pink)
-                                        .padding(.horizontal, 60)
-                                        .padding(.bottom)
-                                    Text("Legg til buss/trikk")
-                                        .foregroundColor(.white)
-                                        .font(.caption)
-                                }
+                                TextEditor(text: $description)
+                                    .onReceive(Just(description)) { _ in limitText(textLimit) }
+                                    .opacity(self.description.isEmpty ? 0.25 : 1)
                             }
+                            .frame(height: geometry.size.height * 0.08)
+                            .padding(.top)
+                            .padding(.horizontal, 30)
+                            
+                            Divider().padding(.horizontal)
+                            
+                            NavigationLink(destination: StopSearchView()) {
+                                HStack {
+                                    Image(systemName: "figure.wave")
+                                        .font(.system(size: 20))
+                                        .foregroundColor(.black)
+                                    Text("Legg til holdeplass")
+                                        .foregroundColor(.black)
+                                        .font(.body)
+                                    Spacer()
+                                    Image(systemName: "chevron.right")
+                                        .foregroundColor(.black)
+                                }
+                                .padding(.horizontal, 30)
+                            }
+                            Divider().padding(.horizontal)
+                            NavigationLink(destination: RouteSearchView()) {
+                                HStack {
+                                    Image(systemName: "bus")
+                                        .font(.system(size: 15))
+                                        .foregroundColor(.black)
+                                    Text("Legg til buss/trikk")
+                                        .foregroundColor(.black)
+                                        .font(.body)
+                                    Spacer()
+                                    Image(systemName: "chevron.right")
+                                        .foregroundColor(.black)
+                                }
+                                .padding(.horizontal, 30)
+                            }
+                            
+                            VStack {
+                                Text("Din observasjon..")
+                                    .font(.headline)
+                                FeedItemView(color: Color(red: 0.15, green: 0.15, blue: 0.15), opacity: 1, isBus: true, rating: 0, sighting: "Buss 3;jallastop;16:45")
+                            }
+                            .frame(height: geometry.size.height * 0.4)
                         }
                     }
-                    .accentColor(.pink)
-                    .navigationBarTitle("Legg til observasjon🌍", displayMode: .large).toolbar(content: {
-                        ToolbarItem(placement: .cancellationAction) {
-                            Button(action: {
-                                UIScrollView.appearance().bounces = true
-                                withAnimation(self.addManager.getAnimation()) {
-                                    self.addManager.dontshow()
-                                }
-                            }, label: {
-                                Image(systemName: "chevron.down")
-                                    .font(.system(size: 20))
-                            })
-                                .foregroundColor(.black)
-                        }
-                    })
+                }
+                .background(.white)
+                .accentColor(.pink)
+                .cornerRadius(20, corners: .topRight)
+                .cornerRadius(20, corners: .topLeft)
+                .shadow(radius: 10)
+                .padding(.top, 55)
+                .onTapGesture {
+                    hideKeyboard()
                 }
                 .edgesIgnoringSafeArea(.all)
-                .frame(width: geometry.size.width * 1, height: geometry.size.height * 1.1, alignment: .top)
-                .cornerRadius(30, corners: .topRight)
-                .cornerRadius(30, corners: .topLeft)
-                .shadow(radius: 10)
             }
-            .padding(.top, 55)
-            .onTapGesture {
-                hideKeyboard()
-            }
-            .edgesIgnoringSafeArea(.top)
+            .transition(.move(edge: .bottom))
         }
     }
     
-    struct AddButtonView: View {
+    //Function to keep text length in limits
+    func limitText(_ upper: Int) {
+        let tok = description.components(separatedBy: "\n")
+        let spaces = tok.count - 1
         
-        var body: some View {
-            Text("Legg til")
-                .bold()
-                .padding(30)
-                .foregroundColor(.white)
-                .background(RoundedRectangle(cornerRadius: 30).foregroundColor(.pink).aspectRatio(2, contentMode: .fit))
-                .shadow(radius: 4)
+        if description.count > upper {
+            description = String(description.prefix(upper))
+        }
+        else if spaces > 2 {
+            description.removeLast()
         }
     }
 }

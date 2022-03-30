@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct RoundedCorner: Shape {
 
@@ -52,4 +53,9 @@ struct ViewOffsetKey: PreferenceKey {
       static func reduce(value: inout Value, nextValue: () -> Value) {
         value += nextValue()
       }
+}
+
+struct Marker: Identifiable {
+    let id = UUID()
+    var location: MapMarker
 }

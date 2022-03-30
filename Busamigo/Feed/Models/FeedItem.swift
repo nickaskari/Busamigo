@@ -16,7 +16,7 @@ struct FeedItem: Identifiable, Hashable {
     let id = UUID()
     let conceptionDate: Time
     let transportVehicle: String
-    private let guardSighting: String
+    private let description: String
     private(set) var voteRating: Int
     private(set) var author: User
     private(set) var sightingInformation: String = ""
@@ -34,8 +34,8 @@ struct FeedItem: Identifiable, Hashable {
         }
     
     //Location as a computed value?
-    init(guardSighting: String, transportVehicle: String, author: User, location: CLLocationCoordinate2D) throws {
-        guard !guardSighting.isEmpty else {
+    init(description: String, transportVehicle: String, author: User, location: CLLocationCoordinate2D) throws {
+        guard !description.isEmpty else {
             throw ValidationError.emptySighting
         }
         let mySet = CharacterSet(["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"])
@@ -44,13 +44,13 @@ struct FeedItem: Identifiable, Hashable {
             throw ValidationError.hasNumbers
         }
         
-        self.guardSighting = guardSighting
+        self.description = description
         self.transportVehicle = transportVehicle
         self.author = author
         self.voteRating = 0
         self.location = location
         self.conceptionDate = Time(Date())
-        self.sightingInformation = "\(guardSighting)" + ":" + "\(timeOfSighting)"
+        self.sightingInformation = "\(description)" + ":" + "\(timeOfSighting)"
     }
     
     mutating func upVote(user: inout User) {
