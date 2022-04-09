@@ -16,7 +16,7 @@ struct FeedItem: Identifiable, Hashable {
     let id = UUID()
     let conceptionDate: Time
     let transportVehicle: String
-    private let description: String
+    private let sighting: String
     private(set) var voteRating: Int
     private(set) var author: User
     private(set) var sightingInformation: String = ""
@@ -24,33 +24,34 @@ struct FeedItem: Identifiable, Hashable {
     private var timeOfSighting: String {
         let hours   = (Calendar.current.component(.hour, from: Date()))
         let minutes = (Calendar.current.component(.minute, from: Date()))
-        
-        return "\(hours):\(minutes)"
+  
+        if (hours >= 0 && hours < 10) && (minutes >= 0 && minutes < 10) {
+            return "0\(hours):0\(minutes)"
+        }
+        else if (hours >= 0 && hours < 10) || (minutes >= 0 && minutes < 10) {
+            if (hours >= 0 && hours < 10) {
+                return "0\(hours):\(minutes)"
+            } else {
+                return "\(hours):0\(minutes)"
+            }
+        } else {
+            return "\(hours):\(minutes)"
+        }
     }
     
-    enum ValidationError: Error {
-            case emptySighting
-            case hasNumbers
-        }
-    
     //Location as a computed value?
-    init(description: String, transportVehicle: String, author: User, location: CLLocationCoordinate2D) throws {
-        guard !description.isEmpty else {
-            throw ValidationError.emptySighting
-        }
-        let mySet = CharacterSet(["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"])
-
-        guard transportVehicle.rangeOfCharacter(from: mySet) == nil else {
-            throw ValidationError.hasNumbers
-        }
+    //have route and stop as separate variables
+    init(sighting: String, transportVehicle: String, author: User, location: CLLocationCoordinate2D, _ voteRating: Int, time: Time) {
         
-        self.description = description
+        self.sighting = sighting
         self.transportVehicle = transportVehicle
         self.author = author
-        self.voteRating = 0
+        //for testing
+        self.voteRating = voteRating
         self.location = location
-        self.conceptionDate = Time(Date())
-        self.sightingInformation = "\(description)" + ":" + "\(timeOfSighting)"
+        self.conceptionDate = time
+        self.sightingInformation = "\(sighting)" + ";" + "\(conceptionDate.hour)" + ":" + "\(conceptionDate.minute)"
+        //"\(sighting)" + ";" + "\(timeOfSighting)"
     }
     
     mutating func upVote(user: inout User) {

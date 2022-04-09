@@ -38,6 +38,21 @@ struct ChildSizeReader<Content: View>: View {
     }
 }
 
+struct NextScreenView: View {
+    let selectedModel: DetailView
+    
+    var body: some View {
+        selectedModel
+    }
+}
+
+struct FeedItemButtonStyle: ButtonStyle {
+    func makeBody(configuration: Self.Configuration) -> some View {
+        configuration.label
+            .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
+    }
+}
+
 struct SizePreferenceKey: PreferenceKey {
     typealias Value = CGSize
     static var defaultValue: Value = .zero

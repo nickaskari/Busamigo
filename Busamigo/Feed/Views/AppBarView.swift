@@ -8,11 +8,6 @@
 import SwiftUI
 
 struct AppBarView: View {
-    @ObservedObject var addManager: AddViewManager
-    
-    init(_ addManager: AddViewManager) {
-        self.addManager = addManager
-    }
     
     var body: some View {
         HStack(alignment: .center) {
@@ -37,19 +32,11 @@ struct AppBarView: View {
             
             Spacer()
             
-            Button(action: {
-                withAnimation(self.addManager.getAnimation()) {
-                    self.addManager.show()
-                    UIScrollView.appearance().bounces = false
-                }
-            }, label: {
-                Image(systemName: "plus")
-                    .foregroundColor(.pink)
-                    .font(.system(size: 23))
-                    .shadow(radius: 1)
-                    .opacity(0)
-            })
-                .disabled(true)
+            Image(systemName: "plus")
+                .foregroundColor(.pink)
+                .font(.system(size: 23))
+                .shadow(radius: 1)
+                .opacity(0)
             
             NavigationLink(destination: {
                 FeedSearchView()
@@ -70,6 +57,6 @@ struct AppBarView: View {
 
 struct AppBarView_Previews: PreviewProvider {
     static var previews: some View {
-        AppBarView(AddViewManager())
+        AppBarView()
     }
 }

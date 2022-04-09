@@ -8,15 +8,13 @@
 import SwiftUI
 import MapKit
 
-struct DetailView: View {
+struct DetailView: View, Identifiable {
+    let id = UUID()
     var description: String
     var location: CLLocationCoordinate2D
     @Environment(\.dismiss) var dismiss
     
-    init(description: String, location: CLLocationCoordinate2D) {
-        self.description = description
-        self.location = location
-    }
+    
     
     var body: some View {
         VStack {

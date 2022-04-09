@@ -7,72 +7,54 @@
 
 import Foundation
 import CoreLocation
+import SwiftUI
 
 struct Feed {
     
+    @ObservedObject var locationManager: LocationManager = LocationManager()
     private(set) var visibleFeed: Array<FeedItem>
-    
-    private var untouched: Array<FeedItem>
-    private var isVehicleFiltered: Bool = false
-    private var isRatingFiltered: Bool = false
-    private var isLocationFiltered: Bool = false
-    
-    init(inputFeed: Array<FeedItem>) {
+    private var untouchedFeed: Array<FeedItem>
+
+    init(_ inputFeed: Array<FeedItem>) {
         self.visibleFeed = inputFeed
-        self.untouched = inputFeed
+        self.untouchedFeed = inputFeed
         self.standardFilter()
     }
     
     mutating func standardFilter() {
         //Maybe remove badly rated sightings -> -10 or -20
+        reset()
+        
         self.visibleFeed.sort {
-            ($0.conceptionDate, $0.voteRating, $0.author.credibility) <
+            ($0.conceptionDate, $0.voteRating, $0.author.credibility) >
                 ($1.conceptionDate, $1.voteRating, $1.author.credibility)
         }
     }
     
-    mutating func ratingFilter(user: User) {
-        self.isRatingFiltered.toggle()
-        
-        if self.isRatingFiltered {
-            self.visibleFeed.sort {
-                $0.voteRating < $1.voteRating
-            }
-        } else {
-            activeFilters(user)
+    mutating func ratingFilter() {
+        reset()
+        self.visibleFeed.sort {
+            $0.voteRating > $1.voteRating
         }
     }
     
-    mutating func locationFilter(user: User) {
-        self.isLocationFiltered.toggle()
-        
-        if self.isLocationFiltered {
-            let manager = LocationManager()
-            manager.requestLocation()
-            let userLon = user.location!.longitude
-            let userLat = user.location!.longitude
-            
-            self.visibleFeed.sort {
-                manager.distance(lat1: $0.location.latitude, lat2: $0.location.longitude, lon1: userLon, lon2: userLat) <
-                    manager.distance(lat1: $1.location.latitude, lat2: $1.location.longitude, lon1: userLon, lon2: userLat)
-            }
-        } else {
-            activeFilters(user)
-        }
-        
+    mutating func transportVehicleFilter(_ vehicle: String) {
+        standardFilter()
+        self.visibleFeed = visibleFeed.filter{ $0.transportVehicle == vehicle }
     }
     
-    mutating func transportVehicleFilter(_ vehicle: String, user: User) {
-        self.isVehicleFiltered.toggle()
+    mutating func locationFilter() {
         
-        if self.isVehicleFiltered {
-            self.visibleFeed = visibleFeed.filter{ $0.transportVehicle == vehicle }
-        } else {
-            let missingItems = self.untouched.filter{ $0.transportVehicle == vehicle }
-            self.visibleFeed.append(contentsOf: missingItems)
-            activeFilters(user)
-        }
+        //let manager = LocationManager()
+        self.locationManager.requestLocation()
+        /*let userLon = manager.location!.longitude
+        let userLat = manager.location!.latitude
         
+        self.visibleFeed.sort {
+            manager.distance(lat1: $0.location.latitude, lat2: $0.location.longitude, lon1: userLon, lon2: userLat) <
+                manager.distance(lat1: $1.location.latitude, lat2: $1.location.longitude, lon1: userLon, lon2: userLat)
+        }*/
+       
     }
     
     //refreshing: database: firebase
@@ -82,20 +64,12 @@ struct Feed {
     
     //database: firebase
     mutating func addToFeed(_ feedItem: FeedItem, user: User) {
-        self.untouched.append(feedItem)
+        self.untouchedFeed.append(feedItem)
         self.visibleFeed.append(feedItem)
-        activeFilters(user)
     }
     
-    private mutating func activeFilters(_ user: User) {
-        if self.isLocationFiltered {
-            locationFilter(user: user)
-        }
-        if self.isRatingFiltered {
-            ratingFilter(user: user)
-        } else {
-            standardFilter()
-        }
+    private mutating func reset() {
+        visibleFeed = untouchedFeed
     }
-    
+ 
 }

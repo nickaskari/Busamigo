@@ -11,12 +11,13 @@ import MapKit
 
 struct BusamigoView: View {
     @ObservedObject var addManager: AddViewManager = AddViewManager()
+    @ObservedObject var atbFeed: AtbFeed = AtbFeed()
   
     var body: some View {
         
         ZStack {
             TabView {
-                FeedView(self.addManager)
+                FeedView(self.addManager, feed: self.atbFeed)
                     .tabItem {
                         Image(systemName: "house")
                         Text("Feed")
@@ -32,6 +33,7 @@ struct BusamigoView: View {
                         Text("Map")
                     }
             }
+            .background(.ultraThinMaterial)
             if self.addManager.isShowingAddPage() {
                 AddFeedItemView(self.addManager)
                     .zIndex(1)

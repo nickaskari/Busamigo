@@ -8,6 +8,7 @@
 import Foundation
 import CoreLocation
 import CoreLocationUI
+import ObjectiveC
 
 class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     let manager = CLLocationManager()
