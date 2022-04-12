@@ -38,7 +38,7 @@ class AtbFeed: ObservableObject {
         return atbFeed.visibleFeed
     }
     
-    func activateFilter(_ filter: String) {
+    func activateFilter(_ filter: String, userLon: Double?, userLat: Double?) {
         switch filter {
         case "Relevant":
             atbFeed.standardFilter()
@@ -53,7 +53,8 @@ class AtbFeed: ObservableObject {
             atbFeed.ratingFilter()
             atbFilters.activateFilter(filter)
         case "Lokasjon":
-            atbFeed.locationFilter()
+            //maybe default value?
+            atbFeed.locationFilter(userLon!, userLat!)
             atbFilters.activateFilter(filter)
         default:
             print("Something is not right: activateFilter in AtbFeed")

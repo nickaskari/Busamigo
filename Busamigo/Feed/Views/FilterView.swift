@@ -21,10 +21,9 @@ struct FilterView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing:0) {
                     ForEach(atbFeed.getFilters(), id: \.description) { filter in
-                        
                         Button(action: {
                             withAnimation(.linear(duration: 0.001)) {
-                                atbFeed.activateFilter(filter)
+                                atbFeed.activateFilter(filter, userLon: nil, userLat: nil)
                             }
                         }, label: {
                             FilterBoxView(filter, isPressed: atbFeed.isFilterOn(filter))

@@ -29,7 +29,8 @@
 		B7966C8827F4D92900447352 /* routes.txt in Resources */ = {isa = PBXBuildFile; fileRef = B7966C8727F4D92900447352 /* routes.txt */; };
 		B7966C8A27F4DFA700447352 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7966C8927F4DFA700447352 /* FileManager.swift */; };
 		B797F5252801BF9E00CC2054 /* Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B797F5242801BF9E00CC2054 /* Filters.swift */; };
-		B7ACB1AF27C037F80082797C /* AddViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7ACB1AE27C037F80082797C /* AddViewManager.swift */; };
+		B797F5272802135500CC2054 /* UtilityFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B797F5262802135500CC2054 /* UtilityFunctions.swift */; };
+		B797F5292805B3AF00CC2054 /* Usefull stuff.rtf in Resources */ = {isa = PBXBuildFile; fileRef = B797F5282805B3AF00CC2054 /* Usefull stuff.rtf */; };
 		B7B88F5427EFE080008F2BF3 /* RouteSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B88F5327EFE080008F2BF3 /* RouteSearchView.swift */; };
 		B7B88F5627EFE0A7008F2BF3 /* StopSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B88F5527EFE0A7008F2BF3 /* StopSearchView.swift */; };
 		B7B88F5827F1C8D9008F2BF3 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B88F5727F1C8D9008F2BF3 /* DetailView.swift */; };
@@ -66,7 +67,8 @@
 		B7966C8727F4D92900447352 /* routes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = routes.txt; sourceTree = "<group>"; };
 		B7966C8927F4DFA700447352 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		B797F5242801BF9E00CC2054 /* Filters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filters.swift; sourceTree = "<group>"; };
-		B7ACB1AE27C037F80082797C /* AddViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewManager.swift; sourceTree = "<group>"; };
+		B797F5262802135500CC2054 /* UtilityFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityFunctions.swift; sourceTree = "<group>"; };
+		B797F5282805B3AF00CC2054 /* Usefull stuff.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "Usefull stuff.rtf"; sourceTree = "<group>"; };
 		B7B88F5327EFE080008F2BF3 /* RouteSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteSearchView.swift; sourceTree = "<group>"; };
 		B7B88F5527EFE0A7008F2BF3 /* StopSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopSearchView.swift; sourceTree = "<group>"; };
 		B7B88F5727F1C8D9008F2BF3 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
@@ -104,9 +106,9 @@
 		B72987C227BB01A4006A3B17 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				B72987C027BB00CE006A3B17 /* LocationManager.swift */,
 				B72987D727BE97FF006A3B17 /* Time.swift */,
 				B72987E127BFD756006A3B17 /* UtilityViews.swift */,
+				B797F5262802135500CC2054 /* UtilityFunctions.swift */,
 				B72987DF27BFD716006A3B17 /* Extensions.swift */,
 				B72987D427BE8E6D006A3B17 /* Testing.playground */,
 			);
@@ -142,6 +144,7 @@
 			children = (
 				B7536E2C27B94DED00C5AB50 /* TestView.swift */,
 				B72987DD27BFC610006A3B17 /* Test2View.swift */,
+				B797F5282805B3AF00CC2054 /* Usefull stuff.rtf */,
 			);
 			path = TestViews;
 			sourceTree = "<group>";
@@ -192,7 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				B72987D527BE94AB006A3B17 /* AtbFeed.swift */,
-				B7ACB1AE27C037F80082797C /* AddViewManager.swift */,
+				B72987C027BB00CE006A3B17 /* LocationManager.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 			files = (
 				B7BF2C7F27B422D4006B840E /* Preview Assets.xcassets in Resources */,
 				B7966C8627F4D8C200447352 /* stops.txt in Resources */,
+				B797F5292805B3AF00CC2054 /* Usefull stuff.rtf in Resources */,
 				B7966C8827F4D92900447352 /* routes.txt in Resources */,
 				B7BF2C7C27B422D4006B840E /* Assets.xcassets in Resources */,
 			);
@@ -338,7 +342,6 @@
 				B7966C8A27F4DFA700447352 /* FileManager.swift in Sources */,
 				B7536E3B27B9A0FD00C5AB50 /* Feed.swift in Sources */,
 				B72987D627BE94AC006A3B17 /* AtbFeed.swift in Sources */,
-				B7ACB1AF27C037F80082797C /* AddViewManager.swift in Sources */,
 				B72987DE27BFC610006A3B17 /* Test2View.swift in Sources */,
 				B76A612827B55720003D680E /* CardView.swift in Sources */,
 				B7536E2D27B94DED00C5AB50 /* TestView.swift in Sources */,
@@ -350,6 +353,7 @@
 				B7BF2C8A27B44822006B840E /* OptionsView.swift in Sources */,
 				B7BF2C7A27B422D2006B840E /* BusamigoView.swift in Sources */,
 				B72987E227BFD756006A3B17 /* UtilityViews.swift in Sources */,
+				B797F5272802135500CC2054 /* UtilityFunctions.swift in Sources */,
 				B797F5252801BF9E00CC2054 /* Filters.swift in Sources */,
 				B7B88F5427EFE080008F2BF3 /* RouteSearchView.swift in Sources */,
 				B7BF2C8827B433A7006B840E /* FeedView.swift in Sources */,

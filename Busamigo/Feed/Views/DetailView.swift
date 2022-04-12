@@ -12,31 +12,25 @@ struct DetailView: View, Identifiable {
     let id = UUID()
     var description: String
     var location: CLLocationCoordinate2D
-    @Environment(\.dismiss) var dismiss
-    
     
     
     var body: some View {
         VStack {
-            HStack {
-                Button {
-                    dismiss()
-                } label: {
-                    Image(systemName: "chevron.down")
-                        .font(.system(size: 30))
-                        .padding()
-                        .accentColor(.black)
-                }
-                Spacer()
-            }
-            
-            Text("Beskrivekse")
-                .font(.headline)
             descriptionBubble
             DetailMapView(location)
                 .scaledToFit()
                 .padding(20)
             Spacer()
+        }
+        .padding(.top, 25)
+        .navigationTitle("Beskrivelse")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Image(systemName: "flag.fill")
+                    .foregroundColor(.pink)
+                    .font(.system(size: 13))
+            }
         }
     }
     

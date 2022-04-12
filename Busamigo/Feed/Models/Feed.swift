@@ -11,7 +11,6 @@ import SwiftUI
 
 struct Feed {
     
-    @ObservedObject var locationManager: LocationManager = LocationManager()
     private(set) var visibleFeed: Array<FeedItem>
     private var untouchedFeed: Array<FeedItem>
 
@@ -43,17 +42,12 @@ struct Feed {
         self.visibleFeed = visibleFeed.filter{ $0.transportVehicle == vehicle }
     }
     
-    mutating func locationFilter() {
-        
-        //let manager = LocationManager()
-        self.locationManager.requestLocation()
-        /*let userLon = manager.location!.longitude
-        let userLat = manager.location!.latitude
+    mutating func locationFilter(_ userLon: Double, _ userLat: Double) {
         
         self.visibleFeed.sort {
-            manager.distance(lat1: $0.location.latitude, lat2: $0.location.longitude, lon1: userLon, lon2: userLat) <
-                manager.distance(lat1: $1.location.latitude, lat2: $1.location.longitude, lon1: userLon, lon2: userLat)
-        }*/
+            distance(lat1: $0.location.latitude, lat2: $0.location.longitude, lon1: userLon, lon2: userLat) <
+                distance(lat1: $1.location.latitude, lat2: $1.location.longitude, lon1: userLon, lon2: userLat)
+        }
        
     }
     

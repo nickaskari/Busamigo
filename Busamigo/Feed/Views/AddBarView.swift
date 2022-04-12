@@ -8,19 +8,15 @@
 import SwiftUI
 
 struct AddBarView: View {
-    @ObservedObject var addManager: AddViewManager
     
-    init(_ addManager: AddViewManager) {
-        self.addManager = addManager
-    }
+    @Environment(\.presentationMode) var presentationMode
+    
     
     var body: some View {
         HStack(alignment: .center) {
             
             Button(action: {
-                withAnimation(addManager.getAnimation()) {
-                    addManager.dontshow()
-                }
+                presentationMode.wrappedValue.dismiss()
             }, label: {
                 Text("Avbryt")
                     .padding()
@@ -40,7 +36,7 @@ struct AddBarView: View {
             Spacer()
             
             Button(action: {
-                addManager.show()
+                //addManager.show()
             }, label: {
                 Text("Legg til")
                     .padding()
@@ -53,6 +49,6 @@ struct AddBarView: View {
 
 struct AddBarView_Previews: PreviewProvider {
     static var previews: some View {
-        AddBarView(AddViewManager())
+        AddBarView()
     }
 }
