@@ -21,18 +21,20 @@ class AtbFeed: ObservableObject {
     }
     
     private static func createFeed() -> Feed {
-        Feed([FeedItem(sighting: "Lohove- Sentrum- Hallset;Hallset", transportVehicle: "bus", author: User(), location:                          CLLocationCoordinate2D(latitude: 63.4, longitude: 10.2), 10, time: Time(18, 20)),
-              FeedItem(sighting: "ASDASD jalla;Prinsens gate P1", transportVehicle: "bus", author: User(), location: CLLocationCoordinate2D(latitude: 63.430230, longitude: 10.382971), 5, time: Time(18, 19)),
-              FeedItem(sighting: "Test 2;Kongens gate K2", transportVehicle: "bus", author: User(), location: CLLocationCoordinate2D(latitude: 63.4, longitude: 10.5), 2, time: Time(18, 20)),
-              FeedItem(sighting: "Test 3;Kongens gate K2", transportVehicle: "tram", author: User(), location: CLLocationCoordinate2D(latitude: 63.4, longitude: 10.5), 7, time: Time(17, 20)),
-              FeedItem(sighting: "Test 4;Kongens gate K2", transportVehicle: "tram", author: User(), location: CLLocationCoordinate2D(latitude: 63.4, longitude: 10.34), 9, time: Time(20, 20)),
-              FeedItem(sighting: "Test 5;Kongens gate K2", transportVehicle: "tram", author: User(), location: CLLocationCoordinate2D(latitude: 63.4, longitude: 10.37), 6, time: Time(8, 20))
+        Feed([FeedItem(route: "Lohove- Sentrum- Hallset", stop: "Hallset", transportVehicle: "bus", author: User(), location:                          CLLocationCoordinate2D(latitude: 63.4, longitude: 10.2), 10),
+              FeedItem(route: "ASDASD jalla", stop: "Prinsens gate P1", transportVehicle: "bus", author: User(), location: CLLocationCoordinate2D(latitude: 63.430230, longitude: 10.382971), 5),
+              FeedItem(route: "Test 2", stop: "Kongens gate K2", transportVehicle: "bus", author: User(), location: CLLocationCoordinate2D(latitude: 63.4, longitude: 10.5), 2),
+              FeedItem(route: "Test 3", stop: "Kongens gate K2", transportVehicle: "tram", author: User(), location: CLLocationCoordinate2D(latitude: 63.4, longitude: 10.5), 7),
+              FeedItem(route: "Test 4", stop: "Kongens gate K2", transportVehicle: "tram", author: User(), location: CLLocationCoordinate2D(latitude: 63.423185, longitude: 10.402295), 9),
+              FeedItem(route: "Test 5", stop: "Kongens gate K2", transportVehicle: "tram", author: User(), location: CLLocationCoordinate2D(latitude: 35.715298, longitude: 51.404343), 6),
+              FeedItem(route: "Test 6", stop: "Kongens gate K2", transportVehicle: "tram", author: User(), location: CLLocationCoordinate2D(latitude: 63.433185, longitude: 10.412295), -2)
             ])
     }
     
     
     @Published private var atbFeed: Feed = createFeed()
     @Published private var atbFilters: Filters = createFilters()
+    @Published private var locationErrors: LocationErrors = LocationErrors()
     
     func getFeed() -> Array<FeedItem> {
         return atbFeed.visibleFeed
@@ -53,7 +55,6 @@ class AtbFeed: ObservableObject {
             atbFeed.ratingFilter()
             atbFilters.activateFilter(filter)
         case "Lokasjon":
-            //maybe default value?
             atbFeed.locationFilter(userLon!, userLat!)
             atbFilters.activateFilter(filter)
         default:
@@ -68,5 +69,25 @@ class AtbFeed: ObservableObject {
     func isFilterOn(_ filter: String) -> Bool {
         return atbFilters.isFilterOn(filter)
     }
-  
+    
+    func alertLocationError() {
+        locationErrors.alertError()
+        atbFilters.activateFilter("Lokasjon")
+    }
+    
+    func disableLocationError() {
+        locationErrors.disableError()
+    }
+    
+    func getLocationError(_ errorDict: Dictionary<Int, String>) -> (Int, String)? {
+        locationErrors.errorPicker(errorDict)
+    }
+    
+    func isLocationError() -> Bool {
+        return locationErrors.showError
+    }
+    
+    func refreshFeed() {
+        atbFeed.refreshFeed()
+    }
 }

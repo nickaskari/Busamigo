@@ -11,31 +11,30 @@ import MapKit
 
 struct BusamigoView: View {
     @ObservedObject var atbFeed: AtbFeed = AtbFeed()
+    @ObservedObject var locationManager = LocationManager()
   
     var body: some View {
         
-        ZStack {
-            TabView {
-                FeedView(feed: self.atbFeed)
-                    .tabItem {
-                        Image(systemName: "house")
-                        Text("Feed")
-                    }
-                OptionsView()
-                    .tabItem {
-                        Image(systemName: "line.horizontal.3")
-                        Text("Options")
-                    }
-                MapView()
-                    .tabItem {
-                        Image(systemName: "map.fill")
-                        Text("Map")
-                    }
-            }
-            .background(.ultraThinMaterial)
+        TabView {
+            FeedView(feed: self.atbFeed, locationManager)
+                .tabItem {
+                    Label("Feed", systemImage: "house")
+                }
+            OptionsView()
+                .tabItem {
+                    Label("Options", systemImage: "line.horizontal.3")
+                }
+            MapView()
+                .tabItem {
+                    Label("Map", systemImage: "map.fill")
+                }
         }
         .accentColor(.pink)
         .preferredColorScheme(.light)
+        .onAppear {
+            UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
+            AppDelegate.orientationLock = .portrait
+        }
     }
     
 }

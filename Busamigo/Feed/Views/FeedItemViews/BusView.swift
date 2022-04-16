@@ -12,7 +12,7 @@ struct BusView: View {
     let sighting: String
     
     var body: some View {
-        FeedItemView(color: Color(red: 0.15, green: 0.15, blue: 0.15), opacity: 1, isBus: true, rating: rating, sighting: sighting)
+        FeedItemView(rating: rating, sighting: sighting, vehicle: "bus")
     }
 }
 

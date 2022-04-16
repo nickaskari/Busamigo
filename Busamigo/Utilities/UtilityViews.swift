@@ -46,10 +46,17 @@ struct NextScreenView: View {
     }
 }
 
-struct FeedItemButtonStyle: ButtonStyle {
+struct PushDownButtonStyle: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
             .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
+    }
+}
+
+struct PoppingButtonStyle: ButtonStyle {
+    func makeBody(configuration: Self.Configuration) -> some View {
+        configuration.label
+            .scaleEffect(configuration.isPressed ? 1.05 : 1.0)
     }
 }
 

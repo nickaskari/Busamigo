@@ -10,27 +10,30 @@
 		B70A762827EFB9A300CE63D6 /* AddBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70A762727EFB9A300CE63D6 /* AddBarView.swift */; };
 		B72987C127BB00CE006A3B17 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72987C027BB00CE006A3B17 /* LocationManager.swift */; };
 		B72987D627BE94AC006A3B17 /* AtbFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72987D527BE94AB006A3B17 /* AtbFeed.swift */; };
-		B72987D827BE97FF006A3B17 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72987D727BE97FF006A3B17 /* Time.swift */; };
 		B72987DA27BECAAB006A3B17 /* AddFeedItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72987D927BECAAB006A3B17 /* AddFeedItemView.swift */; };
 		B72987DE27BFC610006A3B17 /* Test2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72987DD27BFC610006A3B17 /* Test2View.swift */; };
 		B72987E027BFD716006A3B17 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72987DF27BFD716006A3B17 /* Extensions.swift */; };
 		B72987E227BFD756006A3B17 /* UtilityViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72987E127BFD756006A3B17 /* UtilityViews.swift */; };
 		B7536E2327B5B32500C5AB50 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7536E2227B5B32500C5AB50 /* MapView.swift */; };
 		B7536E2B27B9336600C5AB50 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7536E2A27B9336600C5AB50 /* FilterView.swift */; };
-		B7536E2D27B94DED00C5AB50 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7536E2C27B94DED00C5AB50 /* TestView.swift */; };
+		B7536E2D27B94DED00C5AB50 /* ListFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7536E2C27B94DED00C5AB50 /* ListFeedView.swift */; };
 		B7536E2F27B9752200C5AB50 /* AppBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7536E2E27B9752200C5AB50 /* AppBarView.swift */; };
 		B7536E3327B98EB300C5AB50 /* FeedSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7536E3227B98EB300C5AB50 /* FeedSearchView.swift */; };
 		B7536E3927B9A0E500C5AB50 /* FeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7536E3827B9A0E500C5AB50 /* FeedItem.swift */; };
 		B7536E3B27B9A0FD00C5AB50 /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7536E3A27B9A0FD00C5AB50 /* Feed.swift */; };
 		B7536E3F27B9A6D700C5AB50 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7536E3E27B9A6D700C5AB50 /* User.swift */; };
+		B75B14792807555F00D9F74B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75B14782807555F00D9F74B /* AppDelegate.swift */; };
+		B75B147B28075BE500D9F74B /* LocationErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75B147A28075BE500D9F74B /* LocationErrors.swift */; };
+		B75B147D2807626500D9F74B /* LocationErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75B147C2807626500D9F74B /* LocationErrorView.swift */; };
 		B76A612627B55328003D680E /* TramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76A612527B55328003D680E /* TramView.swift */; };
-		B76A612827B55720003D680E /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76A612727B55720003D680E /* CardView.swift */; };
+		B76A612827B55720003D680E /* FeedItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76A612727B55720003D680E /* FeedItemView.swift */; };
 		B7966C8627F4D8C200447352 /* stops.txt in Resources */ = {isa = PBXBuildFile; fileRef = B7966C8527F4D8C200447352 /* stops.txt */; };
 		B7966C8827F4D92900447352 /* routes.txt in Resources */ = {isa = PBXBuildFile; fileRef = B7966C8727F4D92900447352 /* routes.txt */; };
 		B7966C8A27F4DFA700447352 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7966C8927F4DFA700447352 /* FileManager.swift */; };
 		B797F5252801BF9E00CC2054 /* Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B797F5242801BF9E00CC2054 /* Filters.swift */; };
 		B797F5272802135500CC2054 /* UtilityFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B797F5262802135500CC2054 /* UtilityFunctions.swift */; };
 		B797F5292805B3AF00CC2054 /* Usefull stuff.rtf in Resources */ = {isa = PBXBuildFile; fileRef = B797F5282805B3AF00CC2054 /* Usefull stuff.rtf */; };
+		B797F52C2806D6BE00CC2054 /* HotSorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = B797F52B2806D6BD00CC2054 /* HotSorting.swift */; };
 		B7B88F5427EFE080008F2BF3 /* RouteSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B88F5327EFE080008F2BF3 /* RouteSearchView.swift */; };
 		B7B88F5627EFE0A7008F2BF3 /* StopSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B88F5527EFE0A7008F2BF3 /* StopSearchView.swift */; };
 		B7B88F5827F1C8D9008F2BF3 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B88F5727F1C8D9008F2BF3 /* DetailView.swift */; };
@@ -41,6 +44,8 @@
 		B7BF2C8827B433A7006B840E /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BF2C8727B433A7006B840E /* FeedView.swift */; };
 		B7BF2C8A27B44822006B840E /* OptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BF2C8927B44822006B840E /* OptionsView.swift */; };
 		B7BF2C8D27B46E6E006B840E /* BusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BF2C8C27B46E6E006B840E /* BusView.swift */; };
+		B7F70FD5280B0BE100F8A71D /* RefreshableScrollView in Frameworks */ = {isa = PBXBuildFile; productRef = B7F70FD4280B0BE100F8A71D /* RefreshableScrollView */; };
+		B7F70FD7280B787200F8A71D /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F70FD6280B787200F8A71D /* ActivityIndicatorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,27 +53,30 @@
 		B72987C027BB00CE006A3B17 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		B72987D427BE8E6D006A3B17 /* Testing.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Testing.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		B72987D527BE94AB006A3B17 /* AtbFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtbFeed.swift; sourceTree = "<group>"; };
-		B72987D727BE97FF006A3B17 /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		B72987D927BECAAB006A3B17 /* AddFeedItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFeedItemView.swift; sourceTree = "<group>"; };
 		B72987DD27BFC610006A3B17 /* Test2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test2View.swift; sourceTree = "<group>"; };
 		B72987DF27BFD716006A3B17 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		B72987E127BFD756006A3B17 /* UtilityViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityViews.swift; sourceTree = "<group>"; };
 		B7536E2227B5B32500C5AB50 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		B7536E2A27B9336600C5AB50 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
-		B7536E2C27B94DED00C5AB50 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		B7536E2C27B94DED00C5AB50 /* ListFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFeedView.swift; sourceTree = "<group>"; };
 		B7536E2E27B9752200C5AB50 /* AppBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBarView.swift; sourceTree = "<group>"; };
 		B7536E3227B98EB300C5AB50 /* FeedSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedSearchView.swift; sourceTree = "<group>"; };
 		B7536E3827B9A0E500C5AB50 /* FeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItem.swift; sourceTree = "<group>"; };
 		B7536E3A27B9A0FD00C5AB50 /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
 		B7536E3E27B9A6D700C5AB50 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		B75B14782807555F00D9F74B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B75B147A28075BE500D9F74B /* LocationErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationErrors.swift; sourceTree = "<group>"; };
+		B75B147C2807626500D9F74B /* LocationErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationErrorView.swift; sourceTree = "<group>"; };
 		B76A612527B55328003D680E /* TramView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TramView.swift; sourceTree = "<group>"; };
-		B76A612727B55720003D680E /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		B76A612727B55720003D680E /* FeedItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemView.swift; sourceTree = "<group>"; };
 		B7966C8527F4D8C200447352 /* stops.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stops.txt; sourceTree = "<group>"; };
 		B7966C8727F4D92900447352 /* routes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = routes.txt; sourceTree = "<group>"; };
 		B7966C8927F4DFA700447352 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		B797F5242801BF9E00CC2054 /* Filters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filters.swift; sourceTree = "<group>"; };
 		B797F5262802135500CC2054 /* UtilityFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityFunctions.swift; sourceTree = "<group>"; };
 		B797F5282805B3AF00CC2054 /* Usefull stuff.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "Usefull stuff.rtf"; sourceTree = "<group>"; };
+		B797F52B2806D6BD00CC2054 /* HotSorting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotSorting.swift; sourceTree = "<group>"; };
 		B7B88F5327EFE080008F2BF3 /* RouteSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteSearchView.swift; sourceTree = "<group>"; };
 		B7B88F5527EFE0A7008F2BF3 /* StopSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopSearchView.swift; sourceTree = "<group>"; };
 		B7B88F5727F1C8D9008F2BF3 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
@@ -80,6 +88,7 @@
 		B7BF2C8727B433A7006B840E /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		B7BF2C8927B44822006B840E /* OptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsView.swift; sourceTree = "<group>"; };
 		B7BF2C8C27B46E6E006B840E /* BusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusView.swift; sourceTree = "<group>"; };
+		B7F70FD6280B787200F8A71D /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7F70FD5280B0BE100F8A71D /* RefreshableScrollView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,20 +116,14 @@
 		B72987C227BB01A4006A3B17 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				B72987D727BE97FF006A3B17 /* Time.swift */,
+				B797F52B2806D6BD00CC2054 /* HotSorting.swift */,
+				B75B14782807555F00D9F74B /* AppDelegate.swift */,
 				B72987E127BFD756006A3B17 /* UtilityViews.swift */,
 				B797F5262802135500CC2054 /* UtilityFunctions.swift */,
 				B72987DF27BFD716006A3B17 /* Extensions.swift */,
 				B72987D427BE8E6D006A3B17 /* Testing.playground */,
 			);
 			path = Utilities;
-			sourceTree = "<group>";
-		};
-		B72987C527BC68AA006A3B17 /* Favourites */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Favourites;
 			sourceTree = "<group>";
 		};
 		B72987CE27BC6DE4006A3B17 /* Datasets */ = {
@@ -142,9 +146,10 @@
 		B72987DB27BFC5D1006A3B17 /* TestViews */ = {
 			isa = PBXGroup;
 			children = (
-				B7536E2C27B94DED00C5AB50 /* TestView.swift */,
+				B7536E2C27B94DED00C5AB50 /* ListFeedView.swift */,
 				B72987DD27BFC610006A3B17 /* Test2View.swift */,
 				B797F5282805B3AF00CC2054 /* Usefull stuff.rtf */,
+				B7F70FD6280B787200F8A71D /* ActivityIndicatorView.swift */,
 			);
 			path = TestViews;
 			sourceTree = "<group>";
@@ -171,6 +176,7 @@
 				B7536E2E27B9752200C5AB50 /* AppBarView.swift */,
 				B7536E2A27B9336600C5AB50 /* FilterView.swift */,
 				B7B88F5727F1C8D9008F2BF3 /* DetailView.swift */,
+				B75B147C2807626500D9F74B /* LocationErrorView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -208,6 +214,7 @@
 				B7536E3E27B9A6D700C5AB50 /* User.swift */,
 				B7966C8927F4DFA700447352 /* FileManager.swift */,
 				B797F5242801BF9E00CC2054 /* Filters.swift */,
+				B75B147A28075BE500D9F74B /* LocationErrors.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -215,7 +222,7 @@
 		B76A612927B55F34003D680E /* FeedItemViews */ = {
 			isa = PBXGroup;
 			children = (
-				B76A612727B55720003D680E /* CardView.swift */,
+				B76A612727B55720003D680E /* FeedItemView.swift */,
 				B7BF2C8C27B46E6E006B840E /* BusView.swift */,
 				B76A612527B55328003D680E /* TramView.swift */,
 			);
@@ -245,7 +252,6 @@
 				B72987C227BB01A4006A3B17 /* Utilities */,
 				B7536E2927B6B1F100C5AB50 /* Map */,
 				B7536E2827B6B1E100C5AB50 /* Options */,
-				B72987C527BC68AA006A3B17 /* Favourites */,
 				B7536E2627B6B16B00C5AB50 /* Feed */,
 				B7BF2C7727B422D2006B840E /* BusamigoApp.swift */,
 				B7BF2C7927B422D2006B840E /* BusamigoView.swift */,
@@ -279,6 +285,9 @@
 			dependencies = (
 			);
 			name = Busamigo;
+			packageProductDependencies = (
+				B7F70FD4280B0BE100F8A71D /* RefreshableScrollView */,
+			);
 			productName = Busamigo;
 			productReference = B7BF2C7427B422D2006B840E /* Busamigo.app */;
 			productType = "com.apple.product-type.application";
@@ -307,6 +316,9 @@
 				Base,
 			);
 			mainGroup = B7BF2C6B27B422D2006B840E;
+			packageReferences = (
+				B7F70FD3280B0BE100F8A71D /* XCRemoteSwiftPackageReference "RefreshableScrollView" */,
+			);
 			productRefGroup = B7BF2C7527B422D2006B840E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -336,15 +348,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B72987D827BE97FF006A3B17 /* Time.swift in Sources */,
 				B72987C127BB00CE006A3B17 /* LocationManager.swift in Sources */,
 				B72987DA27BECAAB006A3B17 /* AddFeedItemView.swift in Sources */,
 				B7966C8A27F4DFA700447352 /* FileManager.swift in Sources */,
 				B7536E3B27B9A0FD00C5AB50 /* Feed.swift in Sources */,
+				B75B147B28075BE500D9F74B /* LocationErrors.swift in Sources */,
 				B72987D627BE94AC006A3B17 /* AtbFeed.swift in Sources */,
+				B7F70FD7280B787200F8A71D /* ActivityIndicatorView.swift in Sources */,
 				B72987DE27BFC610006A3B17 /* Test2View.swift in Sources */,
-				B76A612827B55720003D680E /* CardView.swift in Sources */,
-				B7536E2D27B94DED00C5AB50 /* TestView.swift in Sources */,
+				B76A612827B55720003D680E /* FeedItemView.swift in Sources */,
+				B7536E2D27B94DED00C5AB50 /* ListFeedView.swift in Sources */,
 				B72987E027BFD716006A3B17 /* Extensions.swift in Sources */,
 				B7B88F5627EFE0A7008F2BF3 /* StopSearchView.swift in Sources */,
 				B7BF2C8D27B46E6E006B840E /* BusView.swift in Sources */,
@@ -356,8 +369,11 @@
 				B797F5272802135500CC2054 /* UtilityFunctions.swift in Sources */,
 				B797F5252801BF9E00CC2054 /* Filters.swift in Sources */,
 				B7B88F5427EFE080008F2BF3 /* RouteSearchView.swift in Sources */,
+				B75B147D2807626500D9F74B /* LocationErrorView.swift in Sources */,
 				B7BF2C8827B433A7006B840E /* FeedView.swift in Sources */,
 				B7B88F5827F1C8D9008F2BF3 /* DetailView.swift in Sources */,
+				B75B14792807555F00D9F74B /* AppDelegate.swift in Sources */,
+				B797F52C2806D6BE00CC2054 /* HotSorting.swift in Sources */,
 				B7536E3327B98EB300C5AB50 /* FeedSearchView.swift in Sources */,
 				B7536E2327B5B32500C5AB50 /* MapView.swift in Sources */,
 				B7536E2F27B9752200C5AB50 /* AppBarView.swift in Sources */,
@@ -498,9 +514,13 @@
 				DEVELOPMENT_TEAM = B4H6FWY3Z6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Busamigo/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Denne appen trenger lokasjonen din for å finne de nærmeste holdplassene fra deg.";
+				INFOPLIST_KEY_NSMainNibFile = Main;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -512,7 +532,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -527,9 +547,13 @@
 				DEVELOPMENT_TEAM = B4H6FWY3Z6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Busamigo/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Denne appen trenger lokasjonen din for å finne de nærmeste holdplassene fra deg.";
+				INFOPLIST_KEY_NSMainNibFile = Main;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -541,7 +565,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -567,6 +591,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B7F70FD3280B0BE100F8A71D /* XCRemoteSwiftPackageReference "RefreshableScrollView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/TariqAlmazyad/RefreshableScrollView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B7F70FD4280B0BE100F8A71D /* RefreshableScrollView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B7F70FD3280B0BE100F8A71D /* XCRemoteSwiftPackageReference "RefreshableScrollView" */;
+			productName = RefreshableScrollView;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B7BF2C6C27B422D2006B840E /* Project object */;
 }

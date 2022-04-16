@@ -8,32 +8,17 @@
 import SwiftUI
 import Foundation
 
-//Geralisering av Card
+//Geralisering av FeedItem
 
 struct FeedItemView: View {
-    let color: Color
-    let opacity: Double
-    let isBus: Bool
+    let color: Color = Color(red: 0.15, green: 0.15, blue: 0.15)
+    let opacity: Double = 1
     let rating: Int
     let sighting: String
-    
-    private var icon: String {
-        if isBus == true {
-            return "bus"
-        }
-        else {
-            return "tram"
-        }
-    }
+    let vehicle: String
     
     private var sightingDict: Dictionary<String, Double> {
-        var opacityValue: Double = 1.0
-        var dict: Dictionary<String, Double> = [ : ]
-        for info in sighting.components(separatedBy: ";") {
-            dict[info] = opacityValue
-            opacityValue -= 0.2
-        }
-        return dict
+        createSightingDict(sighting)
     }
     
     var body: some View {
@@ -46,7 +31,7 @@ struct FeedItemView: View {
                 .aspectRatio(2.5, contentMode: .fit)
                 
             HStack {
-                Image(systemName: icon)
+                Image(systemName: vehicle)
                     .font(.system(size: 25))
                     .foregroundColor(.pink)
                     .padding(15)
@@ -66,7 +51,6 @@ struct FeedItemView: View {
             }
         }
         .padding(.horizontal)
-        .padding(.top, 10)
         .shadow(radius: 5)
     }
     
@@ -104,8 +88,3 @@ struct FeedItemView: View {
 
 
 
-struct FeedItemView_Previews: PreviewProvider {
-    static var previews: some View {
-        FeedItemView(color: Color(red: 0.15, green: 0.15, blue: 0.15), opacity: 1, isBus: true, rating: 12, sighting: "Fæstfæst;jallastop;16:45")
-    }
-}

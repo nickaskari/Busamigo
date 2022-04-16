@@ -9,9 +9,14 @@ import SwiftUI
 
 @main
 struct BusamigoApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
     var body: some Scene {
         WindowGroup {
-            BusamigoView()
+            //BusamigoView()
+            //ListFeedView()
+            Test2View()
+                .preferredColorScheme(.light)
         }
     }
 }

@@ -40,10 +40,10 @@ struct User: Identifiable {
         self.votes -= 1
     }
     
-    mutating func updateLocation() {
+    /*mutating func updateLocation() {
         LocationManager().requestLocation()
         self.location = LocationManager().location
-    }
+    }*/
     
     //Implement refreshing??
 }

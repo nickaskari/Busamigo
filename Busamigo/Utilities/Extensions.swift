@@ -26,4 +26,3 @@ extension CLLocationCoordinate2D: Identifiable {
         "\(latitude)-\(longitude)"
     }
 }
-

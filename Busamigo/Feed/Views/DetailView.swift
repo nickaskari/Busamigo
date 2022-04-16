@@ -27,9 +27,15 @@ struct DetailView: View, Identifiable {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                Image(systemName: "flag.fill")
-                    .foregroundColor(.pink)
-                    .font(.system(size: 13))
+                Button(action: {
+                    getTapticFeedBack(style: .light)
+                    print("Fæst")
+                }, label: {
+                    Image(systemName: "flag.fill")
+                        .foregroundColor(.pink)
+                        .font(.system(size: 13))
+                })
+                .buttonStyle(PushDownButtonStyle())
             }
         }
     }

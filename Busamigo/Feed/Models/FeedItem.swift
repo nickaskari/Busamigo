@@ -14,13 +14,14 @@ struct FeedItem: Identifiable, Hashable {
     //Endre på conceptionDate, tror dette er en tid og ikke klokkeslett
     
     let id = UUID()
-    let conceptionDate: Time
+    let conceptionDate: Date
     let transportVehicle: String
     private let sighting: String
-    private(set) var voteRating: Int
+    private(set) var voteScore: Int
     private(set) var author: User
     private(set) var sightingInformation: String = ""
     private(set) var location: CLLocationCoordinate2D
+    private(set) var hotValue: Double
     private var timeOfSighting: String {
         let hours   = (Calendar.current.component(.hour, from: Date()))
         let minutes = (Calendar.current.component(.minute, from: Date()))
@@ -41,36 +42,42 @@ struct FeedItem: Identifiable, Hashable {
     
     //Location as a computed value?
     //have route and stop as separate variables
-    init(sighting: String, transportVehicle: String, author: User, location: CLLocationCoordinate2D, _ voteRating: Int, time: Time) {
+    init(route: String, stop: String, transportVehicle: String, author: User, location: CLLocationCoordinate2D, _ voteScore: Int) {
         
-        self.sighting = sighting
+        self.sighting = "\(route)" + ";" + "\(stop)"
         self.transportVehicle = transportVehicle
         self.author = author
+        
         //for testing
-        self.voteRating = voteRating
+        self.voteScore = voteScore
+        
         self.location = location
-        self.conceptionDate = time
-        self.sightingInformation = "\(sighting)" + ";" + "\(conceptionDate.hour)" + ":" + "\(conceptionDate.minute)"
-        //"\(sighting)" + ";" + "\(timeOfSighting)"
+        
+        let now = Date()
+        self.conceptionDate = now
+        self.hotValue = hot(voteScore, now)
+        self.sightingInformation = "\(sighting)" + ";" + "\(timeOfSighting)"
     }
     
     mutating func upVote(user: inout User) {
         if user.canVote(item: self) ==  true {
-            voteRating += 1
+            voteScore += 1
             author.recieveUpVote()
+            updateHotValue()
         }
     }
     
     mutating func downVote(user: inout User) {
         if user.canVote(item: self) ==  true {
-            voteRating -= 1
+            voteScore -= 1
             author.recieveDownVote()
+            updateHotValue()
         }
     }
     
-    //Posible inherent rating, or credibility value?
-    
-    
+    private mutating func updateHotValue() {
+        self.hotValue = hot(voteScore, conceptionDate)
+    }
     
     
     
@@ -83,7 +90,7 @@ struct FeedItem: Identifiable, Hashable {
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
-        hasher.combine(voteRating)
+        hasher.combine(voteScore)
     }
     
     static func == (lhs: FeedItem, rhs: FeedItem) -> Bool {

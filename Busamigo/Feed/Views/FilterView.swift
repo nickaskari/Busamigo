@@ -6,32 +6,92 @@
 //
 
 import SwiftUI
-
+import MapKit
+import CoreLocationUI
 
 
 struct FilterView: View {
     @ObservedObject var atbFeed: AtbFeed
-    @ObservedObject var locationManager: LocationManager = LocationManager()
+    @ObservedObject var locationManager: LocationManager
+    @Environment(\.scenePhase) var scenePhase
     
-    init(_ atbFeed: AtbFeed) {
-        self.atbFeed = atbFeed
+    init(feed: AtbFeed, _ locationManager: LocationManager) {
+        self.atbFeed = feed
+        self.locationManager = locationManager
     }
+    //automatically change the view when one has given access to the location
     
     var body: some View {
             ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing:0) {
-                    ForEach(atbFeed.getFilters(), id: \.description) { filter in
-                        Button(action: {
-                            withAnimation(.linear(duration: 0.001)) {
-                                atbFeed.activateFilter(filter, userLon: nil, userLat: nil)
+                ScrollViewReader { value in
+                    HStack(spacing: 0) {
+                        ForEach(atbFeed.getFilters(), id: \.description) { filter in
+                            
+                            Button(action: {
+                                withAnimation {
+                                    value.scrollTo(filter)
+                                }
+                                getTapticFeedBack(style: .medium)
+                                withAnimation(.linear(duration: 0.001)) {
+                                    if filter == "Lokasjon" {
+                                        displayLocationFilter()
+                                    } else {
+                                        atbFeed.disableLocationError()
+                                        atbFeed.activateFilter(filter, userLon: nil, userLat: nil)
+                                    }
+                                }
+                            }, label: {
+                                FilterBoxView(filter, isPressed: atbFeed.isFilterOn(filter))
+                            })
+                            .id(filter)
+                            .onAppear {
+                                if atbFeed.isFilterOn(filter) {
+                                    value.scrollTo(filter)
+                                }
                             }
-                        }, label: {
-                            FilterBoxView(filter, isPressed: atbFeed.isFilterOn(filter))
-                        })
+                        }
                     }
                 }
             }
-            .aspectRatio(6, contentMode: .fit)
+            .background(.ultraThinMaterial)
+            .padding(.bottom, 5)
+            .aspectRatio(8, contentMode: .fit)
+            .onChange(of: scenePhase) { newPhase in
+                    if newPhase == .active {
+                        locationManager.checkIfLocationServicesIsEnabled()
+                        if atbFeed.isFilterOn("Lokasjon") {
+                            withAnimation(.easeInOut(duration: 0.2)) {
+                                displayLocationFilter()
+                            }
+                        }
+                    }
+            }
+    }
+    
+    private func hasError() -> Bool {
+        return atbFeed.getLocationError(locationManager.errors) != nil
+    }
+    
+    private func updateLocationError() {
+        locationManager.checkIfLocationServicesIsEnabled()
+        
+        if hasError() {
+            atbFeed.alertLocationError()
+         
+        } else {
+            atbFeed.disableLocationError()
+        }
+    }
+    
+    private func displayLocationFilter() {
+        updateLocationError()
+        
+        if !hasError() {
+            if let loc = locationManager.lastKnownLocation {
+                atbFeed.activateFilter("Lokasjon", userLon: loc.longitude, userLat: loc.latitude)
+            }
+            //handle if last location couldnt be found
+        }
     }
 }
 
@@ -54,7 +114,7 @@ private struct FilterBoxView: View {
         }
     }
     
-    let colorTheme: Color = Color.init(red: 0.1, green: 0.1, blue: 0.1)
+    let colorTheme: Color = Color.init(red: 0.02, green: 0.02, blue: 0.02)
     
     private var textColor: Color {
         if isPressed {
@@ -68,16 +128,18 @@ private struct FilterBoxView: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 50)
-                .strokeBorder(self.colorTheme, lineWidth: 2)
+                .strokeBorder(colorTheme, lineWidth: 2)
                 .opacity(0.5)
                 .background(RoundedRectangle(cornerRadius: 50)
                                 .foregroundColor(self.colorTheme)
                                 .opacity(buttonOpacity))
                 .aspectRatio(2, contentMode: .fit)
-                .padding(10)
+                .padding(5)
             Text("\(preferance)")
                 .foregroundColor(textColor)
-                .font(.headline)
+                .font(.subheadline)
+                .padding(15)
+                .scaledToFit()
         }
     }
 }
@@ -98,6 +160,6 @@ private struct FilterBoxView: View {
 
 struct PreferanceView_Previews: PreviewProvider {
     static var previews: some View {
-        FilterView(AtbFeed())
+        FilterView(feed: AtbFeed(), LocationManager())
     }
 }

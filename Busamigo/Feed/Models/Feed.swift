@@ -21,19 +21,17 @@ struct Feed {
     }
     
     mutating func standardFilter() {
-        //Maybe remove badly rated sightings -> -10 or -20
         reset()
         
         self.visibleFeed.sort {
-            ($0.conceptionDate, $0.voteRating, $0.author.credibility) >
-                ($1.conceptionDate, $1.voteRating, $1.author.credibility)
+            $0.hotValue > $1.hotValue
         }
     }
     
     mutating func ratingFilter() {
         reset()
         self.visibleFeed.sort {
-            $0.voteRating > $1.voteRating
+            $0.voteScore > $1.voteScore
         }
     }
     
@@ -43,10 +41,11 @@ struct Feed {
     }
     
     mutating func locationFilter(_ userLon: Double, _ userLat: Double) {
+        reset()
         
         self.visibleFeed.sort {
-            distance(lat1: $0.location.latitude, lat2: $0.location.longitude, lon1: userLon, lon2: userLat) <
-                distance(lat1: $1.location.latitude, lat2: $1.location.longitude, lon1: userLon, lon2: userLat)
+            distance(lon1: $0.location.longitude, lat1: $0.location.latitude, lon2: userLon, lat2: userLat) <
+                distance(lon1: $1.location.longitude, lat1: $1.location.latitude, lon2: userLon, lat2: userLat)
         }
        
     }

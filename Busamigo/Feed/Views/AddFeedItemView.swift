@@ -74,7 +74,7 @@ struct AddFeedItemView: View {
                         VStack {
                             Text("Din observasjon..")
                                 .font(.headline)
-                            FeedItemView(color: Color(red: 0.15, green: 0.15, blue: 0.15), opacity: 1, isBus: true, rating: 0, sighting: "Buss 3;jallastop;16:45")
+                            FeedItemView(rating: 0, sighting: "Buss 3;jallastop;16:45", vehicle: "bus")
                         }
                         .frame(height: geometry.size.height * 0.4)
                     }

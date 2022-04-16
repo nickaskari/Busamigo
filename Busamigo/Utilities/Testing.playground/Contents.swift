@@ -1,25 +1,33 @@
 import UIKit
 import MapKit
+import Foundation
 
-func distance(_ lat1: CLLocationDegrees, _ lat2: CLLocationDegrees, _ lon1: CLLocationDegrees, _ lon2: CLLocationDegrees) -> Double {
-    let lon1: Double = lon1 * (Double.pi / 180)
-    let lon2: Double = lon2 * (Double.pi / 180)
-    let lat1: Double = lat1 * (Double.pi / 180)
-    let lat2: Double = lat2 * (Double.pi / 180)
-    
-    // Haversine formula
-    let dlon = lon2 - lon1
-    let dlat = lat2 - lat1
-    let a = pow(sin(dlat / 2), 2) + cos(lat1) * cos(lat2) * pow(sin(dlon / 2), 2)
-           
-    let c = 2 * asin(sqrt(a))
-    
-    // Radius of earth in kilometers. Use 3956 for miles
-    let r: Double = 6371
-          
-    // calculate the result
-    return(c * r)
+protocol test {
+    var something: String {
+        get
+    }
+   
+    func doSomething() -> Int
 }
 
+struct test2: test {
+    var something: String
+    
+    func doSomething() -> Int {
+        return 69
+    }
+}
+
+struct ok {
+    var val: test
+    
+    init(arg: test) {
+        self.val = arg
+    }
+}
+
+let kok = test2(something: "F@st")
+let kok2 = ok(arg: kok)
+print(kok2.val.something + "--" + "\(kok2.val.doSomething())")
 
 

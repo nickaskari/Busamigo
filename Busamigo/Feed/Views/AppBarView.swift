@@ -45,11 +45,12 @@ struct AppBarView: View {
                     .accentColor(.black)
                     .font(.system(size: 23))
                     .shadow(radius: 1)
-                    .padding(20)
+                    .padding(.horizontal, 20)
             })
         }
         .navigationTitle("")
         .navigationBarHidden(true)
+        .background(.ultraThinMaterial)
     }
 }
 
