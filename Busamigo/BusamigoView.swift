@@ -22,19 +22,19 @@ struct BusamigoView: View {
                 }
             OptionsView()
                 .tabItem {
-                    Label("Options", systemImage: "line.horizontal.3")
+                    Label("Staistikk", systemImage: "list.number")
                 }
-            MapView()
+            MapView(feed: atbFeed)
                 .tabItem {
-                    Label("Map", systemImage: "map.fill")
+                    Label("Kart", systemImage: "map.fill")
                 }
         }
-        .accentColor(.pink)
-        .preferredColorScheme(.light)
-        .onAppear {
-            UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
-            AppDelegate.orientationLock = .portrait
-        }
+            .accentColor(.pink)
+            .preferredColorScheme(.light)
+            .onAppear {
+                UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
+                AppDelegate.orientationLock = .portrait
+            }
     }
     
 }

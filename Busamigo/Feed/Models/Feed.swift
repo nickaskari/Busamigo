@@ -13,6 +13,7 @@ struct Feed {
     
     private(set) var visibleFeed: Array<FeedItem>
     private var untouchedFeed: Array<FeedItem>
+    private(set) var isShowingbar: Bool = true
 
     init(_ inputFeed: Array<FeedItem>) {
         self.visibleFeed = inputFeed
@@ -64,5 +65,13 @@ struct Feed {
     private mutating func reset() {
         visibleFeed = untouchedFeed
     }
- 
+    
+   mutating func hideBar() {
+       self.isShowingbar = false
+    }
+    
+    mutating func showBar() {
+        self.isShowingbar = true
+    }
+    
 }

@@ -7,40 +7,48 @@
 
 import SwiftUI
 import Foundation
-import MapKit
 
-struct Test2View: View {
-    @ObservedObject var feed = AtbFeed()
+//TODO: fade out the refresher when going down
+
+struct ScrollFeedView: View {
+    @ObservedObject private(set) var feed: AtbFeed
+    
     @State private var offset: CGFloat = 0
     @State private var lastOffset: CGFloat = 0
     @State private var hideProgress: Bool = true
-    @State private var progressOpacity: Double = 0
     @State private var activateRefresh: Bool = false
-    @State private var usedOffset: Array<CGFloat> = []
     @State private var didRefresh: Bool = false
-    @State private var speed: Double = 0.5
-    @State private(set) var hideBar: Bool = false
+    @State private var progressArrow: String
+    
+    
+    init(_ feed: AtbFeed) {
+        self.feed = feed
+        self.progressArrow = "arrow.down"
+    }
 
     var body: some View {
         ZStack(alignment: .top) {
-            if !hideProgress {
-                progress
-            }
             ScrollView(.vertical, showsIndicators: true) {
-                LazyVStack(spacing: 5) {
+                LazyVStack(spacing: 0) {
                     if !hideProgress {
-                        dummy
+                        progress
+                    } else {
+                        Image(systemName: progressArrow)
+                            .frame(width: 22, height: 22)
+                            .position(x: UIScreen.screenWidth / 2, y: -8)
                     }
+                    
                     ForEach(feed.getFeed()) { item in
-                        FeedItemView(rating: item.voteScore, sighting: item.sightingInformation, vehicle: item.transportVehicle)
+                        NavigationLink(destination: {
+                            DetailView(description: item.sightingInformation, location: item.location)
+                        }, label: {
+                            FeedItemView(rating: item.voteScore, sighting: item.sightingInformation, vehicle: item.transportVehicle)
+                        })
+                        .buttonStyle(PushDownButtonStyle())
                     }
-                    Button(action: {
-                        feed.activateFilter("Relevant", userLon: nil, userLat: nil)
-                    }, label: {Circle().foregroundColor(.pink).frame(width: 40, height: 40)})
                 }
                 .overlay (
                     GeometryReader { proxy -> Color in
-                        
                         let minY = proxy.frame(in: .named("SCROLL")).minY
                         let scrollHeight = proxy.frame(in: .named("SCROLL")).height
                         
@@ -48,30 +56,20 @@ struct Test2View: View {
                         
                         DispatchQueue.main.async {
                             
-                            
-                            if offset <= 0  {
+                            if minY <= 0  {
                                 withAnimation {
-                                    hideProgress = true
-                                }
-                                didRefresh = false
-                                progressOpacity = 0
-                                self.usedOffset = []
-                            }
-                            
-                            if offset > 10 {
-                                if hideProgress {
-                                    withAnimation {
-                                        hideProgress = false
+                                    if !hideProgress && !activateRefresh {
+                                        hideProgress = true
+                                        feed.showBar()
                                     }
                                 }
-                                if Int(offset) % 3 == 0 && !usedOffset.contains(offset) {
-                                    progressOpacity += 0.1
-                                    speed += 0.1
-                                    self.usedOffset.append(offset)
-                                }
+                                didRefresh = false
                             }
-                            if progressOpacity >= 1 && !didRefresh {
-                                
+                    
+                            if minY > 40 && !didRefresh && !activateRefresh {
+                                withAnimation {
+                                    hideProgress = false
+                                }
                                 getTapticFeedBack(style: .medium)
                                 activateRefresh = true
                                 didRefresh = true
@@ -80,21 +78,20 @@ struct Test2View: View {
                             if minY < offset {
                                 if offset < 0 && -minY > (lastOffset + durationOffset) && (scrollHeight >= 1000) {
                                     withAnimation(.easeOut.speed(2)) {
-                                        hideBar = true
+                                        feed.hideBar()
                                     }
                                     
                                     lastOffset = -offset
                                 }
                                 
                             }
+                            
                             if minY > offset && -minY < (lastOffset - durationOffset) &&
                             (scrollHeight - -(minY)) >= 870 {
                                 withAnimation(.easeIn.speed(2)) {
-                                    hideBar = false
+                                    feed.showBar()
                                 }
-                                
                                 lastOffset = -offset
-                                
                             }
                             
                             self.offset = minY
@@ -103,49 +100,29 @@ struct Test2View: View {
                     }
                 )
             }
+            .edgesIgnoringSafeArea(.top)
             .coordinateSpace(name: "SCROLL")
             .navigationBarTitle("")
             .navigationBarHidden(true)
         }
-        .progressViewStyle(PinkProgressViewStyle())
     }
     
     var progress: some View {
         ZStack(alignment: .bottom) {
-            ProgressView()
+            ActivityIndicator()
                 .foregroundColor(.pink)
-                .scaleEffect(1.3)
-                .opacity(progressOpacity)
                 .padding()
-                .onChange(of: activateRefresh) { opacity in
+                .onChange(of: activateRefresh) { bool in
                     if activateRefresh {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                            withAnimation {
-                                feed.activateFilter("Buss", userLon: nil, userLat: nil)
-                            }
+                        print("Just refreshed!")
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                            print("Ye")
                             activateRefresh = false
                         }
                     }
                 }
         }
     }
-    
-    var dummy: some View {
-        ZStack(alignment: .bottom) {
-            ProgressView()
-                .scaleEffect(1.3)
-                .padding()
-                .opacity(0)
-        }
-    }
-}
-
-
-struct PinkProgressViewStyle: ProgressViewStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        ProgressView(configuration)
-            .tint(.pink)
-    }
 }
 
 
@@ -155,8 +132,8 @@ struct PinkProgressViewStyle: ProgressViewStyle {
 
 
 
-struct Test2View_Previews: PreviewProvider {
+struct ScrollFeedView_Previews: PreviewProvider {
     static var previews: some View {
-        Test2View()
+        ScrollFeedView(AtbFeed())
     }
 }

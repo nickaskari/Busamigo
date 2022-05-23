@@ -81,3 +81,34 @@ struct Marker: Identifiable {
     let id = UUID()
     var location: MapMarker
 }
+
+struct FlatLinkStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+    }
+}
+
+
+struct RefreshOnAppearModifier<Tag: Hashable>: ViewModifier {
+    @State private var viewId = UUID()
+    @Binding var selection: Tag?
+    
+    func body(content: Content) -> some View {
+        content
+            .id(viewId)
+            .onAppear {
+                if selection != nil {
+                    viewId = UUID()
+                    selection = nil
+                }
+            }
+    }
+}
+
+struct PinkProgressViewStyle: ProgressViewStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        ProgressView(configuration)
+            .tint(.pink)
+    }
+}
+

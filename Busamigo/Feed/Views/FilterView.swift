@@ -54,7 +54,6 @@ struct FilterView: View {
                 }
             }
             .background(.ultraThinMaterial)
-            .padding(.bottom, 5)
             .aspectRatio(8, contentMode: .fit)
             .onChange(of: scenePhase) { newPhase in
                     if newPhase == .active {

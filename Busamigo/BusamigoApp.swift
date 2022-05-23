@@ -13,10 +13,8 @@ struct BusamigoApp: App {
     
     var body: some Scene {
         WindowGroup {
-            //BusamigoView()
+            BusamigoView()
             //ListFeedView()
-            Test2View()
-                .preferredColorScheme(.light)
         }
     }
 }

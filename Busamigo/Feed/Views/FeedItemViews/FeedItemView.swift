@@ -38,7 +38,7 @@ struct FeedItemView: View {
                     .background(Capsule(style: .circular)
                                     .foregroundColor(.black))
                     .padding()
-                VStack(alignment: .leading) {
+                LazyVStack(alignment: .leading) {
                     ForEach(sightingDict.sorted{return $0.value > $1.value},  id: \.key) { info, textOpacity in
                         Text(info)
                             .font(.title3)

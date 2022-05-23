@@ -90,4 +90,16 @@ class AtbFeed: ObservableObject {
     func refreshFeed() {
         atbFeed.refreshFeed()
     }
+    
+    func isShowingBar() -> Bool {
+        return atbFeed.isShowingbar
+    }
+    
+    func hideBar() {
+        return atbFeed.hideBar()
+    }
+    
+    func showBar() {
+        return atbFeed.showBar()
+    }
 }

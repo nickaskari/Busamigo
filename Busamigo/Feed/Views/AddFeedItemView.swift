@@ -71,7 +71,7 @@ struct AddFeedItemView: View {
                             .padding(.horizontal, 30)
                         }
                         
-                        VStack {
+                        LazyVStack {
                             Text("Din observasjon..")
                                 .font(.headline)
                             FeedItemView(rating: 0, sighting: "Buss 3;jallastop;16:45", vehicle: "bus")

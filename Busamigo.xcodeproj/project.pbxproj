@@ -11,7 +11,7 @@
 		B72987C127BB00CE006A3B17 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72987C027BB00CE006A3B17 /* LocationManager.swift */; };
 		B72987D627BE94AC006A3B17 /* AtbFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72987D527BE94AB006A3B17 /* AtbFeed.swift */; };
 		B72987DA27BECAAB006A3B17 /* AddFeedItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72987D927BECAAB006A3B17 /* AddFeedItemView.swift */; };
-		B72987DE27BFC610006A3B17 /* Test2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72987DD27BFC610006A3B17 /* Test2View.swift */; };
+		B72987DE27BFC610006A3B17 /* ScrollFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72987DD27BFC610006A3B17 /* ScrollFeedView.swift */; };
 		B72987E027BFD716006A3B17 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72987DF27BFD716006A3B17 /* Extensions.swift */; };
 		B72987E227BFD756006A3B17 /* UtilityViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72987E127BFD756006A3B17 /* UtilityViews.swift */; };
 		B7536E2327B5B32500C5AB50 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7536E2227B5B32500C5AB50 /* MapView.swift */; };
@@ -54,7 +54,7 @@
 		B72987D427BE8E6D006A3B17 /* Testing.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Testing.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		B72987D527BE94AB006A3B17 /* AtbFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtbFeed.swift; sourceTree = "<group>"; };
 		B72987D927BECAAB006A3B17 /* AddFeedItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFeedItemView.swift; sourceTree = "<group>"; };
-		B72987DD27BFC610006A3B17 /* Test2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test2View.swift; sourceTree = "<group>"; };
+		B72987DD27BFC610006A3B17 /* ScrollFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollFeedView.swift; sourceTree = "<group>"; };
 		B72987DF27BFD716006A3B17 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		B72987E127BFD756006A3B17 /* UtilityViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityViews.swift; sourceTree = "<group>"; };
 		B7536E2227B5B32500C5AB50 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -113,6 +113,13 @@
 			path = SearchViews;
 			sourceTree = "<group>";
 		};
+		B728D9D92810BBEB000D8DC7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B72987C227BB01A4006A3B17 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -121,7 +128,6 @@
 				B72987E127BFD756006A3B17 /* UtilityViews.swift */,
 				B797F5262802135500CC2054 /* UtilityFunctions.swift */,
 				B72987DF27BFD716006A3B17 /* Extensions.swift */,
-				B72987D427BE8E6D006A3B17 /* Testing.playground */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -147,9 +153,8 @@
 			isa = PBXGroup;
 			children = (
 				B7536E2C27B94DED00C5AB50 /* ListFeedView.swift */,
-				B72987DD27BFC610006A3B17 /* Test2View.swift */,
 				B797F5282805B3AF00CC2054 /* Usefull stuff.rtf */,
-				B7F70FD6280B787200F8A71D /* ActivityIndicatorView.swift */,
+				B72987D427BE8E6D006A3B17 /* Testing.playground */,
 			);
 			path = TestViews;
 			sourceTree = "<group>";
@@ -171,6 +176,8 @@
 				B70A762927EFDFDD00CE63D6 /* SearchViews */,
 				B76A612927B55F34003D680E /* FeedItemViews */,
 				B7BF2C8727B433A7006B840E /* FeedView.swift */,
+				B72987DD27BFC610006A3B17 /* ScrollFeedView.swift */,
+				B7F70FD6280B787200F8A71D /* ActivityIndicatorView.swift */,
 				B72987D927BECAAB006A3B17 /* AddFeedItemView.swift */,
 				B70A762727EFB9A300CE63D6 /* AddBarView.swift */,
 				B7536E2E27B9752200C5AB50 /* AppBarView.swift */,
@@ -234,6 +241,7 @@
 			children = (
 				B7BF2C7627B422D2006B840E /* Busamigo */,
 				B7BF2C7527B422D2006B840E /* Products */,
+				B728D9D92810BBEB000D8DC7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -355,7 +363,7 @@
 				B75B147B28075BE500D9F74B /* LocationErrors.swift in Sources */,
 				B72987D627BE94AC006A3B17 /* AtbFeed.swift in Sources */,
 				B7F70FD7280B787200F8A71D /* ActivityIndicatorView.swift in Sources */,
-				B72987DE27BFC610006A3B17 /* Test2View.swift in Sources */,
+				B72987DE27BFC610006A3B17 /* ScrollFeedView.swift in Sources */,
 				B76A612827B55720003D680E /* FeedItemView.swift in Sources */,
 				B7536E2D27B94DED00C5AB50 /* ListFeedView.swift in Sources */,
 				B72987E027BFD716006A3B17 /* Extensions.swift in Sources */,
@@ -424,6 +432,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/**";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -485,6 +494,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/**";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -513,6 +523,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Busamigo/Preview Content\"";
 				DEVELOPMENT_TEAM = B4H6FWY3Z6;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/**";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Busamigo/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Denne appen trenger lokasjonen din for å finne de nærmeste holdplassene fra deg.";
@@ -546,6 +557,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Busamigo/Preview Content\"";
 				DEVELOPMENT_TEAM = B4H6FWY3Z6;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/**";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Busamigo/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Denne appen trenger lokasjonen din for å finne de nærmeste holdplassene fra deg.";
