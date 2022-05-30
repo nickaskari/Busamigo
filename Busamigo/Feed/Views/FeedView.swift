@@ -9,59 +9,64 @@ import SwiftUI
 import MapKit
 
 struct FeedView: View {
-    @ObservedObject var atbFeed: AtbFeed
+    @ObservedObject var feed: AtbFeed
     @ObservedObject var locationManager: LocationManager
+    @EnvironmentObject var popUpManager: PopUpManager
     
     private var scrollFeed: ScrollFeedView
     @State private var isPresented = false
     
     init(feed: AtbFeed, _ locationManager: LocationManager) {
-        self.atbFeed = feed
+        self.feed = feed
         self.locationManager = locationManager
         self.scrollFeed = ScrollFeedView(feed)
     }
-    
     
     var body: some View {
         NavigationView {
             ZStack(alignment: .bottom) {
                 VStack(spacing: 0) {
                     AppBarView()
-                    if atbFeed.isShowingBar() {
-                        FilterView(feed: atbFeed, locationManager)
+                    if feed.isShowingBar() {
+                        FilterView(feed: feed, locationManager)
                     }
                     Divider()
                         .background(.ultraThinMaterial)
                     ZStack(alignment: .top) {
-                        if atbFeed.isLocationError() {
-                            let err = atbFeed.getLocationError(locationManager.errors)
+                        if feed.isLocationError() {
+                            let err = feed.getLocationError(locationManager.errors)
                             LocationErrorView(error: err!)
                         } else {
                             scrollFeed
-                                .edgesIgnoringSafeArea(.top)
                         }
                     }
                 }
                 HStack {
                     Spacer()
-                    Button(action: {
-                        getTapticFeedBack(style: .medium)
-                        isPresented.toggle()
-                    }, label: {
-                        Image(systemName: "plus")
-                            .shadow(radius: 1)
-                            .padding()
-                            .foregroundColor(.white)
-                            .font(.system(size: 50))
-                            .background(Circle().foregroundColor(.pink))
-                            .padding()
-                            .shadow(radius: 5)
-                    })
-                    .buttonStyle(PoppingButtonStyle())
-                    .fullScreenCover(isPresented: $isPresented, content: AddFeedItemView.init)
+                    addButton
                 }
-            } //ZSTACK
+            }
         }
+    }
+    
+    var addButton: some View {
+        Button(action: {
+            getTapticFeedBack(style: .medium)
+            popUpManager.stopSearchIsActive = true
+            locationManager.checkIfLocationServicesIsEnabled()
+        }, label: {
+            Image(systemName: "plus")
+                .shadow(radius: 1)
+                .padding()
+                .foregroundColor(.white)
+                .font(.system(size: 50))
+                .background(Circle().foregroundColor(.pink))
+                .padding()
+                .shadow(radius: 5)
+        })
+        .buttonStyle(PoppingButtonStyle())
+        .fullScreenCover(isPresented: $popUpManager.stopSearchIsActive) {
+            StopSearchView(feed, locationManager) }
     }
 }
 

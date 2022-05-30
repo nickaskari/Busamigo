@@ -14,6 +14,10 @@
 		B72987DE27BFC610006A3B17 /* ScrollFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72987DD27BFC610006A3B17 /* ScrollFeedView.swift */; };
 		B72987E027BFD716006A3B17 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72987DF27BFD716006A3B17 /* Extensions.swift */; };
 		B72987E227BFD756006A3B17 /* UtilityViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72987E127BFD756006A3B17 /* UtilityViews.swift */; };
+		B72BDA22283C591D00DC3F26 /* UporDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72BDA21283C591D00DC3F26 /* UporDownView.swift */; };
+		B72BDA30283EFE6600DC3F26 /* LocationUtilites.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72BDA2F283EFE6600DC3F26 /* LocationUtilites.swift */; };
+		B72BDA322840267500DC3F26 /* PostingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72BDA312840267400DC3F26 /* PostingManager.swift */; };
+		B74942E6284138CD00ECDEE3 /* PopUpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74942E5284138CD00ECDEE3 /* PopUpManager.swift */; };
 		B7536E2327B5B32500C5AB50 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7536E2227B5B32500C5AB50 /* MapView.swift */; };
 		B7536E2B27B9336600C5AB50 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7536E2A27B9336600C5AB50 /* FilterView.swift */; };
 		B7536E2D27B94DED00C5AB50 /* ListFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7536E2C27B94DED00C5AB50 /* ListFeedView.swift */; };
@@ -44,7 +48,6 @@
 		B7BF2C8827B433A7006B840E /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BF2C8727B433A7006B840E /* FeedView.swift */; };
 		B7BF2C8A27B44822006B840E /* OptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BF2C8927B44822006B840E /* OptionsView.swift */; };
 		B7BF2C8D27B46E6E006B840E /* BusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BF2C8C27B46E6E006B840E /* BusView.swift */; };
-		B7F70FD5280B0BE100F8A71D /* RefreshableScrollView in Frameworks */ = {isa = PBXBuildFile; productRef = B7F70FD4280B0BE100F8A71D /* RefreshableScrollView */; };
 		B7F70FD7280B787200F8A71D /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F70FD6280B787200F8A71D /* ActivityIndicatorView.swift */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +60,10 @@
 		B72987DD27BFC610006A3B17 /* ScrollFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollFeedView.swift; sourceTree = "<group>"; };
 		B72987DF27BFD716006A3B17 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		B72987E127BFD756006A3B17 /* UtilityViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityViews.swift; sourceTree = "<group>"; };
+		B72BDA21283C591D00DC3F26 /* UporDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UporDownView.swift; sourceTree = "<group>"; };
+		B72BDA2F283EFE6600DC3F26 /* LocationUtilites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationUtilites.swift; sourceTree = "<group>"; };
+		B72BDA312840267400DC3F26 /* PostingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingManager.swift; sourceTree = "<group>"; };
+		B74942E5284138CD00ECDEE3 /* PopUpManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpManager.swift; sourceTree = "<group>"; };
 		B7536E2227B5B32500C5AB50 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		B7536E2A27B9336600C5AB50 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		B7536E2C27B94DED00C5AB50 /* ListFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFeedView.swift; sourceTree = "<group>"; };
@@ -96,7 +103,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B7F70FD5280B0BE100F8A71D /* RefreshableScrollView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,8 +113,6 @@
 			isa = PBXGroup;
 			children = (
 				B7536E3227B98EB300C5AB50 /* FeedSearchView.swift */,
-				B7B88F5327EFE080008F2BF3 /* RouteSearchView.swift */,
-				B7B88F5527EFE0A7008F2BF3 /* StopSearchView.swift */,
 			);
 			path = SearchViews;
 			sourceTree = "<group>";
@@ -132,12 +136,12 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
-		B72987CE27BC6DE4006A3B17 /* Datasets */ = {
+		B72987CE27BC6DE4006A3B17 /* TransportData */ = {
 			isa = PBXGroup;
 			children = (
 				B72987CF27BC6E41006A3B17 /* TrondheimAtb */,
 			);
-			path = Datasets;
+			path = TransportData;
 			sourceTree = "<group>";
 		};
 		B72987CF27BC6E41006A3B17 /* TrondheimAtb */ = {
@@ -152,11 +156,24 @@
 		B72987DB27BFC5D1006A3B17 /* TestViews */ = {
 			isa = PBXGroup;
 			children = (
+				B76A612527B55328003D680E /* TramView.swift */,
+				B7BF2C8C27B46E6E006B840E /* BusView.swift */,
 				B7536E2C27B94DED00C5AB50 /* ListFeedView.swift */,
+				B70A762727EFB9A300CE63D6 /* AddBarView.swift */,
 				B797F5282805B3AF00CC2054 /* Usefull stuff.rtf */,
 				B72987D427BE8E6D006A3B17 /* Testing.playground */,
 			);
 			path = TestViews;
+			sourceTree = "<group>";
+		};
+		B72BDA2E283DA41100DC3F26 /* AddingViews */ = {
+			isa = PBXGroup;
+			children = (
+				B72987D927BECAAB006A3B17 /* AddFeedItemView.swift */,
+				B7B88F5527EFE0A7008F2BF3 /* StopSearchView.swift */,
+				B7B88F5327EFE080008F2BF3 /* RouteSearchView.swift */,
+			);
+			path = AddingViews;
 			sourceTree = "<group>";
 		};
 		B7536E2627B6B16B00C5AB50 /* Feed */ = {
@@ -173,13 +190,12 @@
 			isa = PBXGroup;
 			children = (
 				B72987DB27BFC5D1006A3B17 /* TestViews */,
-				B70A762927EFDFDD00CE63D6 /* SearchViews */,
 				B76A612927B55F34003D680E /* FeedItemViews */,
+				B72BDA2E283DA41100DC3F26 /* AddingViews */,
+				B70A762927EFDFDD00CE63D6 /* SearchViews */,
 				B7BF2C8727B433A7006B840E /* FeedView.swift */,
 				B72987DD27BFC610006A3B17 /* ScrollFeedView.swift */,
 				B7F70FD6280B787200F8A71D /* ActivityIndicatorView.swift */,
-				B72987D927BECAAB006A3B17 /* AddFeedItemView.swift */,
-				B70A762727EFB9A300CE63D6 /* AddBarView.swift */,
 				B7536E2E27B9752200C5AB50 /* AppBarView.swift */,
 				B7536E2A27B9336600C5AB50 /* FilterView.swift */,
 				B7B88F5727F1C8D9008F2BF3 /* DetailView.swift */,
@@ -209,6 +225,9 @@
 			children = (
 				B72987D527BE94AB006A3B17 /* AtbFeed.swift */,
 				B72987C027BB00CE006A3B17 /* LocationManager.swift */,
+				B72BDA2F283EFE6600DC3F26 /* LocationUtilites.swift */,
+				B72BDA312840267400DC3F26 /* PostingManager.swift */,
+				B74942E5284138CD00ECDEE3 /* PopUpManager.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -216,11 +235,11 @@
 		B7536E3727B99F7C00C5AB50 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				B7536E3827B9A0E500C5AB50 /* FeedItem.swift */,
 				B7536E3A27B9A0FD00C5AB50 /* Feed.swift */,
+				B7536E3827B9A0E500C5AB50 /* FeedItem.swift */,
 				B7536E3E27B9A6D700C5AB50 /* User.swift */,
-				B7966C8927F4DFA700447352 /* FileManager.swift */,
 				B797F5242801BF9E00CC2054 /* Filters.swift */,
+				B7966C8927F4DFA700447352 /* FileManager.swift */,
 				B75B147A28075BE500D9F74B /* LocationErrors.swift */,
 			);
 			path = Models;
@@ -230,8 +249,7 @@
 			isa = PBXGroup;
 			children = (
 				B76A612727B55720003D680E /* FeedItemView.swift */,
-				B7BF2C8C27B46E6E006B840E /* BusView.swift */,
-				B76A612527B55328003D680E /* TramView.swift */,
+				B72BDA21283C591D00DC3F26 /* UporDownView.swift */,
 			);
 			path = FeedItemViews;
 			sourceTree = "<group>";
@@ -256,8 +274,8 @@
 		B7BF2C7627B422D2006B840E /* Busamigo */ = {
 			isa = PBXGroup;
 			children = (
-				B72987CE27BC6DE4006A3B17 /* Datasets */,
 				B72987C227BB01A4006A3B17 /* Utilities */,
+				B72987CE27BC6DE4006A3B17 /* TransportData */,
 				B7536E2927B6B1F100C5AB50 /* Map */,
 				B7536E2827B6B1E100C5AB50 /* Options */,
 				B7536E2627B6B16B00C5AB50 /* Feed */,
@@ -294,7 +312,6 @@
 			);
 			name = Busamigo;
 			packageProductDependencies = (
-				B7F70FD4280B0BE100F8A71D /* RefreshableScrollView */,
 			);
 			productName = Busamigo;
 			productReference = B7BF2C7427B422D2006B840E /* Busamigo.app */;
@@ -325,7 +342,6 @@
 			);
 			mainGroup = B7BF2C6B27B422D2006B840E;
 			packageReferences = (
-				B7F70FD3280B0BE100F8A71D /* XCRemoteSwiftPackageReference "RefreshableScrollView" */,
 			);
 			productRefGroup = B7BF2C7527B422D2006B840E /* Products */;
 			projectDirPath = "";
@@ -373,10 +389,14 @@
 				B7536E3F27B9A6D700C5AB50 /* User.swift in Sources */,
 				B7BF2C8A27B44822006B840E /* OptionsView.swift in Sources */,
 				B7BF2C7A27B422D2006B840E /* BusamigoView.swift in Sources */,
+				B74942E6284138CD00ECDEE3 /* PopUpManager.swift in Sources */,
+				B72BDA30283EFE6600DC3F26 /* LocationUtilites.swift in Sources */,
+				B72BDA22283C591D00DC3F26 /* UporDownView.swift in Sources */,
 				B72987E227BFD756006A3B17 /* UtilityViews.swift in Sources */,
 				B797F5272802135500CC2054 /* UtilityFunctions.swift in Sources */,
 				B797F5252801BF9E00CC2054 /* Filters.swift in Sources */,
 				B7B88F5427EFE080008F2BF3 /* RouteSearchView.swift in Sources */,
+				B72BDA322840267500DC3F26 /* PostingManager.swift in Sources */,
 				B75B147D2807626500D9F74B /* LocationErrorView.swift in Sources */,
 				B7BF2C8827B433A7006B840E /* FeedView.swift in Sources */,
 				B7B88F5827F1C8D9008F2BF3 /* DetailView.swift in Sources */,
@@ -603,25 +623,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		B7F70FD3280B0BE100F8A71D /* XCRemoteSwiftPackageReference "RefreshableScrollView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/TariqAlmazyad/RefreshableScrollView";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		B7F70FD4280B0BE100F8A71D /* RefreshableScrollView */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B7F70FD3280B0BE100F8A71D /* XCRemoteSwiftPackageReference "RefreshableScrollView" */;
-			productName = RefreshableScrollView;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B7BF2C6C27B422D2006B840E /* Project object */;
 }

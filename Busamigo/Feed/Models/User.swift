@@ -7,20 +7,21 @@
 
 import Foundation
 import MapKit
+import SwiftUI
 
+//change with firbase. Use stored id
 struct User: Identifiable {
     
-    let id = UUID()
-    private(set) var haveVoted: Array<FeedItem>
-    private var votes: Int = 0
-    private(set) var location: CLLocationCoordinate2D?
-    //need better rating system, hot sort reddit
-    var credibility: Double {
-        return Double((votes/200) * 100)
-    }
+    let id: UUID
+    private var haveVoted: Array<FeedItem>
+    private (set) var votes: Int
+    private (set) var postes: Int
     
-    init() {
+    init(id: UUID) {
+        self.id = id
         self.haveVoted = []
+        self.votes = 0
+        self.postes = 0
     }
     
     mutating func canVote(item: FeedItem) -> Bool {
@@ -40,10 +41,26 @@ struct User: Identifiable {
         self.votes -= 1
     }
     
-    /*mutating func updateLocation() {
-        LocationManager().requestLocation()
-        self.location = LocationManager().location
-    }*/
+    mutating func post() {
+        self.postes += 1
+    }
+    
+    func computeKarisma() -> Double {
+        return Double((votes/200) * 100)
+    }
     
     //Implement refreshing??
 }
+
+func createNewUser() {
+    @AppStorage("userID") var userID: UUID?
+    
+    //check uuid from firebase
+    userID = UUID()
+}
+
+func getUser() -> UUID? {
+    @AppStorage("userID") var userID: UUID?
+    return userID
+}
+

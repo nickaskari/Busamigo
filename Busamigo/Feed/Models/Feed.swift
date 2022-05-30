@@ -12,7 +12,7 @@ import SwiftUI
 struct Feed {
     
     private(set) var visibleFeed: Array<FeedItem>
-    private var untouchedFeed: Array<FeedItem>
+    private (set) var untouchedFeed: Array<FeedItem>
     private(set) var isShowingbar: Bool = true
 
     init(_ inputFeed: Array<FeedItem>) {
@@ -57,7 +57,8 @@ struct Feed {
     }
     
     //database: firebase
-    mutating func addToFeed(_ feedItem: FeedItem, user: User) {
+    mutating func postToFeed(_ feedItem: FeedItem, _ userID: UUID) {
+        //user.post()
         self.untouchedFeed.append(feedItem)
         self.visibleFeed.append(feedItem)
     }
@@ -65,6 +66,8 @@ struct Feed {
     private mutating func reset() {
         visibleFeed = untouchedFeed
     }
+
+    //wtf bro, dårlig plassering
     
    mutating func hideBar() {
        self.isShowingbar = false

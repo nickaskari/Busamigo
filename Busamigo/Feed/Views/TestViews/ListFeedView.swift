@@ -30,7 +30,7 @@ struct ListFeedView: View {
                     }
                     FeedItemView(rating: item.voteScore, sighting: item.sightingInformation, vehicle: item.transportVehicle)
                 }
-                .listRowBackground(self.selected == item ? Color.red : Color.clear)
+                .listRowBackground(self.selected != nil ? Color.gray : Color.clear)
                 .listRowInsets(EdgeInsets())
                 .listRowSeparator(.hidden)
             }

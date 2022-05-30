@@ -11,9 +11,10 @@ import CoreLocationUI
 import ObjectiveC
 
 class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
-    var manager: CLLocationManager?
-    var lastKnownLocation: CLLocationCoordinate2D?
-    var errors: Dictionary<Int, String> = [1 : "", 2 : "", 3 : ""]
+    private var manager: CLLocationManager?
+    private(set) var lastKnownLocation: CLLocationCoordinate2D?
+    private(set) var errors: Dictionary<Int, String> = [1 : "", 2 : "", 3 : ""]
+    var unableToGetLocation: Bool = false
 
     
     func checkIfLocationServicesIsEnabled() {
@@ -26,6 +27,43 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
             if errors[1] != nil {
                 errors[1] = reason
             }
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        lastKnownLocation = locations.first?.coordinate
+    }
+    
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        checkLocationAuthorization()
+    }
+    
+    func displayLocationFilter(_ feed: AtbFeed) {
+        updateLocationError(feed)
+        
+        if !hasError(feed) {
+            if let loc = lastKnownLocation {
+                feed.activateFilter("Lokasjon", userLon: loc.longitude, userLat: loc.latitude)
+                unableToGetLocation = false
+            }
+            else {
+                unableToGetLocation = true
+            }
+        }
+    }
+    
+    private func hasError(_ feed: AtbFeed) -> Bool {
+        return feed.getLocationError(errors) != nil
+    }
+    
+    private func updateLocationError(_ feed: AtbFeed) {
+        checkIfLocationServicesIsEnabled()
+        
+        if hasError(feed) {
+            feed.alertLocationError()
+         
+        } else {
+            feed.disableLocationError()
         }
     }
 
@@ -58,14 +96,6 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
             flushErrors()
         }
         
-    }
-
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        lastKnownLocation = locations.first?.coordinate
-    }
-    
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        checkLocationAuthorization()
     }
     
     private func flushErrors() {

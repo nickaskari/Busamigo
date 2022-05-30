@@ -11,41 +11,44 @@ import CoreLocationUI
 
 
 struct FilterView: View {
-    @ObservedObject var atbFeed: AtbFeed
+    @ObservedObject var feed: AtbFeed
     @ObservedObject var locationManager: LocationManager
     @Environment(\.scenePhase) var scenePhase
     
     init(feed: AtbFeed, _ locationManager: LocationManager) {
-        self.atbFeed = feed
+        self.feed = feed
         self.locationManager = locationManager
+        locationManager.unableToGetLocation = false
     }
-    //automatically change the view when one has given access to the location
     
     var body: some View {
             ScrollView(.horizontal, showsIndicators: false) {
                 ScrollViewReader { value in
                     HStack(spacing: 0) {
-                        ForEach(atbFeed.getFilters(), id: \.description) { filter in
+                        ForEach(feed.getFilters(), id: \.description) { filter in
                             
                             Button(action: {
                                 withAnimation {
                                     value.scrollTo(filter)
                                 }
-                                getTapticFeedBack(style: .medium)
+                                getTapticFeedBack(style: .light)
                                 withAnimation(.linear(duration: 0.001)) {
                                     if filter == "Lokasjon" {
-                                        displayLocationFilter()
+                                        locationManager.displayLocationFilter(feed)
                                     } else {
-                                        atbFeed.disableLocationError()
-                                        atbFeed.activateFilter(filter, userLon: nil, userLat: nil)
+                                        feed.disableLocationError()
+                                        feed.activateFilter(filter, userLon: nil, userLat: nil)
                                     }
                                 }
                             }, label: {
-                                FilterBoxView(filter, isPressed: atbFeed.isFilterOn(filter))
+                                FilterBoxView(filter, isPressed: feed.isFilterOn(filter))
                             })
+                            .alert(isPresented: $locationManager.unableToGetLocation) {
+                                Alert(title: Text("Busamigo finner ikke posisjonen din!"), message: Text("Prøv igjen ved et senere tidspunkt."), dismissButton: .default(Text("Skjønner!")))
+                            }
                             .id(filter)
                             .onAppear {
-                                if atbFeed.isFilterOn(filter) {
+                                if feed.isFilterOn(filter) {
                                     value.scrollTo(filter)
                                 }
                             }
@@ -54,43 +57,17 @@ struct FilterView: View {
                 }
             }
             .background(.ultraThinMaterial)
-            .aspectRatio(8, contentMode: .fit)
+            .aspectRatio(9, contentMode: .fit)
             .onChange(of: scenePhase) { newPhase in
                     if newPhase == .active {
                         locationManager.checkIfLocationServicesIsEnabled()
-                        if atbFeed.isFilterOn("Lokasjon") {
+                        if feed.isFilterOn("Lokasjon") {
                             withAnimation(.easeInOut(duration: 0.2)) {
-                                displayLocationFilter()
+                                locationManager.displayLocationFilter(feed)
                             }
                         }
                     }
             }
-    }
-    
-    private func hasError() -> Bool {
-        return atbFeed.getLocationError(locationManager.errors) != nil
-    }
-    
-    private func updateLocationError() {
-        locationManager.checkIfLocationServicesIsEnabled()
-        
-        if hasError() {
-            atbFeed.alertLocationError()
-         
-        } else {
-            atbFeed.disableLocationError()
-        }
-    }
-    
-    private func displayLocationFilter() {
-        updateLocationError()
-        
-        if !hasError() {
-            if let loc = locationManager.lastKnownLocation {
-                atbFeed.activateFilter("Lokasjon", userLon: loc.longitude, userLat: loc.latitude)
-            }
-            //handle if last location couldnt be found
-        }
     }
 }
 
@@ -132,12 +109,11 @@ private struct FilterBoxView: View {
                 .background(RoundedRectangle(cornerRadius: 50)
                                 .foregroundColor(self.colorTheme)
                                 .opacity(buttonOpacity))
+                .padding(7)
                 .aspectRatio(2, contentMode: .fit)
-                .padding(5)
             Text("\(preferance)")
                 .foregroundColor(textColor)
                 .font(.subheadline)
-                .padding(15)
                 .scaledToFit()
         }
     }

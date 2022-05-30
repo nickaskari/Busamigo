@@ -23,7 +23,7 @@ func distance(lon1: CLLocationDegrees, lat1: CLLocationDegrees, lon2: CLLocation
     let c = 2 * asin(sqrt(a))
     
     // Radius of earth in kilometers. Use 3956 for miles
-    let r: Double = 6371
+    let r: Double = 6371000
           
     // calculate the result
     let result: Double = c * r
@@ -44,3 +44,27 @@ func createSightingDict(_ sighting: String) -> Dictionary<String, Double> {
     }
     return dict
 }
+
+func portraitOrientationLock() {
+    UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
+    AppDelegate.orientationLock = .portrait
+}
+
+func getTimeOfSighting() -> String {
+    let hours   = (Calendar.current.component(.hour, from: Date()))
+    let minutes = (Calendar.current.component(.minute, from: Date()))
+
+    if (hours >= 0 && hours < 10) && (minutes >= 0 && minutes < 10) {
+        return "0\(hours):0\(minutes)"
+    }
+    else if (hours >= 0 && hours < 10) || (minutes >= 0 && minutes < 10) {
+        if (hours >= 0 && hours < 10) {
+            return "0\(hours):\(minutes)"
+        } else {
+            return "\(hours):0\(minutes)"
+        }
+    } else {
+        return "\(hours):\(minutes)"
+    }
+}
+

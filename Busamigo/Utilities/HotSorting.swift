@@ -26,7 +26,7 @@ func hot(_ score: Int, _ date: Date) -> Double {
     }
     let seconds: Double = epoch_seconds(date) - 1134028003
     
-    let result: Double = sign * order + seconds / 45000
+    let result: Double = (sign * order) + (seconds / 45000)
     let deci: Double = pow(10, 7)
     
     return Double(round(deci * result) / deci)

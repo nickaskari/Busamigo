@@ -8,7 +8,6 @@
 import SwiftUI
 import MapKit
 
-
 struct BusamigoView: View {
     @ObservedObject var atbFeed: AtbFeed = AtbFeed()
     @ObservedObject var locationManager = LocationManager()
@@ -29,30 +28,19 @@ struct BusamigoView: View {
                     Label("Kart", systemImage: "map.fill")
                 }
         }
-            .accentColor(.pink)
-            .preferredColorScheme(.light)
-            .onAppear {
-                UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
-                AppDelegate.orientationLock = .portrait
+        .environmentObject(PopUpManager())
+        .accentColor(.pink)
+        .preferredColorScheme(.light)
+        .onAppear {
+            locationManager.checkIfLocationServicesIsEnabled()
+            portraitOrientationLock()
+            if getUser() == nil {
+                createNewUser()
             }
+        }
     }
     
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

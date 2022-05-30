@@ -34,17 +34,17 @@ struct ScrollFeedView: View {
                         progress
                     } else {
                         Image(systemName: progressArrow)
-                            .frame(width: 22, height: 22)
+                            .frame(width: 22, height: 10)
                             .position(x: UIScreen.screenWidth / 2, y: -8)
                     }
                     
                     ForEach(feed.getFeed()) { item in
                         NavigationLink(destination: {
-                            DetailView(description: item.sightingInformation, location: item.location)
+                            DetailView(description: item.description, location: item.location)
                         }, label: {
                             FeedItemView(rating: item.voteScore, sighting: item.sightingInformation, vehicle: item.transportVehicle)
                         })
-                        .buttonStyle(PushDownButtonStyle())
+                        .buttonStyle(NonHighlightingButtonStyle())
                     }
                 }
                 .overlay (
@@ -66,7 +66,7 @@ struct ScrollFeedView: View {
                                 didRefresh = false
                             }
                     
-                            if minY > 40 && !didRefresh && !activateRefresh {
+                            if minY > 60 && !didRefresh && !activateRefresh {
                                 withAnimation {
                                     hideProgress = false
                                 }
@@ -80,18 +80,19 @@ struct ScrollFeedView: View {
                                     withAnimation(.easeOut.speed(2)) {
                                         feed.hideBar()
                                     }
-                                    
                                     lastOffset = -offset
                                 }
                                 
                             }
                             
-                            if minY > offset && -minY < (lastOffset - durationOffset) &&
-                            (scrollHeight - -(minY)) >= 870 {
-                                withAnimation(.easeIn.speed(2)) {
-                                    feed.showBar()
+                            if minY > offset {
+                                if -minY < (lastOffset - durationOffset) &&
+                                        (scrollHeight - -(minY)) >= 870 {
+                                    withAnimation(.easeIn.speed(2)) {
+                                        feed.showBar()
+                                    }
+                                    lastOffset = -offset
                                 }
-                                lastOffset = -offset
                             }
                             
                             self.offset = minY
@@ -114,9 +115,9 @@ struct ScrollFeedView: View {
                 .padding()
                 .onChange(of: activateRefresh) { bool in
                     if activateRefresh {
-                        print("Just refreshed!")
+                        print("Refreshing")
                         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                            print("Ye")
+                            print("Done!")
                             activateRefresh = false
                         }
                     }

@@ -53,10 +53,24 @@ struct PushDownButtonStyle: ButtonStyle {
     }
 }
 
+struct NonHighlightingButtonStyle: ButtonStyle {
+    func makeBody(configuration: Self.Configuration) -> some View {
+        configuration.label
+            .scaleEffect(configuration.isPressed ? 1.0 : 1.0)
+    }
+}
+
 struct PoppingButtonStyle: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
             .scaleEffect(configuration.isPressed ? 1.05 : 1.0)
+    }
+}
+
+struct PoppingButtonStyle2: ButtonStyle {
+    func makeBody(configuration: Self.Configuration) -> some View {
+        configuration.label
+            .scaleEffect(configuration.isPressed ? 1.35 : 1.0)
     }
 }
 

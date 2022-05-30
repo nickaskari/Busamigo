@@ -11,40 +11,30 @@ import MapKit
 
 struct FeedItem: Identifiable, Hashable {
     
-    //Endre på conceptionDate, tror dette er en tid og ikke klokkeslett
-    
     let id = UUID()
     let conceptionDate: Date
     let transportVehicle: String
     private let sighting: String
     private(set) var voteScore: Int
-    private(set) var author: User
+    private(set) var author: UUID
     private(set) var sightingInformation: String = ""
     private(set) var location: CLLocationCoordinate2D
     private(set) var hotValue: Double
     private var timeOfSighting: String {
-        let hours   = (Calendar.current.component(.hour, from: Date()))
-        let minutes = (Calendar.current.component(.minute, from: Date()))
-  
-        if (hours >= 0 && hours < 10) && (minutes >= 0 && minutes < 10) {
-            return "0\(hours):0\(minutes)"
-        }
-        else if (hours >= 0 && hours < 10) || (minutes >= 0 && minutes < 10) {
-            if (hours >= 0 && hours < 10) {
-                return "0\(hours):\(minutes)"
-            } else {
-                return "\(hours):0\(minutes)"
-            }
-        } else {
-            return "\(hours):\(minutes)"
-        }
+        getTimeOfSighting()
     }
+    private (set) var description: String = ""
     
     //Location as a computed value?
     //have route and stop as separate variables
-    init(route: String, stop: String, transportVehicle: String, author: User, location: CLLocationCoordinate2D, _ voteScore: Int) {
+    init(route: String?, stop: String, transportVehicle: String, author: UUID, location: CLLocationCoordinate2D, _ voteScore: Int) {
         
-        self.sighting = "\(route)" + ";" + "\(stop)"
+        if route != nil {
+            self.sighting = "\(route ?? "")" + ";" + "\(stop)"
+        } else {
+            self.sighting = "\(stop)"
+        }
+        
         self.transportVehicle = transportVehicle
         self.author = author
         
@@ -59,7 +49,11 @@ struct FeedItem: Identifiable, Hashable {
         self.sightingInformation = "\(sighting)" + ";" + "\(timeOfSighting)"
     }
     
-    mutating func upVote(user: inout User) {
+    mutating func addDescription(_ description: String) {
+        self.description = description
+    }
+    
+    /*mutating func upVote(user: inout User) {
         if user.canVote(item: self) ==  true {
             voteScore += 1
             author.recieveUpVote()
@@ -73,7 +67,7 @@ struct FeedItem: Identifiable, Hashable {
             author.recieveDownVote()
             updateHotValue()
         }
-    }
+    }*/
     
     private mutating func updateHotValue() {
         self.hotValue = hot(voteScore, conceptionDate)

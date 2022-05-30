@@ -11,16 +11,16 @@ struct AddBarView: View {
     
     @Environment(\.presentationMode) var presentationMode
     
-    
     var body: some View {
         HStack(alignment: .center) {
             
             Button(action: {
                 presentationMode.wrappedValue.dismiss()
             }, label: {
-                Text("Avbryt")
+                Image(systemName: "chevron.left")
+                    .foregroundColor(.pink)
+                    .font(.system(size: 25))
                     .padding()
-                    .foregroundColor(.black)
             })
             
             
@@ -36,9 +36,9 @@ struct AddBarView: View {
             Spacer()
             
             Button(action: {
-                //addManager.show()
+                
             }, label: {
-                Text("Legg til")
+                Text("Del")
                     .padding()
             })
         }

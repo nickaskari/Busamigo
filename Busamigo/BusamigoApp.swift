@@ -14,7 +14,6 @@ struct BusamigoApp: App {
     var body: some Scene {
         WindowGroup {
             BusamigoView()
-            //ListFeedView()
         }
     }
 }
