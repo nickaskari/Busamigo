@@ -68,3 +68,25 @@ func getTimeOfSighting() -> String {
     }
 }
 
+//Returns time since now in a string format, and also a value for opacity. The more recent the date, the more opacity is attained.
+func getTimeFromNow(date: Date) -> (String, Double) {
+    let dif = round(abs(date.timeIntervalSinceNow))
+    
+    switch dif {
+    case 0..<60:
+        return ("nå", 1.0)
+    case 60..<1800:
+        let res = Int(dif) / 60
+        return ("\(res)" + " min siden", 1.0)
+    case 1800..<3600:
+        let res = Int(dif) / 60
+        return ("\(res)" + " min siden",  0.7)
+    case 3600..<7200:
+        let res = Int(dif) / 3600
+        return ("\(res)" + " time siden", 0.4)
+    default:
+        let res = Int(dif) / 3600
+        return ("\(res)" + " timer siden", 0.4)
+    }
+}
+

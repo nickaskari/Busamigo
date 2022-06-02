@@ -8,6 +8,13 @@
 import SwiftUI
 
 struct AppBarView: View {
+    @ObservedObject var feed: AtbFeed
+    @ObservedObject var locationManager: LocationManager
+    
+    init(_ feed: AtbFeed, _ locationManager: LocationManager) {
+        self.feed = feed
+        self.locationManager = locationManager
+    }
     
     var body: some View {
         HStack(alignment: .center) {
@@ -39,7 +46,7 @@ struct AppBarView: View {
                 .opacity(0)
             
             NavigationLink(destination: {
-                FeedSearchView()
+                FeedSearchView(feed, locationManager)
             }, label: {
                 Image(systemName: "magnifyingglass")
                     .accentColor(.black)
@@ -58,6 +65,6 @@ struct AppBarView: View {
 
 struct AppBarView_Previews: PreviewProvider {
     static var previews: some View {
-        AppBarView()
+        AppBarView(AtbFeed(), LocationManager())
     }
 }

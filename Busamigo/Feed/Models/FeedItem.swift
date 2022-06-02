@@ -14,7 +14,7 @@ struct FeedItem: Identifiable, Hashable {
     let id = UUID()
     let conceptionDate: Date
     let transportVehicle: String
-    private let sighting: String
+    private(set) var sightingForSearch: String
     private(set) var voteScore: Int
     private(set) var author: UUID
     private(set) var sightingInformation: String = ""
@@ -23,34 +23,30 @@ struct FeedItem: Identifiable, Hashable {
     private var timeOfSighting: String {
         getTimeOfSighting()
     }
-    private (set) var description: String = ""
+    private (set) var description: String
+    private(set) var routeInfo: (Int, String)?
     
-    //Location as a computed value?
     //have route and stop as separate variables
-    init(route: String?, stop: String, transportVehicle: String, author: UUID, location: CLLocationCoordinate2D, _ voteScore: Int) {
+    init(route: (Int, String)?, stop: String, transportVehicle: String, author: UUID, location: CLLocationCoordinate2D, _ voteScore: Int, description: String) {
         
         if route != nil {
-            self.sighting = "\(route ?? "")" + ";" + "\(stop)"
+            self.routeInfo = route
+            self.sightingForSearch = "\(route?.1 ?? "")" + ";" + "\(stop)"
         } else {
-            self.sighting = "\(stop)"
+            self.routeInfo = nil
+            self.sightingForSearch = "\(stop)"
         }
         
         self.transportVehicle = transportVehicle
         self.author = author
-        
-        //for testing
         self.voteScore = voteScore
-        
         self.location = location
+        self.description = description
         
         let now = Date()
         self.conceptionDate = now
         self.hotValue = hot(voteScore, now)
-        self.sightingInformation = "\(sighting)" + ";" + "\(timeOfSighting)"
-    }
-    
-    mutating func addDescription(_ description: String) {
-        self.description = description
+        self.sightingInformation = "\(sightingForSearch)" + ";" + "\(timeOfSighting)"
     }
     
     /*mutating func upVote(user: inout User) {

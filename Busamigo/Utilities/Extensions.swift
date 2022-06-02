@@ -27,12 +27,6 @@ extension CLLocationCoordinate2D: Identifiable {
     }
 }
 
-extension View {
-    func refreshOnAppear<Tag: Hashable>(selection: Binding<Tag?>? = nil) -> some View {
-        modifier(RefreshOnAppearModifier(selection: selection ?? .constant(nil)))
-    }
-}
-
 extension UIScreen{
    static let screenWidth = UIScreen.main.bounds.size.width
    static let screenHeight = UIScreen.main.bounds.size.height

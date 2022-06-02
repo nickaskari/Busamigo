@@ -9,13 +9,14 @@ import SwiftUI
 import Combine
 
 struct AddFeedItemView: View {
+    @ObservedObject private var feed: AtbFeed
+    @ObservedObject private var locationManager: LocationManager
+    @ObservedObject private var postingManager: PostingManager
+    @Environment(\.presentationMode) private var presentationMode
+    @EnvironmentObject private var popUpManager: PopUpManager
+    
     @State private var description: String = ""
     @State private var placeholder: String = "Skriv en beskrivelse ..."
-    @ObservedObject var feed: AtbFeed
-    @ObservedObject var locationManager: LocationManager
-    @ObservedObject var postingManager: PostingManager
-    @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var popUpManager: PopUpManager
     let textLimit = 80
     
     init(_ feed: AtbFeed, _ locationManager: LocationManager, _ postingManager: PostingManager) {
@@ -85,8 +86,7 @@ struct AddFeedItemView: View {
             
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button (action: {
-                    postingManager.setFeedItem()
-                    postingManager.addDescription(description)
+                    postingManager.setFeedItem(description: description)
                     feed.postToFeed(postingManager.getFeedItem()!, getUser()!)
                     popUpManager.returnTofeed()
                 }, label: {

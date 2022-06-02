@@ -23,14 +23,15 @@ struct BusamigoView: View {
                 .tabItem {
                     Label("Staistikk", systemImage: "list.number")
                 }
-            MapView(feed: atbFeed)
+            MapView(feed: atbFeed, locationManager)
                 .tabItem {
                     Label("Kart", systemImage: "map.fill")
                 }
+                .accentColor(.blue)
         }
         .environmentObject(PopUpManager())
-        .accentColor(.pink)
         .preferredColorScheme(.light)
+        .accentColor(.pink)
         .onAppear {
             locationManager.checkIfLocationServicesIsEnabled()
             portraitOrientationLock()

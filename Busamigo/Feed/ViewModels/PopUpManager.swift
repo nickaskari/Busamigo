@@ -9,14 +9,8 @@ import Foundation
 
 class PopUpManager: ObservableObject {
     @Published var stopSearchIsActive = false
-    @Published var routeSearchIsActive = false
-    @Published var skipToAddIsActive = false
-    @Published var addFeedItemIsActive = false
 
     func returnTofeed() {
         stopSearchIsActive = false
-        routeSearchIsActive = false
-        addFeedItemIsActive = false
-        skipToAddIsActive = false
     }
 }

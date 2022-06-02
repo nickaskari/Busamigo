@@ -60,7 +60,6 @@ struct FilterView: View {
             .aspectRatio(9, contentMode: .fit)
             .onChange(of: scenePhase) { newPhase in
                     if newPhase == .active {
-                        locationManager.checkIfLocationServicesIsEnabled()
                         if feed.isFilterOn("Lokasjon") {
                             withAnimation(.easeInOut(duration: 0.2)) {
                                 locationManager.displayLocationFilter(feed)

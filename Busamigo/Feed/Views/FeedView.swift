@@ -19,14 +19,14 @@ struct FeedView: View {
     init(feed: AtbFeed, _ locationManager: LocationManager) {
         self.feed = feed
         self.locationManager = locationManager
-        self.scrollFeed = ScrollFeedView(feed)
+        self.scrollFeed = ScrollFeedView(feed, locationManager)
     }
     
     var body: some View {
         NavigationView {
             ZStack(alignment: .bottom) {
                 VStack(spacing: 0) {
-                    AppBarView()
+                    AppBarView(feed, locationManager)
                     if feed.isShowingBar() {
                         FilterView(feed: feed, locationManager)
                     }
@@ -44,6 +44,7 @@ struct FeedView: View {
                 HStack {
                     Spacer()
                     addButton
+                    Spacer()
                 }
             }
         }
@@ -51,18 +52,22 @@ struct FeedView: View {
     
     var addButton: some View {
         Button(action: {
-            getTapticFeedBack(style: .medium)
-            popUpManager.stopSearchIsActive = true
+            withAnimation {
+                getTapticFeedBack(style: .medium)
+                popUpManager.stopSearchIsActive = true
+            }
             locationManager.checkIfLocationServicesIsEnabled()
         }, label: {
             Image(systemName: "plus")
-                .shadow(radius: 1)
+                .shadow(radius: 2)
                 .padding()
                 .foregroundColor(.white)
                 .font(.system(size: 50))
-                .background(Circle().foregroundColor(.pink))
+                .background(Circle()
+                    .strokeBorder(.pink, lineWidth: 5)
+                    .opacity(0.7))
                 .padding()
-                .shadow(radius: 5)
+                .shadow(radius: 6)
         })
         .buttonStyle(PoppingButtonStyle())
         .fullScreenCover(isPresented: $popUpManager.stopSearchIsActive) {

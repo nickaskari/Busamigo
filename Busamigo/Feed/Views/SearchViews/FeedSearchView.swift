@@ -8,17 +8,39 @@
 import SwiftUI
 
 struct FeedSearchView: View {
+    @ObservedObject var feed: AtbFeed
+    @ObservedObject var locationManager: LocationManager
     @State private var searchText = ""
     
+    init (_ feed: AtbFeed, _ locationManager: LocationManager) {
+        self.feed = feed
+        self.locationManager = locationManager
+    }
+    
     var body: some View {
-        Text("Searching for \(searchText)")
-                .searchable(text: $searchText, prompt: "Søk buss/trikk eller holdeplasser")
-                .navigationBarTitle("Custom feed")
+        ListFeedView(filteredFeed, locationManager)
+            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Søk buss/trikk eller holdeplasser")
+            .navigationBarTitle("Søk i feeden", displayMode: .inline)
+    }
+    
+    private var filteredFeed: [FeedItem] {
+        if searchText.isEmpty {
+            return []
+        } else {
+            return feed.getVisibleFeed().filter { $0.sightingForSearch.localizedStandardContains(searchText)}
+        }
     }
 }
 
+
+
+
+
+
+
+
 struct FeedSearchView_Previews: PreviewProvider {
     static var previews: some View {
-        FeedSearchView()
+        FeedSearchView(AtbFeed(), LocationManager())
     }
 }

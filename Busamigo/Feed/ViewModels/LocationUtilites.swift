@@ -9,7 +9,7 @@ import Foundation
 import MapKit
 
 class LocationUtilites: ObservableObject {
-    @Published private var sorter = LocationSorter()
+    private var sorter = LocationSorter()
     
     func locationSort(_ loc: CLLocationCoordinate2D, _ dict: Dictionary<String, CLLocationCoordinate2D>) {
         self.sorter.locationSort(loc, dict)

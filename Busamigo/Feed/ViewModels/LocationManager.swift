@@ -15,8 +15,9 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
     private(set) var lastKnownLocation: CLLocationCoordinate2D?
     private(set) var errors: Dictionary<Int, String> = [1 : "", 2 : "", 3 : ""]
     var unableToGetLocation: Bool = false
-
     
+    var showUserLocation = false
+
     func checkIfLocationServicesIsEnabled() {
         if CLLocationManager.locationServicesEnabled() {
             manager = CLLocationManager()
@@ -38,10 +39,14 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
         checkLocationAuthorization()
     }
     
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        checkLocationAuthorization()
+    }
+    
     func displayLocationFilter(_ feed: AtbFeed) {
         updateLocationError(feed)
         
-        if !hasError(feed) {
+        if !hasAuthErrors(feed) {
             if let loc = lastKnownLocation {
                 feed.activateFilter("Lokasjon", userLon: loc.longitude, userLat: loc.latitude)
                 unableToGetLocation = false
@@ -52,14 +57,18 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
         }
     }
     
-    private func hasError(_ feed: AtbFeed) -> Bool {
+    func hasAnyErrors(_ feed: AtbFeed) -> Bool {
+        return unableToGetLocation || hasAuthErrors(feed)
+    }
+    
+    func hasAuthErrors(_ feed: AtbFeed) -> Bool {
         return feed.getLocationError(errors) != nil
     }
     
     private func updateLocationError(_ feed: AtbFeed) {
         checkIfLocationServicesIsEnabled()
         
-        if hasError(feed) {
+        if hasAuthErrors(feed) {
             feed.alertLocationError()
          
         } else {
@@ -84,16 +93,20 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
             if errors[3] != nil {
                 errors[3] = reason
             }
+            showUserLocation = false
         case .denied:
             let reason = "Du har ikke gitt Busamigo tilatelse til å bruke din lokasjon. For å fikse dette dra til Innstillinger -> Busamigo -> Sted."
             if errors[2] != nil {
                 errors[2] = reason
             }
+            showUserLocation = false
         case .authorizedAlways, .authorizedWhenInUse:
             updateLocation()
             flushErrors()
+            showUserLocation = true
         @unknown default:
             flushErrors()
+            showUserLocation = true
         }
         
     }

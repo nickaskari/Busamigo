@@ -12,6 +12,7 @@ import Foundation
 
 struct ScrollFeedView: View {
     @ObservedObject private(set) var feed: AtbFeed
+    @ObservedObject private var locationManager: LocationManager
     
     @State private var offset: CGFloat = 0
     @State private var lastOffset: CGFloat = 0
@@ -21,8 +22,9 @@ struct ScrollFeedView: View {
     @State private var progressArrow: String
     
     
-    init(_ feed: AtbFeed) {
+    init(_ feed: AtbFeed, _ locationManager: LocationManager) {
         self.feed = feed
+        self.locationManager = locationManager
         self.progressArrow = "arrow.down"
     }
 
@@ -38,9 +40,9 @@ struct ScrollFeedView: View {
                             .position(x: UIScreen.screenWidth / 2, y: -8)
                     }
                     
-                    ForEach(feed.getFeed()) { item in
+                    ForEach(feed.getVisibleFeed()) { item in
                         NavigationLink(destination: {
-                            DetailView(description: item.description, location: item.location)
+                            DetailView(feedItem: item, locationManager: locationManager)
                         }, label: {
                             FeedItemView(rating: item.voteScore, sighting: item.sightingInformation, vehicle: item.transportVehicle)
                         })
@@ -50,9 +52,9 @@ struct ScrollFeedView: View {
                 .overlay (
                     GeometryReader { proxy -> Color in
                         let minY = proxy.frame(in: .named("SCROLL")).minY
-                        let scrollHeight = proxy.frame(in: .named("SCROLL")).height
+                        //let scrollHeight = proxy.frame(in: .named("SCROLL")).height
                         
-                        let durationOffset: CGFloat = 10
+                        //let durationOffset: CGFloat = 10
                         
                         DispatchQueue.main.async {
                             
@@ -75,7 +77,7 @@ struct ScrollFeedView: View {
                                 didRefresh = true
                             }
                             
-                            if minY < offset {
+                           /* if minY < offset {
                                 if offset < 0 && -minY > (lastOffset + durationOffset) && (scrollHeight >= 1000) {
                                     withAnimation(.easeOut.speed(2)) {
                                         feed.hideBar()
@@ -95,7 +97,7 @@ struct ScrollFeedView: View {
                                 }
                             }
                             
-                            self.offset = minY
+                            self.offset = minY*/
                         }
                         return Color.clear
                     }
@@ -135,6 +137,6 @@ struct ScrollFeedView: View {
 
 struct ScrollFeedView_Previews: PreviewProvider {
     static var previews: some View {
-        ScrollFeedView(AtbFeed())
+        ScrollFeedView(AtbFeed(), LocationManager())
     }
 }

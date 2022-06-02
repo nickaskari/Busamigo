@@ -19,33 +19,6 @@ struct RoundedCorner: Shape {
     }
 }
 
-struct ChildSizeReader<Content: View>: View {
-    @Binding var size: CGSize
-    let content: () -> Content
-    var body: some View {
-        ZStack {
-            content()
-                .background(
-                    GeometryReader { proxy in
-                        Color.clear
-                            .preference(key: SizePreferenceKey.self, value: proxy.size)
-                    }
-                )
-        }
-        .onPreferenceChange(SizePreferenceKey.self) { preferences in
-            self.size = preferences
-        }
-    }
-}
-
-struct NextScreenView: View {
-    let selectedModel: DetailView
-    
-    var body: some View {
-        selectedModel
-    }
-}
-
 struct PushDownButtonStyle: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
@@ -74,14 +47,13 @@ struct PoppingButtonStyle2: ButtonStyle {
     }
 }
 
-struct SizePreferenceKey: PreferenceKey {
-    typealias Value = CGSize
-    static var defaultValue: Value = .zero
-
-    static func reduce(value _: inout Value, nextValue: () -> Value) {
-        _ = nextValue()
+struct SpinningButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .rotationEffect(configuration.isPressed ? .degrees(360) : .degrees(0))
     }
 }
+
 
 struct ViewOffsetKey: PreferenceKey {
       typealias Value = CGFloat
@@ -99,23 +71,6 @@ struct Marker: Identifiable {
 struct FlatLinkStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-    }
-}
-
-
-struct RefreshOnAppearModifier<Tag: Hashable>: ViewModifier {
-    @State private var viewId = UUID()
-    @Binding var selection: Tag?
-    
-    func body(content: Content) -> some View {
-        content
-            .id(viewId)
-            .onAppear {
-                if selection != nil {
-                    viewId = UUID()
-                    selection = nil
-                }
-            }
     }
 }
 

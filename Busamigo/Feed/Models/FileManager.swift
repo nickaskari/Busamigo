@@ -52,3 +52,8 @@ struct FileManager {
         return result.sorted{ $0.key < $1.key }
     }
 }
+
+//Returns all routes assosiated with a stop
+func getRoutesAssociatedWithStops() {
+    //hmm
+}
