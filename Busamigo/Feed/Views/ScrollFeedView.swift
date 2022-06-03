@@ -11,8 +11,9 @@ import Foundation
 //TODO: fade out the refresher when going down
 
 struct ScrollFeedView: View {
-    @ObservedObject private(set) var feed: AtbFeed
+    @ObservedObject private var feed: AtbFeed
     @ObservedObject private var locationManager: LocationManager
+    @EnvironmentObject private var scrollManager: ScrollManager
     
     @State private var offset: CGFloat = 0
     @State private var lastOffset: CGFloat = 0
@@ -29,8 +30,8 @@ struct ScrollFeedView: View {
     }
 
     var body: some View {
-        ZStack(alignment: .top) {
-            ScrollView(.vertical, showsIndicators: true) {
+        ScrollView(.vertical, showsIndicators: true) {
+            ScrollViewReader { value in
                 LazyVStack(spacing: 0) {
                     if !hideProgress {
                         progress
@@ -44,11 +45,23 @@ struct ScrollFeedView: View {
                         NavigationLink(destination: {
                             DetailView(feedItem: item, locationManager: locationManager)
                         }, label: {
-                            FeedItemView(rating: item.voteScore, sighting: item.sightingInformation, vehicle: item.transportVehicle)
+                            FeedItemView(rating: item.voteScore, sighting: item.sightingInformation, routeNr: item.routeInfo?.0)
                         })
                         .buttonStyle(NonHighlightingButtonStyle())
+                        .id(feed.isFilterOn("Relevant") ? String(feed.getVisibleFeed().firstIndex(of: item)!) : item.id.uuidString)
                     }
                 }
+                /*.onReceive(scrollManager.$scrollToTop, perform: { scroll in
+                    if scrollManager.scrollToTop {
+                        print("kok")
+                        feed.activateFilter("Relevant",
+                                            userLon: nil,
+                                            userLat: nil)
+                        withAnimation {
+                            value.scrollTo("0")
+                        }
+                    }
+                })*/
                 .overlay (
                     GeometryReader { proxy -> Color in
                         let minY = proxy.frame(in: .named("SCROLL")).minY
@@ -103,11 +116,11 @@ struct ScrollFeedView: View {
                     }
                 )
             }
-            .edgesIgnoringSafeArea(.top)
-            .coordinateSpace(name: "SCROLL")
-            .navigationBarTitle("")
-            .navigationBarHidden(true)
         }
+        .edgesIgnoringSafeArea(.top)
+        .coordinateSpace(name: "SCROLL")
+        .navigationBarTitle("")
+        .navigationBarHidden(true)
     }
     
     var progress: some View {

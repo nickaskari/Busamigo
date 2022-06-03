@@ -41,6 +41,7 @@ struct StopSearchView: View {
                                         withAnimation {
                                             postingManager.setStop(stop, allStops[stop]!)
                                         }
+                                        postingManager.setRoute(nil)
                                     }
                                 }
                         }
@@ -52,6 +53,7 @@ struct StopSearchView: View {
                                     .contentShape(Rectangle())
                                     .onTapGesture {
                                         postingManager.setStop(stop, allStops[stop]!)
+                                        postingManager.setRoute(nil)
                                     }
                                     .listRowBackground(postingManager.getSelectedStop() == stop ? Color.gray.opacity(0.25) : Color.clear)
                             }

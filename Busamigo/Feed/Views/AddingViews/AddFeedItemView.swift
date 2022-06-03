@@ -17,6 +17,7 @@ struct AddFeedItemView: View {
     
     @State private var description: String = ""
     @State private var placeholder: String = "Skriv en beskrivelse ..."
+    @State private var dummy: String = ""
     let textLimit = 80
     
     init(_ feed: AtbFeed, _ locationManager: LocationManager, _ postingManager: PostingManager) {
@@ -37,9 +38,11 @@ struct AddFeedItemView: View {
                                 .foregroundColor(.gray)
                                 .disabled(true)
                         }
-                        TextEditor(text: $description)
-                            .onReceive(Just(description)) { _ in limitText(textLimit) }
+                        ZStack {
+                            TextEditor(text: $description)
+                                .onReceive(Just(description)) { _ in limitText(textLimit) }
                             .opacity(self.description.isEmpty ? 0.25 : 1)
+                        }
                     }
                     .frame(height: geometry.size.height * 0.08)
                     .padding(.top)

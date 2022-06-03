@@ -24,7 +24,7 @@ struct FeedItem: Identifiable, Hashable {
         getTimeOfSighting()
     }
     private (set) var description: String
-    private(set) var routeInfo: (Int, String)?
+    private(set) var routeInfo: (nr: Int, name: String)?
     
     //have route and stop as separate variables
     init(route: (Int, String)?, stop: String, transportVehicle: String, author: UUID, location: CLLocationCoordinate2D, _ voteScore: Int, description: String) {

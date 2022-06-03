@@ -11,11 +11,13 @@ import Foundation
 //Geralisering av FeedItem
 
 struct FeedItemView: View {
+    //TODO: TAKE IN FEED ITEM INSTEAD
+    
     let color: Color = Color(red: 0.12, green: 0.12, blue: 0.12)
     let opacity: Double = 1
     let rating: Int
     let sighting: String
-    let vehicle: String
+    let routeNr: Int?
     
     private var sightingDict: Dictionary<String, Double> {
         createSightingDict(sighting)
@@ -31,14 +33,19 @@ struct FeedItemView: View {
                 .aspectRatio(2.5, contentMode: .fit)
                 
             HStack {
-                Image(systemName: vehicle)
-                    .font(.system(size: 25))
-                    .foregroundColor(.pink)
-                    .padding(15)
-                    .background(Capsule(style: .circular)
-                                    .foregroundColor(.black))
-                    .padding()
-                LazyVStack(alignment: .leading) {
+                if let routeNr = routeNr {
+                    Text("\(routeNr)")
+                        .font(.largeTitle)
+                        .foregroundColor(.white)
+                        .frame(width: 95)
+                        .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0))
+                } else {
+                    Image(systemName: "figure.wave")
+                        .font(.system(size: 35))
+                        .foregroundColor(.white)
+                        .frame(width: 95)
+                }
+                VStack(alignment: .leading) {
                     ForEach(sightingDict.sorted{return $0.value > $1.value},  id: \.key) { info, textOpacity in
                         Text(info)
                             .font(.subheadline)
@@ -56,7 +63,11 @@ struct FeedItemView: View {
 }
 
 
-
+struct FeedItemView_Previews: PreviewProvider {
+    static var previews: some View {
+        FeedItemView(rating: 12, sighting: "Lohove mot sentrumdsdsddsdsdsdsdssddsdsdsds;Hallset;18:15", routeNr: 5626)
+    }
+}
 
 
 

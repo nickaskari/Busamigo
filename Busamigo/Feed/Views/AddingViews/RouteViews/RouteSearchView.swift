@@ -31,8 +31,8 @@ struct RouteSearchView: View {
                             RouteRowView(num: postingManager.getSelectedRoute()!.0, name: postingManager.getSelectedRoute()!.1, postingManager)
                         }
                 }
-                ForEach(filteredRoutes, id: \.key) { route in
-                    RouteRowView(num: route.key, name: route.value, postingManager)
+                ForEach(filteredRoutes, id: \.id) { route in
+                    RouteRowView(num: route.nr, name: route.name, postingManager)
                 }
             }
                 .navigationBarBackButtonHidden(true)
@@ -85,15 +85,15 @@ struct RouteSearchView: View {
         }
     }
     
-    var filteredRoutes: Array<(key: Int, value: String)> {
-        let routes = feed.routes
+    var filteredRoutes: Array<(id: String, nr: Int, name: String)> {
+        let routes = feed.routes[postingManager.getStopName()!]!
  
         if searchText.isEmpty {
             return []
         } else {
             return routes.filter {
-                String($0.key).localizedStandardContains(searchText) ||
-                $0.value.localizedStandardContains(searchText)
+                String($0.nr).localizedStandardContains(searchText) ||
+                $0.name.localizedStandardContains(searchText)
             }
         }
     }

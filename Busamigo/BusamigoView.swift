@@ -9,26 +9,26 @@ import SwiftUI
 import MapKit
 
 struct BusamigoView: View {
-    @ObservedObject var atbFeed: AtbFeed = AtbFeed()
-    @ObservedObject var locationManager = LocationManager()
+    @ObservedObject private var feed: AtbFeed = AtbFeed()
+    @ObservedObject private var locationManager = LocationManager()
+    @ObservedObject private var tabvm = TabViewModel()
   
     var body: some View {
-        
-        TabView {
-            FeedView(feed: self.atbFeed, locationManager)
-                .tabItem {
-                    Label("Feed", systemImage: "house")
-                }
-            OptionsView()
-                .tabItem {
-                    Label("Staistikk", systemImage: "list.number")
-                }
-            MapView(feed: atbFeed, locationManager)
-                .tabItem {
-                    Label("Kart", systemImage: "map.fill")
-                }
-                .accentColor(.blue)
+        VStack(spacing: -3.7) {
+            switch tabvm.currentPage {
+            case .feed:
+                FeedView(feed: feed, locationManager)
+            case .profile:
+                ProfileView()
+            case .map:
+                MapView(feed: feed, locationManager)
+            }
+            
+            Spacer()
+
+            BusamigoTabView(feed, tabvm)
         }
+        .ignoresSafeArea(.keyboard, edges: .bottom)
         .environmentObject(PopUpManager())
         .preferredColorScheme(.light)
         .accentColor(.pink)
@@ -40,7 +40,6 @@ struct BusamigoView: View {
             }
         }
     }
-    
 }
 
 

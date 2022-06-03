@@ -9,9 +9,9 @@ import SwiftUI
 import MapKit
 
 struct FeedView: View {
-    @ObservedObject var feed: AtbFeed
-    @ObservedObject var locationManager: LocationManager
-    @EnvironmentObject var popUpManager: PopUpManager
+    @ObservedObject private var feed: AtbFeed
+    @ObservedObject private var locationManager: LocationManager
+    @EnvironmentObject private var popUpManager: PopUpManager
     
     private var scrollFeed: ScrollFeedView
     @State private var isPresented = false
@@ -36,6 +36,8 @@ struct FeedView: View {
                         if feed.isLocationError() {
                             let err = feed.getLocationError(locationManager.errors)
                             LocationErrorView(error: err!)
+                        } else if feed.getVisibleFeed().isEmpty {
+                            EmptyFeedView()
                         } else {
                             scrollFeed
                         }

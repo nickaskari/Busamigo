@@ -22,7 +22,7 @@ struct UporDownView: View {
                     .font(.system(size: 30))
                     .foregroundColor(.mint)
             })
-            .buttonStyle(PoppingButtonStyle2())
+            .buttonStyle(PoppingButtonStyle3())
             
             Text("\(rating)")
                 .foregroundColor(.white)
@@ -38,7 +38,7 @@ struct UporDownView: View {
                     .font(.system(size: 30))
                     .foregroundColor(.red)
             })
-            .buttonStyle(PoppingButtonStyle2())
+            .buttonStyle(PoppingButtonStyle3())
         }
         .padding(30)
     }

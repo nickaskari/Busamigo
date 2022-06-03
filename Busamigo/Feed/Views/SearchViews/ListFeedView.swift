@@ -26,13 +26,14 @@ struct ListFeedView: View {
                         }, label: {}
                     )
                     .opacity(0)
-                    FeedItemView(rating: item.voteScore, sighting: item.sightingInformation, vehicle: item.transportVehicle)
+                    FeedItemView(rating: item.voteScore, sighting: item.sightingInformation, routeNr: item.routeInfo?.0)
                 }
                 .listRowBackground(Color.clear)
                 .listRowInsets(EdgeInsets())
                 .listRowSeparator(.hidden)
             }
         }
+        .id(UUID())
         .listStyle(.plain)
     }
 }

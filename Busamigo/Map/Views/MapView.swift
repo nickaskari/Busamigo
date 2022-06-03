@@ -33,6 +33,7 @@ struct MapView: View {
                         
                     }
                 }
+                .accentColor(.blue)
                 .frame(maxHeight: .infinity)
                 .edgesIgnoringSafeArea(.top)
                 

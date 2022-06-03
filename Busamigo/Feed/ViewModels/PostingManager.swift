@@ -76,7 +76,7 @@ struct PostingInformation {
     }
     
     func getPreview() -> FeedItemView {
-        return FeedItemView(rating: 0, sighting: getSighting(), vehicle: "bus")
+        return FeedItemView(rating: 0, sighting: getSighting(), routeNr: self.route?.0)
     }
     
     private func getSighting() -> String {

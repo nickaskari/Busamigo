@@ -13,7 +13,7 @@ struct PreviewSlidingFeedItem: View {
     
     var body: some View {
         if !outOfScreen {
-            FeedItemView(rating: 12, sighting: "Lohove- Sentrum- Hallset;Kongens gate;1345", vehicle: "bus")
+            FeedItemView(rating: 12, sighting: "Lohove mot sentrum;Kongens gate;1345", routeNr: 3)
                 .disabled(true)
                 .frame(height: 200)
                 .padding(.horizontal)
