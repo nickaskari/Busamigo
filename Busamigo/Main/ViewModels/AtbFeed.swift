@@ -100,7 +100,7 @@ class AtbFeed: ObservableObject {
     
     func postToFeed(_ post: FeedItem, _ userID: UUID) {
         atbFeed.postToFeed(post, userID)
-        activateFilter("Relevant", userLon: nil, userLat: nil)
+        
     }
     
     func isShowingBar() -> Bool {
