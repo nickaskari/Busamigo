@@ -11,10 +11,12 @@ import SwiftUI
 struct BusamigoApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @StateObject private var scrollManager = ScrollManager()
+    @StateObject private var feed: AtbFeed = AtbFeed()
+    @StateObject private var locationManager = LocationManager()
     
     var body: some Scene {
         WindowGroup {
-            BusamigoView()
+            BusamigoView(feed, locationManager)
                 .environmentObject(scrollManager)
         }
     }

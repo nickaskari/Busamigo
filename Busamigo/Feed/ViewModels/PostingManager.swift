@@ -45,7 +45,7 @@ class PostingManager: ObservableObject {
     }
     
     func setFeedItem(description: String) {
-        creator.setFeedItem(getRoute(), getStopName()!, transportVehicle: "bus", author: getUser()!, getStopLocation()!, 0, description: description)
+        creator.setFeedItem(getRoute(), getStopName()!, author: getUser()!, getStopLocation()!, 0, description: description)
     }
     
     func getFeedItem() -> FeedItem? {
@@ -76,22 +76,16 @@ struct PostingInformation {
     }
     
     func getPreview() -> FeedItemView {
-        return FeedItemView(rating: 0, sighting: getSighting(), routeNr: self.route?.0)
+        let item = FeedItem(route: route, stop: stopName!, author: UUID(), location: stopLocation!, 0, description: "")
+        return FeedItemView(item)
     }
     
-    private func getSighting() -> String {
-        if route != nil {
-            return "\(route?.1 ?? "")" + ";" + "\(stopName ?? "")" + ";" + getTimeOfSighting()
-        } else {
-            return "\(stopName ?? "")" + ";" + getTimeOfSighting()
-        }
-    }
 }
 
 struct PostCreator {
     var post: FeedItem? = nil
     
-    mutating func setFeedItem(_ route: (Int, String)?, _ stop: String, transportVehicle: String, author: UUID, _ location: CLLocationCoordinate2D, _ voteScore: Int, description: String) {
-        post = FeedItem(route: route, stop: stop, transportVehicle: transportVehicle, author: author, location: location, voteScore, description: description)
+    mutating func setFeedItem(_ route: (Int, String)?, _ stop: String, author: UUID, _ location: CLLocationCoordinate2D, _ voteScore: Int, description: String) {
+        post = FeedItem(route: route, stop: stop, author: author, location: location, voteScore, description: description)
     }
 }

@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct DescriptionBubbleView: View {
-    private var locationManager: LocationManager
+    private let locationManager: LocationManager
     
-    private var feedItem: FeedItem
+    private let feedItem: FeedItem
     private let sightingDict: Dictionary<String, Double>
     
     init(_ feedItem: FeedItem, _ locationManager: LocationManager) {

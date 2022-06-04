@@ -10,10 +10,10 @@ import SwiftUI
 struct UporDownView: View {
     @AppStorage("userID") var userID: UUID?
     
-    let rating: String
+    let rating: Int
     
     var body: some View {
-        VStack {
+        VStack(spacing: 20) {
             Button(action: {
                 getTapticFeedBack(style: .medium)
                 print("opp")
@@ -23,12 +23,11 @@ struct UporDownView: View {
                     .foregroundColor(.mint)
             })
             .buttonStyle(PoppingButtonStyle3())
+            .fixedSize()
             
             Text("\(rating)")
                 .foregroundColor(.white)
                 .font(.title2)
-                .padding(.top, 20)
-                .padding(.bottom, 20)
             
             Button(action: {
                 getTapticFeedBack(style: .medium)
@@ -39,13 +38,20 @@ struct UporDownView: View {
                     .foregroundColor(.red)
             })
             .buttonStyle(PoppingButtonStyle3())
+            .fixedSize()
         }
-        .padding(30)
+        .frame(width: 95)
     }
 }
 
+
+
+
+
+
+
 struct UporDownView_Previews: PreviewProvider {
     static var previews: some View {
-        UporDownView(rating: "12")
+        UporDownView(rating: 12)
     }
 }

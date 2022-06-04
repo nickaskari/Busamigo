@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct AppBarView: View {
-    @ObservedObject var feed: AtbFeed
-    @ObservedObject var locationManager: LocationManager
+    @ObservedObject private var feed: AtbFeed
+    @ObservedObject private var locationManager: LocationManager
     
     init(_ feed: AtbFeed, _ locationManager: LocationManager) {
         self.feed = feed

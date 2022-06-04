@@ -11,15 +11,15 @@ import CoreLocationUI
 
 
 struct FilterView: View {
-    @ObservedObject var feed: AtbFeed
-    @ObservedObject var locationManager: LocationManager
+    @ObservedObject private var feed: AtbFeed
+    @ObservedObject private var locationManager: LocationManager
     @EnvironmentObject private var scrollManager: ScrollManager
-    @Environment(\.scenePhase) var scenePhase
+    @Environment(\.scenePhase) private var scenePhase
     
     init(feed: AtbFeed, _ locationManager: LocationManager) {
         self.feed = feed
         self.locationManager = locationManager
-        locationManager.unableToGetLocation = false
+        self.locationManager.unableToGetLocation = false
     }
     
     var body: some View {

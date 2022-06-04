@@ -12,9 +12,10 @@ class AtbFeed: ObservableObject {
     static let fileManager = FileManager()
     
     let stops: Dictionary<String, CLLocationCoordinate2D> = fileManager.stops
+    let tramStops: [String] = fileManager.tramStops
     let routes: Dictionary<String, [(id: String, nr: Int, name: String)]> = fileManager.routesAssociatedWithStops
     
-    static let allFilteres = ["Relevant", "Trikk", "Buss", "Rating", "Lokasjon"]
+    static let allFilteres = ["Relevant", "Nylig", "Lokasjon", "Rating", "Trikk"]
     
     private static func createFilters() -> Filters {
         Filters(allFilteres)
@@ -23,13 +24,13 @@ class AtbFeed: ObservableObject {
     private static func createFeed() -> Feed {
         let user = UUID()
         
-        return Feed([FeedItem(route: (3, "Lohove- Sentrum- Hallset"), stop: "Hallset", transportVehicle: "bus", author: user, location:                          CLLocationCoordinate2D(latitude: 63.4, longitude: 10.2), 10, description: "GG"),
-              FeedItem(route: (10, "ASDASD jalla"), stop: "Prinsens gate P1", transportVehicle: "bus", author: user, location: CLLocationCoordinate2D(latitude: 63.430230, longitude: 10.382971), 0, description: "GG"),
-              FeedItem(route: (12, "Test 2"), stop: "Kongens gate K2", transportVehicle: "bus", author: user, location: CLLocationCoordinate2D(latitude: 63.4, longitude: 10.5), 2, description: "GG"),
-              FeedItem(route: (2, "Test 3"), stop: "Kongens gate K2", transportVehicle: "bus", author: user, location: CLLocationCoordinate2D(latitude: 63.4, longitude: 10.5), 7, description: "GG"),
-              FeedItem(route: (6, "Test 4"), stop: "Kongens gate K2", transportVehicle: "bus", author: user, location: CLLocationCoordinate2D(latitude: 63.423185, longitude: 10.402295), 9, description: "GG"),
-              FeedItem(route: (8, "Test 5"), stop: "Kongens gate K2", transportVehicle: "bus", author: user, location: CLLocationCoordinate2D(latitude: 35.715298, longitude: 51.404343), 6, description: "GG"),
-              FeedItem(route: (20, "Test 6"), stop: "Kongens gate K2", transportVehicle: "bus", author: user, location: CLLocationCoordinate2D(latitude: 63.433185, longitude: 10.412295), -2, description: "GG")
+        return Feed([FeedItem(route: (3, "Lohove- Sentrum- Hallset"), stop: "Hallset", author: user, location:                          CLLocationCoordinate2D(latitude: 63.4, longitude: 10.2), 10, description: "GG"),
+              FeedItem(route: (10, "ASDASD jalla"), stop: "Prinsens gate P1", author: user, location: CLLocationCoordinate2D(latitude: 63.430230, longitude: 10.382971), 0, description: "GG"),
+              FeedItem(route: (12, "Test 2"), stop: "Kongens gate K2", author: user, location: CLLocationCoordinate2D(latitude: 63.4, longitude: 10.5), 2, description: "GG"),
+              FeedItem(route: (2, "Test 3"), stop: "Kongens gate K2", author: user, location: CLLocationCoordinate2D(latitude: 63.4, longitude: 10.5), 7, description: "GG"),
+              FeedItem(route: (6, "Test 4"), stop: "Kongens gate K2", author: user, location: CLLocationCoordinate2D(latitude: 63.423185, longitude: 10.402295), 9, description: "GG"),
+              FeedItem(route: (8, "Test 5"), stop: "Kongens gate K2", author: user, location: CLLocationCoordinate2D(latitude: 35.715298, longitude: 51.404343), 6, description: "GG"),
+              FeedItem(route: (20, "Test 6"), stop: "Kongens gate K2", author: user, location: CLLocationCoordinate2D(latitude: 63.433185, longitude: 10.412295), -2, description: "GG")
             ])
     }
     
@@ -52,16 +53,16 @@ class AtbFeed: ObservableObject {
             atbFeed.standardFilter()
             atbFilters.activateFilter(filter)
         case "Trikk":
-            atbFeed.transportVehicleFilter("tram")
-            atbFilters.activateFilter(filter)
-        case "Buss":
-            atbFeed.transportVehicleFilter("bus")
+            atbFeed.tramFilter(self.tramStops)
             atbFilters.activateFilter(filter)
         case "Rating":
             atbFeed.ratingFilter()
             atbFilters.activateFilter(filter)
         case "Lokasjon":
             atbFeed.locationFilter(userLon!, userLat!)
+            atbFilters.activateFilter(filter)
+        case "Nylig":
+            atbFeed.recencyFilter()
             atbFilters.activateFilter(filter)
         default:
             print("Something is not right: activateFilter in AtbFeed")

@@ -17,7 +17,6 @@ struct AddFeedItemView: View {
     
     @State private var description: String = ""
     @State private var placeholder: String = "Skriv en beskrivelse ..."
-    @State private var dummy: String = ""
     let textLimit = 80
     
     init(_ feed: AtbFeed, _ locationManager: LocationManager, _ postingManager: PostingManager) {

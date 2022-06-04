@@ -32,12 +32,15 @@ struct ScrollFeedView: View {
     var body: some View {
         ScrollView(.vertical, showsIndicators: true) {
             ScrollViewReader { value in
-                LazyVStack(spacing: 0) {
+                LazyVStack(spacing: 5) {
+                    EmptyView()
+                        .id(0)
+                    
                     if !hideProgress {
                         progress
                     } else {
                         Image(systemName: progressArrow)
-                            .frame(width: 22, height: 10)
+                            .frame(width: 22, height: 5)
                             .position(x: UIScreen.screenWidth / 2, y: -8)
                     }
                     
@@ -45,23 +48,18 @@ struct ScrollFeedView: View {
                         NavigationLink(destination: {
                             DetailView(feedItem: item, locationManager: locationManager)
                         }, label: {
-                            FeedItemView(rating: item.voteScore, sighting: item.sightingInformation, routeNr: item.routeInfo?.0)
+                            FeedItemView(item)
                         })
                         .buttonStyle(NonHighlightingButtonStyle())
-                        .id(feed.isFilterOn("Relevant") ? String(feed.getVisibleFeed().firstIndex(of: item)!) : item.id.uuidString)
                     }
                 }
-                /*.onReceive(scrollManager.$scrollToTop, perform: { scroll in
+                .onReceive(scrollManager.$scrollToTop, perform: { scroll in
                     if scrollManager.scrollToTop {
-                        print("kok")
-                        feed.activateFilter("Relevant",
-                                            userLon: nil,
-                                            userLat: nil)
                         withAnimation {
-                            value.scrollTo("0")
+                            value.scrollTo(0)
                         }
                     }
-                })*/
+                })
                 .overlay (
                     GeometryReader { proxy -> Color in
                         let minY = proxy.frame(in: .named("SCROLL")).minY
@@ -81,7 +79,7 @@ struct ScrollFeedView: View {
                                 didRefresh = false
                             }
                     
-                            if minY > 60 && !didRefresh && !activateRefresh {
+                            if minY > 80 && !didRefresh && !activateRefresh {
                                 withAnimation {
                                     hideProgress = false
                                 }

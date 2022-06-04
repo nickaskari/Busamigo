@@ -36,6 +36,7 @@
 		B739A40B284A949600677433 /* DetailMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B739A40A284A949600677433 /* DetailMapView.swift */; };
 		B739A40D284A94E100677433 /* DescriptionBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B739A40C284A94E100677433 /* DescriptionBubbleView.swift */; };
 		B739A40F284A976100677433 /* DescriptionFeedItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B739A40E284A976100677433 /* DescriptionFeedItemView.swift */; };
+		B739A411284BD01F00677433 /* tram_stops.txt in Resources */ = {isa = PBXBuildFile; fileRef = B739A410284BD01F00677433 /* tram_stops.txt */; };
 		B74942E6284138CD00ECDEE3 /* PopUpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74942E5284138CD00ECDEE3 /* PopUpManager.swift */; };
 		B74942EC2845913A00ECDEE3 /* PostMapAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74942EB2845913A00ECDEE3 /* PostMapAnnotationView.swift */; };
 		B74942F32846A2FF00ECDEE3 /* ObservationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74942F22846A2FF00ECDEE3 /* ObservationManager.swift */; };
@@ -100,6 +101,7 @@
 		B739A40A284A949600677433 /* DetailMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMapView.swift; sourceTree = "<group>"; };
 		B739A40C284A94E100677433 /* DescriptionBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionBubbleView.swift; sourceTree = "<group>"; };
 		B739A40E284A976100677433 /* DescriptionFeedItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionFeedItemView.swift; sourceTree = "<group>"; };
+		B739A410284BD01F00677433 /* tram_stops.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tram_stops.txt; sourceTree = "<group>"; };
 		B74942E5284138CD00ECDEE3 /* PopUpManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpManager.swift; sourceTree = "<group>"; };
 		B74942EB2845913A00ECDEE3 /* PostMapAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostMapAnnotationView.swift; sourceTree = "<group>"; };
 		B74942F22846A2FF00ECDEE3 /* ObservationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservationManager.swift; sourceTree = "<group>"; };
@@ -224,18 +226,19 @@
 		B72987CE27BC6DE4006A3B17 /* TransportData */ = {
 			isa = PBXGroup;
 			children = (
-				B72987CF27BC6E41006A3B17 /* TrondheimAtb */,
+				B72987CF27BC6E41006A3B17 /* Atb */,
 			);
 			path = TransportData;
 			sourceTree = "<group>";
 		};
-		B72987CF27BC6E41006A3B17 /* TrondheimAtb */ = {
+		B72987CF27BC6E41006A3B17 /* Atb */ = {
 			isa = PBXGroup;
 			children = (
 				B7966C8527F4D8C200447352 /* stops.txt */,
+				B739A410284BD01F00677433 /* tram_stops.txt */,
 				B739A407284A7B2500677433 /* routes_for_stops.txt */,
 			);
-			path = TrondheimAtb;
+			path = Atb;
 			sourceTree = "<group>";
 		};
 		B72987DB27BFC5D1006A3B17 /* TestViews */ = {
@@ -479,6 +482,7 @@
 				B7966C8627F4D8C200447352 /* stops.txt in Resources */,
 				B739A408284A7B2500677433 /* routes_for_stops.txt in Resources */,
 				B797F5292805B3AF00CC2054 /* Usefull stuff.rtf in Resources */,
+				B739A411284BD01F00677433 /* tram_stops.txt in Resources */,
 				B7BF2C7C27B422D4006B840E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

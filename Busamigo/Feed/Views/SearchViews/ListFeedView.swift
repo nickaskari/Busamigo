@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct ListFeedView: View {
-    @ObservedObject var locationManager: LocationManager
-    private var feed: [FeedItem]
+    @ObservedObject private var locationManager: LocationManager
+    private let feed: [FeedItem]
+    
     @State private var searchText = ""
     
     init(_ feed: [FeedItem], _ locationManager: LocationManager) {
@@ -26,7 +27,8 @@ struct ListFeedView: View {
                         }, label: {}
                     )
                     .opacity(0)
-                    FeedItemView(rating: item.voteScore, sighting: item.sightingInformation, routeNr: item.routeInfo?.0)
+                    FeedItemView(item)
+                        .padding(.bottom, 5)
                 }
                 .listRowBackground(Color.clear)
                 .listRowInsets(EdgeInsets())

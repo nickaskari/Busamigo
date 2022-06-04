@@ -29,16 +29,27 @@ struct Feed {
         }
     }
     
+    mutating func recencyFilter() {
+        reset()
+        
+        self.visibleFeed.sort {
+            $0.conceptionDate > $1.conceptionDate
+        }
+    }
+    
     mutating func ratingFilter() {
         reset()
+        
         self.visibleFeed.sort {
             $0.voteScore > $1.voteScore
         }
     }
     
-    mutating func transportVehicleFilter(_ vehicle: String) {
+    mutating func tramFilter(_ tramStops: [String]) {
         standardFilter()
-        self.visibleFeed = visibleFeed.filter{ $0.transportVehicle == vehicle }
+        self.visibleFeed = visibleFeed.filter {
+            tramStops.contains($0.stop)
+        }
     }
     
     mutating func locationFilter(_ userLon: Double, _ userLat: Double) {

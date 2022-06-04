@@ -10,9 +10,10 @@ import MapKit
 
 class FileManager {
     let stops = getStops()
+    let tramStops = getTramStops()
     let routesAssociatedWithStops = getRoutesAssociatedWithStops()
     
-    //A dictionary of the stop names and lat/lon
+    // A dictionary of the stop names and lat/lon
     static func getStops() -> Dictionary<String, CLLocationCoordinate2D> {
         var result: Dictionary<String, CLLocationCoordinate2D> = [:]
         
@@ -34,7 +35,24 @@ class FileManager {
         return result
     }
     
-    //Returns all routes assosiated with a stop
+    // Returns all tram stops
+    static func getTramStops() -> [String] {
+        var result: [String] = []
+        
+        if let fileURL = Bundle.main.url(forResource: "tram_stops", withExtension: "txt") {
+            
+            if let fileContents = try? String(contentsOf: fileURL) {
+                let lines = fileContents.split(separator: "\n")
+                for line in lines {
+                    let stopName: String = String(line)
+                    result.append(stopName)
+                }
+            }
+        }
+        return result
+    }
+    
+    // Returns all routes assosiated with a stop
     static func getRoutesAssociatedWithStops() -> Dictionary<String, [(id: String, nr: Int, name: String)]> {
         var result: Dictionary<String, [(String, Int, String)]> = [:]
         

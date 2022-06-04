@@ -33,9 +33,9 @@ struct BusamigoTabView: View {
     private func buttonTab(name: String, icon: String, page: Page) -> some View {
         Button {
             tabvm.currentPage = page
-            /*if name == "Feed" {
+            if name == "Feed" {
                 scrollManager.scrollToTop = true
-            }*/
+            }
         } label: {
             VStack(spacing: 2) {
                 Image(systemName: icon)

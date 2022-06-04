@@ -6,14 +6,17 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct PreviewSlidingFeedItem: View {
     @State private var currentDragOffsetX: CGFloat = 0
     @State private var outOfScreen = false
     
+    private let preview = FeedItem(route: (3, "Lohove mot sentrum"), stop: "Kongens gate", author: UUID(), location: CLLocationCoordinate2D(), 12, description: "")
+    
     var body: some View {
         if !outOfScreen {
-            FeedItemView(rating: 12, sighting: "Lohove mot sentrum;Kongens gate;1345", routeNr: 3)
+            FeedItemView(preview)
                 .disabled(true)
                 .frame(height: 200)
                 .padding(.horizontal)

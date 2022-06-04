@@ -19,7 +19,7 @@ struct SlidingFeedItemView: View {
     }
     
     var body: some View {
-        FeedItemView(rating: observation.voteScore, sighting: observation.sightingInformation, routeNr: observation.routeInfo?.0)
+        FeedItemView(observation)
             .padding(.bottom, 30)
             .offset(x: currentDragOffsetX)
             .gesture(

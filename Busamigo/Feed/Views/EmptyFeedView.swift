@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct EmptyFeedView: View {
+    
     var body: some View {
         VStack {
             Spacer()
@@ -21,6 +22,15 @@ struct EmptyFeedView: View {
         }
     }
 }
+
+
+
+
+
+
+
+
+
 
 struct EmptyFeedView___Previews: PreviewProvider {
     static var previews: some View {

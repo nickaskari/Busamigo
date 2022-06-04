@@ -21,7 +21,7 @@ struct ActivityIndicator: View {
             .animation(
                 .timingCurve(0.5, 0.1, 0.25, 1, duration: 1.5)
                 .repeatForever(autoreverses: false).speed(speed), value: isAnimating)
-            .frame(width: 22, height: 22)
+            .frame(width: 20, height: 20)
             .aspectRatio(1, contentMode: .fit)
             .onAppear {
                 self.isAnimating = true

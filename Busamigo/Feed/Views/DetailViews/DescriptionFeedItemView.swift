@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct DescriptionFeedItemView: View {
-    private var locationManager: LocationManager
+    private let locationManager: LocationManager
     
-    private var feedItem: FeedItem
+    private let feedItem: FeedItem
     private let sightingDict: Dictionary<String, Double>
     
     init(_ feedItem: FeedItem, _ locationManager: LocationManager) {
@@ -21,7 +21,7 @@ struct DescriptionFeedItemView: View {
     
     var body: some View {
         HStack {
-            if let route = feedItem.routeInfo {
+            if let route = feedItem.route {
                 Text("\(route.nr)")
                     .foregroundColor(.pink)
                     .font(.largeTitle)

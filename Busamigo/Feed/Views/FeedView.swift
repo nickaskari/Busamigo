@@ -13,7 +13,7 @@ struct FeedView: View {
     @ObservedObject private var locationManager: LocationManager
     @EnvironmentObject private var popUpManager: PopUpManager
     
-    private var scrollFeed: ScrollFeedView
+    private let scrollFeed: ScrollFeedView
     @State private var isPresented = false
     
     init(feed: AtbFeed, _ locationManager: LocationManager) {
