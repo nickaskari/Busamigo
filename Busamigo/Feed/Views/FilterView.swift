@@ -16,10 +16,11 @@ struct FilterView: View {
     @EnvironmentObject private var scrollManager: ScrollManager
     @Environment(\.scenePhase) private var scenePhase
     
+    @State var unableToGetLocation: Bool = false
+    
     init(feed: AtbFeed, _ locationManager: LocationManager) {
         self.feed = feed
         self.locationManager = locationManager
-        self.locationManager.unableToGetLocation = false
     }
     
     var body: some View {
@@ -33,24 +34,28 @@ struct FilterView: View {
                                     value.scrollTo(filter)
                                 }
                                 getTapticFeedBack(style: .light)
-                                withAnimation(.linear(duration: 0.001)) {
-                                    if filter == "Lokasjon" {
-                                        locationManager.displayLocationFilter(feed)
-                                    } else {
-                                        feed.disableLocationError()
-                                        feed.activateFilter(filter, userLon: nil, userLat: nil)
+               
+                                if filter == "Lokasjon" {
+                                    if !locationManager.displayLocationFilter(feed) {
+                                        unableToGetLocation.toggle()
                                     }
+                                } else {
+                                    feed.disableLocationError()
+                                    feed.activateFilter(filter, userLon: nil, userLat: nil)
                                 }
+                                
                             }, label: {
                                 FilterBoxView(filter, isPressed: feed.isFilterOn(filter))
                             })
-                            .alert(isPresented: $locationManager.unableToGetLocation) {
+                            .alert(isPresented: $unableToGetLocation) {
                                 Alert(title: Text("Busamigo finner ikke posisjonen din!"), message: Text("Prøv igjen ved et senere tidspunkt."), dismissButton: .default(Text("Skjønner!")))
                             }
                             .id(filter)
-                            .onAppear {
+                            .onReceive(feed.objectWillChange) { out in
                                 if feed.isFilterOn(filter) {
-                                    value.scrollTo(filter)
+                                    withAnimation {
+                                        value.scrollTo(filter)
+                                    }
                                 }
                             }
                         }
@@ -62,9 +67,7 @@ struct FilterView: View {
             .onChange(of: scenePhase) { newPhase in
                     if newPhase == .active {
                         if feed.isFilterOn("Lokasjon") {
-                            withAnimation(.easeInOut(duration: 0.2)) {
-                                locationManager.displayLocationFilter(feed)
-                            }
+                            locationManager.displayLocationFilter(feed)
                         }
                     }
             }

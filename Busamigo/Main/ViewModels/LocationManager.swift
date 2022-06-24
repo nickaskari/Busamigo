@@ -11,10 +11,10 @@ import CoreLocationUI
 import ObjectiveC
 
 class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
+    
     private var manager: CLLocationManager?
     private(set) var lastKnownLocation: CLLocationCoordinate2D?
     private(set) var errors: Dictionary<Int, String> = [1 : "", 2 : "", 3 : ""]
-    var unableToGetLocation: Bool = false
     
     var showUserLocation = false
 
@@ -43,22 +43,23 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
         checkLocationAuthorization()
     }
     
-    func displayLocationFilter(_ feed: AtbFeed) {
+    func displayLocationFilter(_ feed: AtbFeed) -> Bool {
         updateLocationError(feed)
         
         if !hasAuthErrors(feed) {
             if let loc = lastKnownLocation {
                 feed.activateFilter("Lokasjon", userLon: loc.longitude, userLat: loc.latitude)
-                unableToGetLocation = false
+                return true
             }
             else {
-                unableToGetLocation = true
+                return false
             }
         }
+        return false
     }
     
     func hasAnyErrors(_ feed: AtbFeed) -> Bool {
-        return unableToGetLocation || hasAuthErrors(feed)
+        return lastKnownLocation == nil || hasAuthErrors(feed)
     }
     
     func hasAuthErrors(_ feed: AtbFeed) -> Bool {

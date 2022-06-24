@@ -11,7 +11,9 @@ import MapKit
 struct BusamigoView: View {
     @ObservedObject private var feed: AtbFeed
     @ObservedObject private var locationManager: LocationManager
-    @ObservedObject private var tabvm = TabViewModel()
+    
+    @EnvironmentObject private var tabvm: TabViewModel
+    @EnvironmentObject private var userManager: UserManager
   
     init(_ feed: AtbFeed, _ locationManager: LocationManager) {
         self.feed = feed
@@ -40,9 +42,10 @@ struct BusamigoView: View {
         .onAppear {
             locationManager.checkIfLocationServicesIsEnabled()
             portraitOrientationLock()
-            if getUser() == nil {
-                createNewUser()
-            }
+            feed.listenForUpdates()
+        }
+        .task {
+            await userManager.signIn()
         }
     }
 }

@@ -8,6 +8,7 @@
 import Foundation
 import CoreLocation
 import SwiftUI
+import Firebase
 
 func distance(lon1: CLLocationDegrees, lat1: CLLocationDegrees, lon2: CLLocationDegrees, lat2: CLLocationDegrees) -> Double {
     let lon1: Double = lon1 * (Double.pi / 180)
@@ -22,7 +23,7 @@ func distance(lon1: CLLocationDegrees, lat1: CLLocationDegrees, lon2: CLLocation
            
     let c = 2 * asin(sqrt(a))
     
-    // Radius of earth in kilometers. Use 3956 for miles
+    // Radius of earth in meters
     let r: Double = 6371000
           
     // calculate the result
@@ -50,22 +51,10 @@ func portraitOrientationLock() {
     AppDelegate.orientationLock = .portrait
 }
 
-func getTimeOfSighting() -> String {
-    let hours   = (Calendar.current.component(.hour, from: Date()))
-    let minutes = (Calendar.current.component(.minute, from: Date()))
-
-    if (hours >= 0 && hours < 10) && (minutes >= 0 && minutes < 10) {
-        return "0\(hours):0\(minutes)"
-    }
-    else if (hours >= 0 && hours < 10) || (minutes >= 0 && minutes < 10) {
-        if (hours >= 0 && hours < 10) {
-            return "0\(hours):\(minutes)"
-        } else {
-            return "\(hours):0\(minutes)"
-        }
-    } else {
-        return "\(hours):\(minutes)"
-    }
+func getTimeOfSighting(_ date: Date) -> String {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "HH:mm"
+    return dateFormatter.string(from: date)
 }
 
 //Returns time since now in a string format, and also a value for opacity. The more recent the date, the more opacity is attained.
@@ -90,3 +79,34 @@ func getTimeFromNow(date: Date) -> (String, Double) {
     }
 }
 
+func busOrTram(_ stop: Stop) -> String {
+    switch stop.vehicle {
+    case 700:
+        return "bus"
+    case 900:
+        return "tram"
+    default:
+        return "figure.wave"
+    }
+}
+
+func addTokenToUser(_ token: String) {
+    let uid = Auth.auth().currentUser?.uid ?? ""
+    let ref = Firestore.firestore().collection("Users").whereField("id", isEqualTo: uid)
+    
+    ref.getDocuments { snapshot, error in
+        guard error == nil else {
+            print(error!.localizedDescription)
+            return
+        }
+        
+        if let snapshot = snapshot {
+            for document in snapshot.documents {
+                document.reference.updateData([
+                    "tokenID" : token
+                ])
+            }
+        }
+
+    }
+}

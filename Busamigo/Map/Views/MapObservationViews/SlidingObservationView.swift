@@ -1,5 +1,5 @@
 //
-//  SlidingFeedItemView.swift
+//  SlidingObservation.swift
 //  Busamigo
 //
 //  Created by Nick Askari on 01/06/2022.
@@ -7,19 +7,19 @@
 
 import SwiftUI
 
-struct SlidingFeedItemView: View {
+struct SlidingObservationView: View {
     @ObservedObject private var observationManager: ObservationManager
     
     @State private var currentDragOffsetX: CGFloat = 0
-    private var observation: FeedItem
+    private var observation: Observation
     
-    init(observation: FeedItem, _ observationManager: ObservationManager) {
+    init(observation: Observation, _ observationManager: ObservationManager) {
         self.observation = observation
         self.observationManager = observationManager
     }
     
     var body: some View {
-        FeedItemView(observation)
+        ObservationView(observation)
             .padding(.bottom, 30)
             .offset(x: currentDragOffsetX)
             .gesture(

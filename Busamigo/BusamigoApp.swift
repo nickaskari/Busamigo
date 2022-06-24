@@ -6,18 +6,28 @@
 //
 
 import SwiftUI
+import Firebase
 
 @main
 struct BusamigoApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @StateObject private var scrollManager = ScrollManager()
-    @StateObject private var feed: AtbFeed = AtbFeed()
+    @StateObject private var feed = AtbFeed()
     @StateObject private var locationManager = LocationManager()
+    @StateObject private var userManager = UserManager()
+    @StateObject private var tabvm = TabViewModel()
+    
+    init() {
+        FirebaseApp.configure()
+    }
     
     var body: some Scene {
         WindowGroup {
             BusamigoView(feed, locationManager)
                 .environmentObject(scrollManager)
+                .environmentObject(userManager)
+                .environmentObject(feed)
+                .environmentObject(tabvm)
         }
     }
 }

@@ -1,5 +1,5 @@
 //
-//  FeedItemView.swift
+//  ObservationView.swift
 //  Busamigo
 //
 //  Created by Nick Askari on 10/02/2022.
@@ -9,16 +9,15 @@ import SwiftUI
 import MapKit
 import Foundation
 
-struct FeedItemView: View {
+struct ObservationView: View {
     private let color: Color = Color(red: 0.12, green: 0.12, blue: 0.12)
     private let opacity: Double = 1
-    
-    private let item: FeedItem
+    private let observation: Observation
     private let sightingDict: Dictionary<String, Double>
     
-    init(_ item: FeedItem) {
-        self.item = item
-        self.sightingDict = createSightingDict(item.sightingInformation)
+    init(_ observation: Observation) {
+        self.observation = observation
+        self.sightingDict = createSightingDict(observation.getInformation())
     }
     
     var body: some View {
@@ -32,14 +31,14 @@ struct FeedItemView: View {
                 .drawingGroup()
                 
             HStack {
-                if let routeNr = item.route?.nr {
+                if let routeNr = observation.route?.nr {
                     Text("\(routeNr)")
                         .font(.largeTitle)
                         .foregroundColor(.white)
                         .frame(width: 95)
                         .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 0))
                 } else {
-                    Image(systemName: "figure.wave")
+                    Image(systemName: busOrTram(observation.stop))
                         .font(.system(size: 35))
                         .foregroundColor(.white)
                         .frame(width: 95)
@@ -57,7 +56,7 @@ struct FeedItemView: View {
                 
                 Spacer()
                 
-                UporDownView(rating: item.voteScore)
+                UporDownView(obs: observation)
             }
             .drawingGroup()
         }
@@ -75,11 +74,11 @@ struct FeedItemView: View {
 
 
 
-struct FeedItemView_Previews: PreviewProvider {
+private struct FeedItemView_Previews: PreviewProvider {
     static var previews: some View {
-        let item = FeedItem(route: (3, "Lohove mot sentrum"), stop: "Kongens gate", author: UUID(), location: CLLocationCoordinate2D(), 12, description: "")
+        let item = Observation(route: Route(nr: 3, name: "Lohove mot sentrum"), stop: Stop(name: "Kongens gate", vehicle: 700), author: "someID", location: CLLocationCoordinate2D(), voteScore: 12, description: "")
         
-        FeedItemView(item)
+        ObservationView(item)
     }
 }
 

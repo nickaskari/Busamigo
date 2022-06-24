@@ -6,9 +6,12 @@
 //
 
 import SwiftUI
+import Shimmer
+
+// save karisma in userManager, some listener from firebase idk
 
 struct ProfileView: View {
-    @State private var karismaAmount = 70.0
+    @EnvironmentObject private var userManager: UserManager
     
     var body: some View {
         NavigationView {
@@ -16,8 +19,16 @@ struct ProfileView: View {
                 Text("Min karisma")
                     .font(.headline)
                     .padding(.horizontal)
-                KarismaView(value: karismaAmount)
-                    .padding(.bottom)
+                
+                if let karisma = userManager.getUserKarisma() {
+                    KarismaView(value: karisma)
+                        .padding(.bottom)
+                } else {
+                    KarismaView(value: 68)
+                        .padding(.bottom)
+                        .redacted(reason: .placeholder)
+                        .shimmering()
+                }
                 
                 Divider()
                 
@@ -30,10 +41,13 @@ struct ProfileView: View {
             }
             .navigationTitle("Min profil")
             .navigationBarTitleDisplayMode(.inline)
+            .onAppear {
+                userManager.fetchUser()
+            }
         }
     }
     
-    var legalInformation: some View {
+    private var legalInformation: some View {
         NavigationLink {
             LegalInformationView()
         } label: {
@@ -47,6 +61,12 @@ struct ProfileView: View {
         .padding()
     }
 }
+
+
+
+
+
+
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {

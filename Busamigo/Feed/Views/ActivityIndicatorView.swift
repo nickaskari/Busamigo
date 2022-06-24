@@ -13,6 +13,12 @@ struct ActivityIndicator: View {
     @State private var isAnimating: Bool = false
     @State private var speed: Double = 2
     
+    private let color: Color
+    
+    init(color: Color) {
+        self.color = color
+    }
+    
     var body: some View {
         Circle()
             .trim(from: 0.0, to: 0.25)
@@ -23,14 +29,11 @@ struct ActivityIndicator: View {
                 .repeatForever(autoreverses: false).speed(speed), value: isAnimating)
             .frame(width: 20, height: 20)
             .aspectRatio(1, contentMode: .fit)
+            .foregroundColor(color)
+            .padding()
             .onAppear {
                 self.isAnimating = true
             }
-    }
-    
-    func setSpeed(_ speed: Double) -> some View {
-        self.speed = speed
-        return body
     }
     
 }

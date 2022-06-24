@@ -10,13 +10,15 @@ import SwiftUI
 struct DescriptionBubbleView: View {
     private let locationManager: LocationManager
     
-    private let feedItem: FeedItem
+    private let observation: Observation
     private let sightingDict: Dictionary<String, Double>
+    private let karisma: Double
     
-    init(_ feedItem: FeedItem, _ locationManager: LocationManager) {
-        self.feedItem = feedItem
+    init(_ observation: Observation, _ locationManager: LocationManager, karisma: Double) {
+        self.observation = observation
         self.locationManager = locationManager
-        self.sightingDict = createSightingDict(feedItem.sightingInformation)
+        self.sightingDict = createSightingDict(observation.getInformation())
+        self.karisma = karisma
     }
     
     var body: some View {
@@ -24,7 +26,7 @@ struct DescriptionBubbleView: View {
             RoundedRectangle(cornerRadius: 15)
                 .opacity(0.0)
             VStack(alignment: .leading, spacing: 0) {
-                DescriptionFeedItemView(feedItem, locationManager)
+                DescriptionObservationView(observation, locationManager)
                     .padding(.bottom)
                 
                 Divider()
@@ -32,18 +34,19 @@ struct DescriptionBubbleView: View {
                 Text("Observatørens karisma:")
                     .font(.headline)
                     .padding()
-                KarismaView(value: 68)
+                KarismaView(value: karisma)
                 
-                if !feedItem.description.isEmpty {
+                if !observation.description.isEmpty {
                     Text("Kommentar fra observatør:")
                         .font(.headline)
                         .padding()
-                    Text("\(feedItem.description)")
+                    Text("\(observation.description)")
                         .padding(.horizontal)
                         .font(.subheadline)
                 }
                 Spacer()
             }
         }
+        .padding()
     }
 }

@@ -1,5 +1,5 @@
 //
-//  DescriptionFeedItemView.swift
+//  DescriptionObservationView.swift
 //  Busamigo
 //
 //  Created by Nick Askari on 03/06/2022.
@@ -7,27 +7,27 @@
 
 import SwiftUI
 
-struct DescriptionFeedItemView: View {
+struct DescriptionObservationView: View {
     private let locationManager: LocationManager
     
-    private let feedItem: FeedItem
+    private let observation: Observation
     private let sightingDict: Dictionary<String, Double>
     
-    init(_ feedItem: FeedItem, _ locationManager: LocationManager) {
-        self.feedItem = feedItem
+    init(_ observation: Observation, _ locationManager: LocationManager) {
+        self.observation = observation
         self.locationManager = locationManager
-        self.sightingDict = createSightingDict(feedItem.sightingInformation)
+        self.sightingDict = createSightingDict(observation.getInformation())
     }
     
     var body: some View {
         HStack {
-            if let route = feedItem.route {
+            if let route = observation.route {
                 Text("\(route.nr)")
                     .foregroundColor(.pink)
                     .font(.largeTitle)
                     .padding(.horizontal)
             } else {
-                Image(systemName: "figure.wave")
+                Image(systemName: busOrTram(observation.stop))
                     .font(.system(size: 25))
                     .padding(.horizontal)
             }
@@ -55,7 +55,7 @@ struct DescriptionFeedItemView: View {
     
     private func getCurrentDistance() -> String? {
         if let userLoc = locationManager.lastKnownLocation {
-            var dist = distance(lon1: feedItem.location.longitude, lat1: feedItem.location.latitude, lon2: userLoc.longitude, lat2: userLoc.latitude)
+            var dist = distance(lon1: observation.location.longitude, lat1: observation.location.latitude, lon2: userLoc.longitude, lat2: userLoc.latitude)
             if dist >= 1000 {
                 dist = dist / 1000
                 dist = (round(10 * dist) / 10)

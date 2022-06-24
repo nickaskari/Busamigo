@@ -20,13 +20,11 @@ struct ScrollFeedView: View {
     @State private var hideProgress: Bool = true
     @State private var activateRefresh: Bool = false
     @State private var didRefresh: Bool = false
-    @State private var progressArrow: String
     
     
     init(_ feed: AtbFeed, _ locationManager: LocationManager) {
         self.feed = feed
         self.locationManager = locationManager
-        self.progressArrow = "arrow.down"
     }
 
     var body: some View {
@@ -39,19 +37,24 @@ struct ScrollFeedView: View {
                     if !hideProgress {
                         progress
                     } else {
-                        Image(systemName: progressArrow)
-                            .frame(width: 22, height: 5)
-                            .position(x: UIScreen.screenWidth / 2, y: -8)
+                        progressArrow
                     }
                     
-                    ForEach(feed.getVisibleFeed()) { item in
-                        NavigationLink(destination: {
-                            DetailView(feedItem: item, locationManager: locationManager)
-                        }, label: {
-                            FeedItemView(item)
-                        })
-                        .buttonStyle(NonHighlightingButtonStyle())
+                    if !feed.getVisibleFeed().isEmpty {
+                        ForEach(feed.getVisibleFeed()) { item in
+                            NavigationLink(destination: {
+                                DetailView(observation: item, locationManager: locationManager)
+                            }, label: {
+                                ObservationView(item)
+                            })
+                            .buttonStyle(NonHighlightingButtonStyle())
+                        }
+                    } else {
+                        Spacer()
+                        Spacer()
+                        EmptyFeedView()
                     }
+        
                 }
                 .onReceive(scrollManager.$scrollToTop, perform: { scroll in
                     if scrollManager.scrollToTop {
@@ -121,23 +124,36 @@ struct ScrollFeedView: View {
         .navigationBarHidden(true)
     }
     
-    var progress: some View {
-        ZStack(alignment: .bottom) {
-            ActivityIndicator()
-                .foregroundColor(.pink)
-                .padding()
-                .onChange(of: activateRefresh) { bool in
-                    if activateRefresh {
-                        print("Refreshing")
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                            print("Done!")
+    private var progress: some View {
+        ActivityIndicator(color: .pink)
+            .onChange(of: activateRefresh) { bool in
+                if activateRefresh {
+                    feed.fetchFeed { success in
+                        if success {
+                            feed.activateFilter("Relevant", userLon: nil, userLat: nil)
                             activateRefresh = false
+                        } else {
+                            withAnimation {
+                                feed.networkError = true
+                            }
                         }
                     }
                 }
-        }
+            }
+        
+    }
+    
+    private var progressArrow: some View {
+        Image(systemName: "arrow.down")
+            .frame(width: 22, height: 12)
+            .position(x: UIScreen.screenWidth / 2, y: -8)
     }
 }
+
+
+
+
+
 
 
 

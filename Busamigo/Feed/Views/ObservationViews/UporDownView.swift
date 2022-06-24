@@ -8,15 +8,26 @@
 import SwiftUI
 
 struct UporDownView: View {
-    @AppStorage("userID") var userID: UUID?
+    @EnvironmentObject private var feed: AtbFeed
+    @EnvironmentObject private var tabvm: TabViewModel
     
-    let rating: Int
+    private let obs: Observation
+    
+    init(obs: Observation) {
+        self.obs = obs
+    }
+
     
     var body: some View {
         VStack(spacing: 20) {
             Button(action: {
                 getTapticFeedBack(style: .medium)
-                print("opp")
+
+                feed.upVoteObservation(obs) { success in
+                    if success && tabvm.currentPage == .feed {
+                    feed.objectWillChange.send()
+                    }
+                }
             }, label: {
                 Image(systemName: "chevron.up")
                     .font(.system(size: 30))
@@ -25,13 +36,18 @@ struct UporDownView: View {
             .buttonStyle(PoppingButtonStyle3())
             .fixedSize()
             
-            Text("\(rating)")
+            Text("\(feed.voteScoreFor(observation: obs))")
                 .foregroundColor(.white)
                 .font(.title2)
             
             Button(action: {
                 getTapticFeedBack(style: .medium)
-                print("ned")
+
+                feed.downVoteObservation(obs) { success in
+                    if success && tabvm.currentPage == .feed {
+                    feed.objectWillChange.send()
+                    }
+                }
             }, label: {
                 Image(systemName: "chevron.down")
                     .font(.system(size: 30))
@@ -50,8 +66,4 @@ struct UporDownView: View {
 
 
 
-struct UporDownView_Previews: PreviewProvider {
-    static var previews: some View {
-        UporDownView(rating: 12)
-    }
-}
+

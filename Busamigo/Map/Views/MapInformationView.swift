@@ -32,7 +32,7 @@ struct MapInformationView: View {
                     .opacity(0.7)
                     .padding(.horizontal, 30)
                 
-                PreviewSlidingFeedItem()
+                PreviewSlidingObservationView()
                 
                 Text("Trykk på en observasjon for å få opp observasjonskortet som vist over.")
                     .font(.headline)

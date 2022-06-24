@@ -72,7 +72,7 @@ struct ViewOffsetKey: PreferenceKey {
 
 struct Marker: Identifiable {
     let id = UUID()
-    var location: MapMarker
+    var location: CLLocationCoordinate2D
 }
 
 struct FlatLinkStyle: ButtonStyle {

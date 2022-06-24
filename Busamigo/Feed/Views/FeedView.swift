@@ -14,7 +14,7 @@ struct FeedView: View {
     @EnvironmentObject private var popUpManager: PopUpManager
     
     private let scrollFeed: ScrollFeedView
-    @State private var isPresented = false
+    @State private var canPost = false
     
     init(feed: AtbFeed, _ locationManager: LocationManager) {
         self.feed = feed
@@ -36,10 +36,15 @@ struct FeedView: View {
                         if feed.isLocationError() {
                             let err = feed.getLocationError(locationManager.errors)
                             LocationErrorView(error: err!)
-                        } else if feed.getVisibleFeed().isEmpty {
-                            EmptyFeedView()
                         } else {
-                            scrollFeed
+                            ZStack(alignment: .top) {
+                                scrollFeed
+                                if feed.networkError {
+                                    NetworkErrorView()
+                                } else if feed.newObservations {
+                                    NewObservationsView()
+                                }
+                            }
                         }
                     }
                 }
@@ -54,26 +59,27 @@ struct FeedView: View {
     
     var addButton: some View {
         Button(action: {
-            withAnimation {
-                getTapticFeedBack(style: .medium)
-                popUpManager.stopSearchIsActive = true
-            }
             locationManager.checkIfLocationServicesIsEnabled()
+            if locationManager.hasAnyErrors(feed) {
+                getTapticFeedBack(style: .medium)
+                canPost.toggle()
+            } else {
+                withAnimation {
+                    getTapticFeedBack(style: .medium)
+                    popUpManager.stopSearchIsActive = true
+                }
+            }
         }, label: {
             Image(systemName: "plus")
-                .shadow(radius: 2)
-                .padding()
-                .foregroundColor(.white)
-                .font(.system(size: 50))
-                .background(Circle()
-                    .strokeBorder(.pink, lineWidth: 5)
-                    .opacity(0.7))
-                .padding()
-                .shadow(radius: 6)
+                .addButtonStyle()
         })
         .buttonStyle(PoppingButtonStyle())
         .fullScreenCover(isPresented: $popUpManager.stopSearchIsActive) {
-            StopSearchView(feed, locationManager) }
+            StopSearchView(feed, locationManager)
+        }
+        .alert(isPresented: $canPost) {
+            Alert(title: Text("Busamigo trenger posisjonen din for at du skal poste!"), message: Text("Sjekk innstillingene dine eller prøv igjen."), dismissButton: .default(Text("Skjønner!")))
+        }
     }
 }
 

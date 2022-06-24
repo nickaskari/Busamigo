@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B7042200285E8D6D00D917E0 /* NetworkErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70421FF285E8D6D00D917E0 /* NetworkErrorView.swift */; };
+		B7042203285F58CD00D917E0 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = B7042202285F58CD00D917E0 /* FirebaseMessaging */; };
+		B704220528612AEC00D917E0 /* DetailMapAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B704220428612AEC00D917E0 /* DetailMapAnnotationView.swift */; };
+		B704220828614BC400D917E0 /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = B704220728614BC400D917E0 /* Shimmer */; };
+		B704220B28628FC300D917E0 /* NewObservationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B704220A28628FC300D917E0 /* NewObservationsView.swift */; };
+		B704221028629B8F00D917E0 /* KarismaCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B704220F28629B8F00D917E0 /* KarismaCalculator.swift */; };
+		B70422132863E42200D917E0 /* NewMapObservationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70422122863E42200D917E0 /* NewMapObservationView.swift */; };
 		B70604DA28483DA8008D0930 /* StopChoiceSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70604D928483DA8008D0930 /* StopChoiceSectionView.swift */; };
 		B70604DF2848412D008D0930 /* RouteRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70604DE2848412D008D0930 /* RouteRowView.swift */; };
 		B70604E12849278B008D0930 /* KarismaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70604E02849278A008D0930 /* KarismaView.swift */; };
@@ -17,26 +24,41 @@
 		B70604F32849842C008D0930 /* EmptyFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70604F22849842C008D0930 /* EmptyFeedView.swift */; };
 		B70604F528498D20008D0930 /* ScrollManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70604F428498D20008D0930 /* ScrollManager.swift */; };
 		B70A762827EFB9A300CE63D6 /* AddBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70A762727EFB9A300CE63D6 /* AddBarView.swift */; };
-		B728C8EA2846CFB100AF822A /* SlidingFeedItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B728C8E92846CFB100AF822A /* SlidingFeedItemView.swift */; };
+		B721CFA928652C720008D00B /* AppDelegateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B721CFA828652C720008D00B /* AppDelegateExtensions.swift */; };
+		B728C8EA2846CFB100AF822A /* SlidingObservationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B728C8E92846CFB100AF822A /* SlidingObservationView.swift */; };
 		B728C8EC2847BD9000AF822A /* MapToolsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B728C8EB2847BD9000AF822A /* MapToolsView.swift */; };
 		B728C8EE2847ECF100AF822A /* MapInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B728C8ED2847ECF100AF822A /* MapInformationView.swift */; };
-		B728C8F02848240F00AF822A /* PreviewSlidingFeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B728C8EF2848240F00AF822A /* PreviewSlidingFeedItem.swift */; };
+		B728C8F02848240F00AF822A /* PreviewSlidingObservationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B728C8EF2848240F00AF822A /* PreviewSlidingObservationView.swift */; };
 		B728C8F228482E6900AF822A /* StopRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B728C8F128482E6900AF822A /* StopRowView.swift */; };
 		B728C8F42848310F00AF822A /* StopLocationRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B728C8F32848310F00AF822A /* StopLocationRowView.swift */; };
 		B72987C127BB00CE006A3B17 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72987C027BB00CE006A3B17 /* LocationManager.swift */; };
 		B72987D627BE94AC006A3B17 /* AtbFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72987D527BE94AB006A3B17 /* AtbFeed.swift */; };
-		B72987DA27BECAAB006A3B17 /* AddFeedItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72987D927BECAAB006A3B17 /* AddFeedItemView.swift */; };
+		B72987DA27BECAAB006A3B17 /* PostObservationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72987D927BECAAB006A3B17 /* PostObservationView.swift */; };
 		B72987DE27BFC610006A3B17 /* ScrollFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72987DD27BFC610006A3B17 /* ScrollFeedView.swift */; };
 		B72987E027BFD716006A3B17 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72987DF27BFD716006A3B17 /* Extensions.swift */; };
 		B72987E227BFD756006A3B17 /* UtilityViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72987E127BFD756006A3B17 /* UtilityViews.swift */; };
 		B72BDA22283C591D00DC3F26 /* UporDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72BDA21283C591D00DC3F26 /* UporDownView.swift */; };
 		B72BDA30283EFE6600DC3F26 /* LocationUtilites.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72BDA2F283EFE6600DC3F26 /* LocationUtilites.swift */; };
 		B72BDA322840267500DC3F26 /* PostingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72BDA312840267400DC3F26 /* PostingManager.swift */; };
-		B739A408284A7B2500677433 /* routes_for_stops.txt in Resources */ = {isa = PBXBuildFile; fileRef = B739A407284A7B2500677433 /* routes_for_stops.txt */; };
 		B739A40B284A949600677433 /* DetailMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B739A40A284A949600677433 /* DetailMapView.swift */; };
 		B739A40D284A94E100677433 /* DescriptionBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B739A40C284A94E100677433 /* DescriptionBubbleView.swift */; };
-		B739A40F284A976100677433 /* DescriptionFeedItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B739A40E284A976100677433 /* DescriptionFeedItemView.swift */; };
-		B739A411284BD01F00677433 /* tram_stops.txt in Resources */ = {isa = PBXBuildFile; fileRef = B739A410284BD01F00677433 /* tram_stops.txt */; };
+		B739A40F284A976100677433 /* DescriptionObservationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B739A40E284A976100677433 /* DescriptionObservationView.swift */; };
+		B739A413284C31B900677433 /* routes_for_stops.txt in Resources */ = {isa = PBXBuildFile; fileRef = B739A412284C31B900677433 /* routes_for_stops.txt */; };
+		B739A415284C31DA00677433 /* stops.txt in Resources */ = {isa = PBXBuildFile; fileRef = B739A414284C31DA00677433 /* stops.txt */; };
+		B739A417284D75DF00677433 /* PostingInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B739A416284D75DF00677433 /* PostingInformation.swift */; };
+		B739A419284D760D00677433 /* PostCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B739A418284D760D00677433 /* PostCreator.swift */; };
+		B739A41B284D764100677433 /* LocationSorter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B739A41A284D764100677433 /* LocationSorter.swift */; };
+		B739A41E284D802B00677433 /* Area.swift in Sources */ = {isa = PBXBuildFile; fileRef = B739A41D284D802B00677433 /* Area.swift */; };
+		B739A421284E53EC00677433 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = B739A420284E53EC00677433 /* FirebaseAuth */; };
+		B739A423284E53EC00677433 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = B739A422284E53EC00677433 /* FirebaseFirestore */; };
+		B739A425284E53EC00677433 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = B739A424284E53EC00677433 /* FirebaseFunctions */; };
+		B739A427284E554B00677433 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B739A426284E554B00677433 /* GoogleService-Info.plist */; };
+		B739A42A284E55B100677433 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = B739A429284E55B100677433 /* FirebaseAnalytics */; };
+		B739A42D284EC5E000677433 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B739A42C284EC5E000677433 /* FirebaseFirestoreSwift */; };
+		B739A42F2850225A00677433 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = B739A42E2850225A00677433 /* Route.swift */; };
+		B739A4312850227D00677433 /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = B739A4302850227D00677433 /* Stop.swift */; };
+		B739A4342850F4AE00677433 /* PreviewObservationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B739A4332850F4AE00677433 /* PreviewObservationView.swift */; };
+		B739A4362851171B00677433 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B739A4352851171A00677433 /* UserManager.swift */; };
 		B74942E6284138CD00ECDEE3 /* PopUpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74942E5284138CD00ECDEE3 /* PopUpManager.swift */; };
 		B74942EC2845913A00ECDEE3 /* PostMapAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74942EB2845913A00ECDEE3 /* PostMapAnnotationView.swift */; };
 		B74942F32846A2FF00ECDEE3 /* ObservationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74942F22846A2FF00ECDEE3 /* ObservationManager.swift */; };
@@ -45,14 +67,13 @@
 		B7536E2D27B94DED00C5AB50 /* ListFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7536E2C27B94DED00C5AB50 /* ListFeedView.swift */; };
 		B7536E2F27B9752200C5AB50 /* AppBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7536E2E27B9752200C5AB50 /* AppBarView.swift */; };
 		B7536E3327B98EB300C5AB50 /* FeedSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7536E3227B98EB300C5AB50 /* FeedSearchView.swift */; };
-		B7536E3927B9A0E500C5AB50 /* FeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7536E3827B9A0E500C5AB50 /* FeedItem.swift */; };
+		B7536E3927B9A0E500C5AB50 /* Observation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7536E3827B9A0E500C5AB50 /* Observation.swift */; };
 		B7536E3B27B9A0FD00C5AB50 /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7536E3A27B9A0FD00C5AB50 /* Feed.swift */; };
 		B7536E3F27B9A6D700C5AB50 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7536E3E27B9A6D700C5AB50 /* User.swift */; };
 		B75B14792807555F00D9F74B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75B14782807555F00D9F74B /* AppDelegate.swift */; };
 		B75B147B28075BE500D9F74B /* LocationErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75B147A28075BE500D9F74B /* LocationErrors.swift */; };
 		B75B147D2807626500D9F74B /* LocationErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75B147C2807626500D9F74B /* LocationErrorView.swift */; };
-		B76A612827B55720003D680E /* FeedItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76A612727B55720003D680E /* FeedItemView.swift */; };
-		B7966C8627F4D8C200447352 /* stops.txt in Resources */ = {isa = PBXBuildFile; fileRef = B7966C8527F4D8C200447352 /* stops.txt */; };
+		B76A612827B55720003D680E /* ObservationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76A612727B55720003D680E /* ObservationView.swift */; };
 		B7966C8A27F4DFA700447352 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7966C8927F4DFA700447352 /* FileManager.swift */; };
 		B797F5252801BF9E00CC2054 /* Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B797F5242801BF9E00CC2054 /* Filters.swift */; };
 		B797F5272802135500CC2054 /* UtilityFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B797F5262802135500CC2054 /* UtilityFunctions.swift */; };
@@ -71,6 +92,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B70421FF285E8D6D00D917E0 /* NetworkErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorView.swift; sourceTree = "<group>"; };
+		B704220428612AEC00D917E0 /* DetailMapAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMapAnnotationView.swift; sourceTree = "<group>"; };
+		B704220A28628FC300D917E0 /* NewObservationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewObservationsView.swift; sourceTree = "<group>"; };
+		B704220F28629B8F00D917E0 /* KarismaCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarismaCalculator.swift; sourceTree = "<group>"; };
+		B70422122863E42200D917E0 /* NewMapObservationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMapObservationView.swift; sourceTree = "<group>"; };
 		B70604D928483DA8008D0930 /* StopChoiceSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopChoiceSectionView.swift; sourceTree = "<group>"; };
 		B70604DE2848412D008D0930 /* RouteRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteRowView.swift; sourceTree = "<group>"; };
 		B70604E02849278A008D0930 /* KarismaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarismaView.swift; sourceTree = "<group>"; };
@@ -81,27 +107,38 @@
 		B70604F22849842C008D0930 /* EmptyFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyFeedView.swift; sourceTree = "<group>"; };
 		B70604F428498D20008D0930 /* ScrollManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollManager.swift; sourceTree = "<group>"; };
 		B70A762727EFB9A300CE63D6 /* AddBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBarView.swift; sourceTree = "<group>"; };
-		B728C8E92846CFB100AF822A /* SlidingFeedItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidingFeedItemView.swift; sourceTree = "<group>"; };
+		B721CFA728652A920008D00B /* Busamigo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Busamigo.entitlements; sourceTree = "<group>"; };
+		B721CFA828652C720008D00B /* AppDelegateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateExtensions.swift; sourceTree = "<group>"; };
+		B728C8E92846CFB100AF822A /* SlidingObservationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidingObservationView.swift; sourceTree = "<group>"; };
 		B728C8EB2847BD9000AF822A /* MapToolsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapToolsView.swift; sourceTree = "<group>"; };
 		B728C8ED2847ECF100AF822A /* MapInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapInformationView.swift; sourceTree = "<group>"; };
-		B728C8EF2848240F00AF822A /* PreviewSlidingFeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewSlidingFeedItem.swift; sourceTree = "<group>"; };
+		B728C8EF2848240F00AF822A /* PreviewSlidingObservationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewSlidingObservationView.swift; sourceTree = "<group>"; };
 		B728C8F128482E6900AF822A /* StopRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopRowView.swift; sourceTree = "<group>"; };
 		B728C8F32848310F00AF822A /* StopLocationRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopLocationRowView.swift; sourceTree = "<group>"; };
 		B72987C027BB00CE006A3B17 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		B72987D427BE8E6D006A3B17 /* Testing.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Testing.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		B72987D527BE94AB006A3B17 /* AtbFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtbFeed.swift; sourceTree = "<group>"; };
-		B72987D927BECAAB006A3B17 /* AddFeedItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFeedItemView.swift; sourceTree = "<group>"; };
+		B72987D927BECAAB006A3B17 /* PostObservationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostObservationView.swift; sourceTree = "<group>"; };
 		B72987DD27BFC610006A3B17 /* ScrollFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollFeedView.swift; sourceTree = "<group>"; };
 		B72987DF27BFD716006A3B17 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		B72987E127BFD756006A3B17 /* UtilityViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityViews.swift; sourceTree = "<group>"; };
 		B72BDA21283C591D00DC3F26 /* UporDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UporDownView.swift; sourceTree = "<group>"; };
 		B72BDA2F283EFE6600DC3F26 /* LocationUtilites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationUtilites.swift; sourceTree = "<group>"; };
 		B72BDA312840267400DC3F26 /* PostingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingManager.swift; sourceTree = "<group>"; };
-		B739A407284A7B2500677433 /* routes_for_stops.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = routes_for_stops.txt; sourceTree = "<group>"; };
 		B739A40A284A949600677433 /* DetailMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMapView.swift; sourceTree = "<group>"; };
 		B739A40C284A94E100677433 /* DescriptionBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionBubbleView.swift; sourceTree = "<group>"; };
-		B739A40E284A976100677433 /* DescriptionFeedItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionFeedItemView.swift; sourceTree = "<group>"; };
-		B739A410284BD01F00677433 /* tram_stops.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tram_stops.txt; sourceTree = "<group>"; };
+		B739A40E284A976100677433 /* DescriptionObservationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionObservationView.swift; sourceTree = "<group>"; };
+		B739A412284C31B900677433 /* routes_for_stops.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = routes_for_stops.txt; sourceTree = "<group>"; };
+		B739A414284C31DA00677433 /* stops.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stops.txt; sourceTree = "<group>"; };
+		B739A416284D75DF00677433 /* PostingInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingInformation.swift; sourceTree = "<group>"; };
+		B739A418284D760D00677433 /* PostCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCreator.swift; sourceTree = "<group>"; };
+		B739A41A284D764100677433 /* LocationSorter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSorter.swift; sourceTree = "<group>"; };
+		B739A41D284D802B00677433 /* Area.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Area.swift; sourceTree = "<group>"; };
+		B739A426284E554B00677433 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B739A42E2850225A00677433 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		B739A4302850227D00677433 /* Stop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stop.swift; sourceTree = "<group>"; };
+		B739A4332850F4AE00677433 /* PreviewObservationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewObservationView.swift; sourceTree = "<group>"; };
+		B739A4352851171A00677433 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		B74942E5284138CD00ECDEE3 /* PopUpManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpManager.swift; sourceTree = "<group>"; };
 		B74942EB2845913A00ECDEE3 /* PostMapAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostMapAnnotationView.swift; sourceTree = "<group>"; };
 		B74942F22846A2FF00ECDEE3 /* ObservationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservationManager.swift; sourceTree = "<group>"; };
@@ -110,14 +147,13 @@
 		B7536E2C27B94DED00C5AB50 /* ListFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFeedView.swift; sourceTree = "<group>"; };
 		B7536E2E27B9752200C5AB50 /* AppBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBarView.swift; sourceTree = "<group>"; };
 		B7536E3227B98EB300C5AB50 /* FeedSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedSearchView.swift; sourceTree = "<group>"; };
-		B7536E3827B9A0E500C5AB50 /* FeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItem.swift; sourceTree = "<group>"; };
+		B7536E3827B9A0E500C5AB50 /* Observation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observation.swift; sourceTree = "<group>"; };
 		B7536E3A27B9A0FD00C5AB50 /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
 		B7536E3E27B9A6D700C5AB50 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B75B14782807555F00D9F74B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B75B147A28075BE500D9F74B /* LocationErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationErrors.swift; sourceTree = "<group>"; };
 		B75B147C2807626500D9F74B /* LocationErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationErrorView.swift; sourceTree = "<group>"; };
-		B76A612727B55720003D680E /* FeedItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemView.swift; sourceTree = "<group>"; };
-		B7966C8527F4D8C200447352 /* stops.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stops.txt; sourceTree = "<group>"; };
+		B76A612727B55720003D680E /* ObservationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservationView.swift; sourceTree = "<group>"; };
 		B7966C8927F4DFA700447352 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		B797F5242801BF9E00CC2054 /* Filters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filters.swift; sourceTree = "<group>"; };
 		B797F5262802135500CC2054 /* UtilityFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityFunctions.swift; sourceTree = "<group>"; };
@@ -141,12 +177,55 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7042203285F58CD00D917E0 /* FirebaseMessaging in Frameworks */,
+				B739A42D284EC5E000677433 /* FirebaseFirestoreSwift in Frameworks */,
+				B739A425284E53EC00677433 /* FirebaseFunctions in Frameworks */,
+				B739A421284E53EC00677433 /* FirebaseAuth in Frameworks */,
+				B739A42A284E55B100677433 /* FirebaseAnalytics in Frameworks */,
+				B704220828614BC400D917E0 /* Shimmer in Frameworks */,
+				B739A423284E53EC00677433 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B70421FE285E8D3800D917E0 /* ErrorViews */ = {
+			isa = PBXGroup;
+			children = (
+				B75B147C2807626500D9F74B /* LocationErrorView.swift */,
+				B70421FF285E8D6D00D917E0 /* NetworkErrorView.swift */,
+			);
+			path = ErrorViews;
+			sourceTree = "<group>";
+		};
+		B704220928628F8200D917E0 /* StatusViews */ = {
+			isa = PBXGroup;
+			children = (
+				B70604F22849842C008D0930 /* EmptyFeedView.swift */,
+				B704220A28628FC300D917E0 /* NewObservationsView.swift */,
+			);
+			path = StatusViews;
+			sourceTree = "<group>";
+		};
+		B704220C28629AFC00D917E0 /* Algorithms */ = {
+			isa = PBXGroup;
+			children = (
+				B797F52B2806D6BD00CC2054 /* HotSorting.swift */,
+				B704220F28629B8F00D917E0 /* KarismaCalculator.swift */,
+			);
+			path = Algorithms;
+			sourceTree = "<group>";
+		};
+		B70422112863E3B600D917E0 /* MapObservationViews */ = {
+			isa = PBXGroup;
+			children = (
+				B728C8EF2848240F00AF822A /* PreviewSlidingObservationView.swift */,
+				B728C8E92846CFB100AF822A /* SlidingObservationView.swift */,
+			);
+			path = MapObservationViews;
+			sourceTree = "<group>";
+		};
 		B70604D728483AB5008D0930 /* StopViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -170,6 +249,7 @@
 		B70604E628494919008D0930 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				B739A41C284D766C00677433 /* Models */,
 				B70604E728494957008D0930 /* ViewModels */,
 				B70604E82849498F008D0930 /* Views */,
 			);
@@ -181,7 +261,7 @@
 			children = (
 				B72987D527BE94AB006A3B17 /* AtbFeed.swift */,
 				B72987C027BB00CE006A3B17 /* LocationManager.swift */,
-				B70604EC28495339008D0930 /* TabViewModel.swift */,
+				B739A4352851171A00677433 /* UserManager.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -189,7 +269,7 @@
 		B70604E82849498F008D0930 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B70604EA28494AED008D0930 /* BusamigoTabView.swift */,
+				B7BF2C7927B422D2006B840E /* BusamigoView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -214,11 +294,11 @@
 			isa = PBXGroup;
 			children = (
 				B7966C8927F4DFA700447352 /* FileManager.swift */,
-				B797F52B2806D6BD00CC2054 /* HotSorting.swift */,
 				B75B14782807555F00D9F74B /* AppDelegate.swift */,
 				B72987E127BFD756006A3B17 /* UtilityViews.swift */,
 				B797F5262802135500CC2054 /* UtilityFunctions.swift */,
 				B72987DF27BFD716006A3B17 /* Extensions.swift */,
+				B721CFA828652C720008D00B /* AppDelegateExtensions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -234,9 +314,8 @@
 		B72987CF27BC6E41006A3B17 /* Atb */ = {
 			isa = PBXGroup;
 			children = (
-				B7966C8527F4D8C200447352 /* stops.txt */,
-				B739A410284BD01F00677433 /* tram_stops.txt */,
-				B739A407284A7B2500677433 /* routes_for_stops.txt */,
+				B739A412284C31B900677433 /* routes_for_stops.txt */,
+				B739A414284C31DA00677433 /* stops.txt */,
 			);
 			path = Atb;
 			sourceTree = "<group>";
@@ -251,14 +330,14 @@
 			path = TestViews;
 			sourceTree = "<group>";
 		};
-		B72BDA2E283DA41100DC3F26 /* AddingViews */ = {
+		B72BDA2E283DA41100DC3F26 /* PostingViews */ = {
 			isa = PBXGroup;
 			children = (
 				B70604DD28484117008D0930 /* RouteViews */,
 				B70604D728483AB5008D0930 /* StopViews */,
-				B72987D927BECAAB006A3B17 /* AddFeedItemView.swift */,
+				B72987D927BECAAB006A3B17 /* PostObservationView.swift */,
 			);
-			path = AddingViews;
+			path = PostingViews;
 			sourceTree = "<group>";
 		};
 		B739A409284A946D00677433 /* DetailViews */ = {
@@ -267,20 +346,43 @@
 				B7B88F5727F1C8D9008F2BF3 /* DetailView.swift */,
 				B739A40A284A949600677433 /* DetailMapView.swift */,
 				B739A40C284A94E100677433 /* DescriptionBubbleView.swift */,
-				B739A40E284A976100677433 /* DescriptionFeedItemView.swift */,
+				B739A40E284A976100677433 /* DescriptionObservationView.swift */,
+				B704220428612AEC00D917E0 /* DetailMapAnnotationView.swift */,
 			);
 			path = DetailViews;
+			sourceTree = "<group>";
+		};
+		B739A41C284D766C00677433 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B7536E3A27B9A0FD00C5AB50 /* Feed.swift */,
+				B7536E3827B9A0E500C5AB50 /* Observation.swift */,
+				B7536E3E27B9A6D700C5AB50 /* User.swift */,
+				B739A41D284D802B00677433 /* Area.swift */,
+				B739A42E2850225A00677433 /* Route.swift */,
+				B739A4302850227D00677433 /* Stop.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B739A432285022E200677433 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				B70604EC28495339008D0930 /* TabViewModel.swift */,
+				B70604EA28494AED008D0930 /* BusamigoTabView.swift */,
+			);
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 		B74942ED284698AA00ECDEE3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B70422112863E3B600D917E0 /* MapObservationViews */,
 				B7536E2227B5B32500C5AB50 /* MapView.swift */,
 				B74942EB2845913A00ECDEE3 /* PostMapAnnotationView.swift */,
-				B728C8E92846CFB100AF822A /* SlidingFeedItemView.swift */,
 				B728C8EB2847BD9000AF822A /* MapToolsView.swift */,
 				B728C8ED2847ECF100AF822A /* MapInformationView.swift */,
-				B728C8EF2848240F00AF822A /* PreviewSlidingFeedItem.swift */,
+				B70422122863E42200D917E0 /* NewMapObservationView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -307,17 +409,17 @@
 			isa = PBXGroup;
 			children = (
 				B72987DB27BFC5D1006A3B17 /* TestViews */,
-				B76A612927B55F34003D680E /* FeedItemViews */,
-				B72BDA2E283DA41100DC3F26 /* AddingViews */,
+				B76A612927B55F34003D680E /* ObservationViews */,
+				B72BDA2E283DA41100DC3F26 /* PostingViews */,
 				B70A762927EFDFDD00CE63D6 /* SearchViews */,
 				B739A409284A946D00677433 /* DetailViews */,
+				B70421FE285E8D3800D917E0 /* ErrorViews */,
+				B704220928628F8200D917E0 /* StatusViews */,
 				B7BF2C8727B433A7006B840E /* FeedView.swift */,
 				B72987DD27BFC610006A3B17 /* ScrollFeedView.swift */,
 				B7F70FD6280B787200F8A71D /* ActivityIndicatorView.swift */,
 				B7536E2E27B9752200C5AB50 /* AppBarView.swift */,
 				B7536E2A27B9336600C5AB50 /* FilterView.swift */,
-				B75B147C2807626500D9F74B /* LocationErrorView.swift */,
-				B70604F22849842C008D0930 /* EmptyFeedView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -356,22 +458,23 @@
 		B7536E3727B99F7C00C5AB50 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				B7536E3A27B9A0FD00C5AB50 /* Feed.swift */,
-				B7536E3827B9A0E500C5AB50 /* FeedItem.swift */,
-				B7536E3E27B9A6D700C5AB50 /* User.swift */,
 				B797F5242801BF9E00CC2054 /* Filters.swift */,
 				B75B147A28075BE500D9F74B /* LocationErrors.swift */,
+				B739A416284D75DF00677433 /* PostingInformation.swift */,
+				B739A418284D760D00677433 /* PostCreator.swift */,
+				B739A41A284D764100677433 /* LocationSorter.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		B76A612927B55F34003D680E /* FeedItemViews */ = {
+		B76A612927B55F34003D680E /* ObservationViews */ = {
 			isa = PBXGroup;
 			children = (
-				B76A612727B55720003D680E /* FeedItemView.swift */,
+				B76A612727B55720003D680E /* ObservationView.swift */,
 				B72BDA21283C591D00DC3F26 /* UporDownView.swift */,
+				B739A4332850F4AE00677433 /* PreviewObservationView.swift */,
 			);
-			path = FeedItemViews;
+			path = ObservationViews;
 			sourceTree = "<group>";
 		};
 		B7BF2C6B27B422D2006B840E = {
@@ -394,14 +497,17 @@
 		B7BF2C7627B422D2006B840E /* Busamigo */ = {
 			isa = PBXGroup;
 			children = (
+				B721CFA728652A920008D00B /* Busamigo.entitlements */,
 				B70604E628494919008D0930 /* Main */,
 				B7536E2627B6B16B00C5AB50 /* Feed */,
 				B7536E2927B6B1F100C5AB50 /* Map */,
 				B7536E2827B6B1E100C5AB50 /* Profile */,
+				B739A432285022E200677433 /* TabBar */,
+				B704220C28629AFC00D917E0 /* Algorithms */,
 				B72987C227BB01A4006A3B17 /* Utilities */,
 				B72987CE27BC6DE4006A3B17 /* TransportData */,
+				B739A426284E554B00677433 /* GoogleService-Info.plist */,
 				B7BF2C7727B422D2006B840E /* BusamigoApp.swift */,
-				B7BF2C7927B422D2006B840E /* BusamigoView.swift */,
 				B7BF2C7B27B422D4006B840E /* Assets.xcassets */,
 				B7BF2C7D27B422D4006B840E /* Preview Content */,
 			);
@@ -433,6 +539,13 @@
 			);
 			name = Busamigo;
 			packageProductDependencies = (
+				B739A420284E53EC00677433 /* FirebaseAuth */,
+				B739A422284E53EC00677433 /* FirebaseFirestore */,
+				B739A424284E53EC00677433 /* FirebaseFunctions */,
+				B739A429284E55B100677433 /* FirebaseAnalytics */,
+				B739A42C284EC5E000677433 /* FirebaseFirestoreSwift */,
+				B7042202285F58CD00D917E0 /* FirebaseMessaging */,
+				B704220728614BC400D917E0 /* Shimmer */,
 			);
 			productName = Busamigo;
 			productReference = B7BF2C7427B422D2006B840E /* Busamigo.app */;
@@ -463,6 +576,11 @@
 			);
 			mainGroup = B7BF2C6B27B422D2006B840E;
 			packageReferences = (
+				B739A41F284E53EC00677433 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				B739A428284E55B100677433 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				B739A42B284EC5E000677433 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				B7042201285F58CD00D917E0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				B704220628614BC400D917E0 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
 			);
 			productRefGroup = B7BF2C7527B422D2006B840E /* Products */;
 			projectDirPath = "";
@@ -479,11 +597,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7BF2C7F27B422D4006B840E /* Preview Assets.xcassets in Resources */,
-				B7966C8627F4D8C200447352 /* stops.txt in Resources */,
-				B739A408284A7B2500677433 /* routes_for_stops.txt in Resources */,
+				B739A415284C31DA00677433 /* stops.txt in Resources */,
 				B797F5292805B3AF00CC2054 /* Usefull stuff.rtf in Resources */,
-				B739A411284BD01F00677433 /* tram_stops.txt in Resources */,
 				B7BF2C7C27B422D4006B840E /* Assets.xcassets in Resources */,
+				B739A413284C31B900677433 /* routes_for_stops.txt in Resources */,
+				B739A427284E554B00677433 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -495,35 +613,47 @@
 			buildActionMask = 2147483647;
 			files = (
 				B72987C127BB00CE006A3B17 /* LocationManager.swift in Sources */,
-				B72987DA27BECAAB006A3B17 /* AddFeedItemView.swift in Sources */,
+				B72987DA27BECAAB006A3B17 /* PostObservationView.swift in Sources */,
 				B7966C8A27F4DFA700447352 /* FileManager.swift in Sources */,
 				B7536E3B27B9A0FD00C5AB50 /* Feed.swift in Sources */,
 				B70604F528498D20008D0930 /* ScrollManager.swift in Sources */,
-				B728C8F02848240F00AF822A /* PreviewSlidingFeedItem.swift in Sources */,
-				B728C8EA2846CFB100AF822A /* SlidingFeedItemView.swift in Sources */,
+				B728C8F02848240F00AF822A /* PreviewSlidingObservationView.swift in Sources */,
+				B728C8EA2846CFB100AF822A /* SlidingObservationView.swift in Sources */,
 				B75B147B28075BE500D9F74B /* LocationErrors.swift in Sources */,
+				B739A419284D760D00677433 /* PostCreator.swift in Sources */,
+				B739A4362851171B00677433 /* UserManager.swift in Sources */,
 				B72987D627BE94AC006A3B17 /* AtbFeed.swift in Sources */,
 				B7F70FD7280B787200F8A71D /* ActivityIndicatorView.swift in Sources */,
 				B72987DE27BFC610006A3B17 /* ScrollFeedView.swift in Sources */,
-				B76A612827B55720003D680E /* FeedItemView.swift in Sources */,
-				B739A40F284A976100677433 /* DescriptionFeedItemView.swift in Sources */,
+				B70422132863E42200D917E0 /* NewMapObservationView.swift in Sources */,
+				B76A612827B55720003D680E /* ObservationView.swift in Sources */,
+				B739A40F284A976100677433 /* DescriptionObservationView.swift in Sources */,
 				B7536E2D27B94DED00C5AB50 /* ListFeedView.swift in Sources */,
+				B739A41B284D764100677433 /* LocationSorter.swift in Sources */,
 				B70604DF2848412D008D0930 /* RouteRowView.swift in Sources */,
+				B704220B28628FC300D917E0 /* NewObservationsView.swift in Sources */,
+				B739A4312850227D00677433 /* Stop.swift in Sources */,
 				B72987E027BFD716006A3B17 /* Extensions.swift in Sources */,
 				B739A40D284A94E100677433 /* DescriptionBubbleView.swift in Sources */,
+				B739A41E284D802B00677433 /* Area.swift in Sources */,
 				B70604DA28483DA8008D0930 /* StopChoiceSectionView.swift in Sources */,
+				B739A4342850F4AE00677433 /* PreviewObservationView.swift in Sources */,
 				B739A40B284A949600677433 /* DetailMapView.swift in Sources */,
+				B704220528612AEC00D917E0 /* DetailMapAnnotationView.swift in Sources */,
 				B70604EB28494AED008D0930 /* BusamigoTabView.swift in Sources */,
 				B70604E12849278B008D0930 /* KarismaView.swift in Sources */,
 				B7B88F5627EFE0A7008F2BF3 /* StopSearchView.swift in Sources */,
+				B704221028629B8F00D917E0 /* KarismaCalculator.swift in Sources */,
 				B728C8EE2847ECF100AF822A /* MapInformationView.swift in Sources */,
 				B7536E2B27B9336600C5AB50 /* FilterView.swift in Sources */,
 				B7536E3F27B9A6D700C5AB50 /* User.swift in Sources */,
 				B7BF2C8A27B44822006B840E /* ProfileView.swift in Sources */,
 				B7BF2C7A27B422D2006B840E /* BusamigoView.swift in Sources */,
+				B7042200285E8D6D00D917E0 /* NetworkErrorView.swift in Sources */,
 				B74942E6284138CD00ECDEE3 /* PopUpManager.swift in Sources */,
 				B728C8F228482E6900AF822A /* StopRowView.swift in Sources */,
 				B728C8F42848310F00AF822A /* StopLocationRowView.swift in Sources */,
+				B739A42F2850225A00677433 /* Route.swift in Sources */,
 				B72BDA30283EFE6600DC3F26 /* LocationUtilites.swift in Sources */,
 				B70604ED28495339008D0930 /* TabViewModel.swift in Sources */,
 				B72BDA22283C591D00DC3F26 /* UporDownView.swift in Sources */,
@@ -531,12 +661,14 @@
 				B72987E227BFD756006A3B17 /* UtilityViews.swift in Sources */,
 				B797F5272802135500CC2054 /* UtilityFunctions.swift in Sources */,
 				B797F5252801BF9E00CC2054 /* Filters.swift in Sources */,
+				B739A417284D75DF00677433 /* PostingInformation.swift in Sources */,
 				B7B88F5427EFE080008F2BF3 /* RouteSearchView.swift in Sources */,
 				B72BDA322840267500DC3F26 /* PostingManager.swift in Sources */,
 				B75B147D2807626500D9F74B /* LocationErrorView.swift in Sources */,
 				B74942F32846A2FF00ECDEE3 /* ObservationManager.swift in Sources */,
 				B7BF2C8827B433A7006B840E /* FeedView.swift in Sources */,
 				B7B88F5827F1C8D9008F2BF3 /* DetailView.swift in Sources */,
+				B721CFA928652C720008D00B /* AppDelegateExtensions.swift in Sources */,
 				B75B14792807555F00D9F74B /* AppDelegate.swift in Sources */,
 				B797F52C2806D6BE00CC2054 /* HotSorting.swift in Sources */,
 				B70604E528494499008D0930 /* TipsView.swift in Sources */,
@@ -546,7 +678,7 @@
 				B74942EC2845913A00ECDEE3 /* PostMapAnnotationView.swift in Sources */,
 				B7536E2F27B9752200C5AB50 /* AppBarView.swift in Sources */,
 				B70A762827EFB9A300CE63D6 /* AddBarView.swift in Sources */,
-				B7536E3927B9A0E500C5AB50 /* FeedItem.swift in Sources */,
+				B7536E3927B9A0E500C5AB50 /* Observation.swift in Sources */,
 				B728C8EC2847BD9000AF822A /* MapToolsView.swift in Sources */,
 				B7BF2C7827B422D2006B840E /* BusamigoApp.swift in Sources */,
 			);
@@ -678,6 +810,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Busamigo/Busamigo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Busamigo/Preview Content\"";
@@ -699,7 +832,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = no.nicka.stud.ntnu.Busamigo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.guttaredderverden.Busamigo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -712,6 +845,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Busamigo/Busamigo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Busamigo/Preview Content\"";
@@ -733,7 +867,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = no.nicka.stud.ntnu.Busamigo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.guttaredderverden.Busamigo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -763,6 +897,87 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B7042201285F58CD00D917E0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+		B704220628614BC400D917E0 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/markiv/SwiftUI-Shimmer.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		B739A41F284E53EC00677433 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+		B739A428284E55B100677433 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+		B739A42B284EC5E000677433 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B7042202285F58CD00D917E0 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B739A41F284E53EC00677433 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		B704220728614BC400D917E0 /* Shimmer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B704220628614BC400D917E0 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */;
+			productName = Shimmer;
+		};
+		B739A420284E53EC00677433 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B739A41F284E53EC00677433 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		B739A422284E53EC00677433 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B739A41F284E53EC00677433 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		B739A424284E53EC00677433 /* FirebaseFunctions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B739A41F284E53EC00677433 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFunctions;
+		};
+		B739A429284E55B100677433 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B739A41F284E53EC00677433 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		B739A42C284EC5E000677433 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B739A42B284EC5E000677433 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B7BF2C6C27B422D2006B840E /* Project object */;
 }

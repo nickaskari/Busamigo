@@ -8,16 +8,18 @@
 import SwiftUI
 import Combine
 
-struct AddFeedItemView: View {
+struct PostObservationView: View {
     @ObservedObject private var feed: AtbFeed
     @ObservedObject private var locationManager: LocationManager
     @ObservedObject private var postingManager: PostingManager
     @Environment(\.presentationMode) private var presentationMode
     @EnvironmentObject private var popUpManager: PopUpManager
+    @EnvironmentObject private var userManager: UserManager
     
     @State private var description: String = ""
     @State private var placeholder: String = "Skriv en beskrivelse ..."
-    let textLimit = 80
+    @State private var canPost: Bool = false
+    private let textLimit = 80
     
     init(_ feed: AtbFeed, _ locationManager: LocationManager, _ postingManager: PostingManager) {
         self.feed = feed
@@ -88,12 +90,25 @@ struct AddFeedItemView: View {
             
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button (action: {
-                    postingManager.setFeedItem(description: description)
-                    feed.postToFeed(postingManager.getFeedItem()!, getUser()!)
-                    popUpManager.returnTofeed()
+                    if let loc = locationManager.lastKnownLocation {
+                        if loc.isInsideArea(feed.area) {
+                            postingManager.setFeedItem(description: description, userID: userManager.getUserID())
+                            feed.postToFeed(postingManager.getFeedItem()!)
+                            popUpManager.returnTofeed()
+                        } else {
+                            canPost.toggle()
+                        }
+                    } else {
+                        popUpManager.returnTofeed()
+                    }
                 }, label: {
                     Text("Del")
                 })
+                .alert(isPresented: $canPost) {
+                    Alert(title: Text("Du befinner deg utenfor gyldig område!"), message: Text("Gyldig området er rundt Trondheim."), dismissButton: .default(Text("Skjønner!")) {
+                        popUpManager.returnTofeed()
+                    })
+                }
             }
         }
         .navigationBarBackButtonHidden(true)
@@ -101,7 +116,7 @@ struct AddFeedItemView: View {
     }
     
     //Function to keep text length in limits
-    func limitText(_ upper: Int) {
+    private func limitText(_ upper: Int) {
         let tok = description.components(separatedBy: "\n")
         let spaces = tok.count - 1
         
@@ -122,6 +137,6 @@ struct AddFeedItemView: View {
 
 struct AddFeedItemView_Previews: PreviewProvider {
     static var previews: some View {
-        AddFeedItemView(AtbFeed(), LocationManager(), PostingManager())
+        PostObservationView(AtbFeed(), LocationManager(), PostingManager())
     }
 }

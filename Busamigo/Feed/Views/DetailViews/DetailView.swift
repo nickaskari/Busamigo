@@ -7,23 +7,41 @@
 
 import SwiftUI
 import MapKit
+import Shimmer
 
 struct DetailView: View {
-    private let feedItem: FeedItem
+    private let observation: Observation
     private let locationManager: LocationManager
     @Environment(\.presentationMode) private var presentationMode
+    @EnvironmentObject private var userManager: UserManager
     
-    init(feedItem: FeedItem, locationManager: LocationManager) {
-        self.feedItem = feedItem
+    @State private var isLoading = true
+    @State private var karisma: Double?
+    
+    init(observation: Observation, locationManager: LocationManager) {
+        self.observation = observation
         self.locationManager = locationManager
     }
     
     var body: some View {
         VStack {
-            DetailMapView(feedItem.location)
-            DescriptionBubbleView(feedItem, locationManager)
-                .padding()
-
+            DetailMapView(observation.getCLLocationCoordinate2D())
+            
+            if isLoading {
+                DescriptionBubbleView(observation, locationManager, karisma: 68)
+                    .redacted(reason: .placeholder)
+                    .shimmering()
+            } else {
+                DescriptionBubbleView(observation, locationManager, karisma: self.karisma ?? 50)
+            }
+        }
+        .onAppear {
+            userManager.getAuthorKarisma(id: observation.author) { karisma in
+                if let karisma = karisma {
+                    self.karisma = karisma
+                    self.isLoading = false
+                }
+            }
         }
         .edgesIgnoringSafeArea(.top)
         .navigationBarBackButtonHidden(true)
@@ -66,8 +84,8 @@ struct DetailView: View {
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        let item = FeedItem(route: (1, "ASDASD jalla"), stop: "Prinsens gate P1", author: UUID(), location: CLLocationCoordinate2D(latitude: 63.430230, longitude: 10.382971), 0, description: "GG")
+        let item = Observation(route: Route(nr: 3, name: "Lohove mot sentrum"), stop: Stop(name: "Kongens gate", vehicle: 700), author: "someID", location: CLLocationCoordinate2D(), voteScore: 12, description: "")
         
-        DetailView(feedItem: item, locationManager: LocationManager())
+        DetailView(observation: item, locationManager: LocationManager())
     }
 }

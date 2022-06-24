@@ -10,10 +10,10 @@ import SwiftUI
 struct StopLocationRowView: View {
     @ObservedObject private var postingManager: PostingManager
     
-    private var stop: String
+    private var stop: Stop
     private var distance: Double
     
-    init(_ stop: String, distance: Double, _ postingManager: PostingManager) {
+    init(_ stop: Stop, distance: Double, _ postingManager: PostingManager) {
         self.stop = stop
         self.distance = distance
         self.postingManager = postingManager
@@ -21,16 +21,14 @@ struct StopLocationRowView: View {
     
     var body: some View {
         HStack {
-            Image(systemName: "figure.wave")
-                .font(.system(size: 20))
-                .foregroundColor(.black)
-                .padding(.horizontal, 7)
+            Image(systemName: busOrTram(stop))
+                .busStopStyle()
             VStack(alignment: .leading) {
-                Text(stop)
+                Text(stop.name)
                     .font(.headline)
                     .foregroundColor(.black)
                 HStack {
-                    Text("\(distance)" + " m")
+                    Text(distanceText())
                         .foregroundColor(.pink)
                     .font(.subheadline)
                     Image(systemName: "location.fill")
@@ -52,10 +50,22 @@ struct StopLocationRowView: View {
         .listRowBackground(postingManager.getSelectedStop() == stop ? Color.gray.opacity(0.25) : Color.clear)
         .animation(.none, value: postingManager.getSelectedStop())
     }
+    
+    private func distanceText() -> String {
+        if distance < 1000 {
+            return "\(distance)" + " m"
+        } else {
+            return "\(round(distance / 1000))" + " km"
+        }
+    }
 }
+
+
+
+
 
 struct StopLocationRowView_Previews: PreviewProvider {
     static var previews: some View {
-        StopLocationRowView("FDSF", distance: 21.2, PostingManager())
+        StopLocationRowView(Stop(name: "Munkvoll", vehicle: 900), distance: 21.2, PostingManager())
     }
 }

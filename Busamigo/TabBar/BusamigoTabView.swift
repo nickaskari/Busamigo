@@ -35,6 +35,10 @@ struct BusamigoTabView: View {
             tabvm.currentPage = page
             if name == "Feed" {
                 scrollManager.scrollToTop = true
+                feed.removeFirebaseListener()
+            }
+            if name == "Profil" {
+                feed.removeFirebaseListener()
             }
         } label: {
             VStack(spacing: 2) {

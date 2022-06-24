@@ -28,11 +28,11 @@ struct RouteSearchView: View {
                 if postingManager.getSelectedRoute() != nil && searchText == "" {
                     Section(header: Text("Ditt valg").font(.title2.bold()).foregroundColor(.black)
                         .padding(.bottom, 7)) {
-                            RouteRowView(num: postingManager.getSelectedRoute()!.0, name: postingManager.getSelectedRoute()!.1, postingManager)
+                            RouteRowView(route: postingManager.getSelectedRoute()!, postingManager)
                         }
                 }
-                ForEach(filteredRoutes, id: \.id) { route in
-                    RouteRowView(num: route.nr, name: route.name, postingManager)
+                ForEach(filteredRoutes) { route in
+                    RouteRowView(route: route, postingManager)
                 }
             }
                 .navigationBarBackButtonHidden(true)
@@ -59,7 +59,7 @@ struct RouteSearchView: View {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         if postingManager.getSelectedRoute() == nil {
                             NavigationLink(destination: {
-                                AddFeedItemView(feed, locationManager, postingManager)
+                                PostObservationView(feed, locationManager, postingManager)
                             }, label: {
                                 Text("Hopp over")
                                     .foregroundColor(.black)
@@ -71,7 +71,7 @@ struct RouteSearchView: View {
             
             if postingManager.getSelectedRoute() != nil {
                 NavigationLink(destination: {
-                    AddFeedItemView(feed, locationManager, postingManager)
+                    PostObservationView(feed, locationManager, postingManager)
                 }, label: {
                     Text("Neste")
                         .foregroundColor(.white)
@@ -85,8 +85,8 @@ struct RouteSearchView: View {
         }
     }
     
-    var filteredRoutes: Array<(id: String, nr: Int, name: String)> {
-        let routes = feed.routes[postingManager.getStopName()!]!
+    var filteredRoutes: Array<Route> {
+        let routes = feed.routes[postingManager.getStop()!]!
  
         if searchText.isEmpty {
             return []

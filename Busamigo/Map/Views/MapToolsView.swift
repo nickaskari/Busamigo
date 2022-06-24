@@ -45,12 +45,10 @@ struct MapToolsView: View {
                         if let location = locationManager.lastKnownLocation {
                             observationManager.showUserLocation(location)
                             if !locationManager.hasAuthErrors(feed) {
-                                locationManager.unableToGetLocation = false
                             }
                             error = false
                         } else {
                             if !locationManager.hasAuthErrors(feed) {
-                                locationManager.unableToGetLocation = true
                             }
                             error = true
                         }

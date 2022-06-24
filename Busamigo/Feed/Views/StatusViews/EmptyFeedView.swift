@@ -10,16 +10,11 @@ import SwiftUI
 struct EmptyFeedView: View {
     
     var body: some View {
-        VStack {
-            Spacer()
             
-            Text("Ingen observasjoner enda :(")
-                .foregroundColor(.gray)
-                .font(.title2)
+        Text("Ingen observasjoner enda :)")
+            .foregroundColor(.gray)
+            .font(.title2)
             .padding()
-            
-            Spacer()
-        }
     }
 }
 

@@ -10,18 +10,16 @@ import MapKit
 
 struct StopSearchView: View {
     @ObservedObject private var feed: AtbFeed
-    @ObservedObject private var locationManager: LocationManager
+    private var locationManager: LocationManager
     @StateObject private var postingManager = PostingManager()
     @Environment(\.presentationMode) private var presentationMode
     
-    private let allStops: Dictionary<String, CLLocationCoordinate2D>
     @State private var searchText = ""
-    @StateObject private var sorter: LocationUtilites = LocationUtilites()
+    private var sorter: LocationUtilites = LocationUtilites()
     
     init(_ feed: AtbFeed, _ locationManager: LocationManager) {
         self.feed = feed
         self.locationManager = locationManager
-        self.allStops = feed.stops
     }
     
     var body: some View {
@@ -35,11 +33,11 @@ struct StopSearchView: View {
                     if searchText.isEmpty && !closeStops.isEmpty {
                         Section(header: Text("I nærheten").font(.title2.bold()).foregroundColor(.black)
                             .padding(.bottom, 7)) {
-                                ForEach(filteredStops, id: \.description) { stop in
-                                    StopLocationRowView(stop, distance: sorter.sortedStopsAndDistances()[stop]!, postingManager)
+                                ForEach(filteredStops) { stop in
+                                    StopLocationRowView(stop, distance: sorter.distanceForStop(stop), postingManager)
                                     .onTapGesture {
                                         withAnimation {
-                                            postingManager.setStop(stop, allStops[stop]!)
+                                            postingManager.setStop(stop, location: feed.stops[stop]!)
                                         }
                                         postingManager.setRoute(nil)
                                     }
@@ -48,11 +46,11 @@ struct StopSearchView: View {
                         
                     } else {
                         Section {
-                            ForEach(filteredStops, id: \.description) { stop in
+                            ForEach(filteredStops) { stop in
                                 StopRowView(stop, isPreview: false, postingManager)
                                     .contentShape(Rectangle())
                                     .onTapGesture {
-                                        postingManager.setStop(stop, allStops[stop]!)
+                                        postingManager.setStop(stop, location: feed.stops[stop]!)
                                         postingManager.setRoute(nil)
                                     }
                                     .listRowBackground(postingManager.getSelectedStop() == stop ? Color.gray.opacity(0.25) : Color.clear)
@@ -62,15 +60,14 @@ struct StopSearchView: View {
                 }
                 .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Søk holdeplasser")
                 .listStyle(.plain)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        Button(action: {
-                            self.presentationMode.wrappedValue.dismiss()
-                        }, label: {
-                            Image(systemName: "xmark")
-                                .foregroundColor(.pink)
-                                .font(.system(size: 20))
-                        })
+                .toolbar { ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }, label: {
+                        Image(systemName: "xmark")
+                            .foregroundColor(.pink)
+                            .font(.system(size: 20))
+                    })
                     }
                     
                     ToolbarItem(placement: .principal) {
@@ -79,7 +76,6 @@ struct StopSearchView: View {
                             .font(.headline)
                     }
                 }
-
                 .navigationBarTitle("")
                 .navigationBarTitleDisplayMode(.inline)
                 
@@ -88,12 +84,7 @@ struct StopSearchView: View {
                         RouteSearchView(feed, postingManager, locationManager)
                     }, label: {
                         Text("Neste")
-                            .foregroundColor(.white)
-                            .font(.title3)
-                            .padding()
-                            .background(Capsule(style: .circular)
-                                            .foregroundColor(.black))
-                            .padding(.bottom)
+                            .nextButtonStyle()
                     })
                 }
             }
@@ -102,22 +93,21 @@ struct StopSearchView: View {
         .accentColor(.pink)
     }
     
-    private var filteredStops: [String] {
-        let stops = Array(allStops.keys)
+    private var filteredStops: [Stop] {
+        let stops = Array(feed.stops.keys)
         
         if searchText.isEmpty {
             return closeStops
         } else {
-            return stops.filter { $0.localizedStandardContains(searchText) }
+            return stops.filter { $0.name.localizedStandardContains(searchText) }
         }
     }
     
-    private var closeStops: [String] {
-        let stops = allStops
+    private var closeStops: [Stop] {
         let location = locationManager.lastKnownLocation
     
         if let location = location {
-            sorter.locationSort(location, stops)
+            sorter.locationSort(location, feed.stops)
             return sorter.sortedStops()
         }
         return []

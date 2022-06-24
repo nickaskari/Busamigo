@@ -27,7 +27,7 @@ extension CLLocationCoordinate2D: Identifiable {
     }
 }
 
-extension UIScreen{
+extension UIScreen {
    static let screenWidth = UIScreen.main.bounds.size.width
    static let screenHeight = UIScreen.main.bounds.size.height
    static let screenSize = UIScreen.main.bounds.size
@@ -54,4 +54,79 @@ extension UINavigationController: UIGestureRecognizerDelegate {
     public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         return viewControllers.count > 1
     }
+}
+
+extension Image {
+    func busStopStyle() -> some View {
+        self
+            .font(.system(size: 20))
+            .foregroundColor(.black)
+            .frame(width: 50)
+    }
+    
+    func addButtonStyle() -> some View {
+        self
+            .shadow(radius: 2)
+            .padding()
+            .foregroundColor(.white)
+            .font(.system(size: 50))
+            .background(Circle()
+                .strokeBorder(.pink, lineWidth: 5)
+                .opacity(0.7))
+            .padding()
+            .shadow(radius: 6)
+    }
+}
+
+extension Text {
+    func nextButtonStyle() -> some View {
+        self
+            .foregroundColor(.white)
+            .font(.title3)
+            .padding()
+            .background(Capsule(style: .circular)
+                            .foregroundColor(.black))
+            .padding(.bottom)
+    }
+}
+
+extension CLLocationCoordinate2D {
+    func isInsideArea(_ area: Area) -> Bool {
+        return self.latitude <= area.upperLat && self.latitude >= area.downerLat && self.longitude >= area.leftLon && self.longitude <= area.rightLon
+    }
+}
+
+extension View {
+    func placeholder<Content: View>(
+        when shouldShow: Bool,
+        alignment: Alignment = .leading,
+        @ViewBuilder placeholder: () -> Content) -> some View {
+
+        ZStack(alignment: alignment) {
+            placeholder().opacity(shouldShow ? 1 : 0)
+            self
+        }
+    }
+    
+    func capsuleStyle(_ color: Color, size: Size) -> some View {
+        switch size {
+        case .small:
+            return self
+                .padding(EdgeInsets(top: 10, leading: 30, bottom: 10, trailing: 30))
+                .foregroundColor(.white)
+                .background(Capsule().foregroundColor(color))
+                .shadow(radius: 5)
+        case .medium:
+            return self
+                .padding(EdgeInsets(top: 20, leading: 60, bottom: 20, trailing: 60))
+                .foregroundColor(.white)
+                .background(Capsule().foregroundColor(color))
+                .shadow(radius: 5)
+        }
+    }
+}
+
+enum Size {
+    case small
+    case medium
 }

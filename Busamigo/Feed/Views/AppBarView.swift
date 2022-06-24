@@ -20,28 +20,28 @@ struct AppBarView: View {
         HStack(alignment: .center) {
             
             Image(systemName: "magnifyingglass")
-                .font(.system(size: 23))
+                .font(.system(size: 20))
                 .opacity(0)
             
             Image(systemName: "plus")
                 .padding(20)
-                .font(.system(size: 23))
+                .font(.system(size: 20))
                 .opacity(0)
             
             Spacer()
             
             Image(systemName: "mappin.circle")
-                .font(.system(size: 23))
+                .font(.system(size: 20))
                 .shadow(radius: 1)
                 .foregroundColor(.pink)
             Text("Trondheim")
-                .font(.bold(.title2)())
+                .font(.bold(.title3)())
             
             Spacer()
             
             Image(systemName: "plus")
                 .foregroundColor(.pink)
-                .font(.system(size: 23))
+                .font(.system(size: 20))
                 .shadow(radius: 1)
                 .opacity(0)
             
@@ -50,7 +50,7 @@ struct AppBarView: View {
             }, label: {
                 Image(systemName: "magnifyingglass")
                     .accentColor(.black)
-                    .font(.system(size: 23))
+                    .font(.system(size: 20))
                     .shadow(radius: 1)
                     .padding(.horizontal, 20)
             })

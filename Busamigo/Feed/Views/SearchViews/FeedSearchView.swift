@@ -23,11 +23,11 @@ struct FeedSearchView: View {
             .navigationBarTitle("Søk i feeden", displayMode: .inline)
     }
     
-    private var filteredFeed: [FeedItem] {
+    private var filteredFeed: [Observation] {
         if searchText.isEmpty {
             return []
         } else {
-            return feed.getVisibleFeed().filter { $0.sightingForSearch.localizedStandardContains(searchText)}
+            return feed.getUntouchedFeed().filter { $0.searchInfo.localizedStandardContains(searchText)}
         }
     }
 }

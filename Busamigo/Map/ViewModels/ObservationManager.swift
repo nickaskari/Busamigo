@@ -11,7 +11,7 @@ import MapKit
 
 class ObservationManager: ObservableObject {
     
-    @Published var mapObservation: FeedItem? {
+    @Published var mapObservation: Observation? {
         didSet {
             if let mapObservation = mapObservation {
                 updateMapRegion(observation: mapObservation)
@@ -30,15 +30,23 @@ class ObservationManager: ObservableObject {
             span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2))
     }
     
-    private func updateMapRegion(observation: FeedItem) {
-        withAnimation(.easeInOut) {
-            mapRegion = MKCoordinateRegion(
-                center: observation.location,
-                span: mapSpan)
+    private func updateMapRegion(observation: Observation) {
+        if mapRegion.span.latitudeDelta < mapSpan.latitudeDelta {
+            withAnimation(.easeInOut) {
+                mapRegion = MKCoordinateRegion(
+                    center: observation.getCLLocationCoordinate2D(),
+                    span: mapRegion.span)
+            }
+        } else {
+            withAnimation(.easeInOut) {
+                mapRegion = MKCoordinateRegion(
+                    center: observation.getCLLocationCoordinate2D(),
+                    span: mapSpan)
+            }
         }
     }
     
-    func showNextObservation(observation: FeedItem) {
+    func showNextObservation(observation: Observation) {
         withAnimation(.easeInOut) {
             mapObservation = observation
         }

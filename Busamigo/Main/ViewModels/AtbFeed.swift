@@ -7,44 +7,153 @@
 
 import Foundation
 import MapKit
+import Firebase
+import SwiftUI
 
 class AtbFeed: ObservableObject {
+    
     static let fileManager = FileManager()
-    
-    let stops: Dictionary<String, CLLocationCoordinate2D> = fileManager.stops
-    let tramStops: [String] = fileManager.tramStops
-    let routes: Dictionary<String, [(id: String, nr: Int, name: String)]> = fileManager.routesAssociatedWithStops
-    
     static let allFilteres = ["Relevant", "Nylig", "Lokasjon", "Rating", "Trikk"]
+    
+    let stops: Dictionary<Stop, CLLocationCoordinate2D> = fileManager.stops
+    let routes: Dictionary<Stop, [Route]> = fileManager.routesAssociatedWithStops
+    let area = Area(upperLat: 63.462133, downerLat: 63.302000, leftLon: 10.051845, rightLon: 10.676401)
+    
+    private let db = Firestore.firestore()
     
     private static func createFilters() -> Filters {
         Filters(allFilteres)
     }
     
-    private static func createFeed() -> Feed {
-        let user = UUID()
-        
-        return Feed([FeedItem(route: (3, "Lohove- Sentrum- Hallset"), stop: "Hallset", author: user, location:                          CLLocationCoordinate2D(latitude: 63.4, longitude: 10.2), 10, description: "GG"),
-              FeedItem(route: (10, "ASDASD jalla"), stop: "Prinsens gate P1", author: user, location: CLLocationCoordinate2D(latitude: 63.430230, longitude: 10.382971), 0, description: "GG"),
-              FeedItem(route: (12, "Test 2"), stop: "Kongens gate K2", author: user, location: CLLocationCoordinate2D(latitude: 63.4, longitude: 10.5), 2, description: "GG"),
-              FeedItem(route: (2, "Test 3"), stop: "Kongens gate K2", author: user, location: CLLocationCoordinate2D(latitude: 63.4, longitude: 10.5), 7, description: "GG"),
-              FeedItem(route: (6, "Test 4"), stop: "Kongens gate K2", author: user, location: CLLocationCoordinate2D(latitude: 63.423185, longitude: 10.402295), 9, description: "GG"),
-              FeedItem(route: (8, "Test 5"), stop: "Kongens gate K2", author: user, location: CLLocationCoordinate2D(latitude: 35.715298, longitude: 51.404343), 6, description: "GG"),
-              FeedItem(route: (20, "Test 6"), stop: "Kongens gate K2", author: user, location: CLLocationCoordinate2D(latitude: 63.433185, longitude: 10.412295), -2, description: "GG")
-            ])
-    }
-    
-    
-    @Published private var atbFeed: Feed = createFeed()
+    @Published private var atbFeed: Feed = Feed([])
     @Published private var atbFilters: Filters = createFilters()
     @Published private var locationErrors: LocationErrors = LocationErrors()
+    @Published var networkError: Bool = false
+    @Published private var firebaseListener: ListenerRegistration?
+    @Published var newObservations: Bool = false
     
-    func getVisibleFeed() -> Array<FeedItem> {
+    func fetchFeed(completion: @escaping(_ success: Bool) -> Void) {
+        self.atbFeed.initRefresh()
+
+        let ref = db.collection("AtbFeed")
+        ref.getDocuments { snapshot, error in
+            guard error == nil else {
+                print(error!.localizedDescription)
+                completion(false)
+                return
+            }
+            
+            if let snapshot = snapshot {
+                for document in snapshot.documents {
+                    do {
+                        let observation: Observation = try document.data(as: Observation.self)
+                        self.atbFeed.appendToFeed(observation)
+                    } catch {
+                        print(error.localizedDescription)
+                        completion(false)
+                    }
+                }
+                self.atbFeed.commitRefresh()
+                completion(true)
+            }
+        }
+    }
+    
+    func listenForUpdates() {
+        db.collection("AtbFeed").addSnapshotListener { querySnapshot, error in
+            guard let documents = querySnapshot?.documents else {
+                print("No documents")
+                withAnimation {
+                    self.networkError = true
+                }
+                return
+            }
+            
+            if !documents.isEmpty {
+                for document in documents {
+                    if !self.atbFeed.hasObservation(document.documentID) {
+                        withAnimation {
+                            self.newObservations = true
+                        }
+                        break
+                    }
+                }
+            }
+        }
+    }
+    
+    func removeFirebaseListener() {
+        self.firebaseListener?.remove()
+    }
+    
+    func postToFeed(_ post: Observation) {
+        let ref = db.collection("AtbFeed")
+        do {
+            let newPost = try ref.addDocument(from: post)
+            print("Post is sent to feed: \(newPost.documentID)")
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func upVoteObservation(_ obs: Observation, completion: @escaping(_ success: Bool) -> Void) {
+        if Auth.auth().currentUser != nil {
+            let uid = Auth.auth().currentUser?.uid ?? ""
+
+            canVote(obs, userID: uid) { able in
+                if able {
+                    self.atbFeed.upVote(obs, userID: uid) { succsess in
+                        if succsess {
+                            completion(true)
+                        } else {
+                            self.networkError = true
+                            completion(false)
+                        }
+                    }
+                } else {
+                    completion(false)
+                }
+            }
+        }
+        completion(false)
+    }
+    
+    func downVoteObservation(_ obs: Observation, completion: @escaping(_ succsess: Bool) -> Void) {
+        if Auth.auth().currentUser != nil {
+            let uid = Auth.auth().currentUser?.uid ?? ""
+
+            canVote(obs, userID: uid) { able in
+                if able {
+                    self.atbFeed.downVote(obs, userID: uid) { succsess in
+                        if succsess {
+                            completion(true)
+                        } else {
+                            self.networkError = true
+                            completion(false)
+                        }
+                    }
+                } else {
+                    completion(false)
+                }
+            }
+        }
+        completion(false)
+    }
+    
+    func voteScoreFor(observation: Observation) -> Int {
+        return atbFeed.voteScoreFor(observation)
+    }
+    
+    func getVisibleFeed() -> Array<Observation> {
         return atbFeed.visibleFeed
     }
     
-    func getUntouchedFeed() -> Array<FeedItem> {
+    func getUntouchedFeed() -> Array<Observation> {
         return atbFeed.untouchedFeed
+    }
+    
+    func getObservationForMap() -> Array<Observation> {
+        return atbFeed.getObservationsForMap()
     }
     
     func activateFilter(_ filter: String, userLon: Double?, userLat: Double?) {
@@ -53,7 +162,7 @@ class AtbFeed: ObservableObject {
             atbFeed.standardFilter()
             atbFilters.activateFilter(filter)
         case "Trikk":
-            atbFeed.tramFilter(self.tramStops)
+            atbFeed.tramFilter()
             atbFilters.activateFilter(filter)
         case "Rating":
             atbFeed.ratingFilter()
@@ -94,15 +203,6 @@ class AtbFeed: ObservableObject {
         return locationErrors.showError
     }
     
-    func refreshFeed() {
-        atbFeed.refreshFeed()
-    }
-    
-    func postToFeed(_ post: FeedItem, _ userID: UUID) {
-        atbFeed.postToFeed(post, userID)
-        
-    }
-    
     func isShowingBar() -> Bool {
         return atbFeed.isShowingbar
     }
@@ -114,4 +214,39 @@ class AtbFeed: ObservableObject {
     func showBar() {
         return atbFeed.showBar()
     }
+    
+    private func canVote(_ obs: Observation, userID: String, completion: @escaping(_ able: Bool) -> Void) {
+        
+        if Auth.auth().currentUser != nil {
+            let ref = db.collection("AtbFeed")
+                .document(obs.id ?? "").collection("HaveVoted")
+            
+            ref.getDocuments { snapshot, error in
+                guard error == nil else {
+                    print(error!.localizedDescription)
+                    completion(false)
+                    return
+                }
+                
+                if let snapshot = snapshot {
+                    var containsUser = false
+                    
+                    for document in snapshot.documents {
+                        let data = document.data()
+                        let userHaveVoted = data["id"] as? String ?? ""
+                        if userID == userHaveVoted {
+                            containsUser = true
+                            break
+                        }
+                    }
+                    if containsUser {
+                        completion(false)
+                    } else {
+                        completion(true)
+                    }
+                }
+            }
+        }
+    }
+    
 }

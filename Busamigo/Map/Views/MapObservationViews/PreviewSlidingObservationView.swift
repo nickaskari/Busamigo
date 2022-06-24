@@ -1,5 +1,5 @@
 //
-//  PreviewSlidingFeedItem.swift
+//  PreviewSlidingObservationView.swift
 //  Busamigo
 //
 //  Created by Nick Askari on 02/06/2022.
@@ -8,15 +8,15 @@
 import SwiftUI
 import MapKit
 
-struct PreviewSlidingFeedItem: View {
+struct PreviewSlidingObservationView: View {
     @State private var currentDragOffsetX: CGFloat = 0
     @State private var outOfScreen = false
     
-    private let preview = FeedItem(route: (3, "Lohove mot sentrum"), stop: "Kongens gate", author: UUID(), location: CLLocationCoordinate2D(), 12, description: "")
+    private let preview = Observation(route: Route(nr: 3, name: "Lohove mot sentrum"), stop: Stop(name: "Kongens gate", vehicle: 700), author: "someID", location: CLLocationCoordinate2D(), voteScore: 12, description: "")
     
     var body: some View {
         if !outOfScreen {
-            FeedItemView(preview)
+            ObservationView(preview)
                 .disabled(true)
                 .frame(height: 200)
                 .padding(.horizontal)

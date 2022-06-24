@@ -11,7 +11,7 @@ import MapKit
 struct DetailMapView: View {
     private let location: CLLocationCoordinate2D
     private var markers: Array<Marker> {
-        [Marker(location: MapMarker(coordinate: self.location))]
+        [Marker(location: self.location)]
     }
     @State private var region: MKCoordinateRegion
     
@@ -23,7 +23,9 @@ struct DetailMapView: View {
     var body: some View {
         ZStack {
             Map(coordinateRegion: $region, annotationItems: markers) { marker in
-                marker.location
+                MapAnnotation(coordinate: marker.location) {
+                    DetailMapAnnotationView()
+                }
             }
         }
     }

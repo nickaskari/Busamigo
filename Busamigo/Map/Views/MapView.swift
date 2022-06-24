@@ -13,6 +13,7 @@ struct MapView: View {
     @ObservedObject private var feed: AtbFeed
     @ObservedObject private var locationManager: LocationManager
     @StateObject private var observationManager = ObservationManager()
+    @EnvironmentObject private var tabvm: TabViewModel
 
     init(feed: AtbFeed, _ locationManager: LocationManager) {
         self.feed = feed
@@ -22,8 +23,8 @@ struct MapView: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             ZStack(alignment: .top) {
-                Map(coordinateRegion: $observationManager.mapRegion, showsUserLocation: locationManager.showUserLocation, annotationItems: feed.getUntouchedFeed()) { post in
-                    MapAnnotation(coordinate: post.location) {
+                Map(coordinateRegion: $observationManager.mapRegion, showsUserLocation: locationManager.showUserLocation, annotationItems: feed.getObservationForMap()) { post in
+                    MapAnnotation(coordinate: post.getCLLocationCoordinate2D()) {
                         PostMapAnnotationView(post, observationManager)
                             .scaleEffect(observationManager.mapObservation == post ? 1 : 0.7)
                             .animation(.easeInOut, value: observationManager.mapObservation)
@@ -38,11 +39,17 @@ struct MapView: View {
                 .edgesIgnoringSafeArea(.top)
                 
                 MapToolsView(feed, locationManager, observationManager)
+                
+                if feed.newObservations == true {
+                    withAnimation {
+                        NewMapObservationView()
+                    }
+                }
             }
             
             if let obs = observationManager.mapObservation {
                 withAnimation {
-                    SlidingFeedItemView(observation: obs, observationManager)
+                    SlidingObservationView(observation: obs, observationManager)
                 }
             }
         }

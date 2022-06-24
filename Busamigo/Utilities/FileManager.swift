@@ -10,12 +10,11 @@ import MapKit
 
 class FileManager {
     let stops = getStops()
-    let tramStops = getTramStops()
     let routesAssociatedWithStops = getRoutesAssociatedWithStops()
     
     // A dictionary of the stop names and lat/lon
-    static func getStops() -> Dictionary<String, CLLocationCoordinate2D> {
-        var result: Dictionary<String, CLLocationCoordinate2D> = [:]
+    static func getStops() -> Dictionary<Stop, CLLocationCoordinate2D> {
+        var result: Dictionary<Stop, CLLocationCoordinate2D> = [:]
         
         if let fileURL = Bundle.main.url(forResource: "stops", withExtension: "txt") {
          
@@ -24,37 +23,23 @@ class FileManager {
                 lines.removeFirst()
                 for line in lines {
                     let entry = line.split(separator: ",")
-                    let stopName: String = String(entry[1])
-                    let lat = Double(entry[2])!
-                    let lon = Double(entry[3])!
+                    let stopName: String = String(entry[0])
+                    let lat = Double(entry[1])!
+                    let lon = Double(entry[2])!
+                    let vehicleType = Int(entry[3])!
                     let location: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: lat, longitude: lon)
-                    result[stopName] = location
+                    let stop = Stop(name: stopName, vehicle: vehicleType)
+                    result[stop] = location
                 }
             }
         }
         return result
     }
     
-    // Returns all tram stops
-    static func getTramStops() -> [String] {
-        var result: [String] = []
-        
-        if let fileURL = Bundle.main.url(forResource: "tram_stops", withExtension: "txt") {
-            
-            if let fileContents = try? String(contentsOf: fileURL) {
-                let lines = fileContents.split(separator: "\n")
-                for line in lines {
-                    let stopName: String = String(line)
-                    result.append(stopName)
-                }
-            }
-        }
-        return result
-    }
     
     // Returns all routes assosiated with a stop
-    static func getRoutesAssociatedWithStops() -> Dictionary<String, [(id: String, nr: Int, name: String)]> {
-        var result: Dictionary<String, [(String, Int, String)]> = [:]
+    static func getRoutesAssociatedWithStops() -> Dictionary<Stop, [Route]> {
+        var result: Dictionary<Stop, [Route]> = [:]
         
         if let fileURL = Bundle.main.url(forResource: "routes_for_stops", withExtension: "txt") {
             
@@ -63,23 +48,24 @@ class FileManager {
                 lines.removeFirst()
                 for line in lines {
                     let entry = line.split(separator: ",")
-                    let stop: String =  String(entry[0])
-                    let routeNr: Int = Int(entry[1])!
-                    let routeName: String = String(entry[2])
-                    let id: String = String(entry[1] + routeName)
+                    let stopName: String =  String(entry[0])
+                    let vehicleType = Int(entry[1])!
+                    let routeNr: Int = Int(entry[2])!
+                    let routeName: String = String(entry[3])
                     
+                    let stop = Stop(name: stopName, vehicle: vehicleType)
+                    let route = Route(nr: routeNr, name: routeName)
+
                     if let before = result[stop] {
                         var after = before
-                        after.append((id, routeNr, routeName))
+                        after.append(route)
                         result[stop] = after
                     } else {
-                        result[stop] = [(id, routeNr, routeName)]
+                        result[stop] = [route]
                     }
                 }
             }
         }
-        
         return result
     }
 }
-

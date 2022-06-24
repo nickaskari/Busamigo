@@ -10,10 +10,10 @@ import SwiftUI
 struct StopRowView: View {
     @ObservedObject private var postingMangager: PostingManager
     
-    private var stop: String
+    private var stop: Stop
     private var isPreview: Bool
     
-    init(_ stop: String, isPreview: Bool, _ postingManager: PostingManager) {
+    init(_ stop: Stop, isPreview: Bool, _ postingManager: PostingManager) {
         self.stop = stop
         self.isPreview = isPreview
         self.postingMangager = postingManager
@@ -21,11 +21,9 @@ struct StopRowView: View {
     
     var body: some View {
         HStack {
-            Image(systemName: "figure.wave")
-                .font(.system(size: 20))
-                .foregroundColor(.black)
-                .padding(.horizontal, 7)
-            Text(stop)
+            Image(systemName: busOrTram(stop))
+                .busStopStyle()
+            Text(stop.name)
                 .font(.headline)
                 .foregroundColor(.black)
             Spacer()
@@ -43,6 +41,6 @@ struct StopRowView: View {
 
 struct StopRowView_Previews: PreviewProvider {
     static var previews: some View {
-        StopRowView("asd", isPreview: false, PostingManager())
+        StopRowView(Stop(name: "Lohove mot sentrum", vehicle: 700), isPreview: false, PostingManager())
     }
 }

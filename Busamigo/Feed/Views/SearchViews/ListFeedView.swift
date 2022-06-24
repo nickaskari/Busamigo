@@ -9,11 +9,11 @@ import SwiftUI
 
 struct ListFeedView: View {
     @ObservedObject private var locationManager: LocationManager
-    private let feed: [FeedItem]
+    private let feed: [Observation]
     
     @State private var searchText = ""
     
-    init(_ feed: [FeedItem], _ locationManager: LocationManager) {
+    init(_ feed: [Observation], _ locationManager: LocationManager) {
         self.feed = feed
         self.locationManager = locationManager
     }
@@ -23,11 +23,11 @@ struct ListFeedView: View {
             ForEach(feed) { item in
                 ZStack {
                     NavigationLink(destination: {
-                        DetailView(feedItem: item, locationManager: locationManager)
+                        DetailView(observation: item, locationManager: locationManager)
                         }, label: {}
                     )
                     .opacity(0)
-                    FeedItemView(item)
+                    ObservationView(item)
                         .padding(.bottom, 5)
                 }
                 .listRowBackground(Color.clear)

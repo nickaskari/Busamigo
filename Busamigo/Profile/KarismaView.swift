@@ -10,6 +10,7 @@ import SwiftUI
 struct KarismaView: View {
     private var value: Double
     private let defaultWidth = UIScreen.screenWidth * 0.9
+    private let defaultHeight: CGFloat = 20
     
     init(value: Double) {
         if value < 7 {
@@ -31,11 +32,12 @@ struct KarismaView: View {
             ZStack(alignment: .leading) {
                 Capsule(style: .continuous)
                     .foregroundColor(.gray.opacity(0.5))
-                    .frame(width: defaultWidth, height: 30)
+                    .frame(width: defaultWidth, height: defaultHeight)
                 Capsule(style: .continuous)
                     .foregroundColor(karismaColor())
-                    .frame(width: defaultWidth * (value / 100), height: 30)
+                    .frame(width: defaultWidth * (value / 100), height: defaultHeight)
             }
+            .fixedSize()
         }
     }
     
