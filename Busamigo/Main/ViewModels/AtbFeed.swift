@@ -114,8 +114,9 @@ class AtbFeed: ObservableObject {
                     completion(false)
                 }
             }
+        } else {
+            completion(false)
         }
-        completion(false)
     }
     
     func downVoteObservation(_ obs: Observation, completion: @escaping(_ succsess: Bool) -> Void) {
@@ -136,8 +137,9 @@ class AtbFeed: ObservableObject {
                     completion(false)
                 }
             }
+        } else {
+            completion(false)
         }
-        completion(false)
     }
     
     func voteScoreFor(observation: Observation) -> Int {

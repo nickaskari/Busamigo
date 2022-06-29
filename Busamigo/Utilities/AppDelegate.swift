@@ -21,7 +21,9 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-           Messaging.messaging().delegate = self
+        
+            FirebaseApp.configure()
+            Messaging.messaging().delegate = self
 
            if #available(iOS 10.0, *) {
              // For iOS 10 display notification (sent via APNS)
@@ -52,4 +54,13 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
          completionHandler(UIBackgroundFetchResult.newData)
        }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        print("Did Register For Remote Notifications With Device Token")
+    }
+
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("Failed to register for remote notifications")
+        print(error.localizedDescription)
+    }
 }

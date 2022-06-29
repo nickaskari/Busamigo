@@ -16,10 +16,11 @@ struct Observation: Identifiable, Hashable, Codable {
     
     @DocumentID var id: String?
     @ServerTimestamp private var observationDate: Timestamp?
+    private var information: String
+    private let notificationMessage: String
     private(set) var searchInfo: String
     private(set) var voteScore: Int
     private(set) var author: String
-    private var information: String
     private(set) var location: GeoPoint
     private(set) var description: String
     private(set) var route: Route?
@@ -42,6 +43,7 @@ struct Observation: Identifiable, Hashable, Codable {
         self.voteScore = voteScore
         self.location = GeoPoint(latitude: location.latitude, longitude: location.longitude)
         self.description = description
+        self.notificationMessage = Observation.makeNotificationMessage(route, stop)
     }
     
     func getCLLocationCoordinate2D() -> CLLocationCoordinate2D {
@@ -70,6 +72,14 @@ struct Observation: Identifiable, Hashable, Codable {
     
     mutating func downVote() {
         voteScore -= 1
+    }
+    
+    static func makeNotificationMessage(_ route: Route?, _ stop: Stop) -> String {
+        if let route = route {
+            return "Vekter er observert i " + stop.name + "🕵️‍♀️\n" + String(route.nr) + " " + route.name
+        } else {
+            return "Vekter er observert i " + stop.name + "🕵️‍♀️"
+        }
     }
     
     

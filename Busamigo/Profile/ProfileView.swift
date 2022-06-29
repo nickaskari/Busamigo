@@ -7,8 +7,8 @@
 
 import SwiftUI
 import Shimmer
+import FirebaseMessaging
 
-// save karisma in userManager, some listener from firebase idk
 
 struct ProfileView: View {
     @EnvironmentObject private var userManager: UserManager
@@ -34,6 +34,10 @@ struct ProfileView: View {
                 
                 legalInformation
                 
+                Divider()
+                
+                notificationsEnabler
+                
                 Spacer()
                 
                 TipsView()
@@ -58,7 +62,17 @@ struct ProfileView: View {
             Image(systemName: "chevron.right")
                 .foregroundColor(.black)
         }
-        .padding()
+        .padding(EdgeInsets(top: 5, leading: 20, bottom: 5, trailing: 20))
+    }
+    
+    private var notificationsEnabler: some View {
+        Toggle(isOn: $userManager.isNotificationsEnabled) {
+            Text("Få varsler")
+                .font(.callout)
+                .foregroundColor(.black)
+        }
+        .padding(EdgeInsets(top: 5, leading: 20, bottom: 5, trailing: 20))
+        .tint(.pink)
     }
 }
 

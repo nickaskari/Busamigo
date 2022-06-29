@@ -36,15 +36,6 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
     completionHandler([[.banner, .badge, .sound]])
   }
 
-    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        print("Did Register For Remote Notifications With Device Token")
-    }
-
-    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        print("Failed to register for remote notifications")
-        print(error.localizedDescription)
-    }
-
   func userNotificationCenter(_ center: UNUserNotificationCenter,
                               didReceive response: UNNotificationResponse,
                               withCompletionHandler completionHandler: @escaping () -> Void) {

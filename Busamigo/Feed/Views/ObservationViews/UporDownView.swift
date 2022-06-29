@@ -24,8 +24,11 @@ struct UporDownView: View {
                 getTapticFeedBack(style: .medium)
 
                 feed.upVoteObservation(obs) { success in
+                    print("Upvote success:", success)
                     if success && tabvm.currentPage == .feed {
-                    feed.objectWillChange.send()
+                        DispatchQueue.main.async {
+                            feed.objectWillChange.send()
+                        }
                     }
                 }
             }, label: {
@@ -44,8 +47,11 @@ struct UporDownView: View {
                 getTapticFeedBack(style: .medium)
 
                 feed.downVoteObservation(obs) { success in
+                    print("Downvote success:", success)
                     if success && tabvm.currentPage == .feed {
-                    feed.objectWillChange.send()
+                        DispatchQueue.main.async {
+                            feed.objectWillChange.send()
+                        }
                     }
                 }
             }, label: {

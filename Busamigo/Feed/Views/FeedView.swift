@@ -40,7 +40,7 @@ struct FeedView: View {
                             ZStack(alignment: .top) {
                                 scrollFeed
                                 if feed.networkError {
-                                    NetworkErrorView()
+                                    GenericErrorView()
                                 } else if feed.newObservations {
                                     NewObservationsView()
                                 }

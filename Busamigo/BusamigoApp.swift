@@ -16,10 +16,7 @@ struct BusamigoApp: App {
     @StateObject private var locationManager = LocationManager()
     @StateObject private var userManager = UserManager()
     @StateObject private var tabvm = TabViewModel()
-    
-    init() {
-        FirebaseApp.configure()
-    }
+    @StateObject private var network = Network()
     
     var body: some Scene {
         WindowGroup {
@@ -28,6 +25,7 @@ struct BusamigoApp: App {
                 .environmentObject(userManager)
                 .environmentObject(feed)
                 .environmentObject(tabvm)
+                .environmentObject(network)
         }
     }
 }

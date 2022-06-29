@@ -14,6 +14,7 @@ struct BusamigoView: View {
     
     @EnvironmentObject private var tabvm: TabViewModel
     @EnvironmentObject private var userManager: UserManager
+    @EnvironmentObject private var network: Network
   
     init(_ feed: AtbFeed, _ locationManager: LocationManager) {
         self.feed = feed

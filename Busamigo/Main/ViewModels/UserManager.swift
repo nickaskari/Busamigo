@@ -8,6 +8,7 @@
 import Foundation
 import FirebaseAuth
 import Firebase
+import FirebaseMessaging
 import SwiftUI
 
 class UserManager: ObservableObject {
@@ -15,7 +16,22 @@ class UserManager: ObservableObject {
     private let db = Firestore.firestore()
     
     @Published private var user: User?
+    private var FCMtoken: String = ""
     @AppStorage("userID") private var userID: String = ""
+    
+    @AppStorage("isNotificationsEnabled") var isNotificationsEnabled: Bool = false {
+        didSet {
+            if isNotificationsEnabled {
+                subscribe()
+            } else {
+                unsubscribe()
+            }
+        }
+    }
+    
+    init() {
+        setDeviceToken()
+    }
     
     func fetchUser() {
         db.collection("Users").whereField("id", isEqualTo: Auth.auth().currentUser?.uid ?? "").addSnapshotListener { querySnapshot, error in
@@ -43,6 +59,7 @@ class UserManager: ObservableObject {
             } catch {
                 print(error.localizedDescription)
             }
+            unsubscribe()
             await addUser()
         }
     }
@@ -65,7 +82,7 @@ class UserManager: ObservableObject {
                 for document in snapshot.documents {
                     do {
                         let fetched: User = try document.data(as: User.self)
-                        let karisma = calculateKarisma(posts: fetched.posts, votes: fetched.posts)
+                        let karisma = calculateKarisma(posts: fetched.posts, votes: fetched.votes)
                         completion(karisma)
                     } catch {
                         print(error)
@@ -78,7 +95,8 @@ class UserManager: ObservableObject {
     
     func getUserKarisma() -> Double? {
         if let user = self.user {
-            return calculateKarisma(posts: user.posts, votes: user.votes)
+            let karisma = calculateKarisma(posts: user.posts, votes: user.votes)
+            return karisma
         }
         return nil
     }
@@ -92,12 +110,43 @@ class UserManager: ObservableObject {
                 DispatchQueue.main.async {
                     self.userID = uid
                 }
-                let newUser = User(id: uid, posts: 0, votes: 0)
+                let newUser = User(id: uid, posts: 0, votes: 0, deviceToken: self.FCMtoken)
                 let addedUser = try ref.addDocument(from: newUser)
                 print("User is added to Busamigo: \(addedUser.documentID)")
             }
         } catch {
             print(error.localizedDescription)
         }
+    }
+    
+    private func setDeviceToken() {
+        Messaging.messaging().token { token, error in
+          if let error = error {
+            print("Error fetching FCM registration token: \(error)")
+          } else if let token = token {
+              self.FCMtoken = token
+          }
+        }
+    }
+    
+    private func subscribe() {
+        Messaging.messaging().subscribe(toTopic: "guardMode") { error in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                print("Subscribed to guard mode")
+            }
+        }
+    }
+    
+    private func unsubscribe()  {
+        Messaging.messaging().unsubscribe(fromTopic: "guardMode") { error in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                print("Unsubscribed to guard mode")
+            }
+        }
+        
     }
 }

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B7042200285E8D6D00D917E0 /* NetworkErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70421FF285E8D6D00D917E0 /* NetworkErrorView.swift */; };
+		B7042200285E8D6D00D917E0 /* GenericErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70421FF285E8D6D00D917E0 /* GenericErrorView.swift */; };
 		B7042203285F58CD00D917E0 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = B7042202285F58CD00D917E0 /* FirebaseMessaging */; };
 		B704220528612AEC00D917E0 /* DetailMapAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B704220428612AEC00D917E0 /* DetailMapAnnotationView.swift */; };
 		B704220828614BC400D917E0 /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = B704220728614BC400D917E0 /* Shimmer */; };
@@ -25,6 +25,8 @@
 		B70604F528498D20008D0930 /* ScrollManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70604F428498D20008D0930 /* ScrollManager.swift */; };
 		B70A762827EFB9A300CE63D6 /* AddBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70A762727EFB9A300CE63D6 /* AddBarView.swift */; };
 		B721CFA928652C720008D00B /* AppDelegateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B721CFA828652C720008D00B /* AppDelegateExtensions.swift */; };
+		B721CFAB286D083A0008D00B /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = B721CFAA286D08390008D00B /* Network.swift */; };
+		B721CFAD286D0A150008D00B /* NetworkErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B721CFAC286D0A150008D00B /* NetworkErrorView.swift */; };
 		B728C8EA2846CFB100AF822A /* SlidingObservationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B728C8E92846CFB100AF822A /* SlidingObservationView.swift */; };
 		B728C8EC2847BD9000AF822A /* MapToolsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B728C8EB2847BD9000AF822A /* MapToolsView.swift */; };
 		B728C8EE2847ECF100AF822A /* MapInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B728C8ED2847ECF100AF822A /* MapInformationView.swift */; };
@@ -92,7 +94,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B70421FF285E8D6D00D917E0 /* NetworkErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorView.swift; sourceTree = "<group>"; };
+		B70421FF285E8D6D00D917E0 /* GenericErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericErrorView.swift; sourceTree = "<group>"; };
 		B704220428612AEC00D917E0 /* DetailMapAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMapAnnotationView.swift; sourceTree = "<group>"; };
 		B704220A28628FC300D917E0 /* NewObservationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewObservationsView.swift; sourceTree = "<group>"; };
 		B704220F28629B8F00D917E0 /* KarismaCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarismaCalculator.swift; sourceTree = "<group>"; };
@@ -109,6 +111,8 @@
 		B70A762727EFB9A300CE63D6 /* AddBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBarView.swift; sourceTree = "<group>"; };
 		B721CFA728652A920008D00B /* Busamigo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Busamigo.entitlements; sourceTree = "<group>"; };
 		B721CFA828652C720008D00B /* AppDelegateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateExtensions.swift; sourceTree = "<group>"; };
+		B721CFAA286D08390008D00B /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		B721CFAC286D0A150008D00B /* NetworkErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorView.swift; sourceTree = "<group>"; };
 		B728C8E92846CFB100AF822A /* SlidingObservationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidingObservationView.swift; sourceTree = "<group>"; };
 		B728C8EB2847BD9000AF822A /* MapToolsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapToolsView.swift; sourceTree = "<group>"; };
 		B728C8ED2847ECF100AF822A /* MapInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapInformationView.swift; sourceTree = "<group>"; };
@@ -194,7 +198,8 @@
 			isa = PBXGroup;
 			children = (
 				B75B147C2807626500D9F74B /* LocationErrorView.swift */,
-				B70421FF285E8D6D00D917E0 /* NetworkErrorView.swift */,
+				B70421FF285E8D6D00D917E0 /* GenericErrorView.swift */,
+				B721CFAC286D0A150008D00B /* NetworkErrorView.swift */,
 			);
 			path = ErrorViews;
 			sourceTree = "<group>";
@@ -262,6 +267,7 @@
 				B72987D527BE94AB006A3B17 /* AtbFeed.swift */,
 				B72987C027BB00CE006A3B17 /* LocationManager.swift */,
 				B739A4352851171A00677433 /* UserManager.swift */,
+				B721CFAA286D08390008D00B /* Network.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -649,9 +655,10 @@
 				B7536E3F27B9A6D700C5AB50 /* User.swift in Sources */,
 				B7BF2C8A27B44822006B840E /* ProfileView.swift in Sources */,
 				B7BF2C7A27B422D2006B840E /* BusamigoView.swift in Sources */,
-				B7042200285E8D6D00D917E0 /* NetworkErrorView.swift in Sources */,
+				B7042200285E8D6D00D917E0 /* GenericErrorView.swift in Sources */,
 				B74942E6284138CD00ECDEE3 /* PopUpManager.swift in Sources */,
 				B728C8F228482E6900AF822A /* StopRowView.swift in Sources */,
+				B721CFAB286D083A0008D00B /* Network.swift in Sources */,
 				B728C8F42848310F00AF822A /* StopLocationRowView.swift in Sources */,
 				B739A42F2850225A00677433 /* Route.swift in Sources */,
 				B72BDA30283EFE6600DC3F26 /* LocationUtilites.swift in Sources */,
@@ -681,6 +688,7 @@
 				B7536E3927B9A0E500C5AB50 /* Observation.swift in Sources */,
 				B728C8EC2847BD9000AF822A /* MapToolsView.swift in Sources */,
 				B7BF2C7827B422D2006B840E /* BusamigoApp.swift in Sources */,
+				B721CFAD286D0A150008D00B /* NetworkErrorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
