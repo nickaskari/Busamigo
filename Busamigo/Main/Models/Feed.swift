@@ -81,6 +81,14 @@ struct Feed {
         }
         return result
     }
+    
+    func getPositionInVisibleFeed(observation: Observation) -> Int {
+        if let position = self.visibleFeed.firstIndex(of: observation) {
+            return position + 1
+        } else {
+            return 0
+        }
+    }
        
     mutating func initRefresh() {
         self.incommingFeed.removeAll()

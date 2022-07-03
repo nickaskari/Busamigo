@@ -116,6 +116,7 @@ private struct FilterBoxView: View {
                 .aspectRatio(2, contentMode: .fit)
             Text("\(preferance)")
                 .foregroundColor(textColor)
+                .font(.system(size: 13))
                 .font(.subheadline)
                 .scaledToFit()
         }

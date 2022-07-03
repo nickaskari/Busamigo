@@ -10,6 +10,7 @@ import SwiftUI
 import Firebase
 import FirebaseMessaging
 import UserNotifications
+import GoogleMobileAds
 
 class AppDelegate: NSObject, UIApplicationDelegate {
         
@@ -24,6 +25,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         
             FirebaseApp.configure()
             Messaging.messaging().delegate = self
+            GADMobileAds.sharedInstance().start(completionHandler: nil)
 
            if #available(iOS 10.0, *) {
              // For iOS 10 display notification (sent via APNS)
@@ -42,21 +44,10 @@ class AppDelegate: NSObject, UIApplicationDelegate {
            application.registerForRemoteNotifications()
            return true
        }
-
-       func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],
-                        fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-
-         if let messageID = userInfo[gcmMessageIDKey] {
-           print("Message ID: \(messageID)")
-         }
-
-         print(userInfo)
-
-         completionHandler(UIBackgroundFetchResult.newData)
-       }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         print("Did Register For Remote Notifications With Device Token")
+        Messaging.messaging().apnsToken = deviceToken
     }
 
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {

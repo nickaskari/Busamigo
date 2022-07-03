@@ -22,8 +22,8 @@ struct BusamigoTabView: View {
             Divider()
             HStack(spacing: 110) {
                 buttonTab(name: "Feed", icon: "house.fill", page: .feed)
-                buttonTab(name: "Profil", icon: "person.fill", page: .profile)
                 buttonTab(name: "Kart", icon: "map.fill", page: .map)
+                buttonTab(name: "Profil", icon: "person.fill", page: .profile)
             }
             .frame(width: UIScreen.screenWidth)
         }

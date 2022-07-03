@@ -36,18 +36,18 @@ struct BusamigoView: View {
 
             BusamigoTabView(feed, tabvm)
         }
+        .navigationBarHidden(true)
         .ignoresSafeArea(.keyboard, edges: .bottom)
-        .environmentObject(PopUpManager())
-        .preferredColorScheme(.light)
         .accentColor(.pink)
-        .onAppear {
+        /*.onAppear {
             locationManager.checkIfLocationServicesIsEnabled()
             portraitOrientationLock()
             feed.listenForUpdates()
+            
         }
         .task {
             await userManager.signIn()
-        }
+        }*/
     }
 }
 

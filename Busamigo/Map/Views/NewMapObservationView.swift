@@ -31,13 +31,13 @@ struct NewMapObservationView: View {
             .padding(15)
         }
         .buttonStyle(PushDownButtonStyle())
-        .onAppear {
+        /*.onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 7) {
                 withAnimation {
                     feed.newObservations = false
                 }
             }
-        }
+        }*/
     }
 }
 

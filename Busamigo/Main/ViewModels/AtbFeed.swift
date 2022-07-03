@@ -28,8 +28,8 @@ class AtbFeed: ObservableObject {
     @Published private var atbFeed: Feed = Feed([])
     @Published private var atbFilters: Filters = createFilters()
     @Published private var locationErrors: LocationErrors = LocationErrors()
-    @Published var networkError: Bool = false
     @Published private var firebaseListener: ListenerRegistration?
+    @Published var networkError: Bool = false
     @Published var newObservations: Bool = false
     
     func fetchFeed(completion: @escaping(_ success: Bool) -> Void) {
@@ -54,6 +54,7 @@ class AtbFeed: ObservableObject {
                     }
                 }
                 self.atbFeed.commitRefresh()
+                self.newObservations = false
                 completion(true)
             }
         }
@@ -63,18 +64,14 @@ class AtbFeed: ObservableObject {
         db.collection("AtbFeed").addSnapshotListener { querySnapshot, error in
             guard let documents = querySnapshot?.documents else {
                 print("No documents")
-                withAnimation {
-                    self.networkError = true
-                }
+                self.networkError = true
                 return
             }
             
             if !documents.isEmpty {
                 for document in documents {
                     if !self.atbFeed.hasObservation(document.documentID) {
-                        withAnimation {
-                            self.newObservations = true
-                        }
+                        self.newObservations = true
                         break
                     }
                 }
@@ -144,6 +141,10 @@ class AtbFeed: ObservableObject {
     
     func voteScoreFor(observation: Observation) -> Int {
         return atbFeed.voteScoreFor(observation)
+    }
+    
+    func getPositionInVisibleFeed(observation: Observation) -> Int {
+        return atbFeed.getPositionInVisibleFeed(observation: observation)
     }
     
     func getVisibleFeed() -> Array<Observation> {

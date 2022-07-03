@@ -27,7 +27,7 @@ struct ObservationView: View {
             RoundedRectangle(cornerRadius: 25)
                 .foregroundColor(color)
                 .opacity(opacity)
-                .aspectRatio(2.5, contentMode: .fit)
+                .aspectRatio(2.2, contentMode: .fit)
                 .drawingGroup()
                 
             HStack {

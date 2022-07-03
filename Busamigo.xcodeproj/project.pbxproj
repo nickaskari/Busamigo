@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ADCFF3FB91AF0A2CBA134DB3 /* Pods_Busamigo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F0D926EFC9846C2594835AB /* Pods_Busamigo.framework */; };
 		B7042200285E8D6D00D917E0 /* GenericErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70421FF285E8D6D00D917E0 /* GenericErrorView.swift */; };
 		B7042203285F58CD00D917E0 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = B7042202285F58CD00D917E0 /* FirebaseMessaging */; };
 		B704220528612AEC00D917E0 /* DetailMapAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B704220428612AEC00D917E0 /* DetailMapAnnotationView.swift */; };
@@ -27,6 +28,10 @@
 		B721CFA928652C720008D00B /* AppDelegateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B721CFA828652C720008D00B /* AppDelegateExtensions.swift */; };
 		B721CFAB286D083A0008D00B /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = B721CFAA286D08390008D00B /* Network.swift */; };
 		B721CFAD286D0A150008D00B /* NetworkErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B721CFAC286D0A150008D00B /* NetworkErrorView.swift */; };
+		B721CFAF286E22E30008D00B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B721CFAE286E22E30008D00B /* LaunchScreen.storyboard */; };
+		B721CFB52870BC320008D00B /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B721CFB42870BC320008D00B /* WelcomeView.swift */; };
+		B721CFB72870C66C0008D00B /* SetupNotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B721CFB62870C66B0008D00B /* SetupNotificationsView.swift */; };
+		B721CFBA287103C00008D00B /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B721CFB9287103C00008D00B /* LaunchView.swift */; };
 		B728C8EA2846CFB100AF822A /* SlidingObservationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B728C8E92846CFB100AF822A /* SlidingObservationView.swift */; };
 		B728C8EC2847BD9000AF822A /* MapToolsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B728C8EB2847BD9000AF822A /* MapToolsView.swift */; };
 		B728C8EE2847ECF100AF822A /* MapInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B728C8ED2847ECF100AF822A /* MapInformationView.swift */; };
@@ -84,6 +89,7 @@
 		B7B88F5427EFE080008F2BF3 /* RouteSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B88F5327EFE080008F2BF3 /* RouteSearchView.swift */; };
 		B7B88F5627EFE0A7008F2BF3 /* StopSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B88F5527EFE0A7008F2BF3 /* StopSearchView.swift */; };
 		B7B88F5827F1C8D9008F2BF3 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B88F5727F1C8D9008F2BF3 /* DetailView.swift */; };
+		B7BD43332871E69300598A3F /* GADBannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BD43322871E69300598A3F /* GADBannerViewController.swift */; };
 		B7BF2C7827B422D2006B840E /* BusamigoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BF2C7727B422D2006B840E /* BusamigoApp.swift */; };
 		B7BF2C7A27B422D2006B840E /* BusamigoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BF2C7927B422D2006B840E /* BusamigoView.swift */; };
 		B7BF2C7C27B422D4006B840E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7BF2C7B27B422D4006B840E /* Assets.xcassets */; };
@@ -94,6 +100,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		11A7C1FA689E62DFB7AC22F9 /* Pods-Busamigo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Busamigo.debug.xcconfig"; path = "Target Support Files/Pods-Busamigo/Pods-Busamigo.debug.xcconfig"; sourceTree = "<group>"; };
+		48046B9574906C78252292F9 /* Pods-Busamigo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Busamigo.release.xcconfig"; path = "Target Support Files/Pods-Busamigo/Pods-Busamigo.release.xcconfig"; sourceTree = "<group>"; };
+		6F0D926EFC9846C2594835AB /* Pods_Busamigo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Busamigo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B70421FF285E8D6D00D917E0 /* GenericErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericErrorView.swift; sourceTree = "<group>"; };
 		B704220428612AEC00D917E0 /* DetailMapAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMapAnnotationView.swift; sourceTree = "<group>"; };
 		B704220A28628FC300D917E0 /* NewObservationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewObservationsView.swift; sourceTree = "<group>"; };
@@ -113,6 +122,10 @@
 		B721CFA828652C720008D00B /* AppDelegateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateExtensions.swift; sourceTree = "<group>"; };
 		B721CFAA286D08390008D00B /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		B721CFAC286D0A150008D00B /* NetworkErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorView.swift; sourceTree = "<group>"; };
+		B721CFAE286E22E30008D00B /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B721CFB42870BC320008D00B /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		B721CFB62870C66B0008D00B /* SetupNotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupNotificationsView.swift; sourceTree = "<group>"; };
+		B721CFB9287103C00008D00B /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		B728C8E92846CFB100AF822A /* SlidingObservationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidingObservationView.swift; sourceTree = "<group>"; };
 		B728C8EB2847BD9000AF822A /* MapToolsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapToolsView.swift; sourceTree = "<group>"; };
 		B728C8ED2847ECF100AF822A /* MapInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapInformationView.swift; sourceTree = "<group>"; };
@@ -166,6 +179,7 @@
 		B7B88F5327EFE080008F2BF3 /* RouteSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteSearchView.swift; sourceTree = "<group>"; };
 		B7B88F5527EFE0A7008F2BF3 /* StopSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopSearchView.swift; sourceTree = "<group>"; };
 		B7B88F5727F1C8D9008F2BF3 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		B7BD43322871E69300598A3F /* GADBannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GADBannerViewController.swift; sourceTree = "<group>"; };
 		B7BF2C7427B422D2006B840E /* Busamigo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Busamigo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7BF2C7727B422D2006B840E /* BusamigoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusamigoApp.swift; sourceTree = "<group>"; };
 		B7BF2C7927B422D2006B840E /* BusamigoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusamigoView.swift; sourceTree = "<group>"; };
@@ -188,12 +202,22 @@
 				B739A42A284E55B100677433 /* FirebaseAnalytics in Frameworks */,
 				B704220828614BC400D917E0 /* Shimmer in Frameworks */,
 				B739A423284E53EC00677433 /* FirebaseFirestore in Frameworks */,
+				ADCFF3FB91AF0A2CBA134DB3 /* Pods_Busamigo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6BB6F78B7F8C8CFA53F0A2EA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				11A7C1FA689E62DFB7AC22F9 /* Pods-Busamigo.debug.xcconfig */,
+				48046B9574906C78252292F9 /* Pods-Busamigo.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		B70421FE285E8D3800D917E0 /* ErrorViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -275,6 +299,7 @@
 		B70604E82849498F008D0930 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B721CFBB287103C80008D00B /* Launch */,
 				B7BF2C7927B422D2006B840E /* BusamigoView.swift */,
 			);
 			path = Views;
@@ -289,9 +314,36 @@
 			path = SearchViews;
 			sourceTree = "<group>";
 		};
+		B721CFB02870BB8E0008D00B /* Doormat */ = {
+			isa = PBXGroup;
+			children = (
+				B721CFB32870BBD90008D00B /* Views */,
+			);
+			path = Doormat;
+			sourceTree = "<group>";
+		};
+		B721CFB32870BBD90008D00B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B721CFB42870BC320008D00B /* WelcomeView.swift */,
+				B721CFB62870C66B0008D00B /* SetupNotificationsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B721CFBB287103C80008D00B /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				B721CFAE286E22E30008D00B /* LaunchScreen.storyboard */,
+				B721CFB9287103C00008D00B /* LaunchView.swift */,
+			);
+			path = Launch;
+			sourceTree = "<group>";
+		};
 		B728D9D92810BBEB000D8DC7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6F0D926EFC9846C2594835AB /* Pods_Busamigo.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -299,6 +351,7 @@
 		B72987C227BB01A4006A3B17 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				B72987DB27BFC5D1006A3B17 /* TestViews */,
 				B7966C8927F4DFA700447352 /* FileManager.swift */,
 				B75B14782807555F00D9F74B /* AppDelegate.swift */,
 				B72987E127BFD756006A3B17 /* UtilityViews.swift */,
@@ -414,7 +467,7 @@
 		B7536E2727B6B1BB00C5AB50 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B72987DB27BFC5D1006A3B17 /* TestViews */,
+				B7BD43312871E65C00598A3F /* Ads */,
 				B76A612927B55F34003D680E /* ObservationViews */,
 				B72BDA2E283DA41100DC3F26 /* PostingViews */,
 				B70A762927EFDFDD00CE63D6 /* SearchViews */,
@@ -483,12 +536,21 @@
 			path = ObservationViews;
 			sourceTree = "<group>";
 		};
+		B7BD43312871E65C00598A3F /* Ads */ = {
+			isa = PBXGroup;
+			children = (
+				B7BD43322871E69300598A3F /* GADBannerViewController.swift */,
+			);
+			path = Ads;
+			sourceTree = "<group>";
+		};
 		B7BF2C6B27B422D2006B840E = {
 			isa = PBXGroup;
 			children = (
 				B7BF2C7627B422D2006B840E /* Busamigo */,
 				B7BF2C7527B422D2006B840E /* Products */,
 				B728D9D92810BBEB000D8DC7 /* Frameworks */,
+				6BB6F78B7F8C8CFA53F0A2EA /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -508,6 +570,7 @@
 				B7536E2627B6B16B00C5AB50 /* Feed */,
 				B7536E2927B6B1F100C5AB50 /* Map */,
 				B7536E2827B6B1E100C5AB50 /* Profile */,
+				B721CFB02870BB8E0008D00B /* Doormat */,
 				B739A432285022E200677433 /* TabBar */,
 				B704220C28629AFC00D917E0 /* Algorithms */,
 				B72987C227BB01A4006A3B17 /* Utilities */,
@@ -535,9 +598,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B7BF2C8227B422D4006B840E /* Build configuration list for PBXNativeTarget "Busamigo" */;
 			buildPhases = (
+				D27288FB15458156AD4E8E95 /* [CP] Check Pods Manifest.lock */,
 				B7BF2C7027B422D2006B840E /* Sources */,
 				B7BF2C7127B422D2006B840E /* Frameworks */,
 				B7BF2C7227B422D2006B840E /* Resources */,
+				21538865BF48802E3B232991 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -606,12 +671,55 @@
 				B739A415284C31DA00677433 /* stops.txt in Resources */,
 				B797F5292805B3AF00CC2054 /* Usefull stuff.rtf in Resources */,
 				B7BF2C7C27B422D4006B840E /* Assets.xcassets in Resources */,
+				B721CFAF286E22E30008D00B /* LaunchScreen.storyboard in Resources */,
 				B739A413284C31B900677433 /* routes_for_stops.txt in Resources */,
 				B739A427284E554B00677433 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		21538865BF48802E3B232991 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Busamigo/Pods-Busamigo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Busamigo/Pods-Busamigo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Busamigo/Pods-Busamigo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D27288FB15458156AD4E8E95 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Busamigo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B7BF2C7027B422D2006B840E /* Sources */ = {
@@ -627,6 +735,7 @@
 				B728C8EA2846CFB100AF822A /* SlidingObservationView.swift in Sources */,
 				B75B147B28075BE500D9F74B /* LocationErrors.swift in Sources */,
 				B739A419284D760D00677433 /* PostCreator.swift in Sources */,
+				B721CFBA287103C00008D00B /* LaunchView.swift in Sources */,
 				B739A4362851171B00677433 /* UserManager.swift in Sources */,
 				B72987D627BE94AC006A3B17 /* AtbFeed.swift in Sources */,
 				B7F70FD7280B787200F8A71D /* ActivityIndicatorView.swift in Sources */,
@@ -644,8 +753,10 @@
 				B739A41E284D802B00677433 /* Area.swift in Sources */,
 				B70604DA28483DA8008D0930 /* StopChoiceSectionView.swift in Sources */,
 				B739A4342850F4AE00677433 /* PreviewObservationView.swift in Sources */,
+				B721CFB72870C66C0008D00B /* SetupNotificationsView.swift in Sources */,
 				B739A40B284A949600677433 /* DetailMapView.swift in Sources */,
 				B704220528612AEC00D917E0 /* DetailMapAnnotationView.swift in Sources */,
+				B7BD43332871E69300598A3F /* GADBannerViewController.swift in Sources */,
 				B70604EB28494AED008D0930 /* BusamigoTabView.swift in Sources */,
 				B70604E12849278B008D0930 /* KarismaView.swift in Sources */,
 				B7B88F5627EFE0A7008F2BF3 /* StopSearchView.swift in Sources */,
@@ -685,6 +796,7 @@
 				B74942EC2845913A00ECDEE3 /* PostMapAnnotationView.swift in Sources */,
 				B7536E2F27B9752200C5AB50 /* AppBarView.swift in Sources */,
 				B70A762827EFB9A300CE63D6 /* AddBarView.swift in Sources */,
+				B721CFB52870BC320008D00B /* WelcomeView.swift in Sources */,
 				B7536E3927B9A0E500C5AB50 /* Observation.swift in Sources */,
 				B728C8EC2847BD9000AF822A /* MapToolsView.swift in Sources */,
 				B7BF2C7827B422D2006B840E /* BusamigoApp.swift in Sources */,
@@ -815,6 +927,7 @@
 		};
 		B7BF2C8327B422D4006B840E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 11A7C1FA689E62DFB7AC22F9 /* Pods-Busamigo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -824,14 +937,14 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Busamigo/Preview Content\"";
 				DEVELOPMENT_TEAM = B4H6FWY3Z6;
 				ENABLE_PREVIEWS = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/**";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Busamigo/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Denne appen trenger lokasjonen din for å finne de nærmeste holdplassene fra deg.";
 				INFOPLIST_KEY_NSMainNibFile = Main;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -850,6 +963,7 @@
 		};
 		B7BF2C8427B422D4006B840E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 48046B9574906C78252292F9 /* Pods-Busamigo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -859,14 +973,14 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Busamigo/Preview Content\"";
 				DEVELOPMENT_TEAM = B4H6FWY3Z6;
 				ENABLE_PREVIEWS = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/**";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Busamigo/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Denne appen trenger lokasjonen din for å finne de nærmeste holdplassene fra deg.";
 				INFOPLIST_KEY_NSMainNibFile = Main;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

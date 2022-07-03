@@ -11,7 +11,7 @@ struct EmptyFeedView: View {
     
     var body: some View {
             
-        Text("Ingen observasjoner enda :)")
+        Text("Ingen observasjoner idag :)")
             .foregroundColor(.gray)
             .font(.title2)
             .padding()

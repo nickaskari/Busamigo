@@ -7,13 +7,13 @@
 
 import SwiftUI
 import Foundation
-
-//TODO: fade out the refresher when going down
+import GoogleMobileAds
 
 struct ScrollFeedView: View {
     @ObservedObject private var feed: AtbFeed
     @ObservedObject private var locationManager: LocationManager
     @EnvironmentObject private var scrollManager: ScrollManager
+    @EnvironmentObject private var network: Network
     
     @State private var offset: CGFloat = 0
     @State private var lastOffset: CGFloat = 0
@@ -41,18 +41,16 @@ struct ScrollFeedView: View {
                     }
                     
                     if !feed.getVisibleFeed().isEmpty {
-                        ForEach(feed.getVisibleFeed()) { item in
-                            NavigationLink(destination: {
-                                DetailView(observation: item, locationManager: locationManager)
-                            }, label: {
-                                ObservationView(item)
-                            })
-                            .buttonStyle(NonHighlightingButtonStyle())
+                        ForEach(feed.getVisibleFeed()) { obs in
+                            makeObservation(obs)
+                            
+                            if (feed.getPositionInVisibleFeed(observation: obs) % 5) == 0  && network.connected {
+                                makeAd()
+                            }
                         }
                     } else {
-                        Spacer()
-                        Spacer()
                         EmptyFeedView()
+                            .position(x: UIScreen.screenWidth / 2, y: UIScreen.screenHeight / 4)
                     }
         
                 }
@@ -147,6 +145,21 @@ struct ScrollFeedView: View {
         Image(systemName: "arrow.down")
             .frame(width: 22, height: 12)
             .position(x: UIScreen.screenWidth / 2, y: -8)
+    }
+    
+    private func makeObservation(_ item: Observation) -> some View {
+        NavigationLink(destination: {
+            DetailView(observation: item, locationManager: locationManager)
+        }, label: {
+            ObservationView(item)
+        })
+        .buttonStyle(NonHighlightingButtonStyle())
+    }
+    
+    private func makeAd() -> some View {
+        GADBannerViewController()
+            .frame(width: GADAdSizeMediumRectangle.size.width, height: GADAdSizeMediumRectangle.size.height)
+            .padding()
     }
 }
 

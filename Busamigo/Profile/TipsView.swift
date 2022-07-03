@@ -23,7 +23,7 @@ struct TipsView: View {
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 50, trailing: 40))
             }
         }
-        .aspectRatio(2, contentMode: .fit)
+        .aspectRatio(1.8, contentMode: .fit)
         .padding()
         .shadow(radius: 10)
     }
@@ -39,6 +39,7 @@ struct TipsView: View {
                 .foregroundColor(.white)
                 .padding(EdgeInsets(top: 0, leading: 30, bottom: 0, trailing: 0))
             Text("Dårlige observasjoner kan koste\ndeg i downvotes, følgelig også\npå din karisma.")
+                .font(.system(size: 14))
                 .font(.subheadline)
                 .foregroundColor(.white.opacity(0.7))
                 .padding(EdgeInsets(top: 0, leading: 30, bottom: 0, trailing: 0))

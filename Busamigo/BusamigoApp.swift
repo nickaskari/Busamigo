@@ -17,15 +17,46 @@ struct BusamigoApp: App {
     @StateObject private var userManager = UserManager()
     @StateObject private var tabvm = TabViewModel()
     @StateObject private var network = Network()
+    @StateObject private var popUpManager = PopUpManager()
+    
+    @AppStorage("setup") private var setup = false
+    @State private var showLaunchView = true
     
     var body: some Scene {
         WindowGroup {
-            BusamigoView(feed, locationManager)
-                .environmentObject(scrollManager)
-                .environmentObject(userManager)
-                .environmentObject(feed)
-                .environmentObject(tabvm)
-                .environmentObject(network)
+            ZStack {
+                if setup {
+                    BusamigoView(feed, locationManager)
+                        .environmentObject(scrollManager)
+                        .environmentObject(userManager)
+                        .environmentObject(feed)
+                        .environmentObject(tabvm)
+                        .environmentObject(network)
+                        .environmentObject(popUpManager)
+                        .environmentObject(locationManager)
+                } else {
+                    WelcomeView()
+                        .environmentObject(scrollManager)
+                        .environmentObject(userManager)
+                        .environmentObject(feed)
+                        .environmentObject(tabvm)
+                        .environmentObject(network)
+                        .environmentObject(popUpManager)
+                        .environmentObject(locationManager)
+                }
+                
+                if showLaunchView {
+                    LaunchView(showLaunchView: $showLaunchView)
+                        .environmentObject(feed)
+                        .environmentObject(userManager)
+                }
+            }
+            .preferredColorScheme(.light)
+            .onAppear {
+                locationManager.checkIfLocationServicesIsEnabled()
+                portraitOrientationLock()
+                feed.listenForUpdates()
+            }
         }
     }
 }

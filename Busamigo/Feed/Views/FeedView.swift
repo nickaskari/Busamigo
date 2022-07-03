@@ -12,6 +12,7 @@ struct FeedView: View {
     @ObservedObject private var feed: AtbFeed
     @ObservedObject private var locationManager: LocationManager
     @EnvironmentObject private var popUpManager: PopUpManager
+    @EnvironmentObject private var network: Network
     
     private let scrollFeed: ScrollFeedView
     @State private var canPost = false
@@ -30,8 +31,10 @@ struct FeedView: View {
                     if feed.isShowingBar() {
                         FilterView(feed: feed, locationManager)
                     }
+                    
                     Divider()
                         .background(.ultraThinMaterial)
+                    
                     ZStack(alignment: .top) {
                         if feed.isLocationError() {
                             let err = feed.getLocationError(locationManager.errors)
@@ -39,7 +42,10 @@ struct FeedView: View {
                         } else {
                             ZStack(alignment: .top) {
                                 scrollFeed
-                                if feed.networkError {
+                                if !network.connected {
+                                    NetworkErrorView()
+                                }
+                                else if feed.networkError {
                                     GenericErrorView()
                                 } else if feed.newObservations {
                                     NewObservationsView()
@@ -55,9 +61,12 @@ struct FeedView: View {
                 }
             }
         }
+        .onAppear {
+            network.checkConnection()
+        }
     }
     
-    var addButton: some View {
+    private var addButton: some View {
         Button(action: {
             locationManager.checkIfLocationServicesIsEnabled()
             if locationManager.hasAnyErrors(feed) {

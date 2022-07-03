@@ -13,15 +13,16 @@ struct NetworkErrorView: View {
     var body: some View {
         if showError {
             Text("Ops! Ingen internet-tilkobling")
-                .capsuleStyle(.pink, size: .medium)
+                .capsuleStyle(.pink, size: .small)
                 .padding(15)
                 .onAppear {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
                         withAnimation {
                             self.showError = false
                         }
                     }
                 }
+                .position(x: UIScreen.screenWidth / 2, y: 45)
         }
     }
 }

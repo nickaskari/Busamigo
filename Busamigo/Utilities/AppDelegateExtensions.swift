@@ -20,11 +20,13 @@ extension AppDelegate: MessagingDelegate {
 @available(iOS 10, *)
 extension AppDelegate : UNUserNotificationCenterDelegate {
 
-  // Receive displayed notifications for iOS 10 devices.
-  func userNotificationCenter(_ center: UNUserNotificationCenter,
+    // Receive displayed notifications for iOS 10 devices.
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
                               willPresent notification: UNNotification,
     withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
     let userInfo = notification.request.content.userInfo
+    
+    Messaging.messaging().appDidReceiveMessage(userInfo)
 
     if let messageID = userInfo[gcmMessageIDKey] {
         print("Message ID: \(messageID)")
@@ -33,13 +35,15 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
     print(userInfo)
 
     // Change this to your preferred presentation option
-    completionHandler([[.banner, .badge, .sound]])
-  }
+        completionHandler([[.banner, .badge, .sound]])
+    }
 
-  func userNotificationCenter(_ center: UNUserNotificationCenter,
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
                               didReceive response: UNNotificationResponse,
                               withCompletionHandler completionHandler: @escaping () -> Void) {
     let userInfo = response.notification.request.content.userInfo
+    
+    Messaging.messaging().appDidReceiveMessage(userInfo)
 
     if let messageID = userInfo[gcmMessageIDKey] {
       print("Message ID from userNotificationCenter didReceive: \(messageID)")
@@ -48,5 +52,18 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
     print(userInfo)
 
     completionHandler()
-  }
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any],
+       fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        Messaging.messaging().appDidReceiveMessage(userInfo)
+        
+        if let messageID = userInfo[gcmMessageIDKey] {
+            print("Message ID: \(messageID)")
+          }
+        
+        print(userInfo)
+        
+        completionHandler(UIBackgroundFetchResult.newData)
+    }
 }

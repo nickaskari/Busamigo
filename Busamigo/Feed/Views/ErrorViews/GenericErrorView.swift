@@ -12,7 +12,7 @@ struct GenericErrorView: View {
     
     var body: some View {
         Text("Ops! Det har oppstått et problem.")
-            .capsuleStyle(.pink, size: .medium)
+            .capsuleStyle(.pink, size: .small)
             .padding(15)
             .onAppear {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 4) {

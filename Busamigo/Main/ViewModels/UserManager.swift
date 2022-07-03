@@ -16,7 +16,6 @@ class UserManager: ObservableObject {
     private let db = Firestore.firestore()
     
     @Published private var user: User?
-    private var FCMtoken: String = ""
     @AppStorage("userID") private var userID: String = ""
     
     @AppStorage("isNotificationsEnabled") var isNotificationsEnabled: Bool = false {
@@ -27,10 +26,6 @@ class UserManager: ObservableObject {
                 unsubscribe()
             }
         }
-    }
-    
-    init() {
-        setDeviceToken()
     }
     
     func fetchUser() {
@@ -110,22 +105,12 @@ class UserManager: ObservableObject {
                 DispatchQueue.main.async {
                     self.userID = uid
                 }
-                let newUser = User(id: uid, posts: 0, votes: 0, deviceToken: self.FCMtoken)
+                let newUser = User(id: uid, posts: 0, votes: 0)
                 let addedUser = try ref.addDocument(from: newUser)
                 print("User is added to Busamigo: \(addedUser.documentID)")
             }
         } catch {
             print(error.localizedDescription)
-        }
-    }
-    
-    private func setDeviceToken() {
-        Messaging.messaging().token { token, error in
-          if let error = error {
-            print("Error fetching FCM registration token: \(error)")
-          } else if let token = token {
-              self.FCMtoken = token
-          }
         }
     }
     

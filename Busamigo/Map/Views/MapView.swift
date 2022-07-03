@@ -14,6 +14,7 @@ struct MapView: View {
     @ObservedObject private var locationManager: LocationManager
     @StateObject private var observationManager = ObservationManager()
     @EnvironmentObject private var tabvm: TabViewModel
+    @EnvironmentObject private var network: Network
 
     init(feed: AtbFeed, _ locationManager: LocationManager) {
         self.feed = feed
@@ -40,7 +41,11 @@ struct MapView: View {
                 
                 MapToolsView(feed, locationManager, observationManager)
                 
-                if feed.newObservations == true {
+                if !network.connected {
+                    withAnimation {
+                        NetworkErrorView()
+                    }
+                } else if feed.newObservations == true {
                     withAnimation {
                         NewMapObservationView()
                     }
