@@ -18,7 +18,8 @@ struct PostObservationView: View {
     
     @State private var description: String = ""
     @State private var placeholder: String = "Skriv en beskrivelse ..."
-    @State private var canPost: Bool = false
+    @State private var notInArea: Bool = false
+    @State private var redundantPost: Bool = false
     private let textLimit = 80
     
     init(_ feed: AtbFeed, _ locationManager: LocationManager, _ postingManager: PostingManager) {
@@ -68,51 +69,77 @@ struct PostObservationView: View {
         
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
-                Button(action: {
-                    self.presentationMode.wrappedValue.dismiss()
-                }, label: {
-                    Image(systemName: "chevron.left")
-                        .foregroundColor(.pink)
-                        .font(.system(size: 20))
-                })
+                backButton
             }
             
-            ToolbarItem(placement: ToolbarItemPlacement.principal) {
-                HStack {
-                    Image(systemName: "bonjour")
-                        .font(.system(size: 23))
-                        .shadow(radius: 1)
-                        .foregroundColor(.pink)
-                    Text("Del observasjon")
-                        .font(.bold(.title3)())
-                }
+            ToolbarItem(placement: .principal) {
+                navigationTitle
             }
             
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button (action: {
-                    if let loc = locationManager.lastKnownLocation {
-                        if loc.isInsideArea(feed.area) {
-                            postingManager.setFeedItem(description: description, userID: userManager.getUserID())
-                            feed.postToFeed(postingManager.getFeedItem()!)
-                            popUpManager.returnTofeed()
-                        } else {
-                            canPost.toggle()
-                        }
-                    } else {
-                        popUpManager.returnTofeed()
-                    }
-                }, label: {
-                    Text("Del")
-                })
-                .alert(isPresented: $canPost) {
-                    Alert(title: Text("Du befinner deg utenfor gyldig område!"), message: Text("Gyldig området er rundt Trondheim."), dismissButton: .default(Text("Skjønner!")) {
-                        popUpManager.returnTofeed()
-                    })
-                }
+                shareButton
             }
         }
         .navigationBarBackButtonHidden(true)
         .ignoresSafeArea(.keyboard, edges: .bottom)
+    }
+    
+    private var backButton: some View {
+        Button(action: {
+            self.presentationMode.wrappedValue.dismiss()
+        }, label: {
+            Image(systemName: "chevron.left")
+                .foregroundColor(.pink)
+                .font(.system(size: 20))
+        })
+    }
+    
+    private var navigationTitle: some View {
+        HStack {
+            Image(systemName: "bonjour")
+                .font(.system(size: 23))
+                .shadow(radius: 1)
+                .foregroundColor(.pink)
+            Text("Del observasjon")
+                .font(.bold(.title3)())
+        }
+    }
+    
+    private var shareButton: some View {
+        Button (action: {
+            if let loc = locationManager.lastKnownLocation {
+                if loc.isInsideArea(feed.area) {
+                    postingManager.setFeedItem(description: description, userID: userManager.getUserID())
+                    feed.postToFeed(postingManager.getFeedItem()!) { success in
+                        if success {
+                            popUpManager.returnTofeed()
+                        } else {
+                            redundantPost.toggle()
+                        }
+                    }
+                } else {
+                    notInArea.toggle()
+                }
+            } else {
+                popUpManager.returnTofeed()
+            }
+        }, label: {
+            Text("Del")
+        })
+        .alert("Du befinner deg utenfor gyldig område!", isPresented: $notInArea) {
+            Button("Skjønner!", role: .cancel) {
+                popUpManager.returnTofeed()
+            }
+        } message: {
+            Text("Gyldig området er rundt Trondheim.")
+        }
+        .alert("Denne observasjonen er nylig observert!", isPresented: $redundantPost) {
+            Button("Skjønner!", role: .cancel) {
+                popUpManager.returnTofeed()
+            }
+        } message: {
+            Text("Prøv å gi en upvote :)")
+        }
     }
     
     //Function to keep text length in limits

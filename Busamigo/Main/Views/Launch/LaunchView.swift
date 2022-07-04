@@ -32,13 +32,17 @@ struct LaunchView: View {
             .offset(y: 150)
         }
         .task {
+            await userManager.signIn()
+            
             feed.fetchFeed { success in
                 if success {
                     feed.activateFilter("Relevant", userLon: nil, userLat: nil)
                 }
-                showLaunchView = false
+                
+                withAnimation(.easeOut) {
+                    showLaunchView = false
+                }
             }
-            await userManager.signIn()
         }
     }
 }

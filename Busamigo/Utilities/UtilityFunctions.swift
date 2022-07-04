@@ -90,23 +90,4 @@ func busOrTram(_ stop: Stop) -> String {
     }
 }
 
-func addTokenToUser(_ token: String) {
-    let uid = Auth.auth().currentUser?.uid ?? ""
-    let ref = Firestore.firestore().collection("Users").whereField("id", isEqualTo: uid)
-    
-    ref.getDocuments { snapshot, error in
-        guard error == nil else {
-            print(error!.localizedDescription)
-            return
-        }
-        
-        if let snapshot = snapshot {
-            for document in snapshot.documents {
-                document.reference.updateData([
-                    "tokenID" : token
-                ])
-            }
-        }
 
-    }
-}

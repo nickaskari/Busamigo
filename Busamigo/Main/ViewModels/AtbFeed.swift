@@ -83,13 +83,21 @@ class AtbFeed: ObservableObject {
         self.firebaseListener?.remove()
     }
     
-    func postToFeed(_ post: Observation) {
+    func postToFeed(_ post: Observation, completion: @escaping(_ success: Bool) -> Void) {
         let ref = db.collection("AtbFeed")
-        do {
-            let newPost = try ref.addDocument(from: post)
-            print("Post is sent to feed: \(newPost.documentID)")
-        } catch {
-            print(error.localizedDescription)
+        canPost(stopName: post.stop.name) { able in
+            if able {
+                do {
+                    let newPost = try ref.addDocument(from: post)
+                    print("Post is sent to feed: \(newPost.documentID)")
+                    completion(true)
+                } catch {
+                    print(error.localizedDescription)
+                    completion(false)
+                }
+            } else {
+                completion(false)
+            }
         }
     }
     
@@ -116,7 +124,7 @@ class AtbFeed: ObservableObject {
         }
     }
     
-    func downVoteObservation(_ obs: Observation, completion: @escaping(_ succsess: Bool) -> Void) {
+    func downVoteObservation(_ obs: Observation, completion: @escaping(_ success: Bool) -> Void) {
         if Auth.auth().currentUser != nil {
             let uid = Auth.auth().currentUser?.uid ?? ""
 
@@ -222,7 +230,8 @@ class AtbFeed: ObservableObject {
         
         if Auth.auth().currentUser != nil {
             let ref = db.collection("AtbFeed")
-                .document(obs.id ?? "").collection("HaveVoted")
+                .document(obs.id ?? "")
+                .collection("HaveVoted")
             
             ref.getDocuments { snapshot, error in
                 guard error == nil else {
@@ -252,4 +261,40 @@ class AtbFeed: ObservableObject {
         }
     }
     
+    private func canPost(stopName: String, completion: @escaping(_ able: Bool) -> Void) {
+        let ref = db.collection("AtbFeed").whereField("stop.name", isEqualTo: stopName)
+        
+        ref.getDocuments { snapshot, error in
+            guard error == nil else {
+                print(error!.localizedDescription)
+                completion(false)
+                return
+            }
+            
+            if let snapshot = snapshot {
+                if snapshot.isEmpty {
+                    completion(true)
+                } else {
+                    for document in snapshot.documents {
+                        let data = document.data()
+                        if let observationDate = (data["observationDate"] as? Timestamp)?.dateValue() {
+                            if self.isTooRecent(observationDate) {
+                                completion(false)
+                            } else {
+                                completion(true)
+                            }
+                        } else {
+                            completion(false)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    private func isTooRecent(_ date: Date) -> Bool {
+        let dif = abs(date.timeIntervalSinceNow)
+        let limit: Double = 60 * 20
+        return dif <= limit
+    }
 }
