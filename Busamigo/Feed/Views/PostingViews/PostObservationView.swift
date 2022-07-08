@@ -18,8 +18,11 @@ struct PostObservationView: View {
     
     @State private var description: String = ""
     @State private var placeholder: String = "Skriv en beskrivelse ..."
+    
     @State private var notInArea: Bool = false
     @State private var redundantPost: Bool = false
+    @State private var isSpam = false
+    
     private let textLimit = 80
     
     init(_ feed: AtbFeed, _ locationManager: LocationManager, _ postingManager: PostingManager) {
@@ -110,11 +113,17 @@ struct PostObservationView: View {
             if let loc = locationManager.lastKnownLocation {
                 if loc.isInsideArea(feed.area) {
                     postingManager.setFeedItem(description: description, userID: userManager.getUserID())
-                    feed.postToFeed(postingManager.getFeedItem()!) { success in
-                        if success {
-                            popUpManager.returnTofeed()
+                    feed.spamCheck { spam in
+                        if spam {
+                            isSpam.toggle()
                         } else {
-                            redundantPost.toggle()
+                            feed.postToFeed(postingManager.getFeedItem()!) { success in
+                                if success {
+                                    popUpManager.returnTofeed()
+                                } else {
+                                    redundantPost.toggle()
+                                }
+                            }
                         }
                     }
                 } else {
@@ -127,18 +136,17 @@ struct PostObservationView: View {
             Text("Del")
         })
         .alert("Du befinner deg utenfor gyldig område!", isPresented: $notInArea) {
-            Button("Skjønner!", role: .cancel) {
-                popUpManager.returnTofeed()
-            }
+            Button("Skjønner!", role: .cancel) { popUpManager.returnTofeed() }
         } message: {
             Text("Gyldig området er rundt Trondheim.")
         }
         .alert("Denne observasjonen er nylig observert!", isPresented: $redundantPost) {
-            Button("Skjønner!", role: .cancel) {
-                popUpManager.returnTofeed()
-            }
+            Button("Skjønner!", role: .cancel) { popUpManager.returnTofeed() }
         } message: {
-            Text("Prøv å gi en upvote :)")
+            Text("Prøv å gi den en upvote :)")
+        }
+        .alert("Det er bare tillatt med tre observasjoner om dagen!", isPresented: $isSpam) {
+            Button("Skjønner!", role: .cancel) {  popUpManager.returnTofeed() }
         }
     }
     

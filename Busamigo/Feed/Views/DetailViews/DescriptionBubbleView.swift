@@ -11,42 +11,71 @@ struct DescriptionBubbleView: View {
     private let locationManager: LocationManager
     
     private let observation: Observation
-    private let sightingDict: Dictionary<String, Double>
     private let karisma: Double
     
     init(_ observation: Observation, _ locationManager: LocationManager, karisma: Double) {
         self.observation = observation
         self.locationManager = locationManager
-        self.sightingDict = createSightingDict(observation.getInformation())
         self.karisma = karisma
     }
     
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 15)
-                .opacity(0.0)
-            VStack(alignment: .leading, spacing: 0) {
-                DescriptionObservationView(observation, locationManager)
-                    .padding(.bottom)
+        VStack(alignment: .leading, spacing: 0) {
+            DescriptionObservationView(observation, locationManager)
+                .padding(.bottom)
+            
+            Divider()
+            
+            ZStack(alignment: .bottom) {
+                infoScroll
                 
-                Divider()
-                
+                purchaseTicketButton
+            }
+        }
+        .padding()
+    }
+    
+    private var infoScroll: some View {
+        ScrollView {
+            VStack(alignment: .leading) {
                 Text("Observatørens karisma:")
-                    .font(.headline)
-                    .padding()
+                    .font(.subheadline.bold())
+                    .padding(EdgeInsets(top: 8, leading: 8, bottom: 3, trailing: 0))
+                
                 KarismaView(value: karisma)
                 
                 if !observation.description.isEmpty {
                     Text("Kommentar fra observatør:")
-                        .font(.headline)
-                        .padding()
+                        .font(.subheadline.bold())
+                        .padding(EdgeInsets(top: 12, leading: 8, bottom: 3, trailing: 0))
                     Text("\(observation.description)")
-                        .padding(.horizontal)
+                        .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8))
                         .font(.subheadline)
                 }
-                Spacer()
+                
+                purchaseTicketButton
+                    .opacity(0)
+                    .disabled(true)
             }
         }
-        .padding()
+    }
+    
+    private var purchaseTicketButton: some View {
+        HStack {
+            Spacer()
+            
+            Button {
+                if let url = URL(string: "itms-apps://apple.com/us/app/atb/id1502395251") {
+                    UIApplication.shared.open(url)
+                }
+            } label: {
+                Text("Kjøp billett")
+                    .capsuleStyle(.pink, size: .small)
+            }
+                .buttonStyle(PushDownButtonStyle())
+            
+            Spacer()
+        }
+
     }
 }

@@ -36,14 +36,14 @@ func getTapticFeedBack(style: UIImpactFeedbackGenerator.FeedbackStyle) {
     impact.impactOccurred()
 }
 
-func createSightingDict(_ sighting: String) -> Dictionary<String, Double> {
+func createSightingDict(_ sighting: String) -> Array<(key: String, value: Double)> {
     var opacityValue: Double = 1.0
     var dict: Dictionary<String, Double> = [ : ]
     for info in sighting.components(separatedBy: ";") {
         dict[info] = opacityValue
         opacityValue -= 0.2
     }
-    return dict
+    return dict.sorted{ return $0.value > $1.value }
 }
 
 func portraitOrientationLock() {

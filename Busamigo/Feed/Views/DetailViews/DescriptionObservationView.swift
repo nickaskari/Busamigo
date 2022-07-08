@@ -11,7 +11,7 @@ struct DescriptionObservationView: View {
     private let locationManager: LocationManager
     
     private let observation: Observation
-    private let sightingDict: Dictionary<String, Double>
+    private let sightingDict: Array<(key: String, value: Double)>
     
     init(_ observation: Observation, _ locationManager: LocationManager) {
         self.observation = observation
@@ -32,11 +32,9 @@ struct DescriptionObservationView: View {
                     .padding(.horizontal)
             }
             VStack(alignment: .leading) {
-                ForEach(sightingDict.sorted{return $0.value > $1.value},  id: \.key) { info, textOpacity in
+                ForEach(sightingDict,  id: \.key) { info, opacity in
                     Text(info)
-                        .font(.subheadline)
-                        .foregroundColor(.black)
-                        .opacity(textOpacity)
+                        .descriptionLine(color: .black, opacity)
                 }
             }
             Spacer()

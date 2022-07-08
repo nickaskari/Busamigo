@@ -39,6 +39,9 @@ struct SetupNotificationsView: View {
     
     private var notificationsEnabler: some View {
         Toggle(isOn: $userManager.isNotificationsEnabled) {
+            Image(systemName: "bell.fill")
+                .profileIconStyle()
+            
             Text("Få varsler")
                 .font(.callout)
                 .foregroundColor(.black)

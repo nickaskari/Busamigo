@@ -101,6 +101,32 @@ class AtbFeed: ObservableObject {
         }
     }
     
+    /* Some "ERRORS" for spamcheck()
+     if current user is somehow not found -> not spam
+     if there is an error -> not spam
+     */
+    
+    func spamCheck(completion: @escaping(_ spam: Bool) -> Void) {
+        let uid = Auth.auth().currentUser?.uid ?? ""
+        let ref = db.collection("AtbFeed").whereField("author", isEqualTo: uid)
+        
+        ref.getDocuments { snpashot, error in
+            guard error == nil else {
+                print(error!.localizedDescription)
+                completion(false)
+                return
+            }
+            
+            if let snapshot = snpashot {
+                if snapshot.count > 2 {
+                    completion(true)
+                } else {
+                    completion(false)
+                }
+            }
+        }
+    }
+    
     func upVoteObservation(_ obs: Observation, completion: @escaping(_ success: Bool) -> Void) {
         if Auth.auth().currentUser != nil {
             let uid = Auth.auth().currentUser?.uid ?? ""
@@ -282,6 +308,7 @@ class AtbFeed: ObservableObject {
                                 completion(false)
                             } else {
                                 completion(true)
+                                break
                             }
                         } else {
                             completion(false)

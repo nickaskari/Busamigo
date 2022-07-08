@@ -76,6 +76,13 @@ extension Image {
             .padding()
             .shadow(radius: 6)
     }
+    
+    func profileIconStyle() -> some View {
+        self
+            .foregroundColor(.black)
+            .font(.system(size: 20))
+            .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 5))
+    }
 }
 
 extension Text {
@@ -87,6 +94,15 @@ extension Text {
             .background(Capsule(style: .circular)
                             .foregroundColor(.black))
             .padding(.bottom)
+    }
+    
+    func descriptionLine(color: Color, _ opacity: Double) -> some View {
+        self
+            .font(.subheadline)
+            .minimumScaleFactor(0.01)
+            .lineLimit(2)
+            .foregroundColor(color)
+            .opacity(opacity)
     }
 }
 

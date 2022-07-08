@@ -44,7 +44,7 @@ struct ScrollFeedView: View {
                         ForEach(feed.getVisibleFeed()) { obs in
                             makeObservation(obs)
                             
-                            if (feed.getPositionInVisibleFeed(observation: obs) % 5) == 0  && network.connected {
+                            if (feed.getPositionInVisibleFeed(observation: obs) % 3) == 0  && network.connected {
                                 makeAd()
                             }
                         }
@@ -157,9 +157,14 @@ struct ScrollFeedView: View {
     }
     
     private func makeAd() -> some View {
-        GADBannerViewController()
-            .frame(width: GADAdSizeMediumRectangle.size.width, height: GADAdSizeMediumRectangle.size.height)
-            .padding()
+        
+        ZStack {
+            ActivityIndicator(color: .pink)
+            
+            GADBannerViewController()
+                .frame(width: GADAdSizeMediumRectangle.size.width, height: GADAdSizeMediumRectangle.size.height)
+                .padding()
+        }
     }
 }
 

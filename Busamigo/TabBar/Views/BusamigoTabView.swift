@@ -20,6 +20,7 @@ struct BusamigoTabView: View {
     var body: some View {
         VStack(spacing: 8) {
             Divider()
+            
             HStack(spacing: 110) {
                 buttonTab(name: "Feed", icon: "house.fill", page: .feed)
                 buttonTab(name: "Kart", icon: "map.fill", page: .map)
@@ -27,6 +28,7 @@ struct BusamigoTabView: View {
             }
             .frame(width: UIScreen.screenWidth)
         }
+        .padding(.bottom, 5)
         .edgesIgnoringSafeArea(.bottom)
     }
     
@@ -50,7 +52,7 @@ struct BusamigoTabView: View {
                     .font(.caption)
             }
         }
-        .buttonStyle(PoppingButtonStyle2())
+        .buttonStyle(TabBarButtonStyle())
     }
 }
 

@@ -34,9 +34,10 @@ struct WelcomeView: View {
             getBulletpoint(nr: 2, content: "Se hvor det er meldt fra om vekter på feeden eller på kartet")
             getBulletpoint(nr: 3, content: "Gi en upvote på de du synes er rimelig ;)")
             
+            infoBubble
+            
             Spacer()
         }
-        .padding()
     }
     
     private var descriptionImages: some View {
@@ -51,6 +52,7 @@ struct WelcomeView: View {
             
             Spacer()
         }
+        .padding(.bottom)
     }
     
     private var nextButton: some View {
@@ -64,6 +66,22 @@ struct WelcomeView: View {
         .padding(.bottom)
     }
     
+    private var infoBubble: some View {
+        HStack {
+            Image(systemName: "exclamationmark.bubble")
+                .foregroundColor(.pink)
+                .font(.system(size: 25))
+            
+            Text("Busamigo anbefaler å kjøpe billett for kollektiv transport, og tilrettelegger en knapp for dette i hver observasjon.")
+                .font(.caption)
+                .minimumScaleFactor(0.01)
+                .lineLimit(3)
+                .foregroundColor(.black.opacity(0.7))
+                .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 10))
+        }
+        .padding(EdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 20))
+    }
+    
     private func getBulletpoint(nr: Int, content: String) -> some View {
         let circleText = String(nr) + ".circle.fill"
         
@@ -73,8 +91,11 @@ struct WelcomeView: View {
                 .foregroundColor(.pink)
             
             Text(content)
-                .font(.title3)
+                .font(.headline)
+                .minimumScaleFactor(0.01)
+                .lineLimit(2)
         }
+        .padding(.horizontal, 20)
     }
     
 

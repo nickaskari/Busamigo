@@ -13,7 +13,7 @@ struct LegalInformationView: View {
             Text("info")
             Spacer()
         }
-        .navigationTitle("Juridisk informasjon")
+        .navigationTitle("Personvern")
         .navigationBarTitleDisplayMode(.inline)
     }
 }

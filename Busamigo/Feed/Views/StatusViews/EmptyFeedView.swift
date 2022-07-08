@@ -10,11 +10,18 @@ import SwiftUI
 struct EmptyFeedView: View {
     
     var body: some View {
+        
+        VStack {
+            Image("SombreroGray")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 150, height: 150)
             
-        Text("Ingen observasjoner idag :)")
-            .foregroundColor(.gray)
-            .font(.title2)
-            .padding()
+            Text("Ingen observasjoner idag :)")
+                .foregroundColor(.gray)
+                .font(.title2)
+                .padding()
+        }
     }
 }
 

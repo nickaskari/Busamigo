@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		ADCFF3FB91AF0A2CBA134DB3 /* Pods_Busamigo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F0D926EFC9846C2594835AB /* Pods_Busamigo.framework */; };
 		B7042200285E8D6D00D917E0 /* GenericErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70421FF285E8D6D00D917E0 /* GenericErrorView.swift */; };
 		B7042203285F58CD00D917E0 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = B7042202285F58CD00D917E0 /* FirebaseMessaging */; };
 		B704220528612AEC00D917E0 /* DetailMapAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B704220428612AEC00D917E0 /* DetailMapAnnotationView.swift */; };
@@ -32,6 +31,7 @@
 		B721CFB52870BC320008D00B /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B721CFB42870BC320008D00B /* WelcomeView.swift */; };
 		B721CFB72870C66C0008D00B /* SetupNotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B721CFB62870C66B0008D00B /* SetupNotificationsView.swift */; };
 		B721CFBA287103C00008D00B /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B721CFB9287103C00008D00B /* LaunchView.swift */; };
+		B7240F44287717F500179CA2 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = B7240F43287717F500179CA2 /* GoogleMobileAds */; };
 		B728C8EA2846CFB100AF822A /* SlidingObservationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B728C8E92846CFB100AF822A /* SlidingObservationView.swift */; };
 		B728C8EC2847BD9000AF822A /* MapToolsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B728C8EB2847BD9000AF822A /* MapToolsView.swift */; };
 		B728C8EE2847ECF100AF822A /* MapInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B728C8ED2847ECF100AF822A /* MapInformationView.swift */; };
@@ -90,6 +90,7 @@
 		B7B88F5627EFE0A7008F2BF3 /* StopSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B88F5527EFE0A7008F2BF3 /* StopSearchView.swift */; };
 		B7B88F5827F1C8D9008F2BF3 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B88F5727F1C8D9008F2BF3 /* DetailView.swift */; };
 		B7BD43332871E69300598A3F /* GADBannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BD43322871E69300598A3F /* GADBannerViewController.swift */; };
+		B7BD4335287615F200598A3F /* TestLaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BD4334287615F200598A3F /* TestLaunchView.swift */; };
 		B7BF2C7827B422D2006B840E /* BusamigoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BF2C7727B422D2006B840E /* BusamigoApp.swift */; };
 		B7BF2C7A27B422D2006B840E /* BusamigoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BF2C7927B422D2006B840E /* BusamigoView.swift */; };
 		B7BF2C7C27B422D4006B840E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7BF2C7B27B422D4006B840E /* Assets.xcassets */; };
@@ -100,9 +101,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		11A7C1FA689E62DFB7AC22F9 /* Pods-Busamigo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Busamigo.debug.xcconfig"; path = "Target Support Files/Pods-Busamigo/Pods-Busamigo.debug.xcconfig"; sourceTree = "<group>"; };
-		48046B9574906C78252292F9 /* Pods-Busamigo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Busamigo.release.xcconfig"; path = "Target Support Files/Pods-Busamigo/Pods-Busamigo.release.xcconfig"; sourceTree = "<group>"; };
-		6F0D926EFC9846C2594835AB /* Pods_Busamigo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Busamigo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B70421FF285E8D6D00D917E0 /* GenericErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericErrorView.swift; sourceTree = "<group>"; };
 		B704220428612AEC00D917E0 /* DetailMapAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMapAnnotationView.swift; sourceTree = "<group>"; };
 		B704220A28628FC300D917E0 /* NewObservationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewObservationsView.swift; sourceTree = "<group>"; };
@@ -180,6 +178,7 @@
 		B7B88F5527EFE0A7008F2BF3 /* StopSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopSearchView.swift; sourceTree = "<group>"; };
 		B7B88F5727F1C8D9008F2BF3 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		B7BD43322871E69300598A3F /* GADBannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GADBannerViewController.swift; sourceTree = "<group>"; };
+		B7BD4334287615F200598A3F /* TestLaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLaunchView.swift; sourceTree = "<group>"; };
 		B7BF2C7427B422D2006B840E /* Busamigo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Busamigo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7BF2C7727B422D2006B840E /* BusamigoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusamigoApp.swift; sourceTree = "<group>"; };
 		B7BF2C7927B422D2006B840E /* BusamigoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusamigoView.swift; sourceTree = "<group>"; };
@@ -199,25 +198,16 @@
 				B739A42D284EC5E000677433 /* FirebaseFirestoreSwift in Frameworks */,
 				B739A425284E53EC00677433 /* FirebaseFunctions in Frameworks */,
 				B739A421284E53EC00677433 /* FirebaseAuth in Frameworks */,
+				B7240F44287717F500179CA2 /* GoogleMobileAds in Frameworks */,
 				B739A42A284E55B100677433 /* FirebaseAnalytics in Frameworks */,
 				B704220828614BC400D917E0 /* Shimmer in Frameworks */,
 				B739A423284E53EC00677433 /* FirebaseFirestore in Frameworks */,
-				ADCFF3FB91AF0A2CBA134DB3 /* Pods_Busamigo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6BB6F78B7F8C8CFA53F0A2EA /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				11A7C1FA689E62DFB7AC22F9 /* Pods-Busamigo.debug.xcconfig */,
-				48046B9574906C78252292F9 /* Pods-Busamigo.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		B70421FE285E8D3800D917E0 /* ErrorViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -340,24 +330,40 @@
 			path = Launch;
 			sourceTree = "<group>";
 		};
-		B728D9D92810BBEB000D8DC7 /* Frameworks */ = {
+		B7240F4528774E6200179CA2 /* AppDelegate */ = {
 			isa = PBXGroup;
 			children = (
-				6F0D926EFC9846C2594835AB /* Pods_Busamigo.framework */,
+				B75B14782807555F00D9F74B /* AppDelegate.swift */,
+				B721CFA828652C720008D00B /* AppDelegateExtensions.swift */,
 			);
-			name = Frameworks;
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		B7240F4728774EAE00179CA2 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				B70604EC28495339008D0930 /* TabViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		B7240F4828774EBC00179CA2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B70604EA28494AED008D0930 /* BusamigoTabView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		B72987C227BB01A4006A3B17 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				B7240F4528774E6200179CA2 /* AppDelegate */,
 				B72987DB27BFC5D1006A3B17 /* TestViews */,
 				B7966C8927F4DFA700447352 /* FileManager.swift */,
-				B75B14782807555F00D9F74B /* AppDelegate.swift */,
 				B72987E127BFD756006A3B17 /* UtilityViews.swift */,
 				B797F5262802135500CC2054 /* UtilityFunctions.swift */,
 				B72987DF27BFD716006A3B17 /* Extensions.swift */,
-				B721CFA828652C720008D00B /* AppDelegateExtensions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -385,6 +391,7 @@
 				B70A762727EFB9A300CE63D6 /* AddBarView.swift */,
 				B797F5282805B3AF00CC2054 /* Usefull stuff.rtf */,
 				B72987D427BE8E6D006A3B17 /* Testing.playground */,
+				B7BD4334287615F200598A3F /* TestLaunchView.swift */,
 			);
 			path = TestViews;
 			sourceTree = "<group>";
@@ -427,8 +434,8 @@
 		B739A432285022E200677433 /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
-				B70604EC28495339008D0930 /* TabViewModel.swift */,
-				B70604EA28494AED008D0930 /* BusamigoTabView.swift */,
+				B7240F4728774EAE00179CA2 /* ViewModels */,
+				B7240F4828774EBC00179CA2 /* Views */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -549,8 +556,6 @@
 			children = (
 				B7BF2C7627B422D2006B840E /* Busamigo */,
 				B7BF2C7527B422D2006B840E /* Products */,
-				B728D9D92810BBEB000D8DC7 /* Frameworks */,
-				6BB6F78B7F8C8CFA53F0A2EA /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -598,11 +603,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B7BF2C8227B422D4006B840E /* Build configuration list for PBXNativeTarget "Busamigo" */;
 			buildPhases = (
-				D27288FB15458156AD4E8E95 /* [CP] Check Pods Manifest.lock */,
 				B7BF2C7027B422D2006B840E /* Sources */,
 				B7BF2C7127B422D2006B840E /* Frameworks */,
 				B7BF2C7227B422D2006B840E /* Resources */,
-				21538865BF48802E3B232991 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -617,6 +620,7 @@
 				B739A42C284EC5E000677433 /* FirebaseFirestoreSwift */,
 				B7042202285F58CD00D917E0 /* FirebaseMessaging */,
 				B704220728614BC400D917E0 /* Shimmer */,
+				B7240F43287717F500179CA2 /* GoogleMobileAds */,
 			);
 			productName = Busamigo;
 			productReference = B7BF2C7427B422D2006B840E /* Busamigo.app */;
@@ -652,6 +656,7 @@
 				B739A42B284EC5E000677433 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				B7042201285F58CD00D917E0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				B704220628614BC400D917E0 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
+				B7240F42287717F500179CA2 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
 			);
 			productRefGroup = B7BF2C7527B422D2006B840E /* Products */;
 			projectDirPath = "";
@@ -678,48 +683,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		21538865BF48802E3B232991 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Busamigo/Pods-Busamigo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Busamigo/Pods-Busamigo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Busamigo/Pods-Busamigo-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D27288FB15458156AD4E8E95 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Busamigo-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B7BF2C7027B422D2006B840E /* Sources */ = {
@@ -799,6 +762,7 @@
 				B721CFB52870BC320008D00B /* WelcomeView.swift in Sources */,
 				B7536E3927B9A0E500C5AB50 /* Observation.swift in Sources */,
 				B728C8EC2847BD9000AF822A /* MapToolsView.swift in Sources */,
+				B7BD4335287615F200598A3F /* TestLaunchView.swift in Sources */,
 				B7BF2C7827B422D2006B840E /* BusamigoApp.swift in Sources */,
 				B721CFAD286D0A150008D00B /* NetworkErrorView.swift in Sources */,
 			);
@@ -810,6 +774,7 @@
 		B7BF2C8027B422D4006B840E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -844,6 +809,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/**";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -872,6 +838,7 @@
 		B7BF2C8127B422D4006B840E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -906,6 +873,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/**";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -927,21 +895,22 @@
 		};
 		B7BF2C8327B422D4006B840E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 11A7C1FA689E62DFB7AC22F9 /* Pods-Busamigo.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Busamigo/Busamigo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Busamigo/Preview Content\"";
 				DEVELOPMENT_TEAM = B4H6FWY3Z6;
 				ENABLE_PREVIEWS = YES;
+				EXCLUDED_ARCHS = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Busamigo/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Denne appen trenger lokasjonen din for å finne de nærmeste holdplassene fra deg.";
-				INFOPLIST_KEY_NSMainNibFile = Main;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -952,7 +921,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.1;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.guttaredderverden.Busamigo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -963,21 +933,22 @@
 		};
 		B7BF2C8427B422D4006B840E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 48046B9574906C78252292F9 /* Pods-Busamigo.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Busamigo/Busamigo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Busamigo/Preview Content\"";
 				DEVELOPMENT_TEAM = B4H6FWY3Z6;
 				ENABLE_PREVIEWS = YES;
+				EXCLUDED_ARCHS = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Busamigo/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Denne appen trenger lokasjonen din for å finne de nærmeste holdplassene fra deg.";
-				INFOPLIST_KEY_NSMainNibFile = Main;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -988,7 +959,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.1;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.guttaredderverden.Busamigo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1037,6 +1009,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		B7240F42287717F500179CA2 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 		B739A41F284E53EC00677433 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -1073,6 +1053,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B704220628614BC400D917E0 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */;
 			productName = Shimmer;
+		};
+		B7240F43287717F500179CA2 /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B7240F42287717F500179CA2 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
 		};
 		B739A420284E53EC00677433 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;

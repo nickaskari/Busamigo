@@ -55,10 +55,15 @@ struct ProfileView: View {
         NavigationLink {
             LegalInformationView()
         } label: {
-            Text("Juridisk informasjon")
+            Image(systemName: "doc.text.fill")
+                .profileIconStyle()
+            
+            Text("Personvern")
                 .font(.callout)
                 .foregroundColor(.black)
+            
             Spacer()
+            
             Image(systemName: "chevron.right")
                 .foregroundColor(.black)
         }
@@ -67,6 +72,9 @@ struct ProfileView: View {
     
     private var notificationsEnabler: some View {
         Toggle(isOn: $userManager.isNotificationsEnabled) {
+            Image(systemName: "bell.fill")
+                .profileIconStyle()
+            
             Text("Få varsler")
                 .font(.callout)
                 .foregroundColor(.black)

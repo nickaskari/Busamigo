@@ -73,11 +73,11 @@ struct FeedView: View {
                 getTapticFeedBack(style: .medium)
                 canPost.toggle()
             } else {
-                withAnimation {
-                    getTapticFeedBack(style: .medium)
-                    popUpManager.stopSearchIsActive = true
+                    withAnimation {
+                        getTapticFeedBack(style: .medium)
+                        popUpManager.stopSearchIsActive = true
+                    }
                 }
-            }
         }, label: {
             Image(systemName: "plus")
                 .addButtonStyle()
@@ -86,8 +86,10 @@ struct FeedView: View {
         .fullScreenCover(isPresented: $popUpManager.stopSearchIsActive) {
             StopSearchView(feed, locationManager)
         }
-        .alert(isPresented: $canPost) {
-            Alert(title: Text("Busamigo trenger posisjonen din for at du skal poste!"), message: Text("Sjekk innstillingene dine eller prøv igjen."), dismissButton: .default(Text("Skjønner!")))
+        .alert("Busamigo trenger posisjonen din for at du skal poste!", isPresented: $canPost) {
+            Button("Skjønner!", role: .cancel) {}
+        } message: {
+            Text("Sjekk innstillingene dine eller prøv igjen.")
         }
     }
 }

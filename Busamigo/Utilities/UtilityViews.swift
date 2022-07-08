@@ -54,6 +54,13 @@ struct PoppingButtonStyle3: ButtonStyle {
     }
 }
 
+struct TabBarButtonStyle: ButtonStyle {
+    func makeBody(configuration: Self.Configuration) -> some View {
+        configuration.label
+            .scaleEffect(configuration.isPressed ? 1.10 : 1.0)
+    }
+}
+
 struct SpinningButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label

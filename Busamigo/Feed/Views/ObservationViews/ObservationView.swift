@@ -13,7 +13,7 @@ struct ObservationView: View {
     private let color: Color = Color(red: 0.12, green: 0.12, blue: 0.12)
     private let opacity: Double = 1
     private let observation: Observation
-    private let sightingDict: Dictionary<String, Double>
+    private let sightingDict: Array<(key: String, value: Double)>
     
     init(_ observation: Observation) {
         self.observation = observation
@@ -46,11 +46,9 @@ struct ObservationView: View {
                 }
                 
                 VStack(alignment: .leading) {
-                    ForEach(sightingDict.sorted{return $0.value > $1.value},  id: \.key) { info, textOpacity in
+                    ForEach(sightingDict,  id: \.key) { info, opacity in
                         Text(info)
-                            .font(.subheadline)
-                            .foregroundColor(.white)
-                            .opacity(textOpacity)
+                            .descriptionLine(color: .white, opacity)
                         }
                 }
                 
@@ -74,7 +72,7 @@ struct ObservationView: View {
 
 
 
-private struct FeedItemView_Previews: PreviewProvider {
+struct ObservationView_Previews: PreviewProvider {
     static var previews: some View {
         let item = Observation(route: Route(nr: 3, name: "Lohove mot sentrum"), stop: Stop(name: "Kongens gate", vehicle: 700), author: "someID", location: CLLocationCoordinate2D(), voteScore: 12, description: "")
         

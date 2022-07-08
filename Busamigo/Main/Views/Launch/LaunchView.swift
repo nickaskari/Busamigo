@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Shimmer
 
 struct LaunchView: View {
     @EnvironmentObject private var feed: AtbFeed
@@ -16,18 +15,17 @@ struct LaunchView: View {
     
     var body: some View {
         ZStack {
-            Color.white.ignoresSafeArea()
+            Color.accentColor.ignoresSafeArea()
             
-            Image(systemName: "bus.fill")
+            Image("Sombrero")
                 .resizable()
-                .frame(width: 123, height: 130)
-                .foregroundColor(.pink)
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 200, height: 200)
             
             ZStack {
                 Text("BUSAMIGO")
-                    .foregroundColor(.pink)
-                    .font(.largeTitle)
-                    .shimmering()
+                    .foregroundColor(.white)
+                    .font(.largeTitle.bold())
             }
             .offset(y: 150)
         }
@@ -58,6 +56,6 @@ struct LaunchView: View {
 
 /*struct LaunchView_Previews: PreviewProvider {
     static var previews: some View {
-        LaunchView()
+        LaunchView(showLaunchView: true)
     }
 }*/
