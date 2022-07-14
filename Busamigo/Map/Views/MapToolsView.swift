@@ -26,48 +26,56 @@ struct MapToolsView: View {
         HStack {
             Spacer()
             VStack {
-                Button(action: { isPresented = true },
-                       label: {
-                        Image(systemName: "info")
-                            .font(.system(size: 20))
-                            .foregroundColor(.black)
-                            .padding(17)
-                            .background(Circle().foregroundColor(.white).shadow(radius: 5))
-                        }
-                )
-                .sheet(isPresented: $isPresented) {
-                    MapInformationView()
-                }
+                informationButton
                 
-                Button(action: {
-                    locationManager.checkIfLocationServicesIsEnabled()
-                    if !locationManager.hasAnyErrors(feed) {
-                        if let location = locationManager.lastKnownLocation {
-                            observationManager.showUserLocation(location)
-                            if !locationManager.hasAuthErrors(feed) {
-                            }
-                            error = false
-                        } else {
-                            if !locationManager.hasAuthErrors(feed) {
-                            }
-                            error = true
-                        }
-                    } else {
-                        error = true
-                    }
-                }, label: {
-                    Image(systemName: "location.fill")
-                        .font(.system(size: 15))
-                        .foregroundColor(.blue)
-                        .padding(15)
-                        .background(Circle().foregroundColor(.white).shadow(radius: 5))
-                })
-                .alert(isPresented: $error) {
-                    Alert(title: Text("Busamigo finner ikke posisjonen din!"), message: Text("Sjekk innstillingene dine eller prøv igjen."), dismissButton: .default(Text("Skjønner!")))
-                }
+                locationButton
             }
         }
         .padding()
+    }
+    
+    private var informationButton: some View {
+        Button(action: { isPresented = true },
+               label: {
+                Image(systemName: "info")
+                    .font(.system(size: 20))
+                    .foregroundColor(.black)
+                    .padding(17)
+                    .background(Circle().foregroundColor(.white).shadow(radius: 5))
+                }
+        )
+        .sheet(isPresented: $isPresented) {
+            MapInformationView()
+        }
+    }
+    
+    private var locationButton: some View {
+        Button(action: {
+            locationManager.checkIfLocationServicesIsEnabled()
+            if !locationManager.hasAnyErrors(feed) {
+                if let location = locationManager.lastKnownLocation {
+                    observationManager.showUserLocation(location)
+                    if !locationManager.hasAuthErrors(feed) {
+                    }
+                    error = false
+                } else {
+                    if !locationManager.hasAuthErrors(feed) {
+                    }
+                    error = true
+                }
+            } else {
+                error = true
+            }
+        }, label: {
+            Image(systemName: "location.fill")
+                .font(.system(size: 15))
+                .foregroundColor(.blue)
+                .padding(15)
+                .background(Circle().foregroundColor(.white).shadow(radius: 5))
+        })
+        .alert(isPresented: $error) {
+            Alert(title: Text("Busamigo finner ikke posisjonen din!"), message: Text("Sjekk innstillingene dine eller prøv igjen."), dismissButton: .default(Text("Skjønner!")))
+        }
     }
 }
 

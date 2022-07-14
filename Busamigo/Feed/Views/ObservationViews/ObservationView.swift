@@ -33,16 +33,10 @@ struct ObservationView: View {
             HStack {
                 if let routeNr = observation.route?.nr {
                     Text("\(routeNr)")
-                        .font(.largeTitle)
-                        .foregroundColor(.white)
-                        .frame(width: 95)
-                        .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 0))
+                        .routeNrStyle()
                 } else {
                     Image(systemName: busOrTram(observation.stop))
-                        .font(.system(size: 35))
-                        .foregroundColor(.white)
-                        .frame(width: 95)
-                        .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 0))
+                        .observationIconStyle()
                 }
                 
                 VStack(alignment: .leading) {

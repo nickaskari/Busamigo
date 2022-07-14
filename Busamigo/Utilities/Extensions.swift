@@ -81,7 +81,16 @@ extension Image {
         self
             .foregroundColor(.black)
             .font(.system(size: 20))
-            .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 5))
+            .frame(width: 30)
+    }
+    
+    func observationIconStyle() -> some View {
+        self
+            .font(.system(size: 35))
+            .minimumScaleFactor(0.01)
+            .foregroundColor(.white)
+            .frame(width: 95)
+            .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 0))
     }
     
     func toolBarButton() -> some View {
@@ -111,6 +120,16 @@ extension Text {
             .lineLimit(2)
             .foregroundColor(color)
             .opacity(opacity)
+    }
+    
+    func routeNrStyle() -> some View {
+        self
+            .font(.largeTitle)
+            .minimumScaleFactor(0.01)
+            .lineLimit(1)
+            .foregroundColor(.white)
+            .frame(width: 95)
+            .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 0))
     }
 }
 

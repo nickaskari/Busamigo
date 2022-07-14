@@ -9,14 +9,19 @@ import SwiftUI
 
 struct LegalInformationView: View {
     @Environment(\.presentationMode) private var presentationMode
+    @EnvironmentObject private var profileButtonManager: ProfileButtonManager
     
     var body: some View {
         VStack(alignment: .leading, spacing: 15) {
-            makePrivacyRow()
+            privacyRow
             
             Divider()
             
-            makeRulesRow()
+            rulesRow
+            
+            Divider()
+            
+            contactRow
             
             Spacer()
         }
@@ -32,6 +37,11 @@ struct LegalInformationView: View {
             }
         }
         .padding(.top)
+        .onReceive(profileButtonManager.$dismiss) { dismiss in
+            if dismiss {
+                self.presentationMode.wrappedValue.dismiss()
+            }
+        }
     }
     
     private var backButton: some View {
@@ -50,27 +60,35 @@ struct LegalInformationView: View {
     }
     
     
-    private func makePrivacyRow() -> some View {
+    private var privacyRow: some View {
         Button {
             if let url = URL(string: "https://nickaskari.github.io/Busamigo.site/") {
                UIApplication.shared.open(url)
             }
         } label: {
-            getButtonLabel("Personvern")
+            getButtonLabel("Personvern", icon: "doc.text.fill")
         }
     }
     
-    private func makeRulesRow() -> some View {
+    private var rulesRow: some View {
         NavigationLink {
             RulesView(isSetup: false)
         } label: {
-            getButtonLabel("Retningslinjer")
+            getButtonLabel("Retningslinjer", icon: "doc.text.fill")
         }
     }
     
-    private func getButtonLabel(_ text: String) -> some View {
+    private var contactRow: some View {
+        Button {
+            openTwitter()
+        } label: {
+            getButtonLabel("Kontakt Busamigo", icon: "bubble.left.and.bubble.right.fill")
+        }
+    }
+    
+    private func getButtonLabel(_ text: String, icon: String) -> some View {
         HStack {
-            Image(systemName: "doc.text.fill")
+            Image(systemName: icon)
                 .profileIconStyle()
             
             Text(text)
@@ -83,6 +101,19 @@ struct LegalInformationView: View {
                 .foregroundColor(.black)
         }
         .padding(EdgeInsets(top: 5, leading: 20, bottom: 5, trailing: 20))
+    }
+    
+    private func openTwitter() {
+       let appURL = URL(string: "twitter://user?screen_name=busamigo")!
+       let application = UIApplication.shared
+     
+       if application.canOpenURL(appURL) {
+          application.open(appURL)
+       } else {
+           let webURL = URL(string: "https://twitter.com/busamigo")!
+           application.open(webURL)
+       }
+     
     }
 }
 

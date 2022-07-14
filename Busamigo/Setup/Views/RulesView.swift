@@ -75,7 +75,7 @@ struct RulesView: View {
     }
     
     private var rules: some View {
-        Text("Busamigo er ment som et fantastisk verktøy for å være foreberedt på vekter i kollektiv transport. For å bruke denne platformen krever vi at brukere unngår hatefulle ytringer i sine observasjoner, dette kan føre til utestengelse av brukeren.")
+        Text("Busamigo er ment som et fantastisk verktøy for å være foreberedt på billettkontroll for kollektiv transport. For å bruke denne platformen krever vi at brukere unngår hatefulle ytringer i sine observasjoner, dette kan føre til utestengelse av brukeren.")
             .font(.headline)
             .minimumScaleFactor(0.01)
             .lineLimit(5)
@@ -88,7 +88,7 @@ struct RulesView: View {
                 .foregroundColor(.pink)
                 .font(.system(size: 25))
             
-            Text("Busamigo anbefaler å kjøpe billett for kollektiv transport, og tilrettelegger en knapp for dette i hver observasjon.")
+            Text("Busamigo oppfordrer til å kjøpe billett i god tid for kollektiv transport, og tilrettelegger derfor en knapp for dette i hver observasjon.")
                 .font(.caption)
                 .minimumScaleFactor(0.01)
                 .lineLimit(3)

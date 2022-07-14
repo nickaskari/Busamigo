@@ -13,7 +13,6 @@ import CoreLocationUI
 struct FilterView: View {
     @ObservedObject private var feed: AtbFeed
     @ObservedObject private var locationManager: LocationManager
-    @EnvironmentObject private var scrollManager: ScrollManager
     @Environment(\.scenePhase) private var scenePhase
     
     @State var unableToGetLocation: Bool = false

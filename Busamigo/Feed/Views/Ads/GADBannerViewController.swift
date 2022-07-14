@@ -30,26 +30,6 @@ struct GADBannerViewController: UIViewControllerRepresentable {
         return viewController
       }
       
-      func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {}
+    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {}
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-struct GADBannerViewController_Previews: PreviewProvider {
-    static var previews: some View {
-        GADBannerViewController()
-    }
-}

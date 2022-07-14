@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct NewObservationsView: View {
-    @EnvironmentObject private var scrollManager: ScrollManager
+    @EnvironmentObject private var homeButtonManager: HomeButtonManager
     @EnvironmentObject private var feed: AtbFeed
     
     var body: some View {
         Button {
-            scrollManager.scrollToTop = true
+            homeButtonManager.scrollToTop = true
         } label: {
             HStack(spacing: 20) {
                 Text("Nye observasjoner")

@@ -22,7 +22,7 @@
 		B70604EB28494AED008D0930 /* BusamigoTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70604EA28494AED008D0930 /* BusamigoTabView.swift */; };
 		B70604ED28495339008D0930 /* TabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70604EC28495339008D0930 /* TabViewModel.swift */; };
 		B70604F32849842C008D0930 /* EmptyFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70604F22849842C008D0930 /* EmptyFeedView.swift */; };
-		B70604F528498D20008D0930 /* ScrollManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70604F428498D20008D0930 /* ScrollManager.swift */; };
+		B70604F528498D20008D0930 /* HomeButtonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70604F428498D20008D0930 /* HomeButtonManager.swift */; };
 		B70A762827EFB9A300CE63D6 /* AddBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70A762727EFB9A300CE63D6 /* AddBarView.swift */; };
 		B721CFA928652C720008D00B /* AppDelegateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B721CFA828652C720008D00B /* AppDelegateExtensions.swift */; };
 		B721CFAB286D083A0008D00B /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = B721CFAA286D08390008D00B /* Network.swift */; };
@@ -103,7 +103,8 @@
 		B7C1747E287E568600083C63 /* cursewords.txt in Resources */ = {isa = PBXBuildFile; fileRef = B7C1747D287E568600083C63 /* cursewords.txt */; };
 		B7C17483287E594B00083C63 /* CurseWordFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C17482287E594B00083C63 /* CurseWordFilter.swift */; };
 		B7C17485287F213400083C63 /* RulesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C17484287F213400083C63 /* RulesView.swift */; };
-		B7C17487287F2E2900083C63 /* PrivacyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C17486287F2E2900083C63 /* PrivacyView.swift */; };
+		B7C1748D28806EDF00083C63 /* ProfileButtonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C1748C28806EDF00083C63 /* ProfileButtonManager.swift */; };
+		B7C1748F28807AB000083C63 /* AdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C1748E28807AAF00083C63 /* AdView.swift */; };
 		B7F70FD7280B787200F8A71D /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F70FD6280B787200F8A71D /* ActivityIndicatorView.swift */; };
 /* End PBXBuildFile section */
 
@@ -121,7 +122,7 @@
 		B70604EA28494AED008D0930 /* BusamigoTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusamigoTabView.swift; sourceTree = "<group>"; };
 		B70604EC28495339008D0930 /* TabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewModel.swift; sourceTree = "<group>"; };
 		B70604F22849842C008D0930 /* EmptyFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyFeedView.swift; sourceTree = "<group>"; };
-		B70604F428498D20008D0930 /* ScrollManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollManager.swift; sourceTree = "<group>"; };
+		B70604F428498D20008D0930 /* HomeButtonManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeButtonManager.swift; sourceTree = "<group>"; };
 		B70A762727EFB9A300CE63D6 /* AddBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBarView.swift; sourceTree = "<group>"; };
 		B721CFA728652A920008D00B /* Busamigo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Busamigo.entitlements; sourceTree = "<group>"; };
 		B721CFA828652C720008D00B /* AppDelegateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateExtensions.swift; sourceTree = "<group>"; };
@@ -199,7 +200,8 @@
 		B7C1747D287E568600083C63 /* cursewords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cursewords.txt; sourceTree = "<group>"; };
 		B7C17482287E594B00083C63 /* CurseWordFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurseWordFilter.swift; sourceTree = "<group>"; };
 		B7C17484287F213400083C63 /* RulesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesView.swift; sourceTree = "<group>"; };
-		B7C17486287F2E2900083C63 /* PrivacyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyView.swift; sourceTree = "<group>"; };
+		B7C1748C28806EDF00083C63 /* ProfileButtonManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileButtonManager.swift; sourceTree = "<group>"; };
+		B7C1748E28807AAF00083C63 /* AdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdView.swift; sourceTree = "<group>"; };
 		B7F70FD6280B787200F8A71D /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -510,11 +512,8 @@
 		B7536E2827B6B1E100C5AB50 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				B7BF2C8927B44822006B840E /* ProfileView.swift */,
-				B70604E02849278A008D0930 /* KarismaView.swift */,
-				B70604E228493E36008D0930 /* LegalInformationView.swift */,
-				B70604E428494499008D0930 /* TipsView.swift */,
-				B7C17486287F2E2900083C63 /* PrivacyView.swift */,
+				B7C1748A28806E7300083C63 /* ViewModels */,
+				B7C1748B28806E9E00083C63 /* Views */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -531,7 +530,7 @@
 		B7536E3427B9972900C5AB50 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				B70604F428498D20008D0930 /* ScrollManager.swift */,
+				B70604F428498D20008D0930 /* HomeButtonManager.swift */,
 				B72BDA2F283EFE6600DC3F26 /* LocationUtilites.swift */,
 				B72BDA312840267400DC3F26 /* PostingManager.swift */,
 				B74942E5284138CD00ECDEE3 /* PopUpManager.swift */,
@@ -575,6 +574,7 @@
 			isa = PBXGroup;
 			children = (
 				B7BD43322871E69300598A3F /* GADBannerViewController.swift */,
+				B7C1748E28807AAF00083C63 /* AdView.swift */,
 			);
 			path = Ads;
 			sourceTree = "<group>";
@@ -631,6 +631,25 @@
 				B7C1747D287E568600083C63 /* cursewords.txt */,
 			);
 			path = Extra;
+			sourceTree = "<group>";
+		};
+		B7C1748A28806E7300083C63 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				B7C1748C28806EDF00083C63 /* ProfileButtonManager.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		B7C1748B28806E9E00083C63 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B7BF2C8927B44822006B840E /* ProfileView.swift */,
+				B70604E02849278A008D0930 /* KarismaView.swift */,
+				B70604E228493E36008D0930 /* LegalInformationView.swift */,
+				B70604E428494499008D0930 /* TipsView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -731,7 +750,7 @@
 				B72987DA27BECAAB006A3B17 /* PostObservationView.swift in Sources */,
 				B7966C8A27F4DFA700447352 /* FileManager.swift in Sources */,
 				B7536E3B27B9A0FD00C5AB50 /* Feed.swift in Sources */,
-				B70604F528498D20008D0930 /* ScrollManager.swift in Sources */,
+				B70604F528498D20008D0930 /* HomeButtonManager.swift in Sources */,
 				B728C8F02848240F00AF822A /* PreviewSlidingObservationView.swift in Sources */,
 				B728C8EA2846CFB100AF822A /* SlidingObservationView.swift in Sources */,
 				B75B147B28075BE500D9F74B /* LocationErrors.swift in Sources */,
@@ -762,9 +781,9 @@
 				B704220528612AEC00D917E0 /* DetailMapAnnotationView.swift in Sources */,
 				B7BD43332871E69300598A3F /* GADBannerViewController.swift in Sources */,
 				B70604EB28494AED008D0930 /* BusamigoTabView.swift in Sources */,
+				B7C1748D28806EDF00083C63 /* ProfileButtonManager.swift in Sources */,
 				B70604E12849278B008D0930 /* KarismaView.swift in Sources */,
 				B7B88F5627EFE0A7008F2BF3 /* StopSearchView.swift in Sources */,
-				B7C17487287F2E2900083C63 /* PrivacyView.swift in Sources */,
 				B704221028629B8F00D917E0 /* KarismaCalculator.swift in Sources */,
 				B728C8EE2847ECF100AF822A /* MapInformationView.swift in Sources */,
 				B7536E2B27B9336600C5AB50 /* FilterView.swift in Sources */,
@@ -794,6 +813,7 @@
 				B7BF2C8827B433A7006B840E /* FeedView.swift in Sources */,
 				B7B88F5827F1C8D9008F2BF3 /* DetailView.swift in Sources */,
 				B721CFA928652C720008D00B /* AppDelegateExtensions.swift in Sources */,
+				B7C1748F28807AB000083C63 /* AdView.swift in Sources */,
 				B75B14792807555F00D9F74B /* AppDelegate.swift in Sources */,
 				B797F52C2806D6BE00CC2054 /* HotSorting.swift in Sources */,
 				B70604E528494499008D0930 /* TipsView.swift in Sources */,
@@ -965,7 +985,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.2.1;
+				MARKETING_VERSION = 0.2.2;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.guttaredderverden.Busamigo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1003,7 +1023,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.2.1;
+				MARKETING_VERSION = 0.2.2;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.guttaredderverden.Busamigo;
 				PRODUCT_NAME = "$(TARGET_NAME)";

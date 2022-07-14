@@ -12,7 +12,7 @@ import GoogleMobileAds
 struct ScrollFeedView: View {
     @ObservedObject private var feed: AtbFeed
     @ObservedObject private var locationManager: LocationManager
-    @EnvironmentObject private var scrollManager: ScrollManager
+    @EnvironmentObject private var homeButtonManager: HomeButtonManager
     @EnvironmentObject private var network: Network
     
     
@@ -22,7 +22,6 @@ struct ScrollFeedView: View {
     @State private var hideProgress: Bool = true
     @State private var activateRefresh: Bool = false
     @State private var didRefresh: Bool = false
-    
     
     init(_ feed: AtbFeed, _ locationManager: LocationManager) {
         self.feed = feed
@@ -49,7 +48,7 @@ struct ScrollFeedView: View {
                             }
                             
                             if (feed.getPositionInVisibleFeed(observation: obs) % 3) == 0  && network.connected {
-                                makeAd()
+                                AdView()
                             }
                         }
                     } else {
@@ -58,8 +57,8 @@ struct ScrollFeedView: View {
                     }
         
                 }
-                .onReceive(scrollManager.$scrollToTop, perform: { scroll in
-                    if scrollManager.scrollToTop {
+                .onReceive(homeButtonManager.$scrollToTop, perform: { scroll in
+                    if homeButtonManager.scrollToTop {
                         withAnimation {
                             value.scrollTo(0)
                         }
@@ -109,9 +108,6 @@ struct ScrollFeedView: View {
                         if success {
                             feed.activateFilter("Relevant", userLon: nil, userLat: nil)
                             activateRefresh = false
-                            if feed.getUntouchedFeed().isEmpty {
-                                deleteHidingLog()
-                            }
                         } else {
                             withAnimation {
                                 feed.networkError = true
@@ -136,17 +132,6 @@ struct ScrollFeedView: View {
             ObservationView(item)
         })
         .buttonStyle(NonHighlightingButtonStyle())
-    }
-    
-    private func makeAd() -> some View {
-        
-        ZStack {
-            ActivityIndicator(color: .pink)
-            
-            GADBannerViewController()
-                .frame(width: GADAdSizeMediumRectangle.size.width, height: GADAdSizeMediumRectangle.size.height)
-                .padding()
-        }
     }
     
     private func isHidden(_ obs: Observation) -> Bool {

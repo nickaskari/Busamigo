@@ -10,7 +10,8 @@ import SwiftUI
 struct BusamigoTabView: View {
     @ObservedObject private var tabvm: TabViewModel
     @ObservedObject private var feed: AtbFeed
-    @EnvironmentObject private var scrollManager: ScrollManager
+    @EnvironmentObject private var homeButtonManager: HomeButtonManager
+    @EnvironmentObject private var profileButtonManager: ProfileButtonManager
     @Environment(\.presentationMode) private var presentationMode
     
     init(_ feed: AtbFeed, _ tabvm: TabViewModel) {
@@ -36,10 +37,16 @@ struct BusamigoTabView: View {
     private func buttonTab(name: String, icon: String, page: Page) -> some View {
         Button {
             tabvm.currentPage = page
-            if name == "Feed" {
-                scrollManager.scrollToTop = true
-                presentationMode.wrappedValue.dismiss()
+            switch page {
+            case .feed:
+                homeButtonManager.scrollToTop = true
+                homeButtonManager.dismiss = true
+            case .profile:
+                profileButtonManager.dismiss = true
+            case .map:
+                break
             }
+            
         } label: {
             VStack(spacing: 2) {
                 Image(systemName: icon)

@@ -11,7 +11,8 @@ import Firebase
 @main
 struct BusamigoApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    @StateObject private var scrollManager = ScrollManager()
+    @StateObject private var homeButtonManager = HomeButtonManager()
+    @StateObject private var profileButtonManager = ProfileButtonManager()
     @StateObject private var feed = AtbFeed()
     @StateObject private var locationManager = LocationManager()
     @StateObject private var userManager = UserManager()
@@ -28,7 +29,8 @@ struct BusamigoApp: App {
             ZStack {
                 if setup {
                     BusamigoView(feed, locationManager)
-                        .environmentObject(scrollManager)
+                        .environmentObject(homeButtonManager)
+                        .environmentObject(profileButtonManager)
                         .environmentObject(userManager)
                         .environmentObject(feed)
                         .environmentObject(tabvm)
@@ -38,7 +40,8 @@ struct BusamigoApp: App {
                         .environment(\.managedObjectContext, dataController.container.viewContext)
                 } else {
                     WelcomeView()
-                        .environmentObject(scrollManager)
+                        .environmentObject(homeButtonManager)
+                        .environmentObject(profileButtonManager)
                         .environmentObject(userManager)
                         .environmentObject(feed)
                         .environmentObject(tabvm)

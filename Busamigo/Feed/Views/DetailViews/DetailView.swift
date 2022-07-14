@@ -15,6 +15,7 @@ struct DetailView: View {
     @Environment(\.presentationMode) private var presentationMode
     @Environment(\.managedObjectContext) var moc
     @EnvironmentObject private var userManager: UserManager
+    @EnvironmentObject private var homeButtonManager: HomeButtonManager
     
     @State private var isLoading = true
     @State private var karisma: Double?
@@ -45,11 +46,16 @@ struct DetailView: View {
                 }
             }
         }
+        .onReceive(homeButtonManager.$dismiss, perform: { dismiss in
+            if dismiss {
+                self.presentationMode.wrappedValue.dismiss()
+            }
+        })
         .edgesIgnoringSafeArea(.top)
         .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
-                dismissButton
+                backButton
             }
             
             ToolbarItem(placement: .principal) {
@@ -65,7 +71,7 @@ struct DetailView: View {
         }
     }
     
-    private var dismissButton: some View {
+    private var backButton: some View {
         Button(action: {
             self.presentationMode.wrappedValue.dismiss()
         }, label: {
