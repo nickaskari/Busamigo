@@ -12,5 +12,6 @@ struct User: Codable, Identifiable {
     let id: String
     let posts: Int
     let votes: Int
+    let isBanned: Bool
 }
 

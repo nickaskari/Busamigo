@@ -11,6 +11,7 @@ struct BusamigoTabView: View {
     @ObservedObject private var tabvm: TabViewModel
     @ObservedObject private var feed: AtbFeed
     @EnvironmentObject private var scrollManager: ScrollManager
+    @Environment(\.presentationMode) private var presentationMode
     
     init(_ feed: AtbFeed, _ tabvm: TabViewModel) {
         self.feed = feed
@@ -37,10 +38,7 @@ struct BusamigoTabView: View {
             tabvm.currentPage = page
             if name == "Feed" {
                 scrollManager.scrollToTop = true
-                feed.removeFirebaseListener()
-            }
-            if name == "Profil" {
-                feed.removeFirebaseListener()
+                presentationMode.wrappedValue.dismiss()
             }
         } label: {
             VStack(spacing: 2) {

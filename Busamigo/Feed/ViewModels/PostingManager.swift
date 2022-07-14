@@ -10,11 +10,10 @@ import MapKit
 import SwiftUI
 
 
-//TODO: AuthorID is wrong
-
 class PostingManager: ObservableObject {
     @Published private var manager = PostingInformation()
     private var creator = PostCreator()
+    private var cursewordFilter = CursewordFilter(cursewords: FileManager.getCurseWords())
     
     func getStop() -> Stop? {
         return manager.stop
@@ -57,5 +56,9 @@ class PostingManager: ObservableObject {
     
     func getPreview() -> PreviewObservationView {
         return manager.getPreview()
+    }
+    
+    func cleanText(_ text: String) -> String {
+        return cursewordFilter.cleanText(text)
     }
 }

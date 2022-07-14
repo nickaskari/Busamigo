@@ -7,9 +7,9 @@
 
 import Foundation
 import MapKit
-import FirebaseFirestoreSwift
 import Firebase
 import FirebaseAuth
+import FirebaseFirestoreSwift
 
 
 struct Observation: Identifiable, Hashable, Codable {
@@ -76,9 +76,9 @@ struct Observation: Identifiable, Hashable, Codable {
     
     static func makeNotificationMessage(_ route: Route?, _ stop: Stop) -> String {
         if let route = route {
-            return "Vekter er observert i " + stop.name + "🕵️‍♀️\n" + String(route.nr) + " " + route.name
+            return "Vekter er observert på " + stop.name + "🕵️‍♀️\n" + String(route.nr) + " " + route.name
         } else {
-            return "Vekter er observert i " + stop.name + "🕵️‍♀️"
+            return "Vekter er observert på " + stop.name + "🕵️‍♀️"
         }
     }
     

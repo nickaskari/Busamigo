@@ -16,8 +16,6 @@ class UserManager: ObservableObject {
     private let db = Firestore.firestore()
     
     @Published private var user: User?
-    @AppStorage("userID") private var userID: String = ""
-    
     @AppStorage("isNotificationsEnabled") var isNotificationsEnabled: Bool = false {
         didSet {
             if isNotificationsEnabled {
@@ -40,6 +38,7 @@ class UserManager: ObservableObject {
                     let fethcedUser = try document.data(as: User.self)
                     self.user = fethcedUser
                 } catch {
+                    try? Auth.auth().signOut()
                     print(error.localizedDescription)
                 }
             }
@@ -47,7 +46,6 @@ class UserManager: ObservableObject {
     }
     
     func signIn() async {
-        //try? Auth.auth().signOut()
         if Auth.auth().currentUser == nil {
             do {
                 try await Auth.auth().signInAnonymously()
@@ -96,16 +94,20 @@ class UserManager: ObservableObject {
         return nil
     }
     
+    func isUserBanned() -> Bool? {
+        if let user = user {
+            return user.isBanned
+        }
+        return nil
+    }
+    
     private func addUser() async {
         let ref = db.collection("Users")
         let uid = Auth.auth().currentUser?.uid
         
         do {
             if let uid = uid {
-                DispatchQueue.main.async {
-                    self.userID = uid
-                }
-                let newUser = User(id: uid, posts: 0, votes: 0)
+                let newUser = User(id: uid, posts: 0, votes: 0, isBanned: false)
                 let addedUser = try ref.addDocument(from: newUser)
                 print("User is added to Busamigo: \(addedUser.documentID)")
             }

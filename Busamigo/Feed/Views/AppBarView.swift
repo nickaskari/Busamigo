@@ -49,7 +49,7 @@ struct AppBarView: View {
                 FeedSearchView(feed, locationManager)
             }, label: {
                 Image(systemName: "magnifyingglass")
-                    .accentColor(.black)
+                    .foregroundColor(.black)
                     .font(.system(size: 20))
                     .shadow(radius: 1)
                     .padding(.horizontal, 20)

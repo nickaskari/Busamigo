@@ -11,6 +11,24 @@ import MapKit
 class FileManager {
     let stops = getStops()
     let routesAssociatedWithStops = getRoutesAssociatedWithStops()
+    let curseword = getCurseWords()
+    
+    // Array of norwegian cursewords
+    static func getCurseWords() -> Array<String> {
+        var result: Array<String> = []
+        
+        if let fileURL = Bundle.main.url(forResource: "cursewords", withExtension: "txt") {
+         
+            if let fileContents = try? String(contentsOf: fileURL) {
+                let lines = fileContents.split(separator: "\n")
+                for line in lines {
+                    let curseword = String(line)
+                    result.append(curseword)
+                }
+            }
+        }
+        return result
+    }
     
     // A dictionary of the stop names and lat/lon
     static func getStops() -> Dictionary<Stop, CLLocationCoordinate2D> {

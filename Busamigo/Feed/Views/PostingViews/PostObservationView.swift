@@ -22,6 +22,8 @@ struct PostObservationView: View {
     @State private var notInArea: Bool = false
     @State private var redundantPost: Bool = false
     @State private var isSpam = false
+    @State private var isBanned = false
+    @State private var someError = false
     
     private let textLimit = 80
     
@@ -69,7 +71,7 @@ struct PostObservationView: View {
         .onTapGesture {
             hideKeyboard()
         }
-        
+        .onAppear { userManager.fetchUser() }
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 backButton
@@ -110,30 +112,40 @@ struct PostObservationView: View {
     
     private var shareButton: some View {
         Button (action: {
-            if let loc = locationManager.lastKnownLocation {
-                if loc.isInsideArea(feed.area) {
-                    postingManager.setFeedItem(description: description, userID: userManager.getUserID())
-                    feed.spamCheck { spam in
-                        if spam {
-                            isSpam.toggle()
-                        } else {
-                            feed.postToFeed(postingManager.getFeedItem()!) { success in
-                                if success {
-                                    popUpManager.returnTofeed()
+            if let userIsBanned = userManager.isUserBanned() {
+                if !userIsBanned {
+                    if let loc = locationManager.lastKnownLocation {
+                        if loc.isInsideArea(feed.area) {
+                            postingManager.setFeedItem(description: cleanedDescription(), userID: userManager.getUserID())
+                            feed.spamCheck { spam in
+                                if spam {
+                                    isSpam.toggle()
                                 } else {
-                                    redundantPost.toggle()
+                                    feed.postToFeed(postingManager.getFeedItem()!) { success in
+                                        if success {
+                                            popUpManager.returnTofeed()
+                                        } else {
+                                            redundantPost.toggle()
+                                        }
+                                    }
                                 }
                             }
+                            
+                        } else {
+                            notInArea.toggle()
                         }
+                    } else {
+                        someError.toggle()
                     }
                 } else {
-                    notInArea.toggle()
+                    self.isBanned.toggle()
                 }
             } else {
-                popUpManager.returnTofeed()
+                someError.toggle()
             }
         }, label: {
             Text("Del")
+                .foregroundColor(.pink)
         })
         .alert("Du befinner deg utenfor gyldig område!", isPresented: $notInArea) {
             Button("Skjønner!", role: .cancel) { popUpManager.returnTofeed() }
@@ -148,6 +160,16 @@ struct PostObservationView: View {
         .alert("Det er bare tillatt med tre observasjoner om dagen!", isPresented: $isSpam) {
             Button("Skjønner!", role: .cancel) {  popUpManager.returnTofeed() }
         }
+        .alert("Din bruker er utesperret fra Busamigo!", isPresented: $isBanned) {
+            Button("Skjønner!", role: .cancel) { popUpManager.returnTofeed() }
+        } message: {
+            Text("Dette er på grunn av brudd på våre retningslinjer.")
+        }
+        .alert("Noe gikk galt!", isPresented: $someError) {
+            Button("Skjønner!", role: .cancel) { popUpManager.returnTofeed() }
+        } message: {
+            Text("Prøv igjen på et senere tidspunkt.")
+        }
     }
     
     //Function to keep text length in limits
@@ -161,6 +183,10 @@ struct PostObservationView: View {
         else if spaces > 2 {
             description.removeLast()
         }
+    }
+    
+    private func cleanedDescription() -> String {
+        return postingManager.cleanText(description)
     }
 }
 

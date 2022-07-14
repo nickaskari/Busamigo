@@ -14,7 +14,7 @@ struct GADBannerViewController: UIViewControllerRepresentable {
         let view = GADBannerView(adSize: GADAdSizeMediumRectangle)
         let viewController = UIViewController()
         let testID = "ca-app-pub-3940256099942544/2934735716"
-        //let realID = "ca-app-pub-9450475706334809/7473547174"
+        //let realID =
         
         // Banner Ad
         view.adUnitID = testID

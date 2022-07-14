@@ -83,6 +83,14 @@ extension Image {
             .font(.system(size: 20))
             .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 5))
     }
+    
+    func toolBarButton() -> some View {
+        self
+            .frame(width: 40, height: 40)
+            .background(Circle()
+                .foregroundColor(.white))
+            .shadow(radius: 1)
+    }
 }
 
 extension Text {

@@ -13,14 +13,9 @@ struct SetupNotificationsView: View {
     @EnvironmentObject private var locationManager: LocationManager
     @Environment(\.presentationMode) private var presentationMode
     
-    @AppStorage("setup") private var setup = false
-    @State private var showApp = false
-    
     var body: some View {
         ZStack(alignment: .bottom) {
             VStack(alignment: .leading, spacing: 40) {
-                backButton
-                
                 Text("Vil du skru på push varsler hver gang det blir observert vekter?")
                     .font(.title2.bold())
                     .padding(EdgeInsets(top: 0, leading: 15, bottom: 5, trailing: 15))
@@ -34,7 +29,14 @@ struct SetupNotificationsView: View {
             
             nextButton
         }
-        .navigationBarHidden(true)
+        .padding(.top)
+        .navigationBarBackButtonHidden(true)
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                backButton
+            }
+        }
     }
     
     private var notificationsEnabler: some View {
@@ -63,19 +65,14 @@ struct SetupNotificationsView: View {
     }
     
     private var nextButton: some View {
-        Button {
-            self.setup = true
-            self.showApp = true
+        NavigationLink {
+            RulesView(isSetup: true)
         } label: {
             Text("Neste")
                 .capsuleStyle(.pink, size: .medium)
                 .padding(.bottom)
         }
         .buttonStyle(PushDownButtonStyle())
-        .fullScreenCover(isPresented: $showApp) {
-            BusamigoView(feed, locationManager)
-        }
-
     }
     
     private var backButton: some View {
@@ -86,7 +83,6 @@ struct SetupNotificationsView: View {
                 .foregroundColor(.pink)
                 .font(.system(size: 20))
         })
-            .padding(.horizontal)
     }
 }
 

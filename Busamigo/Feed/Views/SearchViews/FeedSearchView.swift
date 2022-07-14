@@ -27,7 +27,7 @@ struct FeedSearchView: View {
         if searchText.isEmpty {
             return []
         } else {
-            return feed.getUntouchedFeed().filter { $0.searchInfo.localizedStandardContains(searchText)}
+            return feed.getUntouchedFeed().filter { $0.searchInfo.localizedStandardContains(searchText) }
         }
     }
 }

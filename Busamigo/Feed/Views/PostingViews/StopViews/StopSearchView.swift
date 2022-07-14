@@ -61,13 +61,13 @@ struct StopSearchView: View {
                 .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Søk holdeplasser")
                 .listStyle(.plain)
                 .toolbar { ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: {
-                        self.presentationMode.wrappedValue.dismiss()
-                    }, label: {
-                        Image(systemName: "xmark")
-                            .foregroundColor(.pink)
-                            .font(.system(size: 20))
-                    })
+                        Button(action: {
+                            self.presentationMode.wrappedValue.dismiss()
+                        }, label: {
+                            Image(systemName: "xmark")
+                                .foregroundColor(.pink)
+                                .font(.system(size: 20))
+                        })
                     }
                     
                     ToolbarItem(placement: .principal) {
@@ -90,7 +90,6 @@ struct StopSearchView: View {
             }
         }
         .navigationBarHidden(true)
-        .accentColor(.pink)
     }
     
     private var filteredStops: [Stop] {

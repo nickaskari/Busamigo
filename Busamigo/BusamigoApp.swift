@@ -18,6 +18,7 @@ struct BusamigoApp: App {
     @StateObject private var tabvm = TabViewModel()
     @StateObject private var network = Network()
     @StateObject private var popUpManager = PopUpManager()
+    @StateObject private var dataController = DataController()
     
     @AppStorage("setup") private var setup = false
     @State private var showLaunchView = true
@@ -34,6 +35,7 @@ struct BusamigoApp: App {
                         .environmentObject(network)
                         .environmentObject(popUpManager)
                         .environmentObject(locationManager)
+                        .environment(\.managedObjectContext, dataController.container.viewContext)
                 } else {
                     WelcomeView()
                         .environmentObject(scrollManager)
@@ -43,6 +45,7 @@ struct BusamigoApp: App {
                         .environmentObject(network)
                         .environmentObject(popUpManager)
                         .environmentObject(locationManager)
+                        .environment(\.managedObjectContext, dataController.container.viewContext)
                 }
                 
                 if showLaunchView {

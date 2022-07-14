@@ -89,6 +89,15 @@ struct Feed {
             return 0
         }
     }
+    
+    mutating func removeObservation(_ obs: Observation) {
+        self.untouchedFeed = self.untouchedFeed.filter {
+            $0 != obs
+        }
+        self.visibleFeed = self.visibleFeed.filter {
+            $0 != obs
+        }
+    }
        
     mutating func initRefresh() {
         self.incommingFeed.removeAll()

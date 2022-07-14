@@ -13,10 +13,12 @@ struct DetailView: View {
     private let observation: Observation
     private let locationManager: LocationManager
     @Environment(\.presentationMode) private var presentationMode
+    @Environment(\.managedObjectContext) var moc
     @EnvironmentObject private var userManager: UserManager
     
     @State private var isLoading = true
     @State private var karisma: Double?
+    @State private var describeReasonForFlagging: Bool = false
     
     init(observation: Observation, locationManager: LocationManager) {
         self.observation = observation
@@ -47,27 +49,66 @@ struct DetailView: View {
         .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
-                Button(action: {
-                    self.presentationMode.wrappedValue.dismiss()
-                }, label: {
-                    Image(systemName: "chevron.left")
-                        .foregroundColor(.pink)
-                        .font(.system(size: 20))
-                        .padding(8)
-                        .background(Capsule(style: .circular)
-                            .foregroundColor(.white))
-                        .shadow(radius: 1)
-                })
+                dismissButton
             }
+            
             ToolbarItem(placement: .principal) {
-                Text("Beskrivelse")
-                    .font(.headline)
-                    .padding(8)
-                    .background(Capsule(style: .circular)
-                        .foregroundColor(.white))
-                    .shadow(radius: 1)
+                header
+            }
+            
+            ToolbarItem(placement: .navigationBarTrailing) {
+                flagButton
             }
         }
+        .fullScreenCover(isPresented: $describeReasonForFlagging) {
+            FlaggingReasonView(observation: self.observation)
+        }
+    }
+    
+    private var dismissButton: some View {
+        Button(action: {
+            self.presentationMode.wrappedValue.dismiss()
+        }, label: {
+            Image(systemName: "chevron.left")
+                .toolBarButton()
+                .foregroundColor(.pink)
+                .font(.system(size: 20))
+        })
+    }
+    
+    private var header: some View {
+        Text("Beskrivelse")
+            .font(.headline)
+            .padding(8)
+            .background(Capsule(style: .circular)
+                .foregroundColor(.white))
+            .shadow(radius: 1)
+    }
+    
+    private var flagButton: some View {
+        Menu {
+            Button("Flagg observasjon", role: .destructive) {
+                self.describeReasonForFlagging = true
+            }
+            
+            Button("Skjul observasjon") {
+                addToHiddenObservations()
+                presentationMode.wrappedValue.dismiss()
+            }
+
+        } label: {
+            Image(systemName: "flag.fill")
+                .toolBarButton()
+                .foregroundColor(.pink)
+                .font(.system(size: 14))
+        }
+    }
+    
+    private func addToHiddenObservations() {
+        let savedObs = HiddenObservations(context: moc)
+        savedObs.docID = observation.id ?? ""
+        
+        try? moc.save()
     }
 }
 

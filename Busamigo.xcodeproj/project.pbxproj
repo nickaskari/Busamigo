@@ -81,6 +81,9 @@
 		B75B147B28075BE500D9F74B /* LocationErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75B147A28075BE500D9F74B /* LocationErrors.swift */; };
 		B75B147D2807626500D9F74B /* LocationErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75B147C2807626500D9F74B /* LocationErrorView.swift */; };
 		B76A612827B55720003D680E /* ObservationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76A612727B55720003D680E /* ObservationView.swift */; };
+		B77AB8F6287B1744007A8DB4 /* FlaggingReasonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77AB8F5287B1744007A8DB4 /* FlaggingReasonView.swift */; };
+		B77AB8F9287B46AA007A8DB4 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77AB8F8287B46A9007A8DB4 /* DataController.swift */; };
+		B77AB8FC287B4766007A8DB4 /* BusamigoLog.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B77AB8FA287B4766007A8DB4 /* BusamigoLog.xcdatamodeld */; };
 		B7966C8A27F4DFA700447352 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7966C8927F4DFA700447352 /* FileManager.swift */; };
 		B797F5252801BF9E00CC2054 /* Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B797F5242801BF9E00CC2054 /* Filters.swift */; };
 		B797F5272802135500CC2054 /* UtilityFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B797F5262802135500CC2054 /* UtilityFunctions.swift */; };
@@ -97,6 +100,10 @@
 		B7BF2C7F27B422D4006B840E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7BF2C7E27B422D4006B840E /* Preview Assets.xcassets */; };
 		B7BF2C8827B433A7006B840E /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BF2C8727B433A7006B840E /* FeedView.swift */; };
 		B7BF2C8A27B44822006B840E /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BF2C8927B44822006B840E /* ProfileView.swift */; };
+		B7C1747E287E568600083C63 /* cursewords.txt in Resources */ = {isa = PBXBuildFile; fileRef = B7C1747D287E568600083C63 /* cursewords.txt */; };
+		B7C17483287E594B00083C63 /* CurseWordFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C17482287E594B00083C63 /* CurseWordFilter.swift */; };
+		B7C17485287F213400083C63 /* RulesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C17484287F213400083C63 /* RulesView.swift */; };
+		B7C17487287F2E2900083C63 /* PrivacyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C17486287F2E2900083C63 /* PrivacyView.swift */; };
 		B7F70FD7280B787200F8A71D /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F70FD6280B787200F8A71D /* ActivityIndicatorView.swift */; };
 /* End PBXBuildFile section */
 
@@ -169,6 +176,9 @@
 		B75B147A28075BE500D9F74B /* LocationErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationErrors.swift; sourceTree = "<group>"; };
 		B75B147C2807626500D9F74B /* LocationErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationErrorView.swift; sourceTree = "<group>"; };
 		B76A612727B55720003D680E /* ObservationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservationView.swift; sourceTree = "<group>"; };
+		B77AB8F5287B1744007A8DB4 /* FlaggingReasonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlaggingReasonView.swift; sourceTree = "<group>"; };
+		B77AB8F8287B46A9007A8DB4 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		B77AB8FB287B4766007A8DB4 /* BusamigoLog.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BusamigoLog.xcdatamodel; sourceTree = "<group>"; };
 		B7966C8927F4DFA700447352 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		B797F5242801BF9E00CC2054 /* Filters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filters.swift; sourceTree = "<group>"; };
 		B797F5262802135500CC2054 /* UtilityFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityFunctions.swift; sourceTree = "<group>"; };
@@ -186,6 +196,10 @@
 		B7BF2C7E27B422D4006B840E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B7BF2C8727B433A7006B840E /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		B7BF2C8927B44822006B840E /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		B7C1747D287E568600083C63 /* cursewords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cursewords.txt; sourceTree = "<group>"; };
+		B7C17482287E594B00083C63 /* CurseWordFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurseWordFilter.swift; sourceTree = "<group>"; };
+		B7C17484287F213400083C63 /* RulesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesView.swift; sourceTree = "<group>"; };
+		B7C17486287F2E2900083C63 /* PrivacyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyView.swift; sourceTree = "<group>"; };
 		B7F70FD6280B787200F8A71D /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -304,12 +318,12 @@
 			path = SearchViews;
 			sourceTree = "<group>";
 		};
-		B721CFB02870BB8E0008D00B /* Doormat */ = {
+		B721CFB02870BB8E0008D00B /* Setup */ = {
 			isa = PBXGroup;
 			children = (
 				B721CFB32870BBD90008D00B /* Views */,
 			);
-			path = Doormat;
+			path = Setup;
 			sourceTree = "<group>";
 		};
 		B721CFB32870BBD90008D00B /* Views */ = {
@@ -317,6 +331,7 @@
 			children = (
 				B721CFB42870BC320008D00B /* WelcomeView.swift */,
 				B721CFB62870C66B0008D00B /* SetupNotificationsView.swift */,
+				B7C17484287F213400083C63 /* RulesView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -358,6 +373,7 @@
 		B72987C227BB01A4006A3B17 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				B77AB8F7287B4688007A8DB4 /* Storage */,
 				B7240F4528774E6200179CA2 /* AppDelegate */,
 				B72987DB27BFC5D1006A3B17 /* TestViews */,
 				B7966C8927F4DFA700447352 /* FileManager.swift */,
@@ -414,6 +430,7 @@
 				B739A40C284A94E100677433 /* DescriptionBubbleView.swift */,
 				B739A40E284A976100677433 /* DescriptionObservationView.swift */,
 				B704220428612AEC00D917E0 /* DetailMapAnnotationView.swift */,
+				B77AB8F5287B1744007A8DB4 /* FlaggingReasonView.swift */,
 			);
 			path = DetailViews;
 			sourceTree = "<group>";
@@ -497,6 +514,7 @@
 				B70604E02849278A008D0930 /* KarismaView.swift */,
 				B70604E228493E36008D0930 /* LegalInformationView.swift */,
 				B70604E428494499008D0930 /* TipsView.swift */,
+				B7C17486287F2E2900083C63 /* PrivacyView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -529,6 +547,7 @@
 				B739A416284D75DF00677433 /* PostingInformation.swift */,
 				B739A418284D760D00677433 /* PostCreator.swift */,
 				B739A41A284D764100677433 /* LocationSorter.swift */,
+				B7C17482287E594B00083C63 /* CurseWordFilter.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -541,6 +560,15 @@
 				B739A4332850F4AE00677433 /* PreviewObservationView.swift */,
 			);
 			path = ObservationViews;
+			sourceTree = "<group>";
+		};
+		B77AB8F7287B4688007A8DB4 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				B77AB8F8287B46A9007A8DB4 /* DataController.swift */,
+				B77AB8FA287B4766007A8DB4 /* BusamigoLog.xcdatamodeld */,
+			);
+			path = Storage;
 			sourceTree = "<group>";
 		};
 		B7BD43312871E65C00598A3F /* Ads */ = {
@@ -575,12 +603,13 @@
 				B7536E2627B6B16B00C5AB50 /* Feed */,
 				B7536E2927B6B1F100C5AB50 /* Map */,
 				B7536E2827B6B1E100C5AB50 /* Profile */,
-				B721CFB02870BB8E0008D00B /* Doormat */,
+				B721CFB02870BB8E0008D00B /* Setup */,
 				B739A432285022E200677433 /* TabBar */,
 				B704220C28629AFC00D917E0 /* Algorithms */,
 				B72987C227BB01A4006A3B17 /* Utilities */,
 				B72987CE27BC6DE4006A3B17 /* TransportData */,
 				B739A426284E554B00677433 /* GoogleService-Info.plist */,
+				B7C1747C287E567100083C63 /* Extra */,
 				B7BF2C7727B422D2006B840E /* BusamigoApp.swift */,
 				B7BF2C7B27B422D4006B840E /* Assets.xcassets */,
 				B7BF2C7D27B422D4006B840E /* Preview Content */,
@@ -594,6 +623,14 @@
 				B7BF2C7E27B422D4006B840E /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		B7C1747C287E567100083C63 /* Extra */ = {
+			isa = PBXGroup;
+			children = (
+				B7C1747D287E568600083C63 /* cursewords.txt */,
+			);
+			path = Extra;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -677,6 +714,7 @@
 				B797F5292805B3AF00CC2054 /* Usefull stuff.rtf in Resources */,
 				B7BF2C7C27B422D4006B840E /* Assets.xcassets in Resources */,
 				B721CFAF286E22E30008D00B /* LaunchScreen.storyboard in Resources */,
+				B7C1747E287E568600083C63 /* cursewords.txt in Resources */,
 				B739A413284C31B900677433 /* routes_for_stops.txt in Resources */,
 				B739A427284E554B00677433 /* GoogleService-Info.plist in Resources */,
 			);
@@ -698,6 +736,7 @@
 				B728C8EA2846CFB100AF822A /* SlidingObservationView.swift in Sources */,
 				B75B147B28075BE500D9F74B /* LocationErrors.swift in Sources */,
 				B739A419284D760D00677433 /* PostCreator.swift in Sources */,
+				B77AB8FC287B4766007A8DB4 /* BusamigoLog.xcdatamodeld in Sources */,
 				B721CFBA287103C00008D00B /* LaunchView.swift in Sources */,
 				B739A4362851171B00677433 /* UserManager.swift in Sources */,
 				B72987D627BE94AC006A3B17 /* AtbFeed.swift in Sources */,
@@ -711,7 +750,9 @@
 				B70604DF2848412D008D0930 /* RouteRowView.swift in Sources */,
 				B704220B28628FC300D917E0 /* NewObservationsView.swift in Sources */,
 				B739A4312850227D00677433 /* Stop.swift in Sources */,
+				B7C17485287F213400083C63 /* RulesView.swift in Sources */,
 				B72987E027BFD716006A3B17 /* Extensions.swift in Sources */,
+				B7C17483287E594B00083C63 /* CurseWordFilter.swift in Sources */,
 				B739A40D284A94E100677433 /* DescriptionBubbleView.swift in Sources */,
 				B739A41E284D802B00677433 /* Area.swift in Sources */,
 				B70604DA28483DA8008D0930 /* StopChoiceSectionView.swift in Sources */,
@@ -723,9 +764,11 @@
 				B70604EB28494AED008D0930 /* BusamigoTabView.swift in Sources */,
 				B70604E12849278B008D0930 /* KarismaView.swift in Sources */,
 				B7B88F5627EFE0A7008F2BF3 /* StopSearchView.swift in Sources */,
+				B7C17487287F2E2900083C63 /* PrivacyView.swift in Sources */,
 				B704221028629B8F00D917E0 /* KarismaCalculator.swift in Sources */,
 				B728C8EE2847ECF100AF822A /* MapInformationView.swift in Sources */,
 				B7536E2B27B9336600C5AB50 /* FilterView.swift in Sources */,
+				B77AB8F9287B46AA007A8DB4 /* DataController.swift in Sources */,
 				B7536E3F27B9A6D700C5AB50 /* User.swift in Sources */,
 				B7BF2C8A27B44822006B840E /* ProfileView.swift in Sources */,
 				B7BF2C7A27B422D2006B840E /* BusamigoView.swift in Sources */,
@@ -736,6 +779,7 @@
 				B728C8F42848310F00AF822A /* StopLocationRowView.swift in Sources */,
 				B739A42F2850225A00677433 /* Route.swift in Sources */,
 				B72BDA30283EFE6600DC3F26 /* LocationUtilites.swift in Sources */,
+				B77AB8F6287B1744007A8DB4 /* FlaggingReasonView.swift in Sources */,
 				B70604ED28495339008D0930 /* TabViewModel.swift in Sources */,
 				B72BDA22283C591D00DC3F26 /* UporDownView.swift in Sources */,
 				B70604E328493E36008D0930 /* LegalInformationView.swift in Sources */,
@@ -901,7 +945,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Busamigo/Busamigo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Busamigo/Preview Content\"";
 				DEVELOPMENT_TEAM = B4H6FWY3Z6;
 				ENABLE_PREVIEWS = YES;
@@ -921,7 +965,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.1;
+				MARKETING_VERSION = 0.2.1;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.guttaredderverden.Busamigo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -939,7 +983,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Busamigo/Busamigo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Busamigo/Preview Content\"";
 				DEVELOPMENT_TEAM = B4H6FWY3Z6;
 				ENABLE_PREVIEWS = YES;
@@ -959,7 +1003,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.1;
+				MARKETING_VERSION = 0.2.1;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.guttaredderverden.Busamigo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1085,6 +1129,19 @@
 			productName = FirebaseFirestoreSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		B77AB8FA287B4766007A8DB4 /* BusamigoLog.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B77AB8FB287B4766007A8DB4 /* BusamigoLog.xcdatamodel */,
+			);
+			currentVersion = B77AB8FB287B4766007A8DB4 /* BusamigoLog.xcdatamodel */;
+			path = BusamigoLog.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = B7BF2C6C27B422D2006B840E /* Project object */;
 }

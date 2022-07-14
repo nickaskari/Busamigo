@@ -12,11 +12,10 @@ import SwiftUI
 
 class AtbFeed: ObservableObject {
     
-    static let fileManager = FileManager()
     static let allFilteres = ["Relevant", "Nylig", "Lokasjon", "Rating", "Trikk"]
     
-    let stops: Dictionary<Stop, CLLocationCoordinate2D> = fileManager.stops
-    let routes: Dictionary<Stop, [Route]> = fileManager.routesAssociatedWithStops
+    let stops: Dictionary<Stop, CLLocationCoordinate2D> = FileManager().stops
+    let routes: Dictionary<Stop, [Route]> = FileManager().routesAssociatedWithStops
     let area = Area(upperLat: 63.462133, downerLat: 63.302000, leftLon: 10.051845, rightLon: 10.676401)
     
     private let db = Firestore.firestore()
@@ -173,6 +172,22 @@ class AtbFeed: ObservableObject {
         }
     }
     
+    func flagObservation(docID: String, _ reason: String, completion: @escaping(_ success: Bool) -> Void) {
+        let ref = db.collection("Flagged")
+        
+        ref.addDocument(data: [
+            "docID" : docID,
+            "reason" : reason
+        ], completion: { error in
+            if let error = error {
+                print(error.localizedDescription)
+                completion(false)
+            } else {
+                completion(true)
+            }
+        })
+    }
+    
     func voteScoreFor(observation: Observation) -> Int {
         return atbFeed.voteScoreFor(observation)
     }
@@ -191,6 +206,10 @@ class AtbFeed: ObservableObject {
     
     func getObservationForMap() -> Array<Observation> {
         return atbFeed.getObservationsForMap()
+    }
+    
+    func removeObservation(_ obs: Observation) {
+        atbFeed.removeObservation(obs)
     }
     
     func activateFilter(_ filter: String, userLon: Double?, userLat: Double?) {

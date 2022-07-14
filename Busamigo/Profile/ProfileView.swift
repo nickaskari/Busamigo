@@ -58,7 +58,7 @@ struct ProfileView: View {
             Image(systemName: "doc.text.fill")
                 .profileIconStyle()
             
-            Text("Personvern")
+            Text("Om Busamigo")
                 .font(.callout)
                 .foregroundColor(.black)
             

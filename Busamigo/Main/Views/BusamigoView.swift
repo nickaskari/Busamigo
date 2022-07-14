@@ -38,16 +38,6 @@ struct BusamigoView: View {
         }
         .navigationBarHidden(true)
         .ignoresSafeArea(.keyboard, edges: .bottom)
-        .accentColor(.pink)
-        /*.onAppear {
-            locationManager.checkIfLocationServicesIsEnabled()
-            portraitOrientationLock()
-            feed.listenForUpdates()
-            
-        }
-        .task {
-            await userManager.signIn()
-        }*/
     }
 }
 

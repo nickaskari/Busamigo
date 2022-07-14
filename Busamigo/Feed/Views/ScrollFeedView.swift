@@ -15,8 +15,10 @@ struct ScrollFeedView: View {
     @EnvironmentObject private var scrollManager: ScrollManager
     @EnvironmentObject private var network: Network
     
-    @State private var offset: CGFloat = 0
-    @State private var lastOffset: CGFloat = 0
+    
+    @FetchRequest(sortDescriptors: []) var hiddenObservations: FetchedResults<HiddenObservations>
+    @Environment(\.managedObjectContext) var moc
+    
     @State private var hideProgress: Bool = true
     @State private var activateRefresh: Bool = false
     @State private var didRefresh: Bool = false
@@ -42,7 +44,9 @@ struct ScrollFeedView: View {
                     
                     if !feed.getVisibleFeed().isEmpty {
                         ForEach(feed.getVisibleFeed()) { obs in
-                            makeObservation(obs)
+                            if !isHidden(obs) {
+                                makeObservation(obs)
+                            }
                             
                             if (feed.getPositionInVisibleFeed(observation: obs) % 3) == 0  && network.connected {
                                 makeAd()
@@ -64,9 +68,6 @@ struct ScrollFeedView: View {
                 .overlay (
                     GeometryReader { proxy -> Color in
                         let minY = proxy.frame(in: .named("SCROLL")).minY
-                        //let scrollHeight = proxy.frame(in: .named("SCROLL")).height
-                        
-                        //let durationOffset: CGFloat = 10
                         
                         DispatchQueue.main.async {
                             
@@ -88,28 +89,6 @@ struct ScrollFeedView: View {
                                 activateRefresh = true
                                 didRefresh = true
                             }
-                            
-                           /* if minY < offset {
-                                if offset < 0 && -minY > (lastOffset + durationOffset) && (scrollHeight >= 1000) {
-                                    withAnimation(.easeOut.speed(2)) {
-                                        feed.hideBar()
-                                    }
-                                    lastOffset = -offset
-                                }
-                                
-                            }
-                            
-                            if minY > offset {
-                                if -minY < (lastOffset - durationOffset) &&
-                                        (scrollHeight - -(minY)) >= 870 {
-                                    withAnimation(.easeIn.speed(2)) {
-                                        feed.showBar()
-                                    }
-                                    lastOffset = -offset
-                                }
-                            }
-                            
-                            self.offset = minY*/
                         }
                         return Color.clear
                     }
@@ -130,6 +109,9 @@ struct ScrollFeedView: View {
                         if success {
                             feed.activateFilter("Relevant", userLon: nil, userLat: nil)
                             activateRefresh = false
+                            if feed.getUntouchedFeed().isEmpty {
+                                deleteHidingLog()
+                            }
                         } else {
                             withAnimation {
                                 feed.networkError = true
@@ -165,6 +147,25 @@ struct ScrollFeedView: View {
                 .frame(width: GADAdSizeMediumRectangle.size.width, height: GADAdSizeMediumRectangle.size.height)
                 .padding()
         }
+    }
+    
+    private func isHidden(_ obs: Observation) -> Bool {
+        hiddenObservations.contains(where: {
+            if let docID = $0.docID {
+                if docID == obs.id {
+                    feed.removeObservation(obs)
+                    return true
+                }
+            }
+            return false
+        })
+    }
+    
+    private func deleteHidingLog() {
+        for docID in hiddenObservations {
+            moc.delete(docID)
+        }
+        try? moc.save()
     }
 }
 
