@@ -27,6 +27,7 @@ struct ListFeedView: View {
                         }, label: {}
                     )
                     .opacity(0)
+                    
                     ObservationView(item)
                         .padding(.bottom, 5)
                 }
@@ -37,6 +38,7 @@ struct ListFeedView: View {
         }
         .id(UUID())
         .listStyle(.plain)
+        .ignoresSafeArea(.keyboard, edges: .bottom)
     }
 }
 

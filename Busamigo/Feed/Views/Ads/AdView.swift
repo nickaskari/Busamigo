@@ -9,13 +9,28 @@ import SwiftUI
 import GoogleMobileAds
 
 struct AdView: View {
+    let adFormat: AdFormat
+    @State private var adStatus: AdStatus = .loading
     
     var body: some View {
+        
         ZStack {
-            ActivityIndicator(color: .pink)
-            
-            GADBannerViewController()
-                .frame(width: GADAdSizeMediumRectangle.size.width, height: GADAdSizeMediumRectangle.size.height)
+            if adStatus == .loading {
+                ActivityIndicator(color: .pink)
+            }
+             
+            if adStatus != .failure {
+                VStack(alignment: .leading, spacing: 5) {
+                    if adStatus == .success {
+                        Text("Reklame")
+                            .foregroundColor(.gray)
+                            .font(.caption)
+                    }
+                    
+                    BannerViewController(adSize: adFormat.adSize, adStatus: $adStatus)
+                        .frame(width: adFormat.size.width, height: adFormat.size.height)
+                }
+            }
         }
         .padding()
     }
@@ -35,6 +50,6 @@ struct AdView: View {
 
 struct AdView_Previews: PreviewProvider {
     static var previews: some View {
-        AdView()
+        AdView(adFormat: .mediumRectangle)
     }
 }

@@ -39,18 +39,21 @@ struct BusamigoTabView: View {
             tabvm.currentPage = page
             switch page {
             case .feed:
+                print("pressed feed")
                 homeButtonManager.scrollToTop = true
                 homeButtonManager.dismiss = true
             case .profile:
+                print("pressed profile")
                 profileButtonManager.dismiss = true
             case .map:
+                print("pressed map")
                 break
             }
             
         } label: {
             VStack(spacing: 2) {
                 Image(systemName: icon)
-                    .font(.system(size: 25))
+                    .font(.system(size: 22))
                     .foregroundColor(tabvm.currentPage == page ? .pink : .black.opacity(0.6))
                 Text(name)
                     .foregroundColor(.black)

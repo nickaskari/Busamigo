@@ -131,6 +131,15 @@ extension Text {
             .frame(width: 95)
             .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 0))
     }
+    
+    func routeNrStyle2() -> some View {
+        self
+            .font(.largeTitle)
+            .minimumScaleFactor(0.01)
+            .lineLimit(1)
+            .foregroundColor(.pink)
+            .padding(.horizontal)
+    }
 }
 
 extension CLLocationCoordinate2D {
@@ -169,7 +178,26 @@ extension View {
     }
 }
 
+extension Color {
+    static var launchViewColor: Color {
+        return Color("LaunchViewColor")
+    }
+}
+
+extension UIApplication {
+    static var release: String {
+        return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String? ?? "x.x"
+    }
+    static var build: String {
+        return Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String? ?? "x"
+    }
+    static var version: String {
+        return "\(release).\(build)"
+    }
+}
+
 enum Size {
     case small
     case medium
 }
+

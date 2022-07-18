@@ -26,48 +26,60 @@ struct DetailView: View {
         self.locationManager = locationManager
     }
     
+    
     var body: some View {
-        VStack {
-            DetailMapView(observation.getCLLocationCoordinate2D())
-            
-            if isLoading {
-                DescriptionBubbleView(observation, locationManager, karisma: 68)
-                    .redacted(reason: .placeholder)
-                    .shimmering()
-            } else {
-                DescriptionBubbleView(observation, locationManager, karisma: self.karisma ?? 50)
-            }
-        }
-        .onAppear {
-            userManager.getAuthorKarisma(id: observation.author) { karisma in
-                if let karisma = karisma {
-                    self.karisma = karisma
-                    self.isLoading = false
+        mainView
+            .onAppear {
+                userManager.getAuthorKarisma(id: observation.author) { karisma in
+                    if let karisma = karisma {
+                        self.karisma = karisma
+                        self.isLoading = false
+                    }
                 }
             }
-        }
-        .onReceive(homeButtonManager.$dismiss, perform: { dismiss in
-            if dismiss {
-                self.presentationMode.wrappedValue.dismiss()
+            .onReceive(homeButtonManager.objectWillChange, perform: { object in
+                if homeButtonManager.dismiss {
+                    self.presentationMode.wrappedValue.dismiss()
+                }
+            })
+            .edgesIgnoringSafeArea(.top)
+            .navigationBarBackButtonHidden(true)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    backButton
+                }
+                
+                ToolbarItem(placement: .principal) {
+                    header
+                }
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    flagButton
+                }
             }
-        })
-        .edgesIgnoringSafeArea(.top)
-        .navigationBarBackButtonHidden(true)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                backButton
+            .fullScreenCover(isPresented: $describeReasonForFlagging) {
+                FlaggingReasonView(observation: self.observation)
+            }
+    }
+    
+    private let height = UIScreen.screenHeight * 0.85
+    
+    private var mainView: some View {
+        GeometryReader { geo in
+            VStack(spacing: 0) {
+                DetailMapView(observation.getCLLocationCoordinate2D())
+                
+                if isLoading {
+                    DescriptionSlabView(observation, locationManager, karisma: 68)
+                        .redacted(reason: .placeholder)
+                        .shimmering()
+                } else {
+                    DescriptionSlabView(observation, locationManager, karisma: self.karisma ?? 50)
+                }
             }
             
-            ToolbarItem(placement: .principal) {
-                header
-            }
-            
-            ToolbarItem(placement: .navigationBarTrailing) {
-                flagButton
-            }
-        }
-        .fullScreenCover(isPresented: $describeReasonForFlagging) {
-            FlaggingReasonView(observation: self.observation)
+            purchaseTicketButton
+                .position(x: geo.size.width * 0.5, y: height)
         }
     }
     
@@ -110,12 +122,31 @@ struct DetailView: View {
         }
     }
     
+    private var purchaseTicketButton: some View {
+        HStack {
+            Spacer()
+            
+            Button {
+                if let url = URL(string: "itms-apps://apple.com/us/app/atb/id1502395251") {
+                    UIApplication.shared.open(url)
+                }
+            } label: {
+                Text("Kjøp billett")
+                    .capsuleStyle(.pink, size: .small)
+            }
+                .buttonStyle(PushDownButtonStyle())
+            
+            Spacer()
+        }
+    }
+    
     private func addToHiddenObservations() {
         let savedObs = HiddenObservations(context: moc)
         savedObs.docID = observation.id ?? ""
         
         try? moc.save()
     }
+
 }
 
 

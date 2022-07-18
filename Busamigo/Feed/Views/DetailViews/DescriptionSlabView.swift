@@ -1,5 +1,5 @@
 //
-//  DescriptionBubbleView.swift
+//  DescriptionSlabView.swift
 //  Busamigo
 //
 //  Created by Nick Askari on 03/06/2022.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DescriptionBubbleView: View {
+struct DescriptionSlabView: View {
     private let locationManager: LocationManager
     
     private let observation: Observation
@@ -20,23 +20,26 @@ struct DescriptionBubbleView: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            DescriptionObservationView(observation, locationManager)
-                .padding(.bottom)
-            
-            Divider()
-            
-            ZStack(alignment: .bottom) {
+        ZStack(alignment: .bottom) {
+            VStack(alignment: .leading, spacing: 0) {
+                DescriptionObservationView(observation, locationManager)
+                    .padding(.bottom)
+                
+                Divider()
+                
                 infoScroll
                 
-                purchaseTicketButton
+                Spacer()
             }
+            
+            purchaseTicketPlaceHolder
         }
         .padding()
+        
     }
     
     private var infoScroll: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             VStack(alignment: .leading) {
                 Text("Observatørens karisma:")
                     .font(.subheadline.bold())
@@ -51,31 +54,16 @@ struct DescriptionBubbleView: View {
                     Text("\(observation.description)")
                         .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8))
                         .font(.subheadline)
+                    
+                    purchaseTicketPlaceHolder
                 }
-                
-                purchaseTicketButton
-                    .opacity(0)
-                    .disabled(true)
             }
         }
     }
     
-    private var purchaseTicketButton: some View {
-        HStack {
-            Spacer()
-            
-            Button {
-                if let url = URL(string: "itms-apps://apple.com/us/app/atb/id1502395251") {
-                    UIApplication.shared.open(url)
-                }
-            } label: {
-                Text("Kjøp billett")
-                    .capsuleStyle(.pink, size: .small)
-            }
-                .buttonStyle(PushDownButtonStyle())
-            
-            Spacer()
-        }
-
+    private var purchaseTicketPlaceHolder: some View {
+        Text("Kjøp billett")
+            .capsuleStyle(.pink, size: .small)
+            .opacity(0)
     }
 }

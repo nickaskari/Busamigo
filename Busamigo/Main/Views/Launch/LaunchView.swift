@@ -15,7 +15,7 @@ struct LaunchView: View {
     
     var body: some View {
         ZStack {
-            Color.accentColor.ignoresSafeArea()
+            Color.launchViewColor.ignoresSafeArea()
             
             Image("Sombrero")
                 .resizable()
@@ -25,7 +25,7 @@ struct LaunchView: View {
             ZStack {
                 Text("BUSAMIGO")
                     .foregroundColor(.white)
-                    .font(.largeTitle.bold())
+                    .font(.system(.largeTitle, design: .rounded).bold())
             }
             .offset(y: 150)
         }

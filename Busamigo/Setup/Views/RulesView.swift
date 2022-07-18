@@ -28,7 +28,11 @@ struct RulesView: View {
             }
     
             if isSetup {
-                nextButton
+                if #available(iOS 14, *) {
+                    nextButton
+                } else {
+                    finishSetupButton
+                }
             }
         }
         .padding(.top)
@@ -60,6 +64,17 @@ struct RulesView: View {
     }
     
     private var nextButton: some View {
+        NavigationLink {
+            TrackingPermissionView()
+        } label: {
+            Text("Enig 👍")
+                .capsuleStyle(.pink, size: .medium)
+                .padding(.bottom)
+        }
+        .buttonStyle(PushDownButtonStyle())
+    }
+    
+    private var finishSetupButton: some View {
         Button {
             self.setup = true
             self.showApp = true
@@ -76,9 +91,9 @@ struct RulesView: View {
     
     private var rules: some View {
         Text("Busamigo er ment som et fantastisk verktøy for å være foreberedt på billettkontroll for kollektiv transport. For å bruke denne platformen krever vi at brukere unngår hatefulle ytringer i sine observasjoner, dette kan føre til utestengelse av brukeren.")
-            .font(.headline)
+            .font(.callout)
             .minimumScaleFactor(0.01)
-            .lineLimit(5)
+            .lineLimit(10)
             .padding(.horizontal, 20)
     }
     
@@ -88,7 +103,7 @@ struct RulesView: View {
                 .foregroundColor(.pink)
                 .font(.system(size: 25))
             
-            Text("Busamigo oppfordrer til å kjøpe billett i god tid for kollektiv transport, og tilrettelegger derfor en knapp for dette i hver observasjon.")
+            Text("Busamigo oppfordrer til å kjøpe billett i god tid, og tilrettelegger derfor en knapp for dette i hver observasjon.")
                 .font(.caption)
                 .minimumScaleFactor(0.01)
                 .lineLimit(3)

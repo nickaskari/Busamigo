@@ -12,6 +12,7 @@ import FirebaseMessaging
 
 struct ProfileView: View {
     @EnvironmentObject private var userManager: UserManager
+    @EnvironmentObject private var profileButtonManager: ProfileButtonManager
     
     var body: some View {
         NavigationView {

@@ -23,9 +23,7 @@ struct DescriptionObservationView: View {
         HStack {
             if let route = observation.route {
                 Text("\(route.nr)")
-                    .foregroundColor(.pink)
-                    .font(.largeTitle)
-                    .padding(.horizontal)
+                    .routeNrStyle2()
             } else {
                 Image(systemName: busOrTram(observation.stop))
                     .font(.system(size: 25))

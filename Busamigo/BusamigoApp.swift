@@ -24,6 +24,11 @@ struct BusamigoApp: App {
     @AppStorage("setup") private var setup = false
     @State private var showLaunchView = true
     
+    init() {
+        UINavigationBar.appearance().tintColor = .systemPink
+        UITextView.appearance().tintColor = .systemPink
+    }
+    
     var body: some Scene {
         WindowGroup {
             ZStack {

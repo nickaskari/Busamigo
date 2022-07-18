@@ -19,6 +19,8 @@ struct ScrollFeedView: View {
     @FetchRequest(sortDescriptors: []) var hiddenObservations: FetchedResults<HiddenObservations>
     @Environment(\.managedObjectContext) var moc
     
+    @AppStorage("areAdsEnabled") var areAdsEnabled: Bool = false
+    
     @State private var hideProgress: Bool = true
     @State private var activateRefresh: Bool = false
     @State private var didRefresh: Bool = false
@@ -47,8 +49,9 @@ struct ScrollFeedView: View {
                                 makeObservation(obs)
                             }
                             
-                            if (feed.getPositionInVisibleFeed(observation: obs) % 3) == 0  && network.connected {
-                                AdView()
+                            if (feed.getPositionInVisibleFeed(observation: obs) % 3) == 0  && network.connected &&
+                                areAdsEnabled {
+                                AdView(adFormat: .mediumRectangle)
                             }
                         }
                     } else {

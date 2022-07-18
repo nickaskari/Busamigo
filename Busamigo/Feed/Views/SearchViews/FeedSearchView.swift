@@ -13,6 +13,7 @@ struct FeedSearchView: View {
     @State private var searchText = ""
     
     @Environment(\.presentationMode) private var presentationMode
+    @EnvironmentObject private var homeButtonManager: HomeButtonManager
     
     init (_ feed: AtbFeed, _ locationManager: LocationManager) {
         self.feed = feed
@@ -33,6 +34,12 @@ struct FeedSearchView: View {
                     header
                 }
             }
+            .onReceive(homeButtonManager.objectWillChange) { dismiss in
+                if homeButtonManager.dismiss {
+                    self.presentationMode.wrappedValue.dismiss()
+                }
+            }
+            .ignoresSafeArea(.keyboard, edges: .bottom)
     }
     
     private var filteredFeed: [Observation] {

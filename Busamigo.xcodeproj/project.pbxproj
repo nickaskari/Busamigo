@@ -48,7 +48,7 @@
 		B72BDA30283EFE6600DC3F26 /* LocationUtilites.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72BDA2F283EFE6600DC3F26 /* LocationUtilites.swift */; };
 		B72BDA322840267500DC3F26 /* PostingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72BDA312840267400DC3F26 /* PostingManager.swift */; };
 		B739A40B284A949600677433 /* DetailMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B739A40A284A949600677433 /* DetailMapView.swift */; };
-		B739A40D284A94E100677433 /* DescriptionBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B739A40C284A94E100677433 /* DescriptionBubbleView.swift */; };
+		B739A40D284A94E100677433 /* DescriptionSlabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B739A40C284A94E100677433 /* DescriptionSlabView.swift */; };
 		B739A40F284A976100677433 /* DescriptionObservationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B739A40E284A976100677433 /* DescriptionObservationView.swift */; };
 		B739A413284C31B900677433 /* routes_for_stops.txt in Resources */ = {isa = PBXBuildFile; fileRef = B739A412284C31B900677433 /* routes_for_stops.txt */; };
 		B739A415284C31DA00677433 /* stops.txt in Resources */ = {isa = PBXBuildFile; fileRef = B739A414284C31DA00677433 /* stops.txt */; };
@@ -92,7 +92,6 @@
 		B7B88F5427EFE080008F2BF3 /* RouteSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B88F5327EFE080008F2BF3 /* RouteSearchView.swift */; };
 		B7B88F5627EFE0A7008F2BF3 /* StopSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B88F5527EFE0A7008F2BF3 /* StopSearchView.swift */; };
 		B7B88F5827F1C8D9008F2BF3 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B88F5727F1C8D9008F2BF3 /* DetailView.swift */; };
-		B7BD43332871E69300598A3F /* GADBannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BD43322871E69300598A3F /* GADBannerViewController.swift */; };
 		B7BD4335287615F200598A3F /* TestLaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BD4334287615F200598A3F /* TestLaunchView.swift */; };
 		B7BF2C7827B422D2006B840E /* BusamigoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BF2C7727B422D2006B840E /* BusamigoApp.swift */; };
 		B7BF2C7A27B422D2006B840E /* BusamigoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BF2C7927B422D2006B840E /* BusamigoView.swift */; };
@@ -105,6 +104,10 @@
 		B7C17485287F213400083C63 /* RulesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C17484287F213400083C63 /* RulesView.swift */; };
 		B7C1748D28806EDF00083C63 /* ProfileButtonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C1748C28806EDF00083C63 /* ProfileButtonManager.swift */; };
 		B7C1748F28807AB000083C63 /* AdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C1748E28807AAF00083C63 /* AdView.swift */; };
+		B7C174912880BE0000083C63 /* AdStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C174902880BE0000083C63 /* AdStatus.swift */; };
+		B7C174932880BE1700083C63 /* BannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C174922880BE1700083C63 /* BannerViewController.swift */; };
+		B7C174952880BFCD00083C63 /* AdSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C174942880BFCD00083C63 /* AdSizes.swift */; };
+		B7C1749728831B4E00083C63 /* TrackingPermissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C1749628831B4E00083C63 /* TrackingPermissionView.swift */; };
 		B7F70FD7280B787200F8A71D /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F70FD6280B787200F8A71D /* ActivityIndicatorView.swift */; };
 /* End PBXBuildFile section */
 
@@ -149,7 +152,7 @@
 		B72BDA2F283EFE6600DC3F26 /* LocationUtilites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationUtilites.swift; sourceTree = "<group>"; };
 		B72BDA312840267400DC3F26 /* PostingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingManager.swift; sourceTree = "<group>"; };
 		B739A40A284A949600677433 /* DetailMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMapView.swift; sourceTree = "<group>"; };
-		B739A40C284A94E100677433 /* DescriptionBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionBubbleView.swift; sourceTree = "<group>"; };
+		B739A40C284A94E100677433 /* DescriptionSlabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionSlabView.swift; sourceTree = "<group>"; };
 		B739A40E284A976100677433 /* DescriptionObservationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionObservationView.swift; sourceTree = "<group>"; };
 		B739A412284C31B900677433 /* routes_for_stops.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = routes_for_stops.txt; sourceTree = "<group>"; };
 		B739A414284C31DA00677433 /* stops.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stops.txt; sourceTree = "<group>"; };
@@ -188,7 +191,6 @@
 		B7B88F5327EFE080008F2BF3 /* RouteSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteSearchView.swift; sourceTree = "<group>"; };
 		B7B88F5527EFE0A7008F2BF3 /* StopSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopSearchView.swift; sourceTree = "<group>"; };
 		B7B88F5727F1C8D9008F2BF3 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
-		B7BD43322871E69300598A3F /* GADBannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GADBannerViewController.swift; sourceTree = "<group>"; };
 		B7BD4334287615F200598A3F /* TestLaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLaunchView.swift; sourceTree = "<group>"; };
 		B7BF2C7427B422D2006B840E /* Busamigo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Busamigo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7BF2C7727B422D2006B840E /* BusamigoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusamigoApp.swift; sourceTree = "<group>"; };
@@ -202,6 +204,10 @@
 		B7C17484287F213400083C63 /* RulesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesView.swift; sourceTree = "<group>"; };
 		B7C1748C28806EDF00083C63 /* ProfileButtonManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileButtonManager.swift; sourceTree = "<group>"; };
 		B7C1748E28807AAF00083C63 /* AdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdView.swift; sourceTree = "<group>"; };
+		B7C174902880BE0000083C63 /* AdStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdStatus.swift; sourceTree = "<group>"; };
+		B7C174922880BE1700083C63 /* BannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerViewController.swift; sourceTree = "<group>"; };
+		B7C174942880BFCD00083C63 /* AdSizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdSizes.swift; sourceTree = "<group>"; };
+		B7C1749628831B4E00083C63 /* TrackingPermissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingPermissionView.swift; sourceTree = "<group>"; };
 		B7F70FD6280B787200F8A71D /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -334,6 +340,7 @@
 				B721CFB42870BC320008D00B /* WelcomeView.swift */,
 				B721CFB62870C66B0008D00B /* SetupNotificationsView.swift */,
 				B7C17484287F213400083C63 /* RulesView.swift */,
+				B7C1749628831B4E00083C63 /* TrackingPermissionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -429,9 +436,9 @@
 			children = (
 				B7B88F5727F1C8D9008F2BF3 /* DetailView.swift */,
 				B739A40A284A949600677433 /* DetailMapView.swift */,
-				B739A40C284A94E100677433 /* DescriptionBubbleView.swift */,
-				B739A40E284A976100677433 /* DescriptionObservationView.swift */,
 				B704220428612AEC00D917E0 /* DetailMapAnnotationView.swift */,
+				B739A40C284A94E100677433 /* DescriptionSlabView.swift */,
+				B739A40E284A976100677433 /* DescriptionObservationView.swift */,
 				B77AB8F5287B1744007A8DB4 /* FlaggingReasonView.swift */,
 			);
 			path = DetailViews;
@@ -573,8 +580,10 @@
 		B7BD43312871E65C00598A3F /* Ads */ = {
 			isa = PBXGroup;
 			children = (
-				B7BD43322871E69300598A3F /* GADBannerViewController.swift */,
 				B7C1748E28807AAF00083C63 /* AdView.swift */,
+				B7C174902880BE0000083C63 /* AdStatus.swift */,
+				B7C174922880BE1700083C63 /* BannerViewController.swift */,
+				B7C174942880BFCD00083C63 /* AdSizes.swift */,
 			);
 			path = Ads;
 			sourceTree = "<group>";
@@ -599,6 +608,7 @@
 			isa = PBXGroup;
 			children = (
 				B721CFA728652A920008D00B /* Busamigo.entitlements */,
+				B739A426284E554B00677433 /* GoogleService-Info.plist */,
 				B70604E628494919008D0930 /* Main */,
 				B7536E2627B6B16B00C5AB50 /* Feed */,
 				B7536E2927B6B1F100C5AB50 /* Map */,
@@ -608,7 +618,6 @@
 				B704220C28629AFC00D917E0 /* Algorithms */,
 				B72987C227BB01A4006A3B17 /* Utilities */,
 				B72987CE27BC6DE4006A3B17 /* TransportData */,
-				B739A426284E554B00677433 /* GoogleService-Info.plist */,
 				B7C1747C287E567100083C63 /* Extra */,
 				B7BF2C7727B422D2006B840E /* BusamigoApp.swift */,
 				B7BF2C7B27B422D4006B840E /* Assets.xcassets */,
@@ -746,6 +755,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7C174932880BE1700083C63 /* BannerViewController.swift in Sources */,
 				B72987C127BB00CE006A3B17 /* LocationManager.swift in Sources */,
 				B72987DA27BECAAB006A3B17 /* PostObservationView.swift in Sources */,
 				B7966C8A27F4DFA700447352 /* FileManager.swift in Sources */,
@@ -772,14 +782,14 @@
 				B7C17485287F213400083C63 /* RulesView.swift in Sources */,
 				B72987E027BFD716006A3B17 /* Extensions.swift in Sources */,
 				B7C17483287E594B00083C63 /* CurseWordFilter.swift in Sources */,
-				B739A40D284A94E100677433 /* DescriptionBubbleView.swift in Sources */,
+				B739A40D284A94E100677433 /* DescriptionSlabView.swift in Sources */,
 				B739A41E284D802B00677433 /* Area.swift in Sources */,
 				B70604DA28483DA8008D0930 /* StopChoiceSectionView.swift in Sources */,
 				B739A4342850F4AE00677433 /* PreviewObservationView.swift in Sources */,
 				B721CFB72870C66C0008D00B /* SetupNotificationsView.swift in Sources */,
 				B739A40B284A949600677433 /* DetailMapView.swift in Sources */,
 				B704220528612AEC00D917E0 /* DetailMapAnnotationView.swift in Sources */,
-				B7BD43332871E69300598A3F /* GADBannerViewController.swift in Sources */,
+				B7C174912880BE0000083C63 /* AdStatus.swift in Sources */,
 				B70604EB28494AED008D0930 /* BusamigoTabView.swift in Sources */,
 				B7C1748D28806EDF00083C63 /* ProfileButtonManager.swift in Sources */,
 				B70604E12849278B008D0930 /* KarismaView.swift in Sources */,
@@ -797,12 +807,14 @@
 				B721CFAB286D083A0008D00B /* Network.swift in Sources */,
 				B728C8F42848310F00AF822A /* StopLocationRowView.swift in Sources */,
 				B739A42F2850225A00677433 /* Route.swift in Sources */,
+				B7C1749728831B4E00083C63 /* TrackingPermissionView.swift in Sources */,
 				B72BDA30283EFE6600DC3F26 /* LocationUtilites.swift in Sources */,
 				B77AB8F6287B1744007A8DB4 /* FlaggingReasonView.swift in Sources */,
 				B70604ED28495339008D0930 /* TabViewModel.swift in Sources */,
 				B72BDA22283C591D00DC3F26 /* UporDownView.swift in Sources */,
 				B70604E328493E36008D0930 /* LegalInformationView.swift in Sources */,
 				B72987E227BFD756006A3B17 /* UtilityViews.swift in Sources */,
+				B7C174952880BFCD00083C63 /* AdSizes.swift in Sources */,
 				B797F5272802135500CC2054 /* UtilityFunctions.swift in Sources */,
 				B797F5252801BF9E00CC2054 /* Filters.swift in Sources */,
 				B739A417284D75DF00677433 /* PostingInformation.swift in Sources */,
@@ -974,13 +986,16 @@
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Busamigo/Info.plist;
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Denne appen trenger lokasjonen din for å finne de nærmeste holdplassene fra deg.";
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Busamigo trenger posisjonen din for å vite om du er i rett sone for å poste en observasjon. I tillegg til å bruke lokasjons-filteret, og for å vise din posisjon på kart.";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Dette ønskes for å tilpasse bedre annonser for deg.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1012,13 +1027,16 @@
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Busamigo/Info.plist;
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Denne appen trenger lokasjonen din for å finne de nærmeste holdplassene fra deg.";
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Busamigo trenger posisjonen din for å vite om du er i rett sone for å poste en observasjon. I tillegg til å bruke lokasjons-filteret, og for å vise din posisjon på kart.";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Dette ønskes for å tilpasse bedre annonser for deg.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

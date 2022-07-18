@@ -21,13 +21,15 @@ struct DetailMapView: View {
     }
     
     var body: some View {
-        ZStack {
+        //ZStack {
             Map(coordinateRegion: $region, annotationItems: markers) { marker in
                 MapAnnotation(coordinate: marker.location) {
                     DetailMapAnnotationView()
                 }
             }
-        }
+            .frame(height: UIScreen.screenHeight * 0.45)
+       // }
+        //.frame(height: UIScreen.screenHeight * 0.45)
     }
 }
 

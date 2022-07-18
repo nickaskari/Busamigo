@@ -48,7 +48,7 @@ struct PostObservationView: View {
                         ZStack {
                             TextEditor(text: $description)
                                 .onReceive(Just(description)) { _ in limitText(textLimit) }
-                            .opacity(self.description.isEmpty ? 0.25 : 1)
+                                .opacity(self.description.isEmpty ? 0.25 : 1)
                         }
                     }
                     .frame(height: geometry.size.height * 0.08)

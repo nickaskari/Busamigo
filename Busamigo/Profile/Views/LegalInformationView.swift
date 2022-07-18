@@ -10,6 +10,7 @@ import SwiftUI
 struct LegalInformationView: View {
     @Environment(\.presentationMode) private var presentationMode
     @EnvironmentObject private var profileButtonManager: ProfileButtonManager
+    @EnvironmentObject private var tabViewModel: TabViewModel
     
     var body: some View {
         VStack(alignment: .leading, spacing: 15) {
@@ -24,6 +25,8 @@ struct LegalInformationView: View {
             contactRow
             
             Spacer()
+            
+            versionInfo
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarTitleDisplayMode(.inline)
@@ -37,8 +40,8 @@ struct LegalInformationView: View {
             }
         }
         .padding(.top)
-        .onReceive(profileButtonManager.$dismiss) { dismiss in
-            if dismiss {
+        .onReceive(profileButtonManager.objectWillChange) { object in
+            if profileButtonManager.dismiss {
                 self.presentationMode.wrappedValue.dismiss()
             }
         }
@@ -84,6 +87,25 @@ struct LegalInformationView: View {
         } label: {
             getButtonLabel("Kontakt Busamigo", icon: "bubble.left.and.bubble.right.fill")
         }
+    }
+    
+    private var versionInfo: some View {
+        HStack {
+            Spacer()
+            
+            VStack(spacing: 15) {
+                Image("SombreroGray")
+                    .resizable()
+                    .frame(width: 120, height: 80)
+                
+                Text("Versjon \(UIApplication.version)")
+                    .font(.subheadline)
+                    .foregroundColor(.gray)
+            }
+            
+            Spacer()
+        }
+        .padding(20)
     }
     
     private func getButtonLabel(_ text: String, icon: String) -> some View {

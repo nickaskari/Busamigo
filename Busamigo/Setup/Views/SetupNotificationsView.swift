@@ -56,9 +56,11 @@ struct SetupNotificationsView: View {
         HStack {
             Image(systemName: "exclamationmark.bubble")
                 .foregroundColor(.pink)
-                .font(.system(size: 60))
+                .font(.system(size: 40))
+                .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 5))
             
             Text("Husk at notifikasjoner for Busamigo må være på i innstillingene dine for dette :)")
+                .font(.callout)
                 .foregroundColor(.black.opacity(0.7))
         }
         .padding()

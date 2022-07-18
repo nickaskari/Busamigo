@@ -35,7 +35,7 @@
                                         </constraints>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" name="AccentColor"/>
+                                <color key="backgroundColor" name="LaunchViewColor"/>
                                 <constraints>
                                     <constraint firstItem="lxP-lc-a4c" firstAttribute="centerY" secondItem="TDh-eg-7aQ" secondAttribute="centerY" id="0Mj-CI-2kW"/>
                                     <constraint firstItem="lxP-lc-a4c" firstAttribute="centerX" secondItem="TDh-eg-7aQ" secondAttribute="centerX" id="68c-Ij-kTK"/>
@@ -62,8 +62,8 @@
     </scenes>
     <resources>
         <image name="Sombrero" width="646" height="374"/>
-        <namedColor name="AccentColor">
-            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="LaunchViewColor">
+            <color red="1" green="0.17599999904632568" blue="0.33299997448921204" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
