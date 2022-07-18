@@ -13,7 +13,7 @@ struct BusamigoApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @StateObject private var homeButtonManager = HomeButtonManager()
     @StateObject private var profileButtonManager = ProfileButtonManager()
-    @StateObject private var feed = AtbFeed()
+    @StateObject private var feed = FeedManager()
     @StateObject private var locationManager = LocationManager()
     @StateObject private var userManager = UserManager()
     @StateObject private var tabvm = TabViewModel()

@@ -10,13 +10,13 @@ import MapKit
 import CoreLocationUI
 
 struct MapView: View {
-    @ObservedObject private var feed: AtbFeed
+    @ObservedObject private var feed: FeedManager
     @ObservedObject private var locationManager: LocationManager
     @StateObject private var observationManager = ObservationManager()
     @EnvironmentObject private var tabvm: TabViewModel
     @EnvironmentObject private var network: Network
 
-    init(feed: AtbFeed, _ locationManager: LocationManager) {
+    init(feed: FeedManager, _ locationManager: LocationManager) {
         self.feed = feed
         self.locationManager = locationManager
     }
@@ -70,6 +70,6 @@ struct MapView: View {
 
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
-        MapView(feed: AtbFeed(), LocationManager())
+        MapView(feed: FeedManager(), LocationManager())
     }
 }

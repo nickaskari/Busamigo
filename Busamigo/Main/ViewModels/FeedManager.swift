@@ -1,5 +1,5 @@
 //
-//  AtbFeed.swift
+//  FeedManager.swift
 //  Busamigo
 //
 //  Created by Nick Askari on 17/02/2022.
@@ -10,13 +10,15 @@ import MapKit
 import Firebase
 import SwiftUI
 
-class AtbFeed: ObservableObject {
+class FeedManager: ObservableObject {
     
     static let allFilteres = ["Relevant", "Nylig", "Lokasjon", "Rating", "Trikk"]
     
     let stops: Dictionary<Stop, CLLocationCoordinate2D> = FileManager().stops
     let routes: Dictionary<Stop, [Route]> = FileManager().routesAssociatedWithStops
     let area = Area(upperLat: 63.462133, downerLat: 63.302000, leftLon: 10.051845, rightLon: 10.676401)
+    let support = "Gå til Atb"
+    let organization = "Atb"
     
     private let db = Firestore.firestore()
     

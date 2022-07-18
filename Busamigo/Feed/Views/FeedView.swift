@@ -9,7 +9,7 @@ import SwiftUI
 import MapKit
 
 struct FeedView: View {
-    @ObservedObject private var feed: AtbFeed
+    @ObservedObject private var feed: FeedManager
     @ObservedObject private var locationManager: LocationManager
     @EnvironmentObject private var popUpManager: PopUpManager
     @EnvironmentObject private var network: Network
@@ -17,7 +17,7 @@ struct FeedView: View {
     private let scrollFeed: ScrollFeedView
     @State private var canPost = false
     
-    init(feed: AtbFeed, _ locationManager: LocationManager) {
+    init(feed: FeedManager, _ locationManager: LocationManager) {
         self.feed = feed
         self.locationManager = locationManager
         self.scrollFeed = ScrollFeedView(feed, locationManager)
@@ -102,6 +102,6 @@ struct FeedView: View {
 
 struct FeedView_Previews: PreviewProvider {
     static var previews: some View {
-        FeedView(feed: AtbFeed(), LocationManager())
+        FeedView(feed: FeedManager(), LocationManager())
     }
 }

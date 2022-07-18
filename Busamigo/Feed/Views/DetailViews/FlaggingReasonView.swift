@@ -12,7 +12,7 @@ struct FlaggingReasonView: View {
     
     @Environment(\.presentationMode) private var presentationMode
     @Environment(\.managedObjectContext) var moc
-    @EnvironmentObject private var feed: AtbFeed
+    @EnvironmentObject private var feed: FeedManager
     
     @State private var placeholder: String = "Skriv en begrunnelse ..."
     @State private var description: String = ""

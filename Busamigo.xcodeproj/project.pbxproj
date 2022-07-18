@@ -39,7 +39,7 @@
 		B728C8F228482E6900AF822A /* StopRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B728C8F128482E6900AF822A /* StopRowView.swift */; };
 		B728C8F42848310F00AF822A /* StopLocationRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B728C8F32848310F00AF822A /* StopLocationRowView.swift */; };
 		B72987C127BB00CE006A3B17 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72987C027BB00CE006A3B17 /* LocationManager.swift */; };
-		B72987D627BE94AC006A3B17 /* AtbFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72987D527BE94AB006A3B17 /* AtbFeed.swift */; };
+		B72987D627BE94AC006A3B17 /* FeedManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72987D527BE94AB006A3B17 /* FeedManager.swift */; };
 		B72987DA27BECAAB006A3B17 /* PostObservationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72987D927BECAAB006A3B17 /* PostObservationView.swift */; };
 		B72987DE27BFC610006A3B17 /* ScrollFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72987DD27BFC610006A3B17 /* ScrollFeedView.swift */; };
 		B72987E027BFD716006A3B17 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72987DF27BFD716006A3B17 /* Extensions.swift */; };
@@ -143,7 +143,7 @@
 		B728C8F32848310F00AF822A /* StopLocationRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopLocationRowView.swift; sourceTree = "<group>"; };
 		B72987C027BB00CE006A3B17 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		B72987D427BE8E6D006A3B17 /* Testing.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Testing.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		B72987D527BE94AB006A3B17 /* AtbFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtbFeed.swift; sourceTree = "<group>"; };
+		B72987D527BE94AB006A3B17 /* FeedManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedManager.swift; sourceTree = "<group>"; };
 		B72987D927BECAAB006A3B17 /* PostObservationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostObservationView.swift; sourceTree = "<group>"; };
 		B72987DD27BFC610006A3B17 /* ScrollFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollFeedView.swift; sourceTree = "<group>"; };
 		B72987DF27BFD716006A3B17 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -300,7 +300,7 @@
 		B70604E728494957008D0930 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				B72987D527BE94AB006A3B17 /* AtbFeed.swift */,
+				B72987D527BE94AB006A3B17 /* FeedManager.swift */,
 				B72987C027BB00CE006A3B17 /* LocationManager.swift */,
 				B739A4352851171A00677433 /* UserManager.swift */,
 				B721CFAA286D08390008D00B /* Network.swift */,
@@ -768,7 +768,7 @@
 				B77AB8FC287B4766007A8DB4 /* BusamigoLog.xcdatamodeld in Sources */,
 				B721CFBA287103C00008D00B /* LaunchView.swift in Sources */,
 				B739A4362851171B00677433 /* UserManager.swift in Sources */,
-				B72987D627BE94AC006A3B17 /* AtbFeed.swift in Sources */,
+				B72987D627BE94AC006A3B17 /* FeedManager.swift in Sources */,
 				B7F70FD7280B787200F8A71D /* ActivityIndicatorView.swift in Sources */,
 				B72987DE27BFC610006A3B17 /* ScrollFeedView.swift in Sources */,
 				B70422132863E42200D917E0 /* NewMapObservationView.swift in Sources */,
@@ -1000,7 +1000,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.2.2;
+				MARKETING_VERSION = 0.2.3;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.guttaredderverden.Busamigo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1041,7 +1041,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.2.2;
+				MARKETING_VERSION = 0.2.3;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.guttaredderverden.Busamigo;
 				PRODUCT_NAME = "$(TARGET_NAME)";

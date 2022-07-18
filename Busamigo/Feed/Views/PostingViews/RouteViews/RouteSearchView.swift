@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct RouteSearchView: View {
-    @ObservedObject private var feed: AtbFeed
+    @ObservedObject private var feed: FeedManager
     @ObservedObject private var postingManager: PostingManager
     @ObservedObject private var locationManager: LocationManager
     @Environment(\.presentationMode) private var presentationMode
     
     @State private var searchText = ""
 
-    init(_ feed: AtbFeed, _ postingManager: PostingManager, _ locationManager: LocationManager) {
+    init(_ feed: FeedManager, _ postingManager: PostingManager, _ locationManager: LocationManager) {
         self.feed = feed
         self.postingManager = postingManager
         self.locationManager = locationManager
@@ -116,7 +116,7 @@ struct RouteSearchView: View {
 struct RouteSearchView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            RouteSearchView(AtbFeed(), PostingManager(), LocationManager())
+            RouteSearchView(FeedManager(), PostingManager(), LocationManager())
         }
     }
 }

@@ -16,6 +16,7 @@ struct DetailView: View {
     @Environment(\.managedObjectContext) var moc
     @EnvironmentObject private var userManager: UserManager
     @EnvironmentObject private var homeButtonManager: HomeButtonManager
+    @EnvironmentObject private var feed: FeedManager
     
     @State private var isLoading = true
     @State private var karisma: Double?
@@ -62,7 +63,7 @@ struct DetailView: View {
             }
     }
     
-    private let height = UIScreen.screenHeight * 0.85
+    private let height = UIScreen.screenHeight * 0.86
     
     private var mainView: some View {
         GeometryReader { geo in
@@ -131,8 +132,13 @@ struct DetailView: View {
                     UIApplication.shared.open(url)
                 }
             } label: {
-                Text("Kjøp billett")
-                    .capsuleStyle(.pink, size: .small)
+                HStack {
+                    Text(feed.support)
+                    
+                    Image(systemName: "rectangle.portrait.and.arrow.right.fill")
+                        .font(.system(size: 14))
+                }
+                .capsuleStyle(.pink, size: .small)
             }
                 .buttonStyle(PushDownButtonStyle())
             

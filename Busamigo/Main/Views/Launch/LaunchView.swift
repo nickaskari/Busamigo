@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LaunchView: View {
-    @EnvironmentObject private var feed: AtbFeed
+    @EnvironmentObject private var feed: FeedManager
     @EnvironmentObject private var userManager: UserManager
     
     @Binding var showLaunchView: Bool

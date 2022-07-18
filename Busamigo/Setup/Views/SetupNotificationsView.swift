@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SetupNotificationsView: View {
     @EnvironmentObject private var userManager: UserManager
-    @EnvironmentObject private var feed: AtbFeed
+    @EnvironmentObject private var feed: FeedManager
     @EnvironmentObject private var locationManager: LocationManager
     @Environment(\.presentationMode) private var presentationMode
     

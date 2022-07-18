@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct UporDownView: View {
-    @EnvironmentObject private var feed: AtbFeed
+    @EnvironmentObject private var feed: FeedManager
     @EnvironmentObject private var tabvm: TabViewModel
     
     private let obs: Observation

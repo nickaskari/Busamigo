@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RulesView: View {
-    @EnvironmentObject private var feed: AtbFeed
+    @EnvironmentObject private var feed: FeedManager
     @EnvironmentObject private var locationManager: LocationManager
     @Environment(\.presentationMode) private var presentationMode
     
@@ -103,7 +103,7 @@ struct RulesView: View {
                 .foregroundColor(.pink)
                 .font(.system(size: 25))
             
-            Text("Busamigo oppfordrer til å kjøpe billett i god tid, og tilrettelegger derfor en knapp for dette i hver observasjon.")
+            Text("Busamigo oppfordrer til å kjøpe billett i god tid, og tilrettelegger derfor en knapp for å besøke \(feed.organization) i hver observasjon.")
                 .font(.caption)
                 .minimumScaleFactor(0.01)
                 .lineLimit(3)

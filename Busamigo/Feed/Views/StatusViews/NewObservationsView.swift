@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NewObservationsView: View {
     @EnvironmentObject private var homeButtonManager: HomeButtonManager
-    @EnvironmentObject private var feed: AtbFeed
+    @EnvironmentObject private var feed: FeedManager
     
     var body: some View {
         Button {

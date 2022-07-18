@@ -11,7 +11,7 @@ import AdSupport
 
 struct TrackingPermissionView: View {
     @Environment(\.presentationMode) private var presentationMode
-    @EnvironmentObject private var feed: AtbFeed
+    @EnvironmentObject private var feed: FeedManager
     @EnvironmentObject private var locationManager: LocationManager
     
     @AppStorage("setup") private var setup = false

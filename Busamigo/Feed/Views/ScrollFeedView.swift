@@ -10,7 +10,7 @@ import Foundation
 import GoogleMobileAds
 
 struct ScrollFeedView: View {
-    @ObservedObject private var feed: AtbFeed
+    @ObservedObject private var feed: FeedManager
     @ObservedObject private var locationManager: LocationManager
     @EnvironmentObject private var homeButtonManager: HomeButtonManager
     @EnvironmentObject private var network: Network
@@ -25,7 +25,7 @@ struct ScrollFeedView: View {
     @State private var activateRefresh: Bool = false
     @State private var didRefresh: Bool = false
     
-    init(_ feed: AtbFeed, _ locationManager: LocationManager) {
+    init(_ feed: FeedManager, _ locationManager: LocationManager) {
         self.feed = feed
         self.locationManager = locationManager
     }
@@ -52,6 +52,7 @@ struct ScrollFeedView: View {
                             if (feed.getPositionInVisibleFeed(observation: obs) % 3) == 0  && network.connected &&
                                 areAdsEnabled {
                                 AdView(adFormat: .mediumRectangle)
+                                    .id(feed.getPositionInVisibleFeed(observation: obs))
                             }
                         }
                     } else {
@@ -171,6 +172,6 @@ struct ScrollFeedView: View {
 
 struct ScrollFeedView_Previews: PreviewProvider {
     static var previews: some View {
-        ScrollFeedView(AtbFeed(), LocationManager())
+        ScrollFeedView(FeedManager(), LocationManager())
     }
 }

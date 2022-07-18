@@ -11,13 +11,13 @@ import CoreLocationUI
 
 
 struct FilterView: View {
-    @ObservedObject private var feed: AtbFeed
+    @ObservedObject private var feed: FeedManager
     @ObservedObject private var locationManager: LocationManager
     @Environment(\.scenePhase) private var scenePhase
     
     @State var unableToGetLocation: Bool = false
     
-    init(feed: AtbFeed, _ locationManager: LocationManager) {
+    init(feed: FeedManager, _ locationManager: LocationManager) {
         self.feed = feed
         self.locationManager = locationManager
     }
@@ -138,6 +138,6 @@ private struct FilterBoxView: View {
 
 struct PreferanceView_Previews: PreviewProvider {
     static var previews: some View {
-        FilterView(feed: AtbFeed(), LocationManager())
+        FilterView(feed: FeedManager(), LocationManager())
     }
 }

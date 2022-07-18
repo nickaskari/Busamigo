@@ -9,7 +9,7 @@ import SwiftUI
 import MapKit
 
 struct StopSearchView: View {
-    @ObservedObject private var feed: AtbFeed
+    @ObservedObject private var feed: FeedManager
     private var locationManager: LocationManager
     @StateObject private var postingManager = PostingManager()
     @Environment(\.presentationMode) private var presentationMode
@@ -17,7 +17,7 @@ struct StopSearchView: View {
     @State private var searchText = ""
     private var sorter: LocationUtilites = LocationUtilites()
     
-    init(_ feed: AtbFeed, _ locationManager: LocationManager) {
+    init(_ feed: FeedManager, _ locationManager: LocationManager) {
         self.feed = feed
         self.locationManager = locationManager
     }
@@ -124,7 +124,7 @@ struct StopSearchView: View {
 struct StopsSearchView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            StopSearchView(AtbFeed(), LocationManager())
+            StopSearchView(FeedManager(), LocationManager())
         }
     }
 }

@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 
 struct PostObservationView: View {
-    @ObservedObject private var feed: AtbFeed
+    @ObservedObject private var feed: FeedManager
     @ObservedObject private var locationManager: LocationManager
     @ObservedObject private var postingManager: PostingManager
     @Environment(\.presentationMode) private var presentationMode
@@ -27,7 +27,7 @@ struct PostObservationView: View {
     
     private let textLimit = 80
     
-    init(_ feed: AtbFeed, _ locationManager: LocationManager, _ postingManager: PostingManager) {
+    init(_ feed: FeedManager, _ locationManager: LocationManager, _ postingManager: PostingManager) {
         self.feed = feed
         self.locationManager = locationManager
         self.postingManager = postingManager
@@ -198,6 +198,6 @@ struct PostObservationView: View {
 
 struct AddFeedItemView_Previews: PreviewProvider {
     static var previews: some View {
-        PostObservationView(AtbFeed(), LocationManager(), PostingManager())
+        PostObservationView(FeedManager(), LocationManager(), PostingManager())
     }
 }

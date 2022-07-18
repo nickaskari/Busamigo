@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct GenericErrorView: View {
-    @EnvironmentObject private var feed: AtbFeed
+    @EnvironmentObject private var feed: FeedManager
     
     var body: some View {
         Text("Ops! Det har oppstått et problem.")

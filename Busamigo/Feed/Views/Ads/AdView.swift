@@ -32,10 +32,9 @@ struct AdView: View {
                 }
             }
         }
-        .padding()
+        .padding(adStatus != .failure ? 10: 0)
     }
 }
-
 
 
 

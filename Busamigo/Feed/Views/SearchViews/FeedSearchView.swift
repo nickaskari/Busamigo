@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct FeedSearchView: View {
-    @ObservedObject var feed: AtbFeed
+    @ObservedObject var feed: FeedManager
     @ObservedObject var locationManager: LocationManager
     @State private var searchText = ""
     
     @Environment(\.presentationMode) private var presentationMode
     @EnvironmentObject private var homeButtonManager: HomeButtonManager
     
-    init (_ feed: AtbFeed, _ locationManager: LocationManager) {
+    init (_ feed: FeedManager, _ locationManager: LocationManager) {
         self.feed = feed
         self.locationManager = locationManager
     }
@@ -75,6 +75,6 @@ struct FeedSearchView: View {
 
 struct FeedSearchView_Previews: PreviewProvider {
     static var previews: some View {
-        FeedSearchView(AtbFeed(), LocationManager())
+        FeedSearchView(FeedManager(), LocationManager())
     }
 }

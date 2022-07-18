@@ -9,12 +9,12 @@ import SwiftUI
 
 struct BusamigoTabView: View {
     @ObservedObject private var tabvm: TabViewModel
-    @ObservedObject private var feed: AtbFeed
+    @ObservedObject private var feed: FeedManager
     @EnvironmentObject private var homeButtonManager: HomeButtonManager
     @EnvironmentObject private var profileButtonManager: ProfileButtonManager
     @Environment(\.presentationMode) private var presentationMode
     
-    init(_ feed: AtbFeed, _ tabvm: TabViewModel) {
+    init(_ feed: FeedManager, _ tabvm: TabViewModel) {
         self.feed = feed
         self.tabvm = tabvm
     }
@@ -76,6 +76,6 @@ struct BusamigoTabView_Previews: PreviewProvider {
     
     static var previews: some View {
         
-        BusamigoTabView(AtbFeed(), TabViewModel())
+        BusamigoTabView(FeedManager(), TabViewModel())
     }
 }

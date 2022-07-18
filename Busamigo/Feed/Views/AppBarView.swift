@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct AppBarView: View {
-    @ObservedObject private var feed: AtbFeed
+    @ObservedObject private var feed: FeedManager
     @ObservedObject private var locationManager: LocationManager
     
-    init(_ feed: AtbFeed, _ locationManager: LocationManager) {
+    init(_ feed: FeedManager, _ locationManager: LocationManager) {
         self.feed = feed
         self.locationManager = locationManager
     }
@@ -65,6 +65,6 @@ struct AppBarView: View {
 
 struct AppBarView_Previews: PreviewProvider {
     static var previews: some View {
-        AppBarView(AtbFeed(), LocationManager())
+        AppBarView(FeedManager(), LocationManager())
     }
 }

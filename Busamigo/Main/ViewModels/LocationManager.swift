@@ -43,7 +43,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
         checkLocationAuthorization()
     }
     
-    func displayLocationFilter(_ feed: AtbFeed) -> Bool {
+    func displayLocationFilter(_ feed: FeedManager) -> Bool {
         updateLocationError(feed)
         
         if !hasAuthErrors(feed) {
@@ -58,15 +58,15 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
         return false
     }
     
-    func hasAnyErrors(_ feed: AtbFeed) -> Bool {
+    func hasAnyErrors(_ feed: FeedManager) -> Bool {
         return lastKnownLocation == nil || hasAuthErrors(feed)
     }
     
-    func hasAuthErrors(_ feed: AtbFeed) -> Bool {
+    func hasAuthErrors(_ feed: FeedManager) -> Bool {
         return feed.getLocationError(errors) != nil
     }
     
-    private func updateLocationError(_ feed: AtbFeed) {
+    private func updateLocationError(_ feed: FeedManager) {
         checkIfLocationServicesIsEnabled()
         
         if hasAuthErrors(feed) {

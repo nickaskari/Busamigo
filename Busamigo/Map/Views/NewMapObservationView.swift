@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct NewMapObservationView: View {
-    @EnvironmentObject private var feed: AtbFeed
+    @EnvironmentObject private var feed: FeedManager
     @State private var isLoading = false
     
     var body: some View {

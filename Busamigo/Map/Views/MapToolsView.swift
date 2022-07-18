@@ -10,13 +10,13 @@ import SwiftUI
 struct MapToolsView: View {
     @ObservedObject private var observationManager: ObservationManager
     @ObservedObject private var locationManager: LocationManager
-    @ObservedObject private var feed: AtbFeed
+    @ObservedObject private var feed: FeedManager
     
     @State var error = false
     @State private var isPresented = false
     //let color: Color = Color(red: 0.12, green: 0.12, blue: 0.12)
     
-    init(_ feed: AtbFeed, _ locationManager: LocationManager, _ observationManager: ObservationManager) {
+    init(_ feed: FeedManager, _ locationManager: LocationManager, _ observationManager: ObservationManager) {
         self.feed = feed
         self.locationManager = locationManager
         self.observationManager = observationManager

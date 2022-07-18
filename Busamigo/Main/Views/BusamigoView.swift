@@ -9,14 +9,14 @@ import SwiftUI
 import MapKit
 
 struct BusamigoView: View {
-    @ObservedObject private var feed: AtbFeed
+    @ObservedObject private var feed: FeedManager
     @ObservedObject private var locationManager: LocationManager
     
     @EnvironmentObject private var tabvm: TabViewModel
     @EnvironmentObject private var userManager: UserManager
     @EnvironmentObject private var network: Network
   
-    init(_ feed: AtbFeed, _ locationManager: LocationManager) {
+    init(_ feed: FeedManager, _ locationManager: LocationManager) {
         self.feed = feed
         self.locationManager = locationManager
     }
@@ -53,8 +53,8 @@ struct BusamigoView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            BusamigoView(AtbFeed(), LocationManager())
-            BusamigoView(AtbFeed(), LocationManager())
+            BusamigoView(FeedManager(), LocationManager())
+            BusamigoView(FeedManager(), LocationManager())
                 .preferredColorScheme(.dark)
         }
     }
