@@ -41,6 +41,8 @@ struct LaunchView: View {
                     showLaunchView = false
                 }
             }
+            
+            feed.listenForUpdates()
         }
     }
 }

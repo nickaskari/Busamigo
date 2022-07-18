@@ -50,6 +50,7 @@ class AtbFeed: ObservableObject {
                     } catch {
                         print(error.localizedDescription)
                         completion(false)
+                        break
                     }
                 }
                 self.atbFeed.commitRefresh()
@@ -60,18 +61,18 @@ class AtbFeed: ObservableObject {
     }
     
     func listenForUpdates() {
-        db.collection("AtbFeed").addSnapshotListener { querySnapshot, error in
-            guard let documents = querySnapshot?.documents else {
-                print("No documents")
+        db.collection("AtbFeed").addSnapshotListener { snapshot, error in
+            if let error = error {
+                print("networkError ",error.localizedDescription)
                 self.networkError = true
-                return
             }
-            
-            if !documents.isEmpty {
-                for document in documents {
-                    if !self.atbFeed.hasObservation(document.documentID) {
-                        self.newObservations = true
-                        break
+            if let snapshot = snapshot {
+                if !snapshot.documents.isEmpty {
+                    for document in snapshot.documents {
+                        if !self.atbFeed.hasObservation(document.documentID) {
+                            self.newObservations = true
+                            break
+                        }
                     }
                 }
             }

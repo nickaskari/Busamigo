@@ -66,7 +66,6 @@ struct BusamigoApp: App {
             .onAppear {
                 locationManager.checkIfLocationServicesIsEnabled()
                 portraitOrientationLock()
-                feed.listenForUpdates()
             }
         }
     }

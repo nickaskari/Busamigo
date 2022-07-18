@@ -123,7 +123,7 @@ struct Feed {
                untouchedFeed[row] = new
         }
         
-        updateObservation(new, userID) { succsess in
+        updateObservation(new.id, score: Int64(1), userID) { succsess in
             if succsess {
                 completion(true)
             } else {
@@ -143,7 +143,7 @@ struct Feed {
                untouchedFeed[row] = new
         }
         
-        updateObservation(new, userID) { succsess in
+        updateObservation(new.id, score: Int64(-1), userID) { succsess in
             if succsess {
                 completion(true)
             } else {
@@ -170,10 +170,11 @@ struct Feed {
         }
     }
     
-    private func updateObservation(_ obs: Observation, _ userID: String, completion: @escaping(_ succsess: Bool) -> Void) {
+    
+    private func updateObservation(_ id: String?, score: Int64, _ userID: String, completion: @escaping(_ succsess: Bool) -> Void) {
         let db = Firestore.firestore()
         
-        if let id = obs.id {
+        if let id = id {
             let docRef = db.collection("AtbFeed").document(id)
             let haveVotedRef = docRef.collection("HaveVoted")
             haveVotedRef.addDocument(data: [
@@ -184,12 +185,15 @@ struct Feed {
                 }
             }
             
-            do {
-                try docRef.setData(from: obs)
-                completion(true)
-            } catch {
-                print(error.localizedDescription)
-                completion(false)
+            docRef.updateData([
+                "voteScore" : FieldValue.increment(score)
+            ]) { error in
+                if let error = error {
+                    print(error.localizedDescription)
+                    completion(false)
+                } else {
+                    completion(true)
+                }
             }
         }
     }
