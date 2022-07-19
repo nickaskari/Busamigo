@@ -54,7 +54,7 @@ struct ProfileView: View {
     
     private var legalInformation: some View {
         NavigationLink {
-            LegalInformationView()
+            AboutView()
         } label: {
             Image(systemName: "doc.text.fill")
                 .profileIconStyle()

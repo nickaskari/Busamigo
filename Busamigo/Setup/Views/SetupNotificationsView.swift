@@ -32,6 +32,9 @@ struct SetupNotificationsView: View {
         .padding(.top)
         .navigationBarBackButtonHidden(true)
         .navigationBarTitleDisplayMode(.inline)
+        .onAppear {
+            locationManager.checkIfLocationServicesIsEnabled()
+        }
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 backButton

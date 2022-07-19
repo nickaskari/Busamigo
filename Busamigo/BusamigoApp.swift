@@ -64,7 +64,9 @@ struct BusamigoApp: App {
             }
             .preferredColorScheme(.light)
             .onAppear {
-                locationManager.checkIfLocationServicesIsEnabled()
+                if setup {
+                    locationManager.checkIfLocationServicesIsEnabled()
+                }
                 portraitOrientationLock()
             }
         }

@@ -1,5 +1,5 @@
 //
-//  LegalInformationView.swift
+//  AboutView.swift
 //  Busamigo
 //
 //  Created by Nick Askari on 02/06/2022.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct LegalInformationView: View {
+struct AboutView: View {
     @Environment(\.presentationMode) private var presentationMode
     @EnvironmentObject private var profileButtonManager: ProfileButtonManager
     @EnvironmentObject private var tabViewModel: TabViewModel
@@ -147,6 +147,6 @@ struct LegalInformationView: View {
 
 struct AboutBusamigoView_Previews: PreviewProvider {
     static var previews: some View {
-        LegalInformationView()
+        AboutView()
     }
 }
