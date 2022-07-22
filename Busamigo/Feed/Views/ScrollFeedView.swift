@@ -112,11 +112,7 @@ struct ScrollFeedView: View {
                         if success {
                             feed.activateFilter("Relevant", userLon: nil, userLat: nil)
                             activateRefresh = false
-                        } else {
-                            withAnimation {
-                                feed.networkError = true
-                            }
-                        }
+                        } 
                     }
                 }
             }

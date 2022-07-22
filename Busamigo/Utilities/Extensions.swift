@@ -73,8 +73,8 @@ extension Image {
             .background(Circle()
                 .strokeBorder(.pink, lineWidth: 5)
                 .opacity(0.7))
-            .padding()
             .shadow(radius: 6)
+            .padding()
     }
     
     func profileIconStyle() -> some View {

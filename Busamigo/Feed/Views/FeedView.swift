@@ -42,13 +42,10 @@ struct FeedView: View {
                         } else {
                             ZStack(alignment: .top) {
                                 scrollFeed
-                                if !network.connected {
-                                    NetworkErrorView()
-                                }
-                                else if feed.networkError {
-                                    GenericErrorView()
-                                } else if feed.newObservations {
-                                    NewObservationsView()
+                                if feed.status != .none {
+                                    withAnimation {
+                                        StatusView()
+                                    }
                                 }
                             }
                         }
@@ -63,6 +60,9 @@ struct FeedView: View {
         }
         .onAppear {
             network.checkConnection()
+            if !network.connected {
+                feed.status = .networkError
+            }
         }
     }
     

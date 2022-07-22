@@ -17,7 +17,6 @@ struct NewMapObservationView: View {
             
             feed.fetchFeed { success in
                 isLoading = false
-                feed.newObservations = false
             }
         } label: {
             HStack(spacing: 20) {
@@ -31,13 +30,13 @@ struct NewMapObservationView: View {
             .padding(15)
         }
         .buttonStyle(PushDownButtonStyle())
-        /*.onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 7) {
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                 withAnimation {
-                    feed.newObservations = false
+                    feed.status = .none
                 }
             }
-        }*/
+        }
     }
 }
 

@@ -30,8 +30,7 @@ class FeedManager: ObservableObject {
     @Published private var atbFilters: Filters = createFilters()
     @Published private var locationErrors: LocationErrors = LocationErrors()
     @Published private var firebaseListener: ListenerRegistration?
-    @Published var networkError: Bool = false
-    @Published var newObservations: Bool = false
+    @Published var status: Status = .none
     
     func fetchFeed(completion: @escaping(_ success: Bool) -> Void) {
         self.atbFeed.initRefresh()
@@ -40,6 +39,7 @@ class FeedManager: ObservableObject {
         ref.getDocuments { snapshot, error in
             guard error == nil else {
                 print(error!.localizedDescription)
+                self.status = .genericError
                 completion(false)
                 return
             }
@@ -56,7 +56,7 @@ class FeedManager: ObservableObject {
                     }
                 }
                 self.atbFeed.commitRefresh()
-                self.newObservations = false
+                self.status = .none
                 completion(true)
             }
         }
@@ -65,14 +65,14 @@ class FeedManager: ObservableObject {
     func listenForUpdates() {
         db.collection("AtbFeed").addSnapshotListener { snapshot, error in
             if let error = error {
-                print("networkError ",error.localizedDescription)
-                self.networkError = true
+                print("Error: ",error.localizedDescription)
+                self.status = .genericError
             }
             if let snapshot = snapshot {
                 if !snapshot.documents.isEmpty {
                     for document in snapshot.documents {
                         if !self.atbFeed.hasObservation(document.documentID) {
-                            self.newObservations = true
+                            self.status = .newObservations
                             break
                         }
                     }
@@ -115,6 +115,7 @@ class FeedManager: ObservableObject {
         ref.getDocuments { snpashot, error in
             guard error == nil else {
                 print(error!.localizedDescription)
+                self.status = .genericError
                 completion(false)
                 return
             }
@@ -139,15 +140,17 @@ class FeedManager: ObservableObject {
                         if succsess {
                             completion(true)
                         } else {
-                            self.networkError = true
+                            self.status = .genericError
                             completion(false)
                         }
                     }
                 } else {
+                    self.status = .redundantVote
                     completion(false)
                 }
             }
         } else {
+            self.status = .genericError
             completion(false)
         }
     }
@@ -162,15 +165,17 @@ class FeedManager: ObservableObject {
                         if succsess {
                             completion(true)
                         } else {
-                            self.networkError = true
+                            self.status = .genericError
                             completion(false)
                         }
                     }
                 } else {
+                    self.status = .redundantVote
                     completion(false)
                 }
             }
         } else {
+            self.status = .genericError
             completion(false)
         }
     }
@@ -284,6 +289,7 @@ class FeedManager: ObservableObject {
             ref.getDocuments { snapshot, error in
                 guard error == nil else {
                     print(error!.localizedDescription)
+                    self.status = .genericError
                     completion(false)
                     return
                 }
@@ -315,6 +321,7 @@ class FeedManager: ObservableObject {
         ref.getDocuments { snapshot, error in
             guard error == nil else {
                 print(error!.localizedDescription)
+                self.status = .genericError
                 completion(false)
                 return
             }

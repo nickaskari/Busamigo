@@ -40,21 +40,23 @@ struct MapView: View {
                 
                 MapToolsView(feed, locationManager, observationManager)
                 
-                if !network.connected {
-                    withAnimation {
-                        NetworkErrorView()
-                    }
-                } else if feed.newObservations == true {
-                    withAnimation {
+                if feed.status == .newObservations {
                         NewMapObservationView()
+                } else if feed.status != .none {
+                        StatusView()
                     }
-                }
             }
             
             if let obs = observationManager.mapObservation {
                 withAnimation {
                     SlidingObservationView(observation: obs, observationManager)
                 }
+            }
+        }
+        .onAppear {
+            network.checkConnection()
+            if !network.connected {
+                feed.status = .networkError
             }
         }
     }

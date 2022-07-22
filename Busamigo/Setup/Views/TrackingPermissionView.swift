@@ -76,7 +76,7 @@ struct TrackingPermissionView: View {
     private var benefits: some View {
         VStack(alignment: .leading, spacing: 20) {
             makeBenefit(icon: "person.3.fill", benefit: "bidra til at Busamigo forblir gratis på App Store")
-            makeBenefit(icon: "hand.point.up.braille.fill", benefit: "få mer relavante annonser")
+            makeBenefit(icon: "hand.point.up.braille.fill", benefit: "få mer relevante annonser")
         }
     }
     
