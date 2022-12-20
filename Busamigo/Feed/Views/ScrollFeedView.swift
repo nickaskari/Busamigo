@@ -33,7 +33,7 @@ struct ScrollFeedView: View {
     var body: some View {
         ScrollView(.vertical, showsIndicators: true) {
             ScrollViewReader { value in
-                LazyVStack(spacing: 5) {
+                LazyVStack(spacing: 0) {
                     EmptyView()
                         .id(0)
                     
@@ -49,9 +49,9 @@ struct ScrollFeedView: View {
                                 makeObservation(obs)
                             }
                             
-                            if (feed.getPositionInVisibleFeed(observation: obs) % 3) == 0  && network.connected &&
-                                areAdsEnabled {
-                                AdView(adFormat: .mediumRectangle)
+                            if (feed.getPositionInVisibleFeed(observation: obs) % 3) == 0  && network.connected
+                                 {
+                                BannerAdView(navigationTitle: "Banner")
                                     .id(feed.getPositionInVisibleFeed(observation: obs))
                             }
                         }
@@ -130,6 +130,7 @@ struct ScrollFeedView: View {
             DetailView(observation: item, locationManager: locationManager)
         }, label: {
             ObservationView(item)
+                .padding(.bottom, 5)
         })
         .buttonStyle(NonHighlightingButtonStyle())
     }

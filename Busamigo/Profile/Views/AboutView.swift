@@ -65,7 +65,7 @@ struct AboutView: View {
     
     private var privacyRow: some View {
         Button {
-            if let url = URL(string: "https://nickaskari.github.io/Busamigo.site/") {
+            if let url = URL(string: "https://busamigo.github.io/busamigo.personvern/") {
                UIApplication.shared.open(url)
             }
         } label: {

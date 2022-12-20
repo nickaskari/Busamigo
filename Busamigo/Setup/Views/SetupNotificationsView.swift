@@ -62,7 +62,7 @@ struct SetupNotificationsView: View {
                 .font(.system(size: 40))
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 5))
             
-            Text("Husk at notifikasjoner for Busamigo må være på i innstillingene dine for dette :)")
+            Text("Husk at notifikasjoner for Busamigo må være på i innstillingene dine for dette.")
                 .font(.callout)
                 .foregroundColor(.black.opacity(0.7))
         }

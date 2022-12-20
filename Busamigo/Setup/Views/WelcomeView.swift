@@ -32,7 +32,7 @@ struct WelcomeView: View {
         VStack(alignment: .leading, spacing: 20) {
             getBulletpoint(nr: 1, content: "Meld fra om billettkontroll på kollektiv transport")
             getBulletpoint(nr: 2, content: "Se hvor det er meldt fra om kontroll på feeden eller på kartet")
-            getBulletpoint(nr: 3, content: "Gi en upvote på de du synes er rimelig ;)")
+            getBulletpoint(nr: 3, content: "Gi en upvote for å bekrefte en observasjon")
             
             Spacer()
         }
