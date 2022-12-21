@@ -49,9 +49,9 @@ struct ScrollFeedView: View {
                                 makeObservation(obs)
                             }
                             
-                            if (feed.getPositionInVisibleFeed(observation: obs) % 3) == 0  && network.connected
+                            if (feed.getPositionInVisibleFeed(observation: obs) % 3) == 0  && network.connected 
                                  {
-                                BannerAdView(navigationTitle: "Banner")
+                                BannerAdView()
                                     .id(feed.getPositionInVisibleFeed(observation: obs))
                             }
                         }

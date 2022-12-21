@@ -12,15 +12,18 @@ import GoogleMobileAds
 // real ads: ca-app-pub-4906057237935048/7437936815
 
 struct BannerAdView: View {
-  let navigationTitle: String
 
   var body: some View {
-      HStack {
-          Spacer()
-          BannerView()
-              .frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight, alignment: .center)
-              .scaledToFit()
-          Spacer()
+      ZStack {
+          ActivityIndicator(color: .pink)
+          
+          HStack {
+              Spacer()
+              BannerView()
+                  .frame(width: 300, height: 250, alignment: .center)
+              Spacer()
+          }
+          .padding()
       }
   }
 }
@@ -28,7 +31,7 @@ struct BannerAdView: View {
 private struct BannerView: UIViewControllerRepresentable {
     @State private var viewWidth: CGFloat = .zero
     private let bannerView = GADBannerView(adSize: GADAdSizeMediumRectangle)
-    private let adUnitID = "ca-app-pub-3940256099942544/2934735716"
+    private let adUnitID = "ca-app-pub-4906057237935048/7437936815"
 
     func makeUIViewController(context: Context) -> UIViewController {
         let view = GADBannerView(adSize: GADAdSizeMediumRectangle)
