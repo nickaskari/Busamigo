@@ -23,8 +23,8 @@ struct BannerAdView: View {
                   .frame(width: 300, height: 250, alignment: .center)
               Spacer()
           }
-          .padding()
       }
+      .padding()
   }
 }
 

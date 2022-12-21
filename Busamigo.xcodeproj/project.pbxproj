@@ -102,7 +102,6 @@
 		B7C1748D28806EDF00083C63 /* ProfileButtonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C1748C28806EDF00083C63 /* ProfileButtonManager.swift */; };
 		B7C1748F28807AB000083C63 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C1748E28807AAF00083C63 /* BannerView.swift */; };
 		B7C174912880BE0000083C63 /* AdStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C174902880BE0000083C63 /* AdStatus.swift */; };
-		B7C174932880BE1700083C63 /* BannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C174922880BE1700083C63 /* BannerViewController.swift */; };
 		B7C174952880BFCD00083C63 /* AdSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C174942880BFCD00083C63 /* AdSizes.swift */; };
 		B7C1749728831B4E00083C63 /* TrackingPermissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C1749628831B4E00083C63 /* TrackingPermissionView.swift */; };
 		B7F70FD7280B787200F8A71D /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F70FD6280B787200F8A71D /* ActivityIndicatorView.swift */; };
@@ -198,7 +197,6 @@
 		B7C1748C28806EDF00083C63 /* ProfileButtonManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileButtonManager.swift; sourceTree = "<group>"; };
 		B7C1748E28807AAF00083C63 /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
 		B7C174902880BE0000083C63 /* AdStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdStatus.swift; sourceTree = "<group>"; };
-		B7C174922880BE1700083C63 /* BannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerViewController.swift; sourceTree = "<group>"; };
 		B7C174942880BFCD00083C63 /* AdSizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdSizes.swift; sourceTree = "<group>"; };
 		B7C1749628831B4E00083C63 /* TrackingPermissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingPermissionView.swift; sourceTree = "<group>"; };
 		B7F70FD6280B787200F8A71D /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
@@ -555,7 +553,6 @@
 			children = (
 				B7C1748E28807AAF00083C63 /* BannerView.swift */,
 				B7C174902880BE0000083C63 /* AdStatus.swift */,
-				B7C174922880BE1700083C63 /* BannerViewController.swift */,
 				B7C174942880BFCD00083C63 /* AdSizes.swift */,
 			);
 			path = Ads;
@@ -728,7 +725,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B7C174932880BE1700083C63 /* BannerViewController.swift in Sources */,
 				B72987C127BB00CE006A3B17 /* LocationManager.swift in Sources */,
 				B72987DA27BECAAB006A3B17 /* PostObservationView.swift in Sources */,
 				B7966C8A27F4DFA700447352 /* FileManager.swift in Sources */,
