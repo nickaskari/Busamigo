@@ -128,7 +128,7 @@ struct DetailView: View {
             Spacer()
             
             Button {
-                if let url = URL(string: "itms-apps://apple.com/us/app/atb/id1502395251") {
+                if let url = URL(string: "itms-apps://apple.com/no/app/atb/id1502395251") {
                     UIApplication.shared.open(url)
                 }
             } label: {

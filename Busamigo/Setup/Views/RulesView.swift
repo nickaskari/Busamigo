@@ -10,6 +10,7 @@ import SwiftUI
 struct RulesView: View {
     @EnvironmentObject private var feed: FeedManager
     @EnvironmentObject private var locationManager: LocationManager
+    @EnvironmentObject private var profileButtonManager: ProfileButtonManager
     @Environment(\.presentationMode) private var presentationMode
     
     @AppStorage("setup") private var setup = false
@@ -19,12 +20,18 @@ struct RulesView: View {
     
     var body: some View {
         ZStack(alignment: .bottom) {
-            VStack(alignment: .leading, spacing: 40) {
-                rules
-                
-                infoBubble
-                
-                Spacer()
+            ScrollView {
+                VStack(alignment: .leading, spacing: 40) {
+                    rules
+                    
+                    infoBubble
+                    
+                    nextButton
+                        .opacity(0)
+                        .disabled(true)
+                    
+                    Spacer()
+                }
             }
     
             if isSetup {
@@ -44,6 +51,11 @@ struct RulesView: View {
             
             ToolbarItem(placement: .principal) {
                 header
+            }
+        }
+        .onReceive(profileButtonManager.objectWillChange) { object in
+            if profileButtonManager.dismiss {
+                self.presentationMode.wrappedValue.dismiss()
             }
         }
     }
@@ -67,7 +79,7 @@ struct RulesView: View {
         NavigationLink {
             TrackingPermissionView()
         } label: {
-            Text("Enig 👍")
+            Text("Godta 👍")
                 .capsuleStyle(.pink, size: .medium)
                 .padding(.bottom)
         }
@@ -79,7 +91,7 @@ struct RulesView: View {
             self.setup = true
             self.showApp = true
         } label: {
-            Text("Enig 👍")
+            Text("Godta 👍")
                 .capsuleStyle(.pink, size: .medium)
                 .padding(.bottom)
         }
@@ -90,11 +102,20 @@ struct RulesView: View {
     }
     
     private var rules: some View {
-        Text("Busamigo er ment som et fantastisk verktøy for å være foreberedt på billettkontroll for kollektiv transport. For å bruke denne platformen krever vi at brukere unngår hatefulle ytringer i sine observasjoner, dette kan føre til utestengelse av brukeren.")
-            .font(.callout)
-            .minimumScaleFactor(0.01)
-            .lineLimit(10)
-            .padding(.horizontal, 20)
+        VStack(alignment: .leading, spacing: 20) {
+            Text("Regler for bruk")
+                .font(.headline)
+            
+            Text("Hatefulle ytringer i observasjoner på Busamigo er ikke tillatt, og kan medføre utestengelse.")
+                .font(.callout)
+            
+            Text("Pålitelighet")
+                .font(.headline)
+            
+            Text("For å vareta troverdigheten til observasjoner som publiseres i Busamigo, bes det om å ikke gi uriktige opplysninger. For å sikre dette kan brukere bekrefte eller avkrefte en observasjon vha. down- og upvotes. Antall down- og upvotes en bruker mottar påvirker vedkommendes “karisma” i Busamigo, slik at andre brukere kan få en indikasjon på observatørens troverdighet.")
+                .font(.callout)
+        }
+        .padding(.horizontal, 20)
     }
     
     private var infoBubble: some View {
@@ -103,7 +124,7 @@ struct RulesView: View {
                 .foregroundColor(.pink)
                 .font(.system(size: 25))
             
-            Text("Busamigo oppfordrer til å kjøpe billett i god tid, og tilrettelegger derfor en knapp for å besøke \(feed.organization) i hver observasjon.")
+            Text("Busamigo anmoder brukere om å kjøpe billett til kollektivtransport i god tid, og tilrettelegger derfor en knapp for å besøke \(feed.organization) i hver observasjon.")
                 .font(.caption)
                 .minimumScaleFactor(0.01)
                 .lineLimit(3)

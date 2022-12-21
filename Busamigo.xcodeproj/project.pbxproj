@@ -100,7 +100,7 @@
 		B7C17483287E594B00083C63 /* CurseWordFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C17482287E594B00083C63 /* CurseWordFilter.swift */; };
 		B7C17485287F213400083C63 /* RulesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C17484287F213400083C63 /* RulesView.swift */; };
 		B7C1748D28806EDF00083C63 /* ProfileButtonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C1748C28806EDF00083C63 /* ProfileButtonManager.swift */; };
-		B7C1748F28807AB000083C63 /* AdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C1748E28807AAF00083C63 /* AdView.swift */; };
+		B7C1748F28807AB000083C63 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C1748E28807AAF00083C63 /* BannerView.swift */; };
 		B7C174912880BE0000083C63 /* AdStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C174902880BE0000083C63 /* AdStatus.swift */; };
 		B7C174932880BE1700083C63 /* BannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C174922880BE1700083C63 /* BannerViewController.swift */; };
 		B7C174952880BFCD00083C63 /* AdSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C174942880BFCD00083C63 /* AdSizes.swift */; };
@@ -196,7 +196,7 @@
 		B7C17482287E594B00083C63 /* CurseWordFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurseWordFilter.swift; sourceTree = "<group>"; };
 		B7C17484287F213400083C63 /* RulesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesView.swift; sourceTree = "<group>"; };
 		B7C1748C28806EDF00083C63 /* ProfileButtonManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileButtonManager.swift; sourceTree = "<group>"; };
-		B7C1748E28807AAF00083C63 /* AdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdView.swift; sourceTree = "<group>"; };
+		B7C1748E28807AAF00083C63 /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
 		B7C174902880BE0000083C63 /* AdStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdStatus.swift; sourceTree = "<group>"; };
 		B7C174922880BE1700083C63 /* BannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerViewController.swift; sourceTree = "<group>"; };
 		B7C174942880BFCD00083C63 /* AdSizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdSizes.swift; sourceTree = "<group>"; };
@@ -553,7 +553,7 @@
 		B7BD43312871E65C00598A3F /* Ads */ = {
 			isa = PBXGroup;
 			children = (
-				B7C1748E28807AAF00083C63 /* AdView.swift */,
+				B7C1748E28807AAF00083C63 /* BannerView.swift */,
 				B7C174902880BE0000083C63 /* AdStatus.swift */,
 				B7C174922880BE1700083C63 /* BannerViewController.swift */,
 				B7C174942880BFCD00083C63 /* AdSizes.swift */,
@@ -686,6 +686,7 @@
 			knownRegions = (
 				en,
 				Base,
+				nb,
 			);
 			mainGroup = B7BF2C6B27B422D2006B840E;
 			packageReferences = (
@@ -797,7 +798,7 @@
 				B7BF2C8827B433A7006B840E /* FeedView.swift in Sources */,
 				B7B88F5827F1C8D9008F2BF3 /* DetailView.swift in Sources */,
 				B721CFA928652C720008D00B /* AppDelegateExtensions.swift in Sources */,
-				B7C1748F28807AB000083C63 /* AdView.swift in Sources */,
+				B7C1748F28807AB000083C63 /* BannerView.swift in Sources */,
 				B75B14792807555F00D9F74B /* AppDelegate.swift in Sources */,
 				B797F52C2806D6BE00CC2054 /* HotSorting.swift in Sources */,
 				B70604E528494499008D0930 /* TipsView.swift in Sources */,
@@ -970,7 +971,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.2.3;
+				MARKETING_VERSION = 1.0.2;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.guttaredderverden.Busamigo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1011,7 +1012,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.2.3;
+				MARKETING_VERSION = 1.0.2;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.guttaredderverden.Busamigo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
