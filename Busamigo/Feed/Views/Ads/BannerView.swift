@@ -24,6 +24,7 @@ struct BannerAdView: View {
               Spacer()
           }
       }
+      .padding(.bottom, 5)
       .padding()
   }
 }

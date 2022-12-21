@@ -19,8 +19,6 @@ struct ScrollFeedView: View {
     @FetchRequest(sortDescriptors: []) var hiddenObservations: FetchedResults<HiddenObservations>
     @Environment(\.managedObjectContext) var moc
     
-    @AppStorage("areAdsEnabled") var areAdsEnabled: Bool = false
-    
     @State private var hideProgress: Bool = true
     @State private var activateRefresh: Bool = false
     @State private var didRefresh: Bool = false
